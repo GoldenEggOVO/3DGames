@@ -8,7 +8,7 @@ One JAR supports Paper, Purpur, Spigot, CraftBukkit and Folia, with native Dialo
 
 [Compatibility](#compatibility) · [Install](#install) · [Controls and menus](#controls-and-menus) · [Games](#games) · [Configuration](#configuration-and-languages) · [Resource pack](#optional-resource-pack) · [Build](#build) · [Source layout](#source-layout) · [License](#license)
 
-> This page describes the current `main` source. Existing 1.0.0 Release assets do not yet contain this compatibility update; build the current source to use the complete matrix below.
+> The refreshed [v1.0.0 release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.0) includes the compatibility update below. Download its JAR or build the current source; the release notes link the exact source snapshot matching the refreshed assets.
 
 ## Compatibility
 
