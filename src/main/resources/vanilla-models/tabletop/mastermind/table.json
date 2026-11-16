@@ -1,0 +1,5547 @@
+{
+  "blocks": [
+    {
+      "name": "wood_base",
+      "position": [
+        0,
+        -0.1025,
+        0
+      ],
+      "size": [
+        2.25,
+        0.075,
+        2.315
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_-1",
+      "position": [
+        -0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_1",
+      "position": [
+        -0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_-1",
+      "position": [
+        0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_1",
+      "position": [
+        0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "rim_front_-1",
+      "position": [
+        0.0,
+        -0.0265,
+        -1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_-1",
+      "position": [
+        -1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_front_1",
+      "position": [
+        0.0,
+        -0.0265,
+        1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_1",
+      "position": [
+        1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "plastic_foundation",
+      "position": [
+        0.0,
+        -0.0365,
+        0.0
+      ],
+      "size": [
+        2.07,
+        0.057,
+        2.27
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "plastic_panel_base",
+      "position": [
+        0.0025,
+        -0.0021,
+        -0.05
+      ],
+      "size": [
+        2.103,
+        0.0122,
+        1.178
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_0",
+      "position": [
+        0.0025,
+        0.001,
+        -0.59175
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.0965
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_1",
+      "position": [
+        -0.97175,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.1565,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_2",
+      "position": [
+        -0.85,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_3",
+      "position": [
+        -0.7675,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_4",
+      "position": [
+        -0.685,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_5",
+      "position": [
+        -0.6025,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_6",
+      "position": [
+        -0.52,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_7",
+      "position": [
+        -0.4375,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_8",
+      "position": [
+        -0.355,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_9",
+      "position": [
+        -0.2725,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_10",
+      "position": [
+        -0.19,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_11",
+      "position": [
+        -0.1075,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_12",
+      "position": [
+        -0.025,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_13",
+      "position": [
+        0.0575,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_14",
+      "position": [
+        0.14,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_15",
+      "position": [
+        0.2225,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_16",
+      "position": [
+        0.305,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_17",
+      "position": [
+        0.3875,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_18",
+      "position": [
+        0.47,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_19",
+      "position": [
+        0.5525,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_20",
+      "position": [
+        0.635,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_21",
+      "position": [
+        0.86675,
+        0.001,
+        -0.5275
+      ],
+      "size": [
+        0.3765,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_22",
+      "position": [
+        0.0025,
+        0.001,
+        -0.5
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.023
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_23",
+      "position": [
+        -0.97175,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.1565,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_24",
+      "position": [
+        -0.85,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_25",
+      "position": [
+        -0.7675,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_26",
+      "position": [
+        -0.685,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_27",
+      "position": [
+        -0.6025,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_28",
+      "position": [
+        -0.52,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_29",
+      "position": [
+        -0.4375,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_30",
+      "position": [
+        -0.355,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_31",
+      "position": [
+        -0.2725,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_32",
+      "position": [
+        -0.19,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_33",
+      "position": [
+        -0.1075,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_34",
+      "position": [
+        -0.025,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_35",
+      "position": [
+        0.0575,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_36",
+      "position": [
+        0.14,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_37",
+      "position": [
+        0.2225,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_38",
+      "position": [
+        0.305,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_39",
+      "position": [
+        0.3875,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_40",
+      "position": [
+        0.47,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_41",
+      "position": [
+        0.5525,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.078,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_42",
+      "position": [
+        0.635,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.023,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_43",
+      "position": [
+        0.86675,
+        0.001,
+        -0.4725
+      ],
+      "size": [
+        0.3765,
+        0.018,
+        0.032
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_44",
+      "position": [
+        0.0025,
+        0.001,
+        -0.37275
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.1675
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_45",
+      "position": [
+        -0.9845,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.131,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_46",
+      "position": [
+        -0.7675,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_47",
+      "position": [
+        -0.6025,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_48",
+      "position": [
+        -0.4375,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_49",
+      "position": [
+        -0.2725,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_50",
+      "position": [
+        -0.1075,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_51",
+      "position": [
+        0.0575,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_52",
+      "position": [
+        0.2225,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_53",
+      "position": [
+        0.3875,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_54",
+      "position": [
+        0.5525,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_55",
+      "position": [
+        0.7875,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.167,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_56",
+      "position": [
+        1.032,
+        0.001,
+        -0.22
+      ],
+      "size": [
+        0.046,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_57",
+      "position": [
+        0.0025,
+        0.001,
+        -0.12
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.062
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_58",
+      "position": [
+        -0.9845,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.131,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_59",
+      "position": [
+        -0.7675,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_60",
+      "position": [
+        -0.6025,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_61",
+      "position": [
+        -0.4375,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_62",
+      "position": [
+        -0.2725,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_63",
+      "position": [
+        -0.1075,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_64",
+      "position": [
+        0.0575,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_65",
+      "position": [
+        0.2225,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_66",
+      "position": [
+        0.3875,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_67",
+      "position": [
+        0.5525,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_68",
+      "position": [
+        0.7875,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.167,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_69",
+      "position": [
+        1.032,
+        0.001,
+        -0.02
+      ],
+      "size": [
+        0.046,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_70",
+      "position": [
+        0.0025,
+        0.001,
+        0.08
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.062
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_71",
+      "position": [
+        -0.9845,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.131,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_72",
+      "position": [
+        -0.7675,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_73",
+      "position": [
+        -0.6025,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_74",
+      "position": [
+        -0.4375,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_75",
+      "position": [
+        -0.2725,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_76",
+      "position": [
+        -0.1075,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_77",
+      "position": [
+        0.0575,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_78",
+      "position": [
+        0.2225,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_79",
+      "position": [
+        0.3875,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_80",
+      "position": [
+        0.5525,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_81",
+      "position": [
+        0.7875,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.167,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_82",
+      "position": [
+        1.032,
+        0.001,
+        0.18
+      ],
+      "size": [
+        0.046,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_83",
+      "position": [
+        0.0025,
+        0.001,
+        0.28
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.062
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_84",
+      "position": [
+        -0.9845,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.131,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_85",
+      "position": [
+        -0.7675,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_86",
+      "position": [
+        -0.6025,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_87",
+      "position": [
+        -0.4375,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_88",
+      "position": [
+        -0.2725,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_89",
+      "position": [
+        -0.1075,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_90",
+      "position": [
+        0.0575,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_91",
+      "position": [
+        0.2225,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_92",
+      "position": [
+        0.3875,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_93",
+      "position": [
+        0.5525,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.027,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_94",
+      "position": [
+        0.7875,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.167,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_95",
+      "position": [
+        1.032,
+        0.001,
+        0.38
+      ],
+      "size": [
+        0.046,
+        0.018,
+        0.138
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "plastic_field_96",
+      "position": [
+        0.0025,
+        0.001,
+        0.4945
+      ],
+      "size": [
+        2.105,
+        0.018,
+        0.091
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g0_0",
+      "position": [
+        -0.85,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g0_0_north",
+      "position": [
+        -0.85,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_0_south",
+      "position": [
+        -0.85,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_0_west",
+      "position": [
+        -0.9125,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_0_east",
+      "position": [
+        -0.7875,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g0_1",
+      "position": [
+        -0.85,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g0_1_north",
+      "position": [
+        -0.85,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_1_south",
+      "position": [
+        -0.85,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_1_west",
+      "position": [
+        -0.9125,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_1_east",
+      "position": [
+        -0.7875,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g0_2",
+      "position": [
+        -0.85,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g0_2_north",
+      "position": [
+        -0.85,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_2_south",
+      "position": [
+        -0.85,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_2_west",
+      "position": [
+        -0.9125,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_2_east",
+      "position": [
+        -0.7875,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g0_3",
+      "position": [
+        -0.85,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g0_3_north",
+      "position": [
+        -0.85,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_3_south",
+      "position": [
+        -0.85,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_3_west",
+      "position": [
+        -0.9125,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g0_3_east",
+      "position": [
+        -0.7875,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g1_0",
+      "position": [
+        -0.685,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g1_0_north",
+      "position": [
+        -0.685,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_0_south",
+      "position": [
+        -0.685,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_0_west",
+      "position": [
+        -0.7475,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_0_east",
+      "position": [
+        -0.6225,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g1_1",
+      "position": [
+        -0.685,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g1_1_north",
+      "position": [
+        -0.685,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_1_south",
+      "position": [
+        -0.685,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_1_west",
+      "position": [
+        -0.7475,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_1_east",
+      "position": [
+        -0.6225,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g1_2",
+      "position": [
+        -0.685,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g1_2_north",
+      "position": [
+        -0.685,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_2_south",
+      "position": [
+        -0.685,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_2_west",
+      "position": [
+        -0.7475,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_2_east",
+      "position": [
+        -0.6225,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g1_3",
+      "position": [
+        -0.685,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g1_3_north",
+      "position": [
+        -0.685,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_3_south",
+      "position": [
+        -0.685,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_3_west",
+      "position": [
+        -0.7475,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g1_3_east",
+      "position": [
+        -0.6225,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g2_0",
+      "position": [
+        -0.52,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g2_0_north",
+      "position": [
+        -0.52,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_0_south",
+      "position": [
+        -0.52,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_0_west",
+      "position": [
+        -0.5825,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_0_east",
+      "position": [
+        -0.4575,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g2_1",
+      "position": [
+        -0.52,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g2_1_north",
+      "position": [
+        -0.52,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_1_south",
+      "position": [
+        -0.52,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_1_west",
+      "position": [
+        -0.5825,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_1_east",
+      "position": [
+        -0.4575,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g2_2",
+      "position": [
+        -0.52,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g2_2_north",
+      "position": [
+        -0.52,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_2_south",
+      "position": [
+        -0.52,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_2_west",
+      "position": [
+        -0.5825,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_2_east",
+      "position": [
+        -0.4575,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g2_3",
+      "position": [
+        -0.52,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g2_3_north",
+      "position": [
+        -0.52,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_3_south",
+      "position": [
+        -0.52,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_3_west",
+      "position": [
+        -0.5825,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g2_3_east",
+      "position": [
+        -0.4575,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g3_0",
+      "position": [
+        -0.355,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g3_0_north",
+      "position": [
+        -0.355,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_0_south",
+      "position": [
+        -0.355,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_0_west",
+      "position": [
+        -0.4175,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_0_east",
+      "position": [
+        -0.2925,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g3_1",
+      "position": [
+        -0.355,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g3_1_north",
+      "position": [
+        -0.355,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_1_south",
+      "position": [
+        -0.355,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_1_west",
+      "position": [
+        -0.4175,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_1_east",
+      "position": [
+        -0.2925,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g3_2",
+      "position": [
+        -0.355,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g3_2_north",
+      "position": [
+        -0.355,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_2_south",
+      "position": [
+        -0.355,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_2_west",
+      "position": [
+        -0.4175,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_2_east",
+      "position": [
+        -0.2925,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g3_3",
+      "position": [
+        -0.355,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g3_3_north",
+      "position": [
+        -0.355,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_3_south",
+      "position": [
+        -0.355,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_3_west",
+      "position": [
+        -0.4175,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g3_3_east",
+      "position": [
+        -0.2925,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g4_0",
+      "position": [
+        -0.19,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g4_0_north",
+      "position": [
+        -0.19,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_0_south",
+      "position": [
+        -0.19,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_0_west",
+      "position": [
+        -0.2525,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_0_east",
+      "position": [
+        -0.1275,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g4_1",
+      "position": [
+        -0.19,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g4_1_north",
+      "position": [
+        -0.19,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_1_south",
+      "position": [
+        -0.19,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_1_west",
+      "position": [
+        -0.2525,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_1_east",
+      "position": [
+        -0.1275,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g4_2",
+      "position": [
+        -0.19,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g4_2_north",
+      "position": [
+        -0.19,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_2_south",
+      "position": [
+        -0.19,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_2_west",
+      "position": [
+        -0.2525,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_2_east",
+      "position": [
+        -0.1275,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g4_3",
+      "position": [
+        -0.19,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g4_3_north",
+      "position": [
+        -0.19,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_3_south",
+      "position": [
+        -0.19,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_3_west",
+      "position": [
+        -0.2525,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g4_3_east",
+      "position": [
+        -0.1275,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g5_0",
+      "position": [
+        -0.025,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g5_0_north",
+      "position": [
+        -0.025,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_0_south",
+      "position": [
+        -0.025,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_0_west",
+      "position": [
+        -0.0875,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_0_east",
+      "position": [
+        0.0375,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g5_1",
+      "position": [
+        -0.025,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g5_1_north",
+      "position": [
+        -0.025,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_1_south",
+      "position": [
+        -0.025,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_1_west",
+      "position": [
+        -0.0875,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_1_east",
+      "position": [
+        0.0375,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g5_2",
+      "position": [
+        -0.025,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g5_2_north",
+      "position": [
+        -0.025,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_2_south",
+      "position": [
+        -0.025,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_2_west",
+      "position": [
+        -0.0875,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_2_east",
+      "position": [
+        0.0375,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g5_3",
+      "position": [
+        -0.025,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g5_3_north",
+      "position": [
+        -0.025,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_3_south",
+      "position": [
+        -0.025,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_3_west",
+      "position": [
+        -0.0875,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g5_3_east",
+      "position": [
+        0.0375,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g6_0",
+      "position": [
+        0.14,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g6_0_north",
+      "position": [
+        0.14,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_0_south",
+      "position": [
+        0.14,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_0_west",
+      "position": [
+        0.0775,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_0_east",
+      "position": [
+        0.2025,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g6_1",
+      "position": [
+        0.14,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g6_1_north",
+      "position": [
+        0.14,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_1_south",
+      "position": [
+        0.14,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_1_west",
+      "position": [
+        0.0775,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_1_east",
+      "position": [
+        0.2025,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g6_2",
+      "position": [
+        0.14,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g6_2_north",
+      "position": [
+        0.14,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_2_south",
+      "position": [
+        0.14,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_2_west",
+      "position": [
+        0.0775,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_2_east",
+      "position": [
+        0.2025,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g6_3",
+      "position": [
+        0.14,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g6_3_north",
+      "position": [
+        0.14,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_3_south",
+      "position": [
+        0.14,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_3_west",
+      "position": [
+        0.0775,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g6_3_east",
+      "position": [
+        0.2025,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g7_0",
+      "position": [
+        0.305,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g7_0_north",
+      "position": [
+        0.305,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_0_south",
+      "position": [
+        0.305,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_0_west",
+      "position": [
+        0.2425,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_0_east",
+      "position": [
+        0.3675,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g7_1",
+      "position": [
+        0.305,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g7_1_north",
+      "position": [
+        0.305,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_1_south",
+      "position": [
+        0.305,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_1_west",
+      "position": [
+        0.2425,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_1_east",
+      "position": [
+        0.3675,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g7_2",
+      "position": [
+        0.305,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g7_2_north",
+      "position": [
+        0.305,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_2_south",
+      "position": [
+        0.305,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_2_west",
+      "position": [
+        0.2425,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_2_east",
+      "position": [
+        0.3675,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g7_3",
+      "position": [
+        0.305,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g7_3_north",
+      "position": [
+        0.305,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_3_south",
+      "position": [
+        0.305,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_3_west",
+      "position": [
+        0.2425,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g7_3_east",
+      "position": [
+        0.3675,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g8_0",
+      "position": [
+        0.47,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g8_0_north",
+      "position": [
+        0.47,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_0_south",
+      "position": [
+        0.47,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_0_west",
+      "position": [
+        0.4075,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_0_east",
+      "position": [
+        0.5325,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g8_1",
+      "position": [
+        0.47,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g8_1_north",
+      "position": [
+        0.47,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_1_south",
+      "position": [
+        0.47,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_1_west",
+      "position": [
+        0.4075,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_1_east",
+      "position": [
+        0.5325,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g8_2",
+      "position": [
+        0.47,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g8_2_north",
+      "position": [
+        0.47,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_2_south",
+      "position": [
+        0.47,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_2_west",
+      "position": [
+        0.4075,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_2_east",
+      "position": [
+        0.5325,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g8_3",
+      "position": [
+        0.47,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g8_3_north",
+      "position": [
+        0.47,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_3_south",
+      "position": [
+        0.47,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_3_west",
+      "position": [
+        0.4075,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g8_3_east",
+      "position": [
+        0.5325,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g9_0",
+      "position": [
+        0.635,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g9_0_north",
+      "position": [
+        0.635,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_0_south",
+      "position": [
+        0.635,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_0_west",
+      "position": [
+        0.5725,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_0_east",
+      "position": [
+        0.6975,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g9_1",
+      "position": [
+        0.635,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g9_1_north",
+      "position": [
+        0.635,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_1_south",
+      "position": [
+        0.635,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_1_west",
+      "position": [
+        0.5725,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_1_east",
+      "position": [
+        0.6975,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g9_2",
+      "position": [
+        0.635,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g9_2_north",
+      "position": [
+        0.635,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_2_south",
+      "position": [
+        0.635,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_2_west",
+      "position": [
+        0.5725,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_2_east",
+      "position": [
+        0.6975,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_g9_3",
+      "position": [
+        0.635,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_g9_3_north",
+      "position": [
+        0.635,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_3_south",
+      "position": [
+        0.635,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_3_west",
+      "position": [
+        0.5725,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_g9_3_east",
+      "position": [
+        0.6975,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_secret0",
+      "position": [
+        0.94,
+        0.00775,
+        -0.22
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_secret0_north",
+      "position": [
+        0.94,
+        0.011,
+        -0.2825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret0_south",
+      "position": [
+        0.94,
+        0.011,
+        -0.1575
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret0_west",
+      "position": [
+        0.8775,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret0_east",
+      "position": [
+        1.0025,
+        0.011,
+        -0.22
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_secret1",
+      "position": [
+        0.94,
+        0.00775,
+        -0.02
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_secret1_north",
+      "position": [
+        0.94,
+        0.011,
+        -0.0825
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret1_south",
+      "position": [
+        0.94,
+        0.011,
+        0.0425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret1_west",
+      "position": [
+        0.8775,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret1_east",
+      "position": [
+        1.0025,
+        0.011,
+        -0.02
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_secret2",
+      "position": [
+        0.94,
+        0.00775,
+        0.18
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_secret2_north",
+      "position": [
+        0.94,
+        0.011,
+        0.1175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret2_south",
+      "position": [
+        0.94,
+        0.011,
+        0.2425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret2_west",
+      "position": [
+        0.8775,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret2_east",
+      "position": [
+        1.0025,
+        0.011,
+        0.18
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "well_floor_secret3",
+      "position": [
+        0.94,
+        0.00775,
+        0.38
+      ],
+      "size": [
+        0.112,
+        0.0075,
+        0.112
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "socket_secret3_north",
+      "position": [
+        0.94,
+        0.011,
+        0.3175
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret3_south",
+      "position": [
+        0.94,
+        0.011,
+        0.4425
+      ],
+      "size": [
+        0.138,
+        0.014,
+        0.013
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret3_west",
+      "position": [
+        0.8775,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "socket_secret3_east",
+      "position": [
+        1.0025,
+        0.011,
+        0.38
+      ],
+      "size": [
+        0.013,
+        0.014,
+        0.112
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_0_0",
+      "position": [
+        -0.8775,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_0_1",
+      "position": [
+        -0.8225,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_0_2",
+      "position": [
+        -0.8775,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_0_3",
+      "position": [
+        -0.8225,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_1_0",
+      "position": [
+        -0.7125,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_1_1",
+      "position": [
+        -0.6575,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_1_2",
+      "position": [
+        -0.7125,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_1_3",
+      "position": [
+        -0.6575,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_2_0",
+      "position": [
+        -0.5475,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_2_1",
+      "position": [
+        -0.4925,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_2_2",
+      "position": [
+        -0.5475,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_2_3",
+      "position": [
+        -0.4925,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_3_0",
+      "position": [
+        -0.3825,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_3_1",
+      "position": [
+        -0.3275,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_3_2",
+      "position": [
+        -0.3825,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_3_3",
+      "position": [
+        -0.3275,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_4_0",
+      "position": [
+        -0.2175,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_4_1",
+      "position": [
+        -0.1625,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_4_2",
+      "position": [
+        -0.2175,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_4_3",
+      "position": [
+        -0.1625,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_5_0",
+      "position": [
+        -0.0525,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_5_1",
+      "position": [
+        0.0025,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_5_2",
+      "position": [
+        -0.0525,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_5_3",
+      "position": [
+        0.0025,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_6_0",
+      "position": [
+        0.1125,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_6_1",
+      "position": [
+        0.1675,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_6_2",
+      "position": [
+        0.1125,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_6_3",
+      "position": [
+        0.1675,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_7_0",
+      "position": [
+        0.2775,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_7_1",
+      "position": [
+        0.3325,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_7_2",
+      "position": [
+        0.2775,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_7_3",
+      "position": [
+        0.3325,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_8_0",
+      "position": [
+        0.4425,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_8_1",
+      "position": [
+        0.4975,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_8_2",
+      "position": [
+        0.4425,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_8_3",
+      "position": [
+        0.4975,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_9_0",
+      "position": [
+        0.6075,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_9_1",
+      "position": [
+        0.6625,
+        0.00775,
+        -0.5275
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_9_2",
+      "position": [
+        0.6075,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "feedback_floor_9_3",
+      "position": [
+        0.6625,
+        0.00775,
+        -0.4725
+      ],
+      "size": [
+        0.032,
+        0.0075,
+        0.032
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_floor_0",
+      "position": [
+        -0.675,
+        0.00175,
+        0.77
+      ],
+      "size": [
+        0.258,
+        0.0195,
+        0.22
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_floor_1",
+      "position": [
+        -0.405,
+        0.00175,
+        0.77
+      ],
+      "size": [
+        0.258,
+        0.0195,
+        0.22
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_floor_2",
+      "position": [
+        -0.135,
+        0.00175,
+        0.77
+      ],
+      "size": [
+        0.258,
+        0.0195,
+        0.22
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_floor_3",
+      "position": [
+        0.135,
+        0.00175,
+        0.77
+      ],
+      "size": [
+        0.258,
+        0.0195,
+        0.22
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_floor_4",
+      "position": [
+        0.405,
+        0.00175,
+        0.77
+      ],
+      "size": [
+        0.258,
+        0.0195,
+        0.22
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_floor_5",
+      "position": [
+        0.675,
+        0.00175,
+        0.77
+      ],
+      "size": [
+        0.258,
+        0.0195,
+        0.22
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "palette_rail_-1",
+      "position": [
+        0.0,
+        0.009,
+        0.654
+      ],
+      "size": [
+        1.632,
+        0.034,
+        0.012
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_rail_1",
+      "position": [
+        0.0,
+        0.009,
+        0.886
+      ],
+      "size": [
+        1.632,
+        0.034,
+        0.012
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_0",
+      "position": [
+        -0.81,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_1",
+      "position": [
+        -0.54,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_2",
+      "position": [
+        -0.27,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_3",
+      "position": [
+        0.0,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_4",
+      "position": [
+        0.27,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_5",
+      "position": [
+        0.54,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "palette_divider_6",
+      "position": [
+        0.81,
+        0.009,
+        0.77
+      ],
+      "size": [
+        0.012,
+        0.034,
+        0.22
+      ],
+      "material": "GRAY_CONCRETE"
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "position": [
+        0,
+        -0.1025,
+        -1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "position": [
+        0,
+        -0.1025,
+        1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "position": [
+        1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "position": [
+        1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

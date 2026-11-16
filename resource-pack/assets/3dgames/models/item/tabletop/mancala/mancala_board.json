@@ -1,0 +1,4218 @@
+{
+  "gui_light": "front",
+  "ambientocclusion": false,
+  "textures": {
+    "surface": "3dgames:item/tabletop/mancala/mancala_board_top",
+    "future_chassis": "3dgames:item/shared/materials/future_chassis",
+    "future_shell": "3dgames:item/shared/materials/future_shell",
+    "board_field": "3dgames:item/shared/materials/board_mancala_field",
+    "board_slot": "3dgames:item/shared/materials/board_mancala_slot"
+  },
+  "elements": [
+    {
+      "name": "wood_base",
+      "from": [
+        -4.8,
+        6.88,
+        0.48
+      ],
+      "to": [
+        20.8,
+        7.48,
+        15.52
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_-1_-1",
+      "from": [
+        -4.22,
+        -0.25,
+        0.58
+      ],
+      "to": [
+        -3.06,
+        6.88,
+        1.74
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_-1_1",
+      "from": [
+        -4.22,
+        -0.25,
+        14.26
+      ],
+      "to": [
+        -3.06,
+        6.88,
+        15.42
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_1_-1",
+      "from": [
+        19.06,
+        -0.25,
+        0.58
+      ],
+      "to": [
+        20.22,
+        6.88,
+        1.74
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_1_1",
+      "from": [
+        19.06,
+        -0.25,
+        14.26
+      ],
+      "to": [
+        20.22,
+        6.88,
+        15.42
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "rim_front_-1",
+      "from": [
+        -4.32,
+        7.48,
+        0.0
+      ],
+      "to": [
+        20.32,
+        8.096,
+        0.72
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_side_-1",
+      "from": [
+        -4.8,
+        7.48,
+        0.48
+      ],
+      "to": [
+        -4.08,
+        8.0976,
+        15.52
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_front_1",
+      "from": [
+        -4.32,
+        7.48,
+        15.28
+      ],
+      "to": [
+        20.32,
+        8.096,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_side_1",
+      "from": [
+        20.08,
+        7.48,
+        0.48
+      ],
+      "to": [
+        20.8,
+        8.0976,
+        15.52
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "inlay_0",
+      "from": [
+        -4.08,
+        7.48,
+        0.72
+      ],
+      "to": [
+        20.08,
+        8.064,
+        4.12
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.4500000000000002,
+            0.7199999999999998,
+            15.55,
+            4.12
+          ],
+          "texture": "#surface"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_1",
+      "from": [
+        -4.08,
+        7.48,
+        4.12
+      ],
+      "to": [
+        -0.08,
+        8.064,
+        4.2
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.4500000000000002,
+            4.12,
+            2.95,
+            4.2
+          ],
+          "texture": "#surface"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_2",
+      "from": [
+        2.28,
+        7.48,
+        4.12
+      ],
+      "to": [
+        2.68,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            4.425000000000001,
+            4.12,
+            4.675000000000001,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_3",
+      "from": [
+        5.04,
+        7.48,
+        4.12
+      ],
+      "to": [
+        5.44,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            6.15,
+            4.12,
+            6.4,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_4",
+      "from": [
+        7.8,
+        7.48,
+        4.12
+      ],
+      "to": [
+        8.2,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            7.875,
+            4.12,
+            8.125,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_5",
+      "from": [
+        10.56,
+        7.48,
+        4.12
+      ],
+      "to": [
+        10.96,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            9.6,
+            4.12,
+            9.85,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_6",
+      "from": [
+        13.32,
+        7.48,
+        4.12
+      ],
+      "to": [
+        13.72,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            11.325,
+            4.12,
+            11.575,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_7",
+      "from": [
+        16.08,
+        7.48,
+        4.12
+      ],
+      "to": [
+        20.08,
+        8.064,
+        4.2
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            13.05,
+            4.12,
+            15.55,
+            4.2
+          ],
+          "texture": "#surface"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_8",
+      "from": [
+        -4.08,
+        7.48,
+        4.2
+      ],
+      "to": [
+        -2.84,
+        8.064,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.4500000000000002,
+            4.2,
+            1.2249999999999996,
+            11.8
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_9",
+      "from": [
+        -1.0,
+        7.48,
+        4.2
+      ],
+      "to": [
+        -0.08,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.375,
+            4.199999999999999,
+            2.950000000000001,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_10",
+      "from": [
+        16.08,
+        7.48,
+        4.2
+      ],
+      "to": [
+        17.0,
+        8.064,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            13.049999999999999,
+            4.199999999999999,
+            13.625,
+            7.32
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_11",
+      "from": [
+        18.84,
+        7.48,
+        4.2
+      ],
+      "to": [
+        20.08,
+        8.064,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            14.775,
+            4.2,
+            15.55,
+            11.8
+          ],
+          "texture": "#surface"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_12",
+      "from": [
+        -1.0,
+        7.48,
+        7.32
+      ],
+      "to": [
+        17.0,
+        8.064,
+        8.68
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.375,
+            7.32,
+            13.625,
+            8.68
+          ],
+          "texture": "#surface"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_13",
+      "from": [
+        -1.0,
+        7.48,
+        8.68
+      ],
+      "to": [
+        -0.08,
+        8.064,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.375,
+            8.68,
+            2.950000000000001,
+            11.8
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_14",
+      "from": [
+        2.28,
+        7.48,
+        8.68
+      ],
+      "to": [
+        2.68,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            4.425000000000001,
+            8.68,
+            4.675000000000001,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_15",
+      "from": [
+        5.04,
+        7.48,
+        8.68
+      ],
+      "to": [
+        5.44,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            6.15,
+            8.68,
+            6.4,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_16",
+      "from": [
+        7.8,
+        7.48,
+        8.68
+      ],
+      "to": [
+        8.2,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            7.875,
+            8.68,
+            8.125,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_17",
+      "from": [
+        10.56,
+        7.48,
+        8.68
+      ],
+      "to": [
+        10.96,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            9.6,
+            8.68,
+            9.85,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_18",
+      "from": [
+        13.32,
+        7.48,
+        8.68
+      ],
+      "to": [
+        13.72,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            11.325,
+            8.68,
+            11.575,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_19",
+      "from": [
+        16.08,
+        7.48,
+        8.68
+      ],
+      "to": [
+        17.0,
+        8.064,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            13.049999999999999,
+            8.68,
+            13.625,
+            11.8
+          ],
+          "texture": "#surface"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_20",
+      "from": [
+        -4.08,
+        7.48,
+        11.8
+      ],
+      "to": [
+        -0.08,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.4500000000000002,
+            11.8,
+            2.95,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_21",
+      "from": [
+        16.08,
+        7.48,
+        11.8
+      ],
+      "to": [
+        20.08,
+        8.064,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            13.05,
+            11.8,
+            15.55,
+            11.879999999999999
+          ],
+          "texture": "#surface"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "inlay_22",
+      "from": [
+        -4.08,
+        7.48,
+        11.88
+      ],
+      "to": [
+        20.08,
+        8.064,
+        15.28
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.4500000000000002,
+            11.879999999999999,
+            15.55,
+            15.280000000000001
+          ],
+          "texture": "#surface"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_0",
+      "from": [
+        -0.08,
+        7.48,
+        8.68
+      ],
+      "to": [
+        2.28,
+        7.616,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_0_-1",
+      "from": [
+        -0.08,
+        7.616,
+        8.68
+      ],
+      "to": [
+        0.032,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_0_-1",
+      "from": [
+        0.032,
+        7.616,
+        8.68
+      ],
+      "to": [
+        2.168,
+        7.712,
+        8.792
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_0_1",
+      "from": [
+        2.168,
+        7.616,
+        8.68
+      ],
+      "to": [
+        2.28,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_0_1",
+      "from": [
+        0.032,
+        7.616,
+        11.768
+      ],
+      "to": [
+        2.168,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_1",
+      "from": [
+        2.68,
+        7.48,
+        8.68
+      ],
+      "to": [
+        5.04,
+        7.616,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_1_-1",
+      "from": [
+        2.68,
+        7.616,
+        8.68
+      ],
+      "to": [
+        2.792,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_1_-1",
+      "from": [
+        2.792,
+        7.616,
+        8.68
+      ],
+      "to": [
+        4.928,
+        7.712,
+        8.792
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_1_1",
+      "from": [
+        4.928,
+        7.616,
+        8.68
+      ],
+      "to": [
+        5.04,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_1_1",
+      "from": [
+        2.792,
+        7.616,
+        11.768
+      ],
+      "to": [
+        4.928,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_2",
+      "from": [
+        5.44,
+        7.48,
+        8.68
+      ],
+      "to": [
+        7.8,
+        7.616,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_2_-1",
+      "from": [
+        5.44,
+        7.616,
+        8.68
+      ],
+      "to": [
+        5.552,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_2_-1",
+      "from": [
+        5.552,
+        7.616,
+        8.68
+      ],
+      "to": [
+        7.688,
+        7.712,
+        8.792
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_2_1",
+      "from": [
+        7.688,
+        7.616,
+        8.68
+      ],
+      "to": [
+        7.8,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_2_1",
+      "from": [
+        5.552,
+        7.616,
+        11.768
+      ],
+      "to": [
+        7.688,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_3",
+      "from": [
+        8.2,
+        7.48,
+        8.68
+      ],
+      "to": [
+        10.56,
+        7.616,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_3_-1",
+      "from": [
+        8.2,
+        7.616,
+        8.68
+      ],
+      "to": [
+        8.312,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_3_-1",
+      "from": [
+        8.312,
+        7.616,
+        8.68
+      ],
+      "to": [
+        10.448,
+        7.712,
+        8.792
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_3_1",
+      "from": [
+        10.448,
+        7.616,
+        8.68
+      ],
+      "to": [
+        10.56,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_3_1",
+      "from": [
+        8.312,
+        7.616,
+        11.768
+      ],
+      "to": [
+        10.448,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_4",
+      "from": [
+        10.96,
+        7.48,
+        8.68
+      ],
+      "to": [
+        13.32,
+        7.616,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_4_-1",
+      "from": [
+        10.96,
+        7.616,
+        8.68
+      ],
+      "to": [
+        11.072,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_4_-1",
+      "from": [
+        11.072,
+        7.616,
+        8.68
+      ],
+      "to": [
+        13.208,
+        7.712,
+        8.792
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_4_1",
+      "from": [
+        13.208,
+        7.616,
+        8.68
+      ],
+      "to": [
+        13.32,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_4_1",
+      "from": [
+        11.072,
+        7.616,
+        11.768
+      ],
+      "to": [
+        13.208,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_5",
+      "from": [
+        13.72,
+        7.48,
+        8.68
+      ],
+      "to": [
+        16.08,
+        7.616,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_5_-1",
+      "from": [
+        13.72,
+        7.616,
+        8.68
+      ],
+      "to": [
+        13.832,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_5_-1",
+      "from": [
+        13.832,
+        7.616,
+        8.68
+      ],
+      "to": [
+        15.968,
+        7.712,
+        8.792
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_5_1",
+      "from": [
+        15.968,
+        7.616,
+        8.68
+      ],
+      "to": [
+        16.08,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_5_1",
+      "from": [
+        13.832,
+        7.616,
+        11.768
+      ],
+      "to": [
+        15.968,
+        7.712,
+        11.88
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_6",
+      "from": [
+        17.0,
+        7.48,
+        4.2
+      ],
+      "to": [
+        18.84,
+        7.616,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_6_-1",
+      "from": [
+        17.0,
+        7.616,
+        4.2
+      ],
+      "to": [
+        17.112,
+        7.712,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_6_-1",
+      "from": [
+        17.112,
+        7.616,
+        4.2
+      ],
+      "to": [
+        18.728,
+        7.712,
+        4.312
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_6_1",
+      "from": [
+        18.728,
+        7.616,
+        4.2
+      ],
+      "to": [
+        18.84,
+        7.712,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_6_1",
+      "from": [
+        17.112,
+        7.616,
+        11.688
+      ],
+      "to": [
+        18.728,
+        7.712,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_7",
+      "from": [
+        13.72,
+        7.48,
+        4.12
+      ],
+      "to": [
+        16.08,
+        7.616,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_7_-1",
+      "from": [
+        13.72,
+        7.616,
+        4.12
+      ],
+      "to": [
+        13.832,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_7_-1",
+      "from": [
+        13.832,
+        7.616,
+        4.12
+      ],
+      "to": [
+        15.968,
+        7.712,
+        4.232
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_7_1",
+      "from": [
+        15.968,
+        7.616,
+        4.12
+      ],
+      "to": [
+        16.08,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_7_1",
+      "from": [
+        13.832,
+        7.616,
+        7.208
+      ],
+      "to": [
+        15.968,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_8",
+      "from": [
+        10.96,
+        7.48,
+        4.12
+      ],
+      "to": [
+        13.32,
+        7.616,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_8_-1",
+      "from": [
+        10.96,
+        7.616,
+        4.12
+      ],
+      "to": [
+        11.072,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_8_-1",
+      "from": [
+        11.072,
+        7.616,
+        4.12
+      ],
+      "to": [
+        13.208,
+        7.712,
+        4.232
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_8_1",
+      "from": [
+        13.208,
+        7.616,
+        4.12
+      ],
+      "to": [
+        13.32,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_8_1",
+      "from": [
+        11.072,
+        7.616,
+        7.208
+      ],
+      "to": [
+        13.208,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_9",
+      "from": [
+        8.2,
+        7.48,
+        4.12
+      ],
+      "to": [
+        10.56,
+        7.616,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_9_-1",
+      "from": [
+        8.2,
+        7.616,
+        4.12
+      ],
+      "to": [
+        8.312,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_9_-1",
+      "from": [
+        8.312,
+        7.616,
+        4.12
+      ],
+      "to": [
+        10.448,
+        7.712,
+        4.232
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_9_1",
+      "from": [
+        10.448,
+        7.616,
+        4.12
+      ],
+      "to": [
+        10.56,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_9_1",
+      "from": [
+        8.312,
+        7.616,
+        7.208
+      ],
+      "to": [
+        10.448,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_10",
+      "from": [
+        5.44,
+        7.48,
+        4.12
+      ],
+      "to": [
+        7.8,
+        7.616,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_10_-1",
+      "from": [
+        5.44,
+        7.616,
+        4.12
+      ],
+      "to": [
+        5.552,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_10_-1",
+      "from": [
+        5.552,
+        7.616,
+        4.12
+      ],
+      "to": [
+        7.688,
+        7.712,
+        4.232
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_10_1",
+      "from": [
+        7.688,
+        7.616,
+        4.12
+      ],
+      "to": [
+        7.8,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_10_1",
+      "from": [
+        5.552,
+        7.616,
+        7.208
+      ],
+      "to": [
+        7.688,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_11",
+      "from": [
+        2.68,
+        7.48,
+        4.12
+      ],
+      "to": [
+        5.04,
+        7.616,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_11_-1",
+      "from": [
+        2.68,
+        7.616,
+        4.12
+      ],
+      "to": [
+        2.792,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_11_-1",
+      "from": [
+        2.792,
+        7.616,
+        4.12
+      ],
+      "to": [
+        4.928,
+        7.712,
+        4.232
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_11_1",
+      "from": [
+        4.928,
+        7.616,
+        4.12
+      ],
+      "to": [
+        5.04,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_11_1",
+      "from": [
+        2.792,
+        7.616,
+        7.208
+      ],
+      "to": [
+        4.928,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_12",
+      "from": [
+        -0.08,
+        7.48,
+        4.12
+      ],
+      "to": [
+        2.28,
+        7.616,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_12_-1",
+      "from": [
+        -0.08,
+        7.616,
+        4.12
+      ],
+      "to": [
+        0.032,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_12_-1",
+      "from": [
+        0.032,
+        7.616,
+        4.12
+      ],
+      "to": [
+        2.168,
+        7.712,
+        4.232
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_12_1",
+      "from": [
+        2.168,
+        7.616,
+        4.12
+      ],
+      "to": [
+        2.28,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_12_1",
+      "from": [
+        0.032,
+        7.616,
+        7.208
+      ],
+      "to": [
+        2.168,
+        7.712,
+        7.32
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_floor_13",
+      "from": [
+        -2.84,
+        7.48,
+        4.2
+      ],
+      "to": [
+        -1.0,
+        7.616,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_13_-1",
+      "from": [
+        -2.84,
+        7.616,
+        4.2
+      ],
+      "to": [
+        -2.728,
+        7.712,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_13_-1",
+      "from": [
+        -2.728,
+        7.616,
+        4.2
+      ],
+      "to": [
+        -1.112,
+        7.712,
+        4.312
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_x_13_1",
+      "from": [
+        -1.112,
+        7.616,
+        4.2
+      ],
+      "to": [
+        -1.0,
+        7.712,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "well_step_z_13_1",
+      "from": [
+        -2.728,
+        7.616,
+        11.688
+      ],
+      "to": [
+        -1.112,
+        7.712,
+        11.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_field"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "from": [
+        -4.32,
+        6.88,
+        0.0
+      ],
+      "to": [
+        20.32,
+        7.48,
+        0.48
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "from": [
+        -4.32,
+        6.88,
+        15.52
+      ],
+      "to": [
+        20.32,
+        7.48,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "from": [
+        -4.659411254968,
+        6.8784,
+        0.140588745032
+      ],
+      "to": [
+        -3.980588745032,
+        7.4784,
+        0.819411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.32,
+          7.1784,
+          0.48
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "from": [
+        -4.659411254968,
+        6.8784,
+        15.180588745032
+      ],
+      "to": [
+        -3.980588745032,
+        7.4784,
+        15.859411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.32,
+          7.1784,
+          15.52
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "from": [
+        19.980588745032,
+        6.8784,
+        0.140588745032
+      ],
+      "to": [
+        20.659411254968,
+        7.4784,
+        0.819411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.32,
+          7.1784,
+          0.48
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "from": [
+        19.980588745032,
+        6.8784,
+        15.180588745032
+      ],
+      "to": [
+        20.659411254968,
+        7.4784,
+        15.859411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.32,
+          7.1784,
+          15.52
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "from": [
+        -4.659411254968,
+        7.4784,
+        0.140588745032
+      ],
+      "to": [
+        -3.980588745032,
+        8.0992,
+        0.819411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.32,
+          7.7888,
+          0.48
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "from": [
+        -4.659411254968,
+        7.4784,
+        15.180588745032
+      ],
+      "to": [
+        -3.980588745032,
+        8.0992,
+        15.859411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.32,
+          7.7888,
+          15.52
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "from": [
+        19.980588745032,
+        7.4784,
+        0.140588745032
+      ],
+      "to": [
+        20.659411254968,
+        8.0992,
+        0.819411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.32,
+          7.7888,
+          0.48
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "from": [
+        19.980588745032,
+        7.4784,
+        15.180588745032
+      ],
+      "to": [
+        20.659411254968,
+        8.0992,
+        15.859411254968
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.32,
+          7.7888,
+          15.52
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    }
+  }
+}

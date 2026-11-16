@@ -1,0 +1,46 @@
+items:
+  3dgames:shogi_piece_pawn:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_pawn
+  3dgames:shogi_piece_lance:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_lance
+  3dgames:shogi_piece_knight:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_knight
+  3dgames:shogi_piece_silver:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_silver
+  3dgames:shogi_piece_gold:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_gold
+  3dgames:shogi_piece_bishop:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_bishop
+  3dgames:shogi_piece_rook:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_rook
+  3dgames:shogi_piece_king:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_king
+  3dgames:shogi_piece_jeweled_king:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_jeweled_king
+  3dgames:shogi_piece_promoted_pawn:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_promoted_pawn
+  3dgames:shogi_piece_promoted_lance:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_promoted_lance
+  3dgames:shogi_piece_promoted_knight:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_promoted_knight
+  3dgames:shogi_piece_promoted_silver:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_promoted_silver
+  3dgames:shogi_piece_promoted_bishop:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_promoted_bishop
+  3dgames:shogi_piece_promoted_rook:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/pieces/shogi_piece_promoted_rook

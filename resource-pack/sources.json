@@ -1,0 +1,2815 @@
+{
+  "note": "Mahjong uses original solid felt and CC0 sound samples. Tile faces use lietxia/mahjong_graphic. Resource-pack poker uses George Blackwell artwork; native head faces are unchanged.",
+  "files": [
+    {
+      "file": "resource-pack/originals/shared/sounds/board/wood_place_1.ogg",
+      "sha256": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/wood_place_2.ogg",
+      "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/wood_place_3.ogg",
+      "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/stone_place_1.ogg",
+      "sha256": "4b2111252ccb64eed67f171e061053849cfbb29873536c03948646f244a3905c",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/stone_place_2.ogg",
+      "sha256": "8ca8b2d450741c04ed7b4ba51ed3f73c2400c8b3dbe83b974be4fe4774a76712",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/piece_drop_1.ogg",
+      "sha256": "bf24ebb417b6279568800dffdb0205d3ec8854c7efe179e8964755a6341727aa",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/piece_flip_1.ogg",
+      "sha256": "a2c495237fb0dc0dc96ccc2c9840572edd226e6459398ecb631c6c9f9e5408f0",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/piece_flip_2.ogg",
+      "sha256": "099b6d7d3a71e7d22171a93d124e7366e326d32eb85d718ba29abded8a49c329",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/board/wood_capture_1.ogg",
+      "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/dice_roll_1.ogg",
+      "sha256": "4e6581c73465cdd7ec32e86a709b4ea5c682e819c9bdb7989d1df1880ba67886",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/dice_roll_2.ogg",
+      "sha256": "e0b8c370503b2c5c2a72d311cccae30fe63a6afd48f2be32e771fcf1a98585d6",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/dice_roll_3.ogg",
+      "sha256": "09c13d35a9a30bfce31a5e9bca94adc5be189ddecd0b4500237d54c7fd05227c",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/single_die_roll_1.ogg",
+      "sha256": "b31d716165be60e442da3c1ca25a3968aad1e0851a7f0859f495aecc02fd9e13",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/single_die_roll_2.ogg",
+      "sha256": "a2702cfe14d24aab302483a1499daa88474a4af4acd794b58d97f4af16333b3d",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/single_die_roll_3.ogg",
+      "sha256": "52fc44c7bb89328a147738574c925508c34abf4c19a014575b37ffb8c6b02437",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/single_die_roll_4.ogg",
+      "sha256": "6253cabcb10c4152548cbc9d3ea87c1bf1bd484f0bd8d6b73c542e690509c0fd",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/dice_hold_1.ogg",
+      "sha256": "1952cf1987b2c1ebb035b30b5f0caf23604b6ce4c88b6a226fe6e6257ce730f3",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/dice/dice_hold_2.ogg",
+      "sha256": "4eb4940d1e71aa3f6ac5f865b6b47748a492adf6a83d622c8efe6284dbebbd2c",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/cards/card_draw_1.ogg",
+      "sha256": "006cf9822d15d7063f8899e56041f41646df30adb6fbd8b974ee5d5420012690",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/cards/card_draw_2.ogg",
+      "sha256": "e674a1679ec87b507047fe012d068ad2c412125f56186f0e732684705c2a6888",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/cards/card_draw_3.ogg",
+      "sha256": "af2ab62656cb3df73316ce5771b8ee1111a840962b21607e3202151e7413c52c",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/chips/chip_bet_1.ogg",
+      "sha256": "12bf175b9afcea112175b241ad3336c6244ac5fdcdff8b5942ecc03f2225e0c4",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/chips/chip_bet_2.ogg",
+      "sha256": "9f985e766c3557eef1764240b48e30b2f0ffa870a99f05de85cd6bf0ea758ef5",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/chips/chip_bet_3.ogg",
+      "sha256": "48cc0f01e2b62be7677f2e8c02177906cab80e96fa8176fa05b3ced35bc2a9c2",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_select.ogg",
+      "sha256": "aec0c31ea934a35936ae0d2ab8fac8123c93aa5647f935853a58dbaf90278b7a",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_pass.ogg",
+      "sha256": "07db973f79f6ae0f2edc34561e7592e24d0577455919fb602cb8ecc0da991dcf",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_confirm.ogg",
+      "sha256": "063564703b6094d70718a3e787a55cc9141611e4ecd6b6637f8828f79b4a8c3a",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_start.ogg",
+      "sha256": "a27c6bb0df7da1e6af5dd5937593c98bc58b6e513f42fe6a3254cd6a6949c648",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_win.ogg",
+      "sha256": "568967a3d9f8a8f6af54ea01729c4882284308f2a27d78c07ffd7ee0d6951661",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_draw.ogg",
+      "sha256": "44af8249b933e0fd35ec957a638bb1a0b01f85b53fbe9674bf77bd3ca3168ef4",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/interface/table_home.ogg",
+      "sha256": "3091bf0be0497f825769ee0733ca7bdc3bcd59bd6c6e8f2ba8f93d580ff38022",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/cards/card_play.mp3",
+      "sha256": "8f7ee00b651b1e2aea89d191d8a01d03697b283bb667b440a939e877d6ebaef6",
+      "supplied_file": "oxidvideos-taking-playing-card-522520.mp3"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_plum.png",
+      "sha256": "ef8fd4bdf39c39bceaf3b3da5845cd0682ef6d4a57388a921c3769e0ef54f86a",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/mei.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_plum.svg",
+      "sha256": "1dd164b2b88520ed6dacc031aa8eb5dc4e3980005e3f726036c292f5053ebba8",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/mei.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_orchid.png",
+      "sha256": "5b3c4d10d560ebfeb14c4a05c03a81348a2fb4ddf72c2faa4ce6c39f8516aa8b",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/lan.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_orchid.svg",
+      "sha256": "7287dfbae19cab5a262c9a5e3964dfdc800b4ab1ad9e6e533abdf069e6b81c9a",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/lan.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_bamboo.png",
+      "sha256": "17ba04eee72171bd881fb7b287e456e300d7d5257e5168e8f6262cce47389c94",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/zu.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_bamboo.svg",
+      "sha256": "9be39553cbea1f14ba6b862b2bb12c3474e11263072702f8b4a3d4e84ff1c523",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/zu.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_chrysanthemum.png",
+      "sha256": "63dd68dc64658a389ae04982aa419c2fb3e08e6f24366f9eb9aa01619c886c11",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/ju.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_flower_chrysanthemum.svg",
+      "sha256": "845f6733a9b82274baa14632ea1d4e59174d901b068a5aaff15c3797922c9c16",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/ju.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_spring.png",
+      "sha256": "e9827fa43b5d42028f82b171154d7a11acb1ec9919345beaad243c1f608a9c14",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/chun.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_spring.svg",
+      "sha256": "28a76771fb1afe1f2f6d8f9e4970a148f867c9f19154409318fefacf13fd06d2",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/chun.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_summer.png",
+      "sha256": "92f30fe553a4bdf828a998ee1e97cd64bac4e1e6668c311f81ac91b41a6d3374",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/xia.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_summer.svg",
+      "sha256": "a15967001f366a60c7b12367ae7a035c264c1197a101e2db1676a95de198d1d5",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/xia.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_autumn.png",
+      "sha256": "8864ba85d0ce9f8f480e5874196f105c6bca6c261b9817653640e881dab18c65",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/qiu.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_autumn.svg",
+      "sha256": "5336af1fb8de9b542ee0a2e49b80503d64e206e268a06165e30b0cd281d703e3",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/qiu.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_winter.png",
+      "sha256": "dc9a1015bc959d325ffb70a4c4782fc0dd17d228ea259636a0f07c51d52a3380",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/dong.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_season_winter.svg",
+      "sha256": "2984e52350f1994ae1fa316c8e3a29f743a164406a336df7010f786e83e3683a",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/dong.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_red_five.png",
+      "sha256": "b18b1e5fc2b7f69c201a471a9c32d8582925eab000021043516dfbb903b7a243",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/0m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_red_five.svg",
+      "sha256": "d1febbb0db0cef5fbe43aeba678c66cf9f91be14218004ad5af1f3a22ae6d65f",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/0m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_1.png",
+      "sha256": "f8ada398b6eb1c01c7ec05b5b57ccd026d2b90f241bd4cc628d806923b74d460",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/1m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_1.svg",
+      "sha256": "bc4efedeb11fddbd6be582aaab9392aa7a2e6f4cc7b36020ad69ac7a52485c18",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/1m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_2.png",
+      "sha256": "292094c390db832a7cd4f04f600130ee1b8515496331e25f719c7eccfb411cd2",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/2m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_2.svg",
+      "sha256": "046831736d6598f5ebcac62b0d7c12136e02e48ed4b61550e21e88924c38b8ba",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/2m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_3.png",
+      "sha256": "8345311e56b61e215df3bccf35292f8628c90047f32c366b884f6daffbf99a69",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/3m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_3.svg",
+      "sha256": "ff9b015450f038d5d200db2ac9e79265e76d132d24df7d4d2a12a93b54698de6",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/3m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_4.png",
+      "sha256": "e6c13ad17b614efca8fa09e2656bb5bf9da3cb716759f8f9195bb8ffdedb4d0c",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/4m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_4.svg",
+      "sha256": "3f580738e6ead641f140eff18c987ef30d65567088261360216aef279ff271b4",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/4m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_5.png",
+      "sha256": "a44a6b237f0c9325468994fa87a829d7b35b471c3e5a0ccfb3feabfd92cd04c3",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/5m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_5.svg",
+      "sha256": "c0275be6adcba0a59e13a752ec360b97b5805aa0e4e047e575c00e6c77742e29",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/5m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_6.png",
+      "sha256": "ceff41b074b50dc34a0dca9cc86dbe2c9f17d315829624d8bc2185ba0838bab1",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/6m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_6.svg",
+      "sha256": "3e70b7075076b8b099f88570ce6a62c3e73969476a0fcf4b1fcbf689e8727dae",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/6m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_7.png",
+      "sha256": "62d408f70806424948a2470e2405aea187ae594b8ce423086ca1e34dd6da8f48",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/7m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_7.svg",
+      "sha256": "959bf26da563b8b21a5f4418a3a3b097dcc42950a195603577d35cb19e283fc4",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/7m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_8.png",
+      "sha256": "c6bd4fce3e8f76abf42d52fea5ab3a94877ca0ca33ecfd97838e7a2c446dd510",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/8m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_8.svg",
+      "sha256": "df73b82c7288c3630abaa15d6c3328ce2d88bf5abb38047eb14492055728dfca",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/8m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_9.png",
+      "sha256": "e386c9fe81a0ea5cf436a9145b59bcd72febf08a462b6095e59ae89cd37c0e7a",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/9m.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_characters_9.svg",
+      "sha256": "975e13d9a3ed8fbc51630561d037e273d18ce4f17b65ba23eeed428c2bf0964b",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/9m.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_red_five.png",
+      "sha256": "08b1804f6314c64562fbc5ae92da5266ff99ecfa5ded42ed44325430f9b2699e",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/0p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_red_five.svg",
+      "sha256": "dca1b715c1216e2439efafff1cfa458ebb414379e83587dfde6c4850d33ddd24",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/0p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_1.png",
+      "sha256": "63c5b8eae3f8f4777ab042d25d289b0248468e8fdd4de9e5662c8f7d9ea5d0f5",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/1p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_1.svg",
+      "sha256": "b4e7464ed909258552dc795bb52559433fad21abbcba4dda2bf4cbefb527b786",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/1p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_2.png",
+      "sha256": "b38f502d011ffe6a5cd3159bbc2a60315ce9ad91e9296ca68e1b721519b8df20",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/2p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_2.svg",
+      "sha256": "f1800300f70e0b59f66c6134ffe56b06810eba82c4448e5043e6f82c8fb99c96",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/2p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_3.png",
+      "sha256": "609882f529ba91bbd69f05c66269b830ae55ed21ea9281ada03c6f7e83623808",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/3p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_3.svg",
+      "sha256": "3fa045b721026ecc8d5e6c70852cb74b0564204f79d82ae44aeac146b37c2bfe",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/3p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_4.png",
+      "sha256": "d708589f818a7412a2dbe365c848b348b653342b87c5f8b4ac0fa1a41230ac09",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/4p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_4.svg",
+      "sha256": "fbd38714a150824313e837c78d154b0b1ed04ad501815cf411b1898e9663d302",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/4p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_5.png",
+      "sha256": "6267ba06dacd2e71dddf2158c5806ef853cf4c9a42b73d9f52896df35280e8ac",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/5p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_5.svg",
+      "sha256": "5ae607676a65359e58daaede0b3873c5e276cfaf39b0935a1444a0170b804486",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/5p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_6.png",
+      "sha256": "993621dd201755bea810ebc75c92bfb42d24e68df201f39b3c8bfb6c67f8b2a8",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/6p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_6.svg",
+      "sha256": "e73c7ca37626cf0e6b4d9cb2dd461c9e7eff7149c19d92b13c21681f4ce16713",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/6p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_7.png",
+      "sha256": "436b1ca9f814d5f5f7f2e5222405469b8be09fcafd17f1d68bea090974bda2d6",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/7p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_7.svg",
+      "sha256": "b355308c26807252f7806b7f8ba99c13b2b8254b23b66ce9adb7a7fa47f7548f",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/7p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_8.png",
+      "sha256": "f5d203a2d53d634c560e4ae772463a297f92dba41f5e93db8cfa7dba6b4bf63f",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/8p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_8.svg",
+      "sha256": "ed577a8937add71330cd55100fdd752fad92c927d1120a6e911431b87b9806e6",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/8p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_9.png",
+      "sha256": "9fce1ed4764099d2ef199ce9d6072b72855fcf38d7b204388ad397ae3969000e",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/9p.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dots_9.svg",
+      "sha256": "69fde8733cd2e6e51f91b47b948f87ddb23f3cddac8857f55ef3a8deac1ec684",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/9p.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_red_five.png",
+      "sha256": "45c4015f5035c6c98147498769032f506d5cbe949b3e1db3aae940988bb656eb",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/0s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_red_five.svg",
+      "sha256": "b4a83d95ff4c83540aa73478eede5002e3f66c9052d9fc4177322b93c75e33bc",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/0s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_1.png",
+      "sha256": "747ff11a92ac33cfc66fe136f317c1fe7086b58d2324841c8a252158a4046fdf",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/1s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_1.svg",
+      "sha256": "fcbf0aeccb4a4d48cc00a54acb33aab3a3bf7e062440e75521738028742fb3df",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/1s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_2.png",
+      "sha256": "60d585d73672323eee2df8f945008e23c19b74c988037b9ceb9c0b91246bc713",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/2s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_2.svg",
+      "sha256": "d796ab3b2933f1d2f3c1a383541bcef8ad4d209a6629c2c886610b129191ea53",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/2s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_3.png",
+      "sha256": "5d8f019d65353d95e641ece427c5b3da9fa1615e5e3d3c7ebbea6c36d446ff3a",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/3s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_3.svg",
+      "sha256": "44331c02d705bf95ae62adf8b550659d8b97eaf8881a34ab02779fed40c62777",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/3s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_4.png",
+      "sha256": "12a4502a0a91638e6befca06238d1f739122821d18453769f212d75e0ae49080",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/4s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_4.svg",
+      "sha256": "5a7b854a75c442619b42cfab8e5c8a0f653f89a9faadde4ff5ff7347d1f8429c",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/4s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_5.png",
+      "sha256": "fb8696cdd00ad0390a1914c6dacd7dd0259ed132d9654e70e7f8ac674b34c5bd",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/5s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_5.svg",
+      "sha256": "5247e1a2491a3428f4c318b84895fba613c6d6c1f475c7e27e9c36c5f69cf57e",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/5s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_6.png",
+      "sha256": "4ad139c3116987c825d30e0fae9f9adf9da0334a1e101caf1909e17c5cf94bd5",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/6s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_6.svg",
+      "sha256": "6b0014ae3ec8fcc71a183cb552d97821e0f0bca4de70e74c370fd1ce24e7c3d8",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/6s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_7.png",
+      "sha256": "c1e158dcb8872c192cfe03590be7f418b12e099f896f27044dca6d516239175d",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/7s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_7.svg",
+      "sha256": "d4b43315c68ac82ea7f610afcb4503e3da7a5dc9a89ea7818ba9cd24296ab031",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/7s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_8.png",
+      "sha256": "d125764bd0cb449dd495b55b015389f689a8ef26e52063d46d3f4f75c2c0356e",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/8s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_8.svg",
+      "sha256": "507413d33beec8de2381a6dcfe07760452bf5f9cd7f46e44f2fc5bd49dab4c71",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/8s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_9.png",
+      "sha256": "4e0b0041b9f6d49784a324ecf2ac35302a2fb42651ba06260210b4f0ecbb15c2",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/9s.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_bamboo_9.svg",
+      "sha256": "fa9ff4f21596ed6afe158939e3a87b060a4cdd704b678daa24f64515cf1203ae",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/9s.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_east.png",
+      "sha256": "a5c5fc98ad242e5a84074a1ee6bf322c7aefde85c5c8a0f5af4767df200a761e",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/1z.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_east.svg",
+      "sha256": "f381974e5d499a839a0caefef878dd2954e56255d6df510248ed0407e8b91767",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/1z.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_south.png",
+      "sha256": "b1dcb352b2ee7dadf8b4751a7fc2ed65912f3b0e4e665143d115538d6995d45f",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/2z.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_south.svg",
+      "sha256": "709c12ace122358169d3f32c17d984af35b7238c171580f60c9a7abf3271c684",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/2z.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_west.png",
+      "sha256": "5357e714d8baa8753202fd1f7fbbc220dfbc7acf41104050df44ce21e3b2d1bd",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/3z.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_west.svg",
+      "sha256": "c323b83b7765bb775c9ff2d3c8450bd7aa3d46e58234f82e792a495612143844",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/3z.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_north.png",
+      "sha256": "6a221e417354e45e6a436f4a8d89096444c7d745de6ff5aa351c8697c1dda885",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/4z.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_wind_north.svg",
+      "sha256": "e892222d034f1901a1d7cda3f386c0f81b0427ee8ac7b1937f3ef07cbd31d27c",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/4z.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dragon_green.png",
+      "sha256": "03c7fe2154a683525fc678c7f3cefe028c7f6298e7c8658848bd76c6b676c502",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/6z.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dragon_green.svg",
+      "sha256": "5e4cd55dd24c70d1b10b02e0a97c37e50323a589db013eb50c5430bcd9f47f44",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/6z.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dragon_red.png",
+      "sha256": "54ceaabd35d54f64e967ff977c74909bac1b196241ef222a46c0d97e8afe9485",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/PNG%20%E4%BD%8D%E5%9B%BE/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background/800px%E5%AE%BD%20weight%20800px/7z.png",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/tiles/mahjong_dragon_red.svg",
+      "sha256": "978a6c639987a8424c7b2aa7bcc1a1fbc1e03c80075294ea1703ac8f7a973e92",
+      "url": "https://raw.githubusercontent.com/lietxia/mahjong_graphic/3e275804ff58325306710bef3a7406860444bc6a/Vectors%20%E7%9F%A2%E9%87%8F%E5%9B%BE/SVG%28%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%20Transparent%20background%29/7z.svg",
+      "license": "M+ fonts license"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_elephant.svg",
+      "sha256": "a3d60aaef4abc26194964ad4f17a33edf2478f17bd3009a42bc2836866fd28d7",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Xiangqi_Elephant_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_Elephant_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_elephant.png",
+      "sha256": "01df172b63bc5674f520cc09ad1ce56213aef49a4c5751e1e7a8c20876c3fc1d",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_elephant.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_pawn.svg",
+      "sha256": "60ed90b4e98a093a03893dce078430e58ff80780793a89305c2efac272abfc5f",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Xiangqi_Soldier_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_Soldier_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_pawn.png",
+      "sha256": "5ebc0a3929575841bda7e6057fc1811ba1f057f11827f47fa74bebd5eab6d7ef",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_pawn.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_rook.svg",
+      "sha256": "7e226d6504b682046b70b9a4647707fa640c8e2749212c6319a10a0b1017c1f0",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Xiangqi_Chariot_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_Chariot_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_rook.png",
+      "sha256": "5ecff110ed4c3861118495b91cd038a1b181b56bab4c1f61a82201954a249700",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_rook.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_horse.svg",
+      "sha256": "55fc289f23b7fa6bc5c876951901dfac8795a397c03a47d9c92590f3be693dac",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Xiangqi_Horse_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_Horse_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_horse.png",
+      "sha256": "ede7e1c2ef1298272b636662c490089aecad970ee7ea371e77cc724889afc351",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_horse.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_advisor.svg",
+      "sha256": "dfd49d7af9b54012dafad675660a3031c977531fe41d3bca12d2581cebc2751c",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Xiangqi_Advisor_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_Advisor_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_advisor.png",
+      "sha256": "6d4cfada459e86863f0c831d546c799c86fd01a3f547691ca6a9aa625f7d11e8",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_advisor.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_general.svg",
+      "sha256": "609ced24769df64d1f7be031619f17e0c98b24cfd53603fefdba9b10872755f3",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Xiangqi_General_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_General_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_general.png",
+      "sha256": "5f6d7278960dc4ecaa0bd671948329016c8caa1fa0827a4ff742e2539274ea88",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_general.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_cannon.svg",
+      "sha256": "e8384fa922613b5fe3933d079f8c1a313ce366f4308df215abbdcf237e6fcc2a",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Xiangqi_Cannon_%28Trad%29.svg",
+      "page": "https://commons.wikimedia.org/wiki/File:Xiangqi_Cannon_%28Trad%29.svg",
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_cannon.png",
+      "sha256": "875003f0fd7dda9d44a982d2ba19413d7af6720f9f4df88561732d0fb437ab36",
+      "source": "resource-pack/originals/tabletop/textures/xiangqi/xiangqi_cannon.svg",
+      "note": "Rendered from the SVG at 1600x400 with @napi-rs/canvas; first red and third black piece selected.",
+      "license": "Public domain (PD-self)"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_back_blue.png",
+      "sha256": "d8fe787ed51505a62d898d344c3eb6900399f587c98156f0833c4ed695187cfb",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "back_blue_basic.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_10.png",
+      "sha256": "1573d380d8be8b55fc0807ea192819418bd6562eff91567bde6fff04a10f6208",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "10_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_2.png",
+      "sha256": "b702c50fd8a3f47d9dc38a6ec586cb6d3f025e350c098048dd577f5042cf59a9",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "2_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_3.png",
+      "sha256": "15c37ba32e114fb4e8a3b1f34c59c3901faab99e883f3bf08422111ec8f63cd4",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "3_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_4.png",
+      "sha256": "7185a6bfcb3d6c4c37fb2c1b537996dbc0583f2146806194cd1453ee1a88a360",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "4_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_5.png",
+      "sha256": "adaf22064e1896a36471115df9615796cf3b9353b4eac0b2910b783122e9a5c2",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "5_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_6.png",
+      "sha256": "2890df5691f0364533f60ac086b25a31c2c6f23cffb4b822efa6cd150bce24c1",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "6_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_7.png",
+      "sha256": "a106d46f286147366356f383a5532e9b60137deece491764a0b294dfbf73a1ff",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "7_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_8.png",
+      "sha256": "fc26f2ae7e88f65f98f71a024b8a1aa7ac853999f5d706171716cfa25ae068b2",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "8_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_9.png",
+      "sha256": "1f77bab09078b507fce0787a10ca1d9d57300b195968857d0eec9aaa2795c77f",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "9_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_ace.png",
+      "sha256": "fe546ebc72dd5b808ec84634627c7b1925180231b71c4f6447353da920cf21b3",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "ace_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_jack.png",
+      "sha256": "c0793000d98840740e1e6a848b559e7a4a5c1712605b27f95dc409083552504c",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "jack_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_king.png",
+      "sha256": "b36c8af9783fbf8a6940c5b12956f20d91b1ff7041e5eea1814a61e5d5e33505",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "king_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_clubs_queen.png",
+      "sha256": "3517e9de050c646b03c0f843e0c83705ebf4b018a3399d9ca9e2a5f7b12052b1",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "queen_clubs.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_10.png",
+      "sha256": "1441e45561077772e15de7a75963fc66ca2bc3f3ef47b2af0e654342dff3c311",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "10_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_2.png",
+      "sha256": "5cbf720e19b75ef3104653e4f011a4d461920cf508540e4b7236e00c5f844963",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "2_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_3.png",
+      "sha256": "eb13c2bce40f56bd01b3542c225f1d9e7ef4aa84d9af33994d2f7b5b9adebbd0",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "3_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_4.png",
+      "sha256": "ceb02e74bcef2a599c249f0fb02efb54137c275b70e34ff3bf1ca35dba4c70aa",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "4_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_5.png",
+      "sha256": "3f93b12d3596dc4852a68625f38ec235c6de78b27c508b65e472b6d319a466fe",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "5_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_6.png",
+      "sha256": "a609392c00614a1d817779a9a154accda82b81af6509e398208e0449e8e52855",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "6_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_7.png",
+      "sha256": "a46d0ddb1371116d34c5c40b692a10805894bce51aa77a46bc0d363291b2a45b",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "7_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_8.png",
+      "sha256": "9e1174c2d01706fc28186147c2b19b41b1eba291889e6c7e184c8fa8b1e543de",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "8_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_9.png",
+      "sha256": "222bd0b0d29e8957e14dff532138970641cafeec720a376851bde90a03928f68",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "9_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_ace.png",
+      "sha256": "faa62dfdfba0ae87b3f5ee6ba59580450d8535660901c56e67c2428ae8353c7d",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "ace_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_jack.png",
+      "sha256": "794c3421969e00551cf89c279a5f1d6f7f74a439864ff32fa6371489dc44c65e",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "jack_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_king.png",
+      "sha256": "f90fa0342801a1718e3ae091af580869b1eb9de9cd253aa0f68e92e95d781b18",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "king_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_diamonds_queen.png",
+      "sha256": "8e7a781f68bd8de1b4b9e0dfee4ad9d5cdd0d8b973473db30637a60bb100ba54",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "queen_diamonds.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_10.png",
+      "sha256": "be335a506b0e9f46b05e4d08a1d26e794893d0330b39de1f954cc81c4b4666ac",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "10_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_2.png",
+      "sha256": "c3dc3c07aa89ee319d698eda650b6fbfd418c023bb7d569dc3d0899ef46fe722",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "2_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_3.png",
+      "sha256": "668420d528766b5bc05bb585592fbf40a3bbd2d2968390bf1f84a275172342d8",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "3_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_4.png",
+      "sha256": "0924b9a6dfcf1db63da7a7c5f18ff199894ff602aaab3e2167fbe801d0f82ab9",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "4_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_5.png",
+      "sha256": "09583d832834c13dc9c40d81f9552740168a32c60c03531bdfccb6ef18457f57",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "5_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_6.png",
+      "sha256": "a5017529be982c66be8159f910de5c47c14eb98b6d650acdc66541f00f50e5ab",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "6_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_7.png",
+      "sha256": "c7dfca4ada37e0224942aae6f0d5300673857b1236cf5052a5aa1f321227b7ce",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "7_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_8.png",
+      "sha256": "9dcef19b64eeb1494fcc693f6114bfa8bee99cb7e4b2e4c2725a4ae8348d4f5e",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "8_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_9.png",
+      "sha256": "8354ca4d9ac6d925b0bae44c95c93d198a0dea8e7c8d37325762884579901c54",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "9_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_ace.png",
+      "sha256": "476e3b35ee85077b408f85f1c5d71e2dfee813ddb87cf80fa2e5f4dff2a9d777",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "ace_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_jack.png",
+      "sha256": "afae37761f7edd1f52ffe9b05de4fb3620e2b74d76db0531144751605229c918",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "jack_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_king.png",
+      "sha256": "c5d6fd43a6c12d883d248635b971b3465a6335524b0ffa4d9ce81439220586cb",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "king_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_hearts_queen.png",
+      "sha256": "5846f703280a450532d38a6ebf37d9f155a19824a7f5f50120e30b70cb4b0449",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "queen_hearts.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_joker.png",
+      "sha256": "a7f636ecffeb1be081b12023aba1f31f09ddb1e967bf1724488ed5da0c32bd89",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "joker.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_10.png",
+      "sha256": "1337b18c31701a91e103150eb2043d1ff6da826258c4333480068aef73f13304",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "10_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_2.png",
+      "sha256": "b59bd560cba8d74172bc1f5391380c55490ab8ae200258bc7282e875cd3c4749",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "2_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_3.png",
+      "sha256": "de3a52d528f7548f0fedbd6a46d9e78cc37307a07b807960ffbeb40897e22a4e",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "3_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_4.png",
+      "sha256": "1cb457884504b83ee8c745214077a21c8d10e9f9b7efd970c94818bd9c1c8503",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "4_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_5.png",
+      "sha256": "5588f76fb9b0656eb68ac42673a4c38c5cbc25abc9ad11025cd67dbf269b5ee2",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "5_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_6.png",
+      "sha256": "29a314577bd782ce8cd20665244c15493a15521a8ba251054c6bf06563a7e72a",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "6_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_7.png",
+      "sha256": "d5c2ae887372df5aaf86420a3f93d86879907faab1252ec83aa578813e2c762c",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "7_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_8.png",
+      "sha256": "36d61c4c5b3f64e17308984e658411f864ff51cd54305f351ae51799e6dd22f9",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "8_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_9.png",
+      "sha256": "e0e284d2cf6390d243378331ba61a5690ac42b0048aecb305f06f29c5feec8bb",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "9_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_ace.png",
+      "sha256": "a616de55fe6ec8b83698a865e2252d594f4f6ae8b3768890b8c707a57d67844b",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "ace_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_jack.png",
+      "sha256": "6b145adc7f978b0d4f88bbddf5f5f009eab2bdcd07a15ed9baa20d367bcd9ff6",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "jack_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_king.png",
+      "sha256": "0622840e7d601e7385dbcce41f31604a740bd997db9ef8fd2a4b34e436c9fa05",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "king_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/textures/playing-cards/poker_spades_queen.png",
+      "sha256": "5cddd84a1e456732550fa03d012207121014595743cb2ffbe16895b30cc0b2f8",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "archive_file": "queen_spades.png",
+      "license": "CC-BY-4.0"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_pawn.svg",
+      "sha256": "eda66e64813c820e49bb569f179783433c4b495d17480c9a428112ad49cee265",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0FU.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_pawn.png",
+      "sha256": "cdb097367f45c7d1557615a780dce9b3054f8cbcc2f673bd055d699d7d2550f5",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0FU.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_lance.svg",
+      "sha256": "b37f0e6b771a8a7593f2579d5154819b63041a767f6adeed23b0b400337e52e9",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KY.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_lance.png",
+      "sha256": "aa1dc634257e014cee0814597f9ad142aa9f4954556b6cf3df0c06d62cca8186",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KY.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_knight.svg",
+      "sha256": "1ec6eb68c85d3dc93c98d762c435ee63a2c4e3451ccef8f80a858d0d5b4baf7c",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KE.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_knight.png",
+      "sha256": "5432ab42499242a4e32103907da30e7d9f969f04ee12b73c87c38067862dbd45",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KE.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_silver.svg",
+      "sha256": "c6d4a50fa197002d1b389c54a6cafe774ee51deef10f520530b55eb8d1498d29",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0GI.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_silver.png",
+      "sha256": "8b6b65bef6c49753eaebd26f27e1ae724cf695ab89d01033cc5dcb6c3c5589ce",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0GI.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_gold.svg",
+      "sha256": "014f3f4b5a8e97101fc3e3b6209e5561bccd0ec2b1984420b02e69051ed09a48",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KI.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_gold.png",
+      "sha256": "c9a5b455f85f6c9e914bd849fc405013056cc57e7d742490181780c74fb64bf6",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KI.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_bishop.svg",
+      "sha256": "ab61fe2fc88701e971d4e23b32d2f2b2b51e480d945860bd2c00f5279829ca23",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KA.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_bishop.png",
+      "sha256": "42ba37a8c0c8f519474c4a20bed715d72752fac213ed1059c61b88ae185f6986",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0KA.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_rook.svg",
+      "sha256": "fe7189ed76a28cc164656de426f0b224a114bc887fbb4ee77b9f5d9b9ca40f79",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0HI.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_rook.png",
+      "sha256": "b32130b01a0383f60af24d8ae15673a5d1f4a10c10359e2f8f38b7c06cc0546d",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0HI.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_king.svg",
+      "sha256": "c277728d7ec9051baecdae986052b3d26b404c6e8328c5c94968fd65583ec318",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0OU.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_king.png",
+      "sha256": "02247b7587a910397db298a3dc1b87dba38df49872b1c6601bcae92ef86adfc3",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0OU.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_jeweled_king.svg",
+      "sha256": "4b001540d5e026e97b7959a1c05a3e42b39c33839abb8120231c368552db439f",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0GY.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_jeweled_king.png",
+      "sha256": "00867afd8a888d2e0c7a7d232ab02e4fee297845f3f61ca34e1bef52d74b0f31",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0GY.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_promoted_pawn.svg",
+      "sha256": "808846f5cce83750c4ce38d45affa09e2f0e5b583f1e599a87ec641548144889",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0TO.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_promoted_pawn.png",
+      "sha256": "2649573abf12df563afe84e715c08a559c13c3d3ee15b253a2dce2b9ba2d3e3e",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0TO.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_promoted_lance.svg",
+      "sha256": "3fa37c462190644185423bcaf92f6bb440091dfcafb3090d5c22d834e341f72f",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0NY.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_promoted_lance.png",
+      "sha256": "dd23617d7f4ffcc66d34cfaedd7d4f8b49b87790a3902475a39efe5c7b1609e0",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0NY.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_promoted_knight.svg",
+      "sha256": "7cc12943c813636e097f59126286e1c780956d3352edbf41e02c20cb2c27f9da",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0NK.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_promoted_knight.png",
+      "sha256": "186668e90dd3607a085c73c36e83c1835bb05a9ee5fda676908190cd7d0c54a5",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0NK.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_promoted_silver.svg",
+      "sha256": "8caa79c5dc142ec4841477dc35b25bd1a756b6a85bde588db75418b0d1d976dc",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0NG.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_promoted_silver.png",
+      "sha256": "1f22e38bec68a0b9377ac57d270b24cc5514087df3c1eb3a89888622656029ad",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0NG.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_promoted_bishop.svg",
+      "sha256": "310e93294e54a31be42ca1080b9eca63464a090c6849e6cbce1bcc4a26e84f6c",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0UM.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_promoted_bishop.png",
+      "sha256": "01e384298552f87b158a8bd6cd774026579e899675d9fbcb70c023698ed41fd1",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0UM.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/tabletop/shogi/shogi_piece_promoted_rook.svg",
+      "sha256": "420d163473fac64730acd8ac28c3bfea0eb8c985f6168fc31d0280cfe3764331",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0RY.svg"
+    },
+    {
+      "file": "resource-pack/assets/3dgames/textures/item/tabletop/shogi/pieces/shogi_piece_promoted_rook.png",
+      "sha256": "ef1a611d38b25d07ae1d76ab8af2d3b287a4e976397cecb167d619c7a76fb6a9",
+      "url": "https://github.com/Kadagaden/shogi-pieces/blob/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood/0RY.svg",
+      "derivative": "Direct 128x128 transparent SVG raster"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactWood_light_000.ogg",
+      "archive_file": "Audio/impactWood_light_000.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactWood_light_001.ogg",
+      "archive_file": "Audio/impactWood_light_001.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactWood_light_002.ogg",
+      "archive_file": "Audio/impactWood_light_002.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactPlate_light_000.ogg",
+      "archive_file": "Audio/impactPlate_light_000.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "6e797cf8a5bfc52d7ed5eb47c227974c1cf2a674954fec5b539cea7d62c7282c",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactPlate_light_002.ogg",
+      "archive_file": "Audio/impactPlate_light_002.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "8ac5869ea434cf0d364872774efe70b2d666a4f02ba35ddfc1e051d336721be8",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactPlate_light_003.ogg",
+      "archive_file": "Audio/impactPlate_light_003.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "dbfb7c1d002576696df3e9a43d6639ee3f342068398b5e7b55bc2389d20508a9",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chips-stack-1.ogg",
+      "archive_file": "Audio/chips-stack-1.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "12bf175b9afcea112175b241ad3336c6244ac5fdcdff8b5942ecc03f2225e0c4",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chips-stack-2.ogg",
+      "archive_file": "Audio/chips-stack-2.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "9f985e766c3557eef1764240b48e30b2f0ffa870a99f05de85cd6bf0ea758ef5",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chips-stack-3.ogg",
+      "archive_file": "Audio/chips-stack-3.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "48cc0f01e2b62be7677f2e8c02177906cab80e96fa8176fa05b3ced35bc2a9c2",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chips-handle-3.ogg",
+      "archive_file": "Audio/chips-handle-3.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "7c5a86e27b2bef839ae096dd655506cf46a82494bd01cc28f51bed6ab26cc342",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chips-handle-4.ogg",
+      "archive_file": "Audio/chips-handle-4.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "0d171ea00224709cbe31ef95a111eabaf1382606a4836c5717043b339cbed8e9",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chips-handle-5.ogg",
+      "archive_file": "Audio/chips-handle-5.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "589753ea21b1955626e82975be8979f42140f5b0645a8c33c2d1f7e33fba68cb",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactWood_medium_003.ogg",
+      "archive_file": "Audio/impactWood_medium_003.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "635c37cfcd854b187d643d450ff0397798dcc29ae94da32192b814fae6bd854c",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactWood_medium_004.ogg",
+      "archive_file": "Audio/impactWood_medium_004.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "7ba48f2f99c91c71be420841a91f1e69c0cbc4fe887fcd7213144d67bb87b13a",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/scratch_001.ogg",
+      "archive_file": "Audio/scratch_001.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "5c294d2e1a6b6d07ee2d75b17105a55ad3527e5482dd60652dc49c2ea4c70096",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/scratch_002.ogg",
+      "archive_file": "Audio/scratch_002.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "2b07edafc1f3f49c4813f2b0ae9481c566c1f9962a22d5f5b79da7111e058e56",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/scratch_003.ogg",
+      "archive_file": "Audio/scratch_003.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "2d80371b55ebe2e8b916b84093a8ae7717d09a80c6b617079ade5bd0dacba7b7",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactGlass_light_000.ogg",
+      "archive_file": "Audio/impactGlass_light_000.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "d750cf88097d0c3e69920e6e14496e1444e1a9da01aa4cca8f5ec8cb44c57b4f",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactGlass_light_001.ogg",
+      "archive_file": "Audio/impactGlass_light_001.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "05e513fbd42829060eb37855f8c3866722ec5c39a8937c9bfde518cc609effa2",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/impact/impactGlass_light_002.ogg",
+      "archive_file": "Audio/impactGlass_light_002.ogg",
+      "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+      "sha256": "710db7451bb7857b9140dfe6afe4621ea2188ad65eda3919c569d1bb285b933d",
+      "url": "https://kenney.nl/assets/impact-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/die-throw-1.ogg",
+      "archive_file": "Audio/die-throw-1.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "b31d716165be60e442da3c1ca25a3968aad1e0851a7f0859f495aecc02fd9e13",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/die-throw-2.ogg",
+      "archive_file": "Audio/die-throw-2.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "a2702cfe14d24aab302483a1499daa88474a4af4acd794b58d97f4af16333b3d",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/die-throw-3.ogg",
+      "archive_file": "Audio/die-throw-3.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "52fc44c7bb89328a147738574c925508c34abf4c19a014575b37ffb8c6b02437",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/die-throw-4.ogg",
+      "archive_file": "Audio/die-throw-4.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "6253cabcb10c4152548cbc9d3ea87c1bf1bd484f0bd8d6b73c542e690509c0fd",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chip-lay-1.ogg",
+      "archive_file": "Audio/chip-lay-1.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "4b2111252ccb64eed67f171e061053849cfbb29873536c03948646f244a3905c",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chip-lay-2.ogg",
+      "archive_file": "Audio/chip-lay-2.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "8ca8b2d450741c04ed7b4ba51ed3f73c2400c8b3dbe83b974be4fe4774a76712",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/casino/chip-lay-3.ogg",
+      "archive_file": "Audio/chip-lay-3.ogg",
+      "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+      "sha256": "bf24ebb417b6279568800dffdb0205d3ec8854c7efe179e8964755a6341727aa",
+      "url": "https://kenney.nl/assets/casino-audio",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/click_002.ogg",
+      "archive_file": "Audio/click_002.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "adcd1f4adc35f1b41bc1b5bbefeff7aa44f2f3f0d96d3199b544140c7c1e761c",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/click_003.ogg",
+      "archive_file": "Audio/click_003.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/click_004.ogg",
+      "archive_file": "Audio/click_004.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "09e2c1b643b71b9aff9932b4e02d78db116446b9a14b00a5b2a9b28d2668fd8e",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/open_002.ogg",
+      "archive_file": "Audio/open_002.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "24ff224fe2c09c6aed1b41249825382dc74cf324b887ff279d8494912ce2beee",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/board/reveal/open_002.ogg",
+      "derived_sha256": "ff36082d85a983ac6a0beefaac710f800476f6dc6e35bcec0297c7c9026f4954"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/open_003.ogg",
+      "archive_file": "Audio/open_003.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "bcdca6b5c9c33aa15ca3fb18a1fa8d98a01b528b85be08c5a610e57c75fc022d",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/board/reveal/open_003.ogg",
+      "derived_sha256": "adff2b76ca87634994868fb6ac8e24f7b4f2456d5b2a9c69166fa870957e9e1c"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/tick_001.ogg",
+      "archive_file": "Audio/tick_001.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/table/select/tick_001.ogg",
+      "derived_sha256": "040c334eb5cd0ab3c72db9b6a181289e4bca5818ead4e02b3600c2b9555c3f6c"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/tick_002.ogg",
+      "archive_file": "Audio/tick_002.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "869442f54214be902ec7437f79e400dc91c1bfd90d18a6dd2d5b7e41ffbf457b",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/table/select/tick_002.ogg",
+      "derived_sha256": "98287638334c16a07feea5f7c8bfa02f93f9696e2c652d62f44526340fbd7317"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/tick_004.ogg",
+      "archive_file": "Audio/tick_004.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "0253d5f7d8d2afbbc370eac2a4539bb844239f0c98343e516d376b137c06d27c",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/table/select/tick_004.ogg",
+      "derived_sha256": "870f337fdd00e37837783827ce47e690405c74ca830ef38a734ac518c4cdbaac"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/toggle_001.ogg",
+      "archive_file": "Audio/toggle_001.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "ca1d2dde5f0b286abac4f070e23edab8f30927c8a533665cdf2ac6492a415e49",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/table/confirm/toggle_001.ogg",
+      "derived_sha256": "7cbca2e7c4a3ce8f17d8b8a91ca625b09137b80a065229f5711f2eb1eec99328"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/toggle_002.ogg",
+      "archive_file": "Audio/toggle_002.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "1f564f5520cfa0764028ce245ad97599d3ece8f0ab504554c403af92ac72b900",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/table/confirm/toggle_002.ogg",
+      "derived_sha256": "8480b5248ee42f82f38c5649a4ff05a9a835eac709618895b3cafe5d5b6dbe2e"
+    },
+    {
+      "file": "resource-pack/originals/shared/sounds/physical/interface/toggle_003.ogg",
+      "archive_file": "Audio/toggle_003.ogg",
+      "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+      "sha256": "7e69aba356d590826cce291bbd9dc6a85d7c53858b0e3712fcad30e1ad080b23",
+      "url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "derived_file": "resource-pack/assets/3dgames/sounds/table/confirm/toggle_003.ogg",
+      "derived_sha256": "713c857142a27c2014b7410d953d98e7df1f4a761d6adfe2cbd75ca96919d78f"
+    }
+  ],
+  "audio_notices": {
+    "card_play": "# Card play sample\r\n\r\nThe user supplied `oxidvideos-taking-playing-card-522520.mp3` for the shared card play sound.\r\nOriginal author indicated by the supplied filename: OxidVideos. The original download page and license receipt were not supplied.\r\nThe resource pack uses a mono OGG conversion with peak attenuation; the original MP3 is retained for reproducible builds.\r\n",
+    "kenney": {
+      "sources": "# Kenney audio sources\r\n\r\nSelected original OGG files from Kenney, licensed under CC0 1.0.\r\nThe original license notices are retained alongside these sources and included in the generated pack.\r\n\r\n- Casino Audio 1.1: https://kenney.nl/assets/casino-audio\r\n- Interface Sounds 1.0: https://kenney.nl/assets/interface-sounds\r\n- Impact Sounds 1.0: https://kenney.nl/assets/impact-sounds\r\n- License: https://creativecommons.org/publicdomain/zero/1.0/\r\n\r\n`sound_events.json` maps shared gameplay events to their original source filenames.\r\nThe pack builder converts positional samples to mono and only attenuates peaks.\r\nMinecraft chooses one variation per event; variations never play simultaneously.\r\nThese samples do not replace the user-provided card play recording or the existing Mahjong recordings.\r\n",
+      "licenses": {
+        "casino": "\t\r\n\r\n\tCasino Audio (1.1)\r\n\r\n\tby  Kenney Vleugels (Kenney.nl)\r\n\r\n\t\t\t------------------------------\r\n\r\n\tLicense (Creative Commons Zero, CC0)\r\n\thttp://creativecommons.org/publicdomain/zero/1.0/\r\n\r\n\tYou may use these assets in personal and commercial projects.\r\n\tCredit (Kenney or www.kenney.nl) would be nice but is not mandatory.\r\n\r\n\t\t\t------------------------------\r\n\r\n\tDonate:   http://support.kenney.nl\r\n\tRequest:  http://request.kenney.nl\r\n\r\n\tFollow on Twitter for updates:\r\n\t@KenneyNL",
+        "interface": "\t\r\n\r\n\tInterface Sounds (1.0)\r\n\r\n\tCreated/distributed by Kenney (www.kenney.nl)\r\n\tCreation date: 11-02-2020\r\n\r\n\t\t\t------------------------------\r\n\r\n\tLicense: (Creative Commons Zero, CC0)\r\n\thttp://creativecommons.org/publicdomain/zero/1.0/\r\n\r\n\tThis content is free to use in personal, educational and commercial projects.\r\r\n\tSupport us by crediting Kenney or www.kenney.nl (this is not mandatory)\r\n\r\n\t\t\t------------------------------\r\n\r\n\tDonate:   http://support.kenney.nl\r\n\tPatreon:  http://patreon.com/kenney/\r\n\r\n\tFollow on Twitter for updates:\r\n\thttp://twitter.com/KenneyNL",
+        "impact": "\t\r\n\r\n\tImpact Sounds (1.0)\r\n\r\n\tCreated/distributed by Kenney (www.kenney.nl)\r\n\tCreation date: 19-12-2019\r\n\r\n\t\t\t------------------------------\r\n\r\n\tLicense: (Creative Commons Zero, CC0)\r\n\thttp://creativecommons.org/publicdomain/zero/1.0/\r\n\r\n\tThis content is free to use in personal, educational and commercial projects.\r\r\n\tSupport us by crediting Kenney or www.kenney.nl (this is not mandatory)\r\n\r\n\t\t\t------------------------------\r\n\r\n\tDonate:   http://support.kenney.nl\r\n\tRequest:  http://request.kenney.nl\r\n\tPatreon:  http://patreon.com/kenney/\r\n\r\n\tFollow on Twitter for updates:\r\n\thttp://twitter.com/KenneyNL"
+      }
+    }
+  },
+  "artwork_notices": {
+    "mahjong_graphic": {
+      "repository": "https://github.com/lietxia/mahjong_graphic",
+      "revision": "3e275804ff58325306710bef3a7406860444bc6a",
+      "license": "這些字型爲自由軟件，您可以自由使用、複製和分發它。不論是否修改過它，不論作爲商業使用還是作爲非商業性使用，都是許可的。 我們按照這些字型的「現狀」釋出它們，然而我們並無責任確保這一點。\n\nThese fonts are free softwares. Unlimited permission is granted to use, copy, and distribute it, with or without modification, either commercially and noncommercially. THESE FONTS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY.\n\nこれらのフォントはフリー（自由な）ソフトウエアです。 あらゆる改変の有無に関わらず、また商業的な利用であっても、自由にご利用、複製、再配布することができますが、全て無保証とさせていただきます。",
+      "selection": "Manzu, first pinzu style, first souzu style, honors, flowers and red fives; blank white dragon is generated."
+    },
+    "xiangqi": {
+      "license": "Public domain (PD-self)",
+      "author": "Inductiveload; current vector revision by Wj654cj86",
+      "selection": "First red piece and third black piece from each traditional-character SVG.",
+      "notice": "Xiangqi artwork by Inductiveload, with current vector revisions by Wj654cj86, from Wikimedia Commons. The author released the work into the public domain worldwide. File pages and exact imported hashes are recorded in the source manifest."
+    },
+    "playing_cards": {
+      "title": "Pixel Playing Cards Pack",
+      "author": "George Blackwell",
+      "url": "https://georgeblackwell.itch.io/playing-cards-sprite-pack",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "archive_sha256": "e0bd9ea41be8c3c05dc9933875b85b731e6f691866c4d5400199fb5cc82221f3",
+      "notice": "Pixel Playing Cards Pack by George Blackwell.\nSource: https://georgeblackwell.itch.io/playing-cards-sprite-pack\nLicensed under Creative Commons Attribution 4.0 International (CC BY 4.0): https://creativecommons.org/licenses/by/4.0/\nChanges: original 60x84 pixel faces are enlarged by nearest-neighbor 2x without added padding, and displayed at their original aspect ratio. The blue back is simplified to a solid field with an ivory border. The small joker illustration uses grayscale, and the large joker uses red corner lettering; their original portrait is retained.\n"
+    },
+    "shogi": {
+      "source": "https://github.com/Kadagaden/shogi-pieces/tree/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood",
+      "commit": "3a7643b8f6aa9910b360b61e062961e70213c6cc",
+      "authors": [
+        "Kadagaden",
+        "Hari Seldon"
+      ],
+      "licenses": [
+        "https://creativecommons.org/licenses/by/4.0/",
+        "https://creativecommons.org/licenses/by-sa/3.0/"
+      ],
+      "modifications": "SVG originals rasterized to 128x128 RGBA without changing the artwork colors; opposite orientation reuses the same texture; five-sided 3D carrier models added."
+    }
+  },
+  "minecraft_block_materials": {
+    "source": "Minecraft Java Edition 26.2 client, assets/minecraft/textures/block/",
+    "copyright": "Mojang / Microsoft; separate from the GPL plugin code",
+    "files": [
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_blue_terracotta.png",
+        "sha256": "99b4ec0a8a02a9d609d4987cbb7ba594a59f93c76b5fd98e3a1f12c2df1f9a70"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_brown_concrete.png",
+        "sha256": "a616865ca284efd841d1e469ff9bf8a0ad692ad8219642aca3639c50224268b4"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_brown_terracotta.png",
+        "sha256": "e162788c4a41a06711dcef4572ca4f4dfee090463fdd0d523ff98d00458b1daf"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_cyan_terracotta.png",
+        "sha256": "22125696599d357cbfc6de1dcca0ee73f47269bfe1532d6b2cc7cf56f5aeda76"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_dark_oak_planks.png",
+        "sha256": "665f44b119f5a21711c4cb83749d871635134c001cb0c14761c4f02a40dd8645"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_green_terracotta.png",
+        "sha256": "ffe10089bcef9873c74f18be35e605c5d035f472c06bf677746d39ff8a656c07"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_light_blue_terracotta.png",
+        "sha256": "513dffd0886a88bb5ad9f2efa317e4701673a939e1630cbe9fdc4f488a63c40e"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_lime_terracotta.png",
+        "sha256": "f4e0b8ac372c252afbbd2ac00650ca9386bf3571ca06cd386060b980d03466c9"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_orange_terracotta.png",
+        "sha256": "3074d90b0a27d1c149df2f3eacc9c6895c4cc0548999f864146dc18f64bcab5a"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_pink_terracotta.png",
+        "sha256": "58a811b050b61eda8ae84743d04f70e97dc485750c6858873cce934e95d98c74"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_red_terracotta.png",
+        "sha256": "e531a94e310f4f6b1ec9d07ed990f628b724a2f7f5040935162c9ca30c38fa93"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_smooth_sandstone.png",
+        "sha256": "41a5965dbf8a1505ab7ffd9984a16bad566c907c513d5638d5e8260cb5916646"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_stripped_dark_oak_log.png",
+        "sha256": "23b5b04b273a99c1f645b6a043af11b4d63a07535fe66ebf7e612a623b99d330"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_yellow_terracotta.png",
+        "sha256": "7c00bf901f78ad628a06335d47310a6b18c1419243d4150e32cdf01d51bafca6"
+      },
+      {
+        "file": "resource-pack/assets/3dgames/textures/item/shared/materials/material_blue_concrete.png",
+        "sha256": "5053668a287cc6638cc352ea2d3dd89847f04e7f2637cbd86885e519ba72d16e",
+        "modification": "Solid RGB material; original alpha and dimensions retained."
+      }
+    ]
+  },
+  "physical_audio": {
+    "title": "Crisp physical tabletop actions",
+    "license": "CC0-1.0",
+    "notice": "Independent Kenney recordings selected from local source archives. Mono downmix, high-pass filtering, attack-preserving trim, short fade and peak normalization; no pitch-shift variants. Stone uses ceramic plate impacts and plastic pegs use casino chip contacts as foley substitutes; no Nintendo recordings.",
+    "samples": [
+      {
+        "event": "board.reveal",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/open_002.ogg",
+        "archive_file": "Audio/open_002.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "24ff224fe2c09c6aed1b41249825382dc74cf324b887ff279d8494912ce2beee",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/reveal/open_002.ogg",
+        "derived_sha256": "ff36082d85a983ac6a0beefaac710f800476f6dc6e35bcec0297c7c9026f4954",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.008866,
+          "max_seconds": 0.32,
+          "highpass_hz": 180,
+          "peak_target": 0.5,
+          "fade_out_seconds": 0.007982,
+          "pitch_shift": false
+        },
+        "seconds": 0.304921,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.529215,
+        "rms": 0.122584,
+        "clipped_samples": 0
+      },
+      {
+        "event": "board.reveal",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/open_003.ogg",
+        "archive_file": "Audio/open_003.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "bcdca6b5c9c33aa15ca3fb18a1fa8d98a01b528b85be08c5a610e57c75fc022d",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/reveal/open_003.ogg",
+        "derived_sha256": "adff2b76ca87634994868fb6ac8e24f7b4f2456d5b2a9c69166fa870957e9e1c",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.007302,
+          "max_seconds": 0.32,
+          "highpass_hz": 180,
+          "peak_target": 0.5,
+          "fade_out_seconds": 0.007982,
+          "pitch_shift": false
+        },
+        "seconds": 0.306485,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.494048,
+        "rms": 0.13461,
+        "clipped_samples": 0
+      },
+      {
+        "event": "table.select",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/tick_001.ogg",
+        "archive_file": "Audio/tick_001.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "9d057b918024c787bbe6c00beed13a7ef72a3fa0c259add3cef36582792f4230",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/select/tick_001.ogg",
+        "derived_sha256": "040c334eb5cd0ab3c72db9b6a181289e4bca5818ead4e02b3600c2b9555c3f6c",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.0,
+          "max_seconds": 0.06,
+          "highpass_hz": 250,
+          "peak_target": 0.4,
+          "fade_out_seconds": 0.005805,
+          "pitch_shift": false
+        },
+        "seconds": 0.02322,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.399777,
+        "rms": 0.040259,
+        "clipped_samples": 0
+      },
+      {
+        "event": "table.select",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/tick_002.ogg",
+        "archive_file": "Audio/tick_002.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "869442f54214be902ec7437f79e400dc91c1bfd90d18a6dd2d5b7e41ffbf457b",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/select/tick_002.ogg",
+        "derived_sha256": "98287638334c16a07feea5f7c8bfa02f93f9696e2c652d62f44526340fbd7317",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.0,
+          "max_seconds": 0.06,
+          "highpass_hz": 250,
+          "peak_target": 0.4,
+          "fade_out_seconds": 0.005805,
+          "pitch_shift": false
+        },
+        "seconds": 0.02322,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.363105,
+        "rms": 0.049614,
+        "clipped_samples": 0
+      },
+      {
+        "event": "table.select",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/tick_004.ogg",
+        "archive_file": "Audio/tick_004.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "0253d5f7d8d2afbbc370eac2a4539bb844239f0c98343e516d376b137c06d27c",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/select/tick_004.ogg",
+        "derived_sha256": "870f337fdd00e37837783827ce47e690405c74ca830ef38a734ac518c4cdbaac",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.004694,
+          "max_seconds": 0.06,
+          "highpass_hz": 250,
+          "peak_target": 0.4,
+          "fade_out_seconds": 0.007982,
+          "pitch_shift": false
+        },
+        "seconds": 0.050113,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.375279,
+        "rms": 0.0616,
+        "clipped_samples": 0
+      },
+      {
+        "event": "table.confirm",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/toggle_001.ogg",
+        "archive_file": "Audio/toggle_001.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "ca1d2dde5f0b286abac4f070e23edab8f30927c8a533665cdf2ac6492a415e49",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/confirm/toggle_001.ogg",
+        "derived_sha256": "7cbca2e7c4a3ce8f17d8b8a91ca625b09137b80a065229f5711f2eb1eec99328",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.0,
+          "max_seconds": 0.15,
+          "highpass_hz": 250,
+          "peak_target": 0.45,
+          "fade_out_seconds": 0.007982,
+          "pitch_shift": false
+        },
+        "seconds": 0.13932,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.443074,
+        "rms": 0.091583,
+        "clipped_samples": 0
+      },
+      {
+        "event": "table.confirm",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/toggle_002.ogg",
+        "archive_file": "Audio/toggle_002.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "1f564f5520cfa0764028ce245ad97599d3ece8f0ab504554c403af92ac72b900",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/confirm/toggle_002.ogg",
+        "derived_sha256": "8480b5248ee42f82f38c5649a4ff05a9a835eac709618895b3cafe5d5b6dbe2e",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.0,
+          "max_seconds": 0.15,
+          "highpass_hz": 250,
+          "peak_target": 0.45,
+          "fade_out_seconds": 0.007982,
+          "pitch_shift": false
+        },
+        "seconds": 0.13932,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.455857,
+        "rms": 0.1199,
+        "clipped_samples": 0
+      },
+      {
+        "event": "table.confirm",
+        "file": "resource-pack/originals/shared/sounds/physical/interface/toggle_003.ogg",
+        "archive_file": "Audio/toggle_003.ogg",
+        "archive": "kenney-interface.zip",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "sha256": "7e69aba356d590826cce291bbd9dc6a85d7c53858b0e3712fcad30e1ad080b23",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/confirm/toggle_003.ogg",
+        "derived_sha256": "713c857142a27c2014b7410d953d98e7df1f4a761d6adfe2cbd75ca96919d78f",
+        "processing": {
+          "mono": "arithmetic mean",
+          "source_start_seconds": 0.0,
+          "max_seconds": 0.15,
+          "highpass_hz": 250,
+          "peak_target": 0.45,
+          "fade_out_seconds": 0.007982,
+          "pitch_shift": false
+        },
+        "seconds": 0.13932,
+        "sample_rate": 44100,
+        "channels": 1,
+        "peak": 0.446266,
+        "rms": 0.095973,
+        "clipped_samples": 0
+      }
+    ]
+  },
+  "approved_audio": {
+    "title": "Immersive tabletop foley, accepted audition",
+    "revision": "2026-10-31",
+    "samples": [
+      {
+        "event": "board.wood",
+        "audition_number": 1,
+        "file": "resource-pack/originals/shared/sounds/approved/wood_place.wav",
+        "sha256": "9679474f908e36f6f2c4d82a18b7e82cb5857a010992c4bee263bc5d79c71b9c",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/wood/wood_place.ogg",
+        "derived_sha256": "b5785fd17b4bf309f7c3f4658089c19658293d91424e1c9c90900154e573aa75",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.stone",
+        "audition_number": 2,
+        "file": "resource-pack/originals/shared/sounds/approved/stone_place.wav",
+        "sha256": "f12dcefd6fd844352c7d7de1ae13d68d05b74dcda78e4b76ecc10f098f850dba",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/stone/stone_place.ogg",
+        "derived_sha256": "a61d57809ab9e96ca3795b46226ec4fef96896034790ec416f407b8cf7d54fc2",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.capture",
+        "audition_number": 3,
+        "file": "resource-pack/originals/shared/sounds/approved/capture.wav",
+        "sha256": "1996b252c9740316b2e36272d1dc62fb6df96ab9ef9dde450a7e36dc2c3e74cd",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/capture/capture.ogg",
+        "derived_sha256": "0e5f6d1a67219de6f972652646cc9f85aa38fafb07bcb2328c0bcc6437b5a66c",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.drop",
+        "audition_number": 5,
+        "file": "resource-pack/originals/shared/sounds/approved/connect_four_drop.wav",
+        "sha256": "bff1a2624d40ef36baf39bd0fa1b0c36dcef51a40a819e9a96dd80b3180dbbd5",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/drop/connect_four_drop.ogg",
+        "derived_sha256": "c35c8fddd4dcecec5cc3a243bec5159bc40e5429d4bd1b227ccc8fbcef9c0078",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.flip",
+        "audition_number": 25,
+        "file": "resource-pack/originals/shared/sounds/approved/reversi_flip.wav",
+        "sha256": "22e2380d2a556d714f30fe2259ed67ae3c23799560032a6ed68903678e1d2486",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/flip/reversi_flip.ogg",
+        "derived_sha256": "ff1bd0625ff894f97d0034114d6a8c924b27037a9305862af56685a30b72ab40",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.slide",
+        "audition_number": 7,
+        "file": "resource-pack/originals/shared/sounds/approved/tile_slide_merge.wav",
+        "sha256": "4b4ef0f193a99eda50bc6ccf0d2d2139897edeedf000d6934cd21fabe9db5aca",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/slide/tile_slide_merge.ogg",
+        "derived_sha256": "068913536ff0e623d866d1dd8e8c787197103c1b0bfcdedf10fb6d890f670b0c",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "peg.place",
+        "audition_number": 6,
+        "file": "resource-pack/originals/shared/sounds/approved/peg_place.wav",
+        "sha256": "baccf7fe7f4b9a76e22767ea914456c8aea44834ccbea5464307d685fe13096f",
+        "derived_file": "resource-pack/assets/3dgames/sounds/peg/place/peg_place.ogg",
+        "derived_sha256": "558c02ea248e06df0d003ef4d0fff3ebd8e4f042e31ac525a791632bf6f981d8",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "peg.feedback",
+        "audition_number": 32,
+        "file": "resource-pack/originals/shared/sounds/approved/feedback_pin.wav",
+        "sha256": "1889a944895c2e64eb5edbb817cf97ff31f01d72bec1490eb444920cc556a7d3",
+        "derived_file": "resource-pack/assets/3dgames/sounds/peg/feedback/feedback_pin.ogg",
+        "derived_sha256": "522dc7d760215a0ef9ece3cfb3b307e12409eff89b3de245a469111237fbe23c",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "table.start",
+        "audition_number": 19,
+        "file": "resource-pack/originals/shared/sounds/approved/start.wav",
+        "sha256": "7f424fd264b8d7da6ee6cb49523ba1ac7022128125566384b5994428b27a2db4",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/start/start.ogg",
+        "derived_sha256": "afe59cf31dadc006b297413d9b0b59dc9b4228df206c9e2f5de549081a7bdb4d",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "table.win",
+        "audition_number": 20,
+        "file": "resource-pack/originals/shared/sounds/approved/win.wav",
+        "sha256": "61df62f8e8220c304d35199361eddbe1a62c73467ddc38cead00dd6f7a7295bb",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/win/win.ogg",
+        "derived_sha256": "a824de12122c281f746c56c48d04b80aadbca575b3432c5640b0777fbbd0d9f8",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "table.draw",
+        "audition_number": 21,
+        "file": "resource-pack/originals/shared/sounds/approved/loss.wav",
+        "sha256": "e53cd3028e4601133624a49e8896f2ae63e2844b0913d9f4916c9cb0ad9aca8e",
+        "derived_file": "resource-pack/assets/3dgames/sounds/table/draw/loss.ogg",
+        "derived_sha256": "8466bb4aa77924e4ff5593acbb0c5f49df2621a48290e0e520a0d2683fa801f1",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "cards.draw",
+        "audition_number": 36,
+        "file": "resource-pack/originals/shared/sounds/approved/card_pickup.wav",
+        "sha256": "ebc942dde3c0ea869ff43603cd844e9789fd92da959962efd2b378bc5fd43146",
+        "derived_file": "resource-pack/assets/3dgames/sounds/cards/draw/card_pickup.ogg",
+        "derived_sha256": "6df31c9b8bd878e9da9e4626a39def4cd1de5afab589fef936665fdc3b9cdd3d",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "cards.play",
+        "audition_number": 12,
+        "file": "resource-pack/originals/shared/sounds/approved/card_play.wav",
+        "sha256": "8b4a60876da8833b1a3203059a88ae1d924156bd6b8074407c23662275db2a29",
+        "derived_file": "resource-pack/assets/3dgames/sounds/cards/play/card_play.ogg",
+        "derived_sha256": "b89c15b5c8c86058ff54076ed4754c08387126c624009c05bd8e0452fe46f031",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "cards.flip",
+        "audition_number": 13,
+        "file": "resource-pack/originals/shared/sounds/approved/card_fan_flip.wav",
+        "sha256": "c395e06b2ef31119b862d254dcdc54a5bc25a182b572a2631ab844a9cf8bc4d9",
+        "derived_file": "resource-pack/assets/3dgames/sounds/cards/flip/card_fan_flip.ogg",
+        "derived_sha256": "c11b0637337a0cd66e62fce65ad6da300d62bf7ce0b4e4d3631842047817b0b0",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "cards.shuffle",
+        "audition_number": 14,
+        "file": "resource-pack/originals/shared/sounds/approved/card_shuffle.wav",
+        "sha256": "023cb0b36f9bf480cea9e5c94c0951d7ded72c5492240c1450c50657f49d7997",
+        "derived_file": "resource-pack/assets/3dgames/sounds/cards/shuffle/card_shuffle.ogg",
+        "derived_sha256": "781564015350bc985b75f793bb22b164374bd2e909b2588c54d6e1a2ad103ec9",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.single",
+        "audition_number": 33,
+        "file": "resource-pack/originals/shared/sounds/approved/dice_pickup.wav",
+        "sha256": "2356fad1f14bd24d64f36a646bd01b602baef4ebebf520dbbf4696799db57abd",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/single/dice_pickup.ogg",
+        "derived_sha256": "388f200931e494d37e46ca60b9217511defa5a2e8139748845ba3091200bd275",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.roll",
+        "audition_number": 8,
+        "file": "resource-pack/originals/shared/sounds/approved/dice_shake.wav",
+        "sha256": "5c918d1cbc181ca8f257ecd76c44caff462e8ce2c53509ecb8c2349568f2b29c",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/roll/dice_shake.ogg",
+        "derived_sha256": "d6658ce6e64147895b67a3bff7a3b1997d35dc87407ccc52e6f6e2c38f0c77d6",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.hold",
+        "audition_number": 34,
+        "file": "resource-pack/originals/shared/sounds/approved/dice_hold.wav",
+        "sha256": "d5eb8c1d0f9c88d4c887e4f6cfa3956a815c5d2a3ac263fdf0fc0c84f7fbc27e",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/hold/dice_hold.ogg",
+        "derived_sha256": "c68cab99a4599a3854f7b8341f15cc89b28d561663b9308f7c90d66bffc4a2c8",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.settle",
+        "audition_number": 35,
+        "file": "resource-pack/originals/shared/sounds/approved/dice_settle.wav",
+        "sha256": "b2e00e6f4074455aa322783fc62f7b697dfd94886b987058630e4b90724f50f6",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/settle/dice_settle.ogg",
+        "derived_sha256": "aab18e9ead3d6dab9899a29f6aa11e9a9c740c82d30285563a24b62661c28d71",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "chips.bet",
+        "audition_number": 39,
+        "file": "resource-pack/originals/shared/sounds/approved/chips_bet.wav",
+        "sha256": "04170ddd121a3fb2687de99ba5d877f103e9bf925cf83f4228507002ef20382c",
+        "derived_file": "resource-pack/assets/3dgames/sounds/chips/bet/chips_bet.ogg",
+        "derived_sha256": "150fb3a59ae4bb57d7d1387286cafd032a89471dc66f985c729ee15046481b9f",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "chips.collect",
+        "audition_number": 18,
+        "file": "resource-pack/originals/shared/sounds/approved/chips_collect.wav",
+        "sha256": "3557cd2c253e16c38648cea456d679ae5d5be30c338c3f360b02b4acf7dfca0e",
+        "derived_file": "resource-pack/assets/3dgames/sounds/chips/collect/chips_collect.ogg",
+        "derived_sha256": "92db9451e2ecb7a97104da59958a034661655710a5723a491a3b58efa2861fee",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.pickup.wood",
+        "audition_number": 22,
+        "file": "resource-pack/originals/shared/sounds/approved/wood_pickup.wav",
+        "sha256": "75a1083f52b10613d072575cff41a22c2867cc2c8a94f0ff936f6908521a12b1",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/pickup/wood/wood_pickup.ogg",
+        "derived_sha256": "55811441625bd3f85f9862305ea3c3934385e5eb18bd4dacc7062500049c5ff8",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.pickup.stone",
+        "audition_number": 23,
+        "file": "resource-pack/originals/shared/sounds/approved/stone_pickup.wav",
+        "sha256": "614eb5dbfdd55cf82a6392a6ab605d54487bf4fc53beae6c9d1f62093330f29a",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/pickup/stone/stone_pickup.ogg",
+        "derived_sha256": "38c2772bd85b94ecbdc31064f80ed4630ac7db2cea05d546b4e4717dcd4a2927",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.move",
+        "audition_number": 24,
+        "file": "resource-pack/originals/shared/sounds/approved/piece_slide.wav",
+        "sha256": "937c23970958b876bf1bc78474d35464a2f49bfa5b2e128d5117251ed9c23b5f",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/move/piece_slide.ogg",
+        "derived_sha256": "ed5f9de880e9c45df60510e3be9d7dd818412423eec654e87b16be662aaf91c5",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.promote",
+        "audition_number": 26,
+        "file": "resource-pack/originals/shared/sounds/approved/shogi_promote.wav",
+        "sha256": "52d7b689bf975fa82b9839654ae2700f4b2b1a69d4d32098d30dcde187baa2cb",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/promote/shogi_promote.ogg",
+        "derived_sha256": "2554a033eefac1b2fd7aded9ca4983526fc63fea204aadf45c26d48301b8b646",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.collect",
+        "audition_number": 27,
+        "file": "resource-pack/originals/shared/sounds/approved/pieces_collect.wav",
+        "sha256": "575f615e8beb18cb93f5e9af4232662632efa61ceb576fee5946eeadc0d3b104",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/collect/pieces_collect.ogg",
+        "derived_sha256": "129d3be89e4f41506c565edfc9c6538f54adbf8c8bf7f48dec16a7db5bd8072f",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.clear",
+        "audition_number": 28,
+        "file": "resource-pack/originals/shared/sounds/approved/connect_four_clear.wav",
+        "sha256": "9f8462b35f51bef250d9faa2b837d090d2f4f25b015f282e06cbbd7abe289e7e",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/clear/connect_four_clear.ogg",
+        "derived_sha256": "9fbca8f027be7c7afda4159bbeeeb78d9ffc28d97b7780af6ad594830f7e5f02",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.sow.pickup",
+        "audition_number": 29,
+        "file": "resource-pack/originals/shared/sounds/approved/mancala_pickup.wav",
+        "sha256": "14344bc17757065425e2b4925357bce4232d2a3abfca6041fc47b51f6546f671",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/sow/pickup/mancala_pickup.ogg",
+        "derived_sha256": "478a3262e98bc569d48dd092739f3db79502659e86640dee5ed54b0507a5b40a",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.sow.last",
+        "audition_number": 30,
+        "file": "resource-pack/originals/shared/sounds/approved/mancala_last_seed.wav",
+        "sha256": "5049000f9f838549c654872b733a0e2e16f2e379e59df586f9971d5815458e72",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/sow/last/mancala_last_seed.ogg",
+        "derived_sha256": "10aedbae84be8190032739745f2080a111616e67ec5d2c77be99f461bf1fc127",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "peg.remove",
+        "audition_number": 31,
+        "file": "resource-pack/originals/shared/sounds/approved/peg_remove.wav",
+        "sha256": "b14458224dcd7e35ed6755a8836d70b95de047d1b02977ce811fa135f4c9dcc7",
+        "derived_file": "resource-pack/assets/3dgames/sounds/peg/remove/peg_remove.ogg",
+        "derived_sha256": "0a333d138b5e5187e419b7d0f1f89f6d556655bcdb2655133a487746e32e3231",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "cards.align",
+        "audition_number": 37,
+        "file": "resource-pack/originals/shared/sounds/approved/cards_align.wav",
+        "sha256": "c4ba325779b175efd794c7dee8ba13f9db0d993c736bdaa74ab2704459d86b6b",
+        "derived_file": "resource-pack/assets/3dgames/sounds/cards/align/cards_align.ogg",
+        "derived_sha256": "75bce00ac2ffcc41abe01aa7b48b684667df1475a4bf6f8a59ac8c240b7dedab",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "cards.collect",
+        "audition_number": 38,
+        "file": "resource-pack/originals/shared/sounds/approved/cards_collect.wav",
+        "sha256": "0596a1276e174f87bb5e0551c0b7b243fcbcce568eb5b941f73593d8bc9e07ab",
+        "derived_file": "resource-pack/assets/3dgames/sounds/cards/collect/cards_collect.ogg",
+        "derived_sha256": "0465dc69db13e61aa18fdec6bef487b4d9cdfdfae12087689a575de8af5f0758",
+        "method": "Approved layered foley composition; mono dry master",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.glass",
+        "file": "resource-pack/originals/shared/sounds/approved/board_glass_1.wav",
+        "sha256": "15536d3afcaa5d62fc3f064716a2b1100dd737c93b8563aaf0c6dd618a9b07c1",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/glass/contact_1.ogg",
+        "derived_sha256": "d58257054f5e9d7b77e8df7fb34598103b52f15a8d5c95008b78fb4cc536d3df",
+        "method": "Single collision atom from approved audition",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.glass",
+        "file": "resource-pack/originals/shared/sounds/approved/board_glass_2.wav",
+        "sha256": "14d4af32ec3d2637d09bad32692b2f3bd219b03f29fb8379f3162fed9e18b89e",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/glass/contact_2.ogg",
+        "derived_sha256": "73f8cf1d3dec45de80ad3b2e0faca7407f36a6794d9e3edbf23a2a05b9b061c6",
+        "method": "Single collision atom from approved audition",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "board.glass",
+        "file": "resource-pack/originals/shared/sounds/approved/board_glass_3.wav",
+        "sha256": "1f893b0fa9f66f74655984c0532c7c9bf17b7a45915f28ce12bf57a0ca25e697",
+        "derived_file": "resource-pack/assets/3dgames/sounds/board/glass/contact_3.ogg",
+        "derived_sha256": "823369279237beecefa1f2947d33113226c991bd452b24cac614ff435a8fac5b",
+        "method": "Single collision atom from approved audition",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.contact",
+        "file": "resource-pack/originals/shared/sounds/approved/dice_contact_1.wav",
+        "sha256": "831c9e775f4bf7446963073704b9a1066d9b5161d0da54168cf3297c10b5271d",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/contact/approved_contact_1.ogg",
+        "derived_sha256": "cd805977ecf213badcf379337e6902c1a590147c2982d2c1fc1b981638fe9766",
+        "method": "Short collision excerpt from approved die-roll recording",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.contact",
+        "file": "resource-pack/originals/shared/sounds/approved/dice_contact_2.wav",
+        "sha256": "8b9f35185ba4fc5133703dc46caf0ffb5690a9b67f66b006c9354d2c45eccc73",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/contact/approved_contact_2.ogg",
+        "derived_sha256": "d81fe18124cd20fbbc49eeb2f306e9ce1d7ad98c97c954386f9d66f9dd9cdae6",
+        "method": "Short collision excerpt from approved die-roll recording",
+        "license": "Kenney source recordings: CC0-1.0"
+      },
+      {
+        "event": "dice.contact",
+        "file": "resource-pack/originals/shared/sounds/approved/dice_contact_3.wav",
+        "sha256": "8ad569085a6d34a34b08107add100fb4dc1a4829b834eb154c06d91dbbd4d013",
+        "derived_file": "resource-pack/assets/3dgames/sounds/dice/contact/approved_contact_3.ogg",
+        "derived_sha256": "5cb09c2a3d44627eaef3123b463e08391f74d8b02b1416f655a3a6fcb51dbaef",
+        "method": "Short collision excerpt from approved die-roll recording",
+        "license": "Kenney source recordings: CC0-1.0"
+      }
+    ],
+    "source_recordings": {
+      "impact/impactWood_light_000.ogg": {
+        "sha256": "eb45e35b4bed784d3f120de4afec4b0d6ac09d9e143cce8cfcb7d739e1b1f3c3",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactWood_light_000.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactWood_light_001.ogg": {
+        "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactWood_light_001.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactWood_light_002.ogg": {
+        "sha256": "b183cf7a5bd783817e0e4b82af34ac6658fa1927049089dadc8b15c2ecc771dc",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactWood_light_002.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactPlate_light_000.ogg": {
+        "sha256": "6e797cf8a5bfc52d7ed5eb47c227974c1cf2a674954fec5b539cea7d62c7282c",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactPlate_light_000.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactPlate_light_002.ogg": {
+        "sha256": "8ac5869ea434cf0d364872774efe70b2d666a4f02ba35ddfc1e051d336721be8",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactPlate_light_002.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactPlate_light_003.ogg": {
+        "sha256": "dbfb7c1d002576696df3e9a43d6639ee3f342068398b5e7b55bc2389d20508a9",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactPlate_light_003.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-collide-1.ogg": {
+        "sha256": "f41b3d106360fc68ebc061a211d4265b4cb5fa1fbe86e4d57d3673510e2c3784",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-collide-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-collide-2.ogg": {
+        "sha256": "2a10c5ff4b2fbaa55a317fc258ddce3fec85bd26db2d3c2ad298b3b33ce23bc6",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-collide-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-collide-3.ogg": {
+        "sha256": "1c5e885f72b64c38fff7ef05579e49310e7acf026cf123ffb65fffb57fb06e1c",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-collide-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-collide-4.ogg": {
+        "sha256": "1ffa34af64adc62fce583c5aa9a3c98287b1673ef191576a5571f1ffd39529dd",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-collide-4.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactWood_light_003.ogg": {
+        "sha256": "cdfbe8af2fe7ff9ee28f337a0a989deee0f327620da456c8413644880e9d0004",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactWood_light_003.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactWood_light_004.ogg": {
+        "sha256": "e10009f67ddaeb3a59a3e1129cfc1615d84ba60ab578eae07e7092ac223f099c",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactWood_light_004.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chip-lay-1.ogg": {
+        "sha256": "4b2111252ccb64eed67f171e061053849cfbb29873536c03948646f244a3905c",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chip-lay-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chip-lay-2.ogg": {
+        "sha256": "8ca8b2d450741c04ed7b4ba51ed3f73c2400c8b3dbe83b974be4fe4774a76712",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chip-lay-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chip-lay-3.ogg": {
+        "sha256": "bf24ebb417b6279568800dffdb0205d3ec8854c7efe179e8964755a6341727aa",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chip-lay-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/click_001.ogg": {
+        "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/click_001.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/click_002.ogg": {
+        "sha256": "adcd1f4adc35f1b41bc1b5bbefeff7aa44f2f3f0d96d3199b544140c7c1e761c",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/click_002.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/click_005.ogg": {
+        "sha256": "a3ee7ebb036bc3cdc218ae52bb27548c4f49bcf07505274f8b61b1af8236acc2",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/click_005.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactWood_medium_003.ogg": {
+        "sha256": "635c37cfcd854b187d643d450ff0397798dcc29ae94da32192b814fae6bd854c",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactWood_medium_003.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/dice-shake-2.ogg": {
+        "sha256": "47e8e2cb0adb95bcd7348b58db8dc2bbfe3c553e50a4e9ef007e67891ed51ca2",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/dice-shake-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/die-throw-2.ogg": {
+        "sha256": "a2702cfe14d24aab302483a1499daa88474a4af4acd794b58d97f4af16333b3d",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/die-throw-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/dice-throw-3.ogg": {
+        "sha256": "09c13d35a9a30bfce31a5e9bca94adc5be189ddecd0b4500237d54c7fd05227c",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/dice-throw-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-slide-1.ogg": {
+        "sha256": "006cf9822d15d7063f8899e56041f41646df30adb6fbd8b974ee5d5420012690",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-slide-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-slide-3.ogg": {
+        "sha256": "af2ab62656cb3df73316ce5771b8ee1111a840962b21607e3202151e7413c52c",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-slide-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-slide-5.ogg": {
+        "sha256": "8638ab0c17f029aded0e27a4f9b9bb9f8c621b19a6e9975e855cb40ea63e2201",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-slide-5.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-place-1.ogg": {
+        "sha256": "d8f26c33a665dcbdcc6f632f6050bc9dd548feb0d4942d4547615926d3926810",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-place-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-place-2.ogg": {
+        "sha256": "903d5050718595e87864dd755643b476ab1a5533080dcc2dddc72570d33ba9f8",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-place-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-place-4.ogg": {
+        "sha256": "18e3ba713b7259605fd27cdc048085ed56cf86b32403f070b6cb125019f77183",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-place-4.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-fan-1.ogg": {
+        "sha256": "7a9758ccad8899baef1b9f60b4064e4baa724a548293832fdaea07e6e07e638d",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-fan-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-shuffle.ogg": {
+        "sha256": "96c84883a30845ede723a4cf2e8369e9837e7dd4e0d4eb0212b0a7ed21b0f544",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-shuffle.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-shove-2.ogg": {
+        "sha256": "8e95c1d3ae94b5b91bc663432ad7c3bf4e03a541c22ec10fa51c65fe0e29054b",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-shove-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "impact/impactMetal_light_001.ogg": {
+        "sha256": "fba69c467ddd85da7b1d82e259f936b876d9ba6a3d6f1b24bdd10468e46bfe08",
+        "archive_sha256": "029d734af1582474edf3a694d1b0cebc97c1c152f2f39fa34d4c2bafc5de77f8",
+        "archive_member": "Audio/impactMetal_light_001.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-stack-1.ogg": {
+        "sha256": "12bf175b9afcea112175b241ad3336c6244ac5fdcdff8b5942ecc03f2225e0c4",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-stack-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-stack-3.ogg": {
+        "sha256": "48cc0f01e2b62be7677f2e8c02177906cab80e96fa8176fa05b3ced35bc2a9c2",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-stack-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-stack-5.ogg": {
+        "sha256": "42dd800e3e24bbd07d3ebfc86c44b6500d376641e30270dc363d95a73e90b56e",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-stack-5.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-handle-1.ogg": {
+        "sha256": "a2c495237fb0dc0dc96ccc2c9840572edd226e6459398ecb631c6c9f9e5408f0",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-handle-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-handle-2.ogg": {
+        "sha256": "099b6d7d3a71e7d22171a93d124e7366e326d32eb85d718ba29abded8a49c329",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-handle-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/scratch_004.ogg": {
+        "sha256": "26009c67ef90ee7a5a2bc458ef9e7f5a9da83da9397a830cff9e4a1813914687",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/scratch_004.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-handle-5.ogg": {
+        "sha256": "589753ea21b1955626e82975be8979f42140f5b0645a8c33c2d1f7e33fba68cb",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-handle-5.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-handle-6.ogg": {
+        "sha256": "527d4d3de55cc261dc476329b71a750c296f3ad633ac50318d913976bb89857c",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-handle-6.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-handle-4.ogg": {
+        "sha256": "0d171ea00224709cbe31ef95a111eabaf1382606a4836c5717043b339cbed8e9",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-handle-4.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/switch_004.ogg": {
+        "sha256": "541c19cc1ab712a9efc5765df602e7d0da09d9cafdd297ce1e19b092289fd62f",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/switch_004.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/tick_004.ogg": {
+        "sha256": "0253d5f7d8d2afbbc370eac2a4539bb844239f0c98343e516d376b137c06d27c",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/tick_004.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/dice-grab-2.ogg": {
+        "sha256": "4eb4940d1e71aa3f6ac5f865b6b47748a492adf6a83d622c8efe6284dbebbd2c",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/dice-grab-2.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-slide-8.ogg": {
+        "sha256": "95d9aa26f8c63af9934f27a8e3b7e9b583f177640f0bbd6982f12dba52b9ae6b",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-slide-8.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/die-throw-4.ogg": {
+        "sha256": "6253cabcb10c4152548cbc9d3ea87c1bf1bd484f0bd8d6b73c542e690509c0fd",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/die-throw-4.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-slide-7.ogg": {
+        "sha256": "bda2040194f43484d03ee3c65ed6fff57251882ea7227abce4214bfa30bf2705",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-slide-7.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-shove-1.ogg": {
+        "sha256": "1ea667aa6795d5f14239192116ebcbd8f3f47eb1c7faaf2ec56844b9067b8b06",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-shove-1.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-shove-4.ogg": {
+        "sha256": "0a1ad3a2f16bd2ed73349e6342426ca7a59a6e26b7e26e36d51d51c2c2349d6f",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-shove-4.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/card-shove-3.ogg": {
+        "sha256": "399520d483a1466fcaa850b9c407b4edbd5c7f0cbdf17e84dea12e9636326d0d",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/card-shove-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "casino/chips-handle-3.ogg": {
+        "sha256": "7c5a86e27b2bef839ae096dd655506cf46a82494bd01cc28f51bed6ab26cc342",
+        "archive_sha256": "f36250766ac5bc378c13708ddf12a23a8e54a3251f8d482c7536e51b5dbafa18",
+        "archive_member": "Audio/chips-handle-3.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/switch_006.ogg": {
+        "sha256": "2676ddc4e341ee557b4d1dc8767ef8655540d66fb3ded6a1614080dbc4dc6f18",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/switch_006.ogg",
+        "license": "CC0-1.0"
+      },
+      "interface/close_002.ogg": {
+        "sha256": "bc4279d2bb2bf86592473eab6a8eab55e51b54a8619315000dbd780a83b102d8",
+        "archive_sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232",
+        "archive_member": "Audio/close_002.ogg",
+        "license": "CC0-1.0"
+      }
+    },
+    "notes": "Layered foley and authored arrangements. Single collision atoms are used for animated sowing and Plinko; full scene/roll demonstrations are not replayed at each contact. Original source recordings are CC0 by Kenney. No Nintendo recordings."
+  },
+  "mahjong_materials": {
+    "tablecloth": {
+      "file": "resource-pack/originals/tabletop/textures/mahjong/mahjong_table_cloth.svg",
+      "derived_file": "resource-pack/assets/3dgames/textures/item/tabletop/mahjong/mahjong_table_cloth.png",
+      "license": "GPL-3.0-or-later",
+      "author": "3DGames contributors",
+      "sha256": "f2d2de5bd76824474d1b18a77d52a809453c2bb7fd1498781a2707a177244766",
+      "derived_sha256": "0aca2bbafea0d84345be60efa7a16c498673dceefd09545cd65f05fdd789f200",
+      "description": "Original plain green felt with a chamfered outline."
+    },
+    "samples": [
+      {
+        "event": "mahjong.select",
+        "file": "resource-pack/originals/shared/sounds/board/piece_flip_1.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/select.ogg",
+        "sha256": "a2c495237fb0dc0dc96ccc2c9840572edd226e6459398ecb631c6c9f9e5408f0",
+        "url": "https://kenney.nl/assets/casino-audio",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.countdown",
+        "file": "resource-pack/originals/shared/sounds/interface/table_select.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/countdown.ogg",
+        "sha256": "aec0c31ea934a35936ae0d2ab8fac8123c93aa5647f935853a58dbaf90278b7a",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.discard",
+        "file": "resource-pack/originals/shared/sounds/board/stone_place_1.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/discard.ogg",
+        "sha256": "4b2111252ccb64eed67f171e061053849cfbb29873536c03948646f244a3905c",
+        "url": "https://kenney.nl/assets/casino-audio",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.meld",
+        "file": "resource-pack/originals/shared/sounds/board/wood_place_2.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/meld.ogg",
+        "sha256": "4b76bf3ccc8e60d19188f3165b778a7817786faa6887c55d9049bcbeef3b425f",
+        "url": "https://kenney.nl/assets/impact-sounds",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.kan",
+        "file": "resource-pack/originals/shared/sounds/board/wood_capture_1.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/kan.ogg",
+        "sha256": "1723a9fd25103ed41af06054814e84e65f4a772bac86ab2dc927da93d9592ff5",
+        "url": "https://kenney.nl/assets/impact-sounds",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.win",
+        "file": "resource-pack/originals/shared/sounds/interface/table_win.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/win.ogg",
+        "sha256": "568967a3d9f8a8f6af54ea01729c4882284308f2a27d78c07ffd7ee0d6951661",
+        "url": "https://kenney.nl/assets/interface-sounds",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.dora",
+        "file": "resource-pack/originals/shared/sounds/board/piece_flip_2.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/dora.ogg",
+        "sha256": "099b6d7d3a71e7d22171a93d124e7366e326d32eb85d718ba29abded8a49c329",
+        "url": "https://kenney.nl/assets/casino-audio",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.riichi",
+        "file": "resource-pack/originals/shared/sounds/chips/chip_bet_1.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/riichi.ogg",
+        "sha256": "12bf175b9afcea112175b241ad3336c6244ac5fdcdff8b5942ecc03f2225e0c4",
+        "url": "https://kenney.nl/assets/casino-audio",
+        "license": "CC0-1.0"
+      },
+      {
+        "event": "mahjong.draw",
+        "file": "resource-pack/originals/shared/sounds/board/piece_drop_1.ogg",
+        "derived_file": "resource-pack/assets/3dgames/sounds/mahjong/draw.ogg",
+        "sha256": "bf24ebb417b6279568800dffdb0205d3ec8854c7efe179e8964755a6341727aa",
+        "url": "https://kenney.nl/assets/casino-audio",
+        "license": "CC0-1.0"
+      }
+    ]
+  }
+}

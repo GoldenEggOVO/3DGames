@@ -1,0 +1,33 @@
+{
+  "blocks": [
+    {
+      "name": "body",
+      "position": [
+        0,
+        0.003,
+        0
+      ],
+      "size": [
+        0.24,
+        0.006,
+        0.018
+      ],
+      "material": "WHITE_CONCRETE"
+    },
+    {
+      "name": "red_dot",
+      "position": [
+        0,
+        0.008,
+        0
+      ],
+      "size": [
+        0.012,
+        0.002,
+        0.012
+      ],
+      "material": "RED_CONCRETE"
+    }
+  ],
+  "labels": []
+}

@@ -1,0 +1,34 @@
+language: en_US
+rendering:
+  # auto selects mixed with enabled CraftEngine, otherwise vanilla. Restart to apply.
+  # Optional overrides: vanilla, mixed, resource-pack.
+  mode: auto
+  resource-pack:
+    # craftengine: unified pack and its existing host. Optional: local, external.
+    source: craftengine
+    url: ''
+    local:
+      bind-address: '0.0.0.0'
+      port: 8137
+      # Optional public HTTP(S) base URL, e.g. https://games.example.org.
+      # Empty uses the hostname players connect to and the port above.
+      public-url: ''
+max-rooms: 12
+reconnect-seconds: 120
+idle-room-minutes: 30
+turn-seconds: 60
+economy:
+  # Optional Vault economy for tabletop games. Restart to apply changes.
+  enabled: false
+  entry-fee: 0.0
+  winner-reward: 0.0
+  # New rooms start at 0; hosts choose their room amount within these limits.
+  # Saved fixed-price rooms remain readable when player stakes are disabled.
+  stakes:
+    enabled: true
+    minimum: 1.0
+    maximum: 1000.0
+sounds:
+  enabled: true
+  # Multiplier for the quiet native tabletop cues, from 0.0 to 1.0.
+  volume: 1.0

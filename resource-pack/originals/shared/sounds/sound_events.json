@@ -1,0 +1,133 @@
+{
+  "board.wood": [
+    "physical/impact/impactWood_light_000.ogg",
+    "physical/impact/impactWood_light_001.ogg",
+    "physical/impact/impactWood_light_002.ogg"
+  ],
+  "board.stone": [
+    "physical/impact/impactPlate_light_000.ogg",
+    "physical/impact/impactPlate_light_002.ogg",
+    "physical/impact/impactPlate_light_003.ogg"
+  ],
+  "board.drop": [
+    "physical/casino/chips-stack-1.ogg",
+    "physical/casino/chips-stack-2.ogg",
+    "physical/casino/chips-stack-3.ogg"
+  ],
+  "board.flip": [
+    "physical/casino/chips-handle-3.ogg",
+    "physical/casino/chips-handle-4.ogg",
+    "physical/casino/chips-handle-5.ogg"
+  ],
+  "board.capture": [
+    "physical/impact/impactWood_medium_003.ogg",
+    "physical/impact/impactWood_medium_004.ogg"
+  ],
+  "dice.roll": [
+    "dice/dice_roll_1.ogg",
+    "dice/dice_roll_2.ogg",
+    "dice/dice_roll_3.ogg"
+  ],
+  "dice.single": [
+    "dice/single_die_roll_1.ogg",
+    "dice/single_die_roll_2.ogg",
+    "dice/single_die_roll_3.ogg",
+    "dice/single_die_roll_4.ogg"
+  ],
+  "dice.hold": [
+    "dice/dice_hold_1.ogg",
+    "dice/dice_hold_2.ogg"
+  ],
+  "cards.draw": [
+    "cards/card_draw_1.ogg",
+    "cards/card_draw_2.ogg",
+    "cards/card_draw_3.ogg"
+  ],
+  "chips.bet": [
+    "chips/chip_bet_1.ogg",
+    "chips/chip_bet_2.ogg",
+    "chips/chip_bet_3.ogg"
+  ],
+  "table.select": [
+    "physical/interface/tick_001.ogg",
+    "physical/interface/tick_002.ogg",
+    "physical/interface/tick_004.ogg"
+  ],
+  "table.pass": [
+    "interface/table_pass.ogg"
+  ],
+  "table.confirm": [
+    "physical/interface/toggle_001.ogg",
+    "physical/interface/toggle_002.ogg",
+    "physical/interface/toggle_003.ogg"
+  ],
+  "table.start": [
+    "interface/table_start.ogg"
+  ],
+  "table.win": [
+    "interface/table_win.ogg"
+  ],
+  "table.draw": [
+    "interface/table_draw.ogg"
+  ],
+  "table.home": [
+    "interface/table_home.ogg"
+  ],
+  "dice.contact": [
+    "physical/casino/die-throw-1.ogg",
+    "physical/casino/die-throw-2.ogg",
+    "physical/casino/die-throw-3.ogg",
+    "physical/casino/die-throw-4.ogg"
+  ],
+  "board.reveal": [
+    "physical/interface/open_002.ogg",
+    "physical/interface/open_003.ogg"
+  ],
+  "board.slide": [
+    "physical/interface/scratch_001.ogg",
+    "physical/interface/scratch_002.ogg",
+    "physical/interface/scratch_003.ogg"
+  ],
+  "peg.feedback": [
+    "physical/interface/click_002.ogg",
+    "physical/interface/click_003.ogg",
+    "physical/interface/click_004.ogg"
+  ],
+  "board.glass": [
+    "physical/impact/impactGlass_light_000.ogg",
+    "physical/impact/impactGlass_light_001.ogg",
+    "physical/impact/impactGlass_light_002.ogg"
+  ],
+  "peg.place": [
+    "physical/casino/chip-lay-1.ogg",
+    "physical/casino/chip-lay-2.ogg",
+    "physical/casino/chip-lay-3.ogg"
+  ],
+  "mahjong.select": [
+    "board/piece_flip_1.ogg"
+  ],
+  "mahjong.countdown": [
+    "interface/table_select.ogg"
+  ],
+  "mahjong.discard": [
+    "board/stone_place_1.ogg"
+  ],
+  "mahjong.meld": [
+    "board/wood_place_2.ogg"
+  ],
+  "mahjong.kan": [
+    "board/wood_capture_1.ogg"
+  ],
+  "mahjong.win": [
+    "interface/table_win.ogg"
+  ],
+  "mahjong.dora": [
+    "board/piece_flip_2.ogg"
+  ],
+  "mahjong.riichi": [
+    "chips/chip_bet_1.ogg"
+  ],
+  "mahjong.draw": [
+    "board/piece_drop_1.ogg"
+  ]
+}

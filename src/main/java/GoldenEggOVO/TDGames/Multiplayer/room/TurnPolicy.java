@@ -1,0 +1,64 @@
+package GoldenEggOVO.TDGames.Multiplayer.room;
+
+import GoldenEggOVO.TDGames.Shared.session.GameSession;
+
+import GoldenEggOVO.TDGames.Shared.game.BoardGame;
+import GoldenEggOVO.TDGames.Shared.game.ClassicGame;
+
+import GoldenEggOVO.TDGames.Multiplayer.bot.BoardBots;
+import GoldenEggOVO.TDGames.Shared.render.mahjong.MahjongAssist;
+import GoldenEggOVO.TDGames.Multiplayer.game.coloreight.ColorEightGame;
+import GoldenEggOVO.TDGames.Multiplayer.game.go.GoGame;
+import GoldenEggOVO.TDGames.Multiplayer.game.mahjong.MahjongGame;
+
+import java.util.Random;
+
+public final class TurnPolicy {
+    public static final long RIICHI_DISCARD_DELAY_MILLIS = 600;
+
+    static String choose(
+            BoardGame game, int seat, boolean bot, long elapsed, long timeout, Random random) {
+        return choose(game, seat, bot, elapsed, timeout, random, true);
+    }
+
+    static String choose(
+            BoardGame game,
+            int seat,
+            boolean bot,
+            long elapsed,
+            long timeout,
+            Random random,
+            boolean present) {
+        return choose(game, seat, bot, elapsed, timeout, random, present, null);
+    }
+
+    public static String choose(BoardGame game, int seat, boolean bot, long elapsed, long timeout,
+            Random random, boolean present, MahjongAssist assistance) {
+        if (game instanceof ClassicGame classic) {
+            if (classic.automaticAction() != null) return null;
+            if (elapsed < timeout) return null;
+            return bot ? classic.botAction(seat, random) : classic.timeoutAction(seat);
+        }
+        if (!bot && present && game instanceof MahjongGame mahjong && assistance != null) {
+            String choice = assistance.choose(mahjong, seat, elapsed);
+            if (choice != null) return choice;
+            if (assistance.enabled(MahjongAssist.Option.DRAW_DISCARD)
+                    && mahjong.legalActions(seat).stream().anyMatch(action -> action.equals("ron") || action.equals("tsumo")))
+                return null;
+        }
+        if (!bot && game instanceof MahjongGame mahjong && mahjong.riichiDeclared(seat)) {
+            var legal = game.legalActions(seat);
+            if (legal.contains("ron") || legal.contains("tsumo")) return null;
+            String discard = mahjong.riichiDrawDiscard(seat);
+            if (discard != null && legal.contains(discard))
+                return present && elapsed >= RIICHI_DISCARD_DELAY_MILLIS ? discard : null;
+        }
+        if (!bot && game instanceof GoGame go && go.scoring()) return null;
+        if (elapsed < timeout) return null;
+        return !bot && game instanceof ColorEightGame cards
+                ? cards.timeoutAction()
+                : BoardBots.choose(game, seat, random);
+    }
+
+    private TurnPolicy() {}
+}

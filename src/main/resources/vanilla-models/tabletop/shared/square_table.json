@@ -1,0 +1,179 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        -0.1074296875,
+        0.0
+      ],
+      "size": [
+        2.25,
+        0.165140625,
+        2.115
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        -0.99,
+        -0.580625,
+        -0.99
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        -0.99,
+        -0.580625,
+        0.99
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_3",
+      "position": [
+        0.99,
+        -0.580625,
+        -0.99
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_4",
+      "position": [
+        0.99,
+        -0.580625,
+        0.99
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_0__bevel_end_-1",
+      "position": [
+        0.0,
+        -0.1074296875,
+        -1.09125
+      ],
+      "size": [
+        2.115,
+        0.165140625,
+        0.0675
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_0__bevel_end_1",
+      "position": [
+        0.0,
+        -0.1074296875,
+        1.09125
+      ],
+      "size": [
+        2.115,
+        0.165140625,
+        0.0675
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_0__bevel_corner_-1_-1",
+      "position": [
+        -1.0575,
+        -0.1074296875,
+        -1.0575
+      ],
+      "size": [
+        0.09545941546,
+        0.165590625,
+        0.09545941546
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "part_0__bevel_corner_-1_1",
+      "position": [
+        -1.0575,
+        -0.1074296875,
+        1.0575
+      ],
+      "size": [
+        0.09545941546,
+        0.165590625,
+        0.09545941546
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "part_0__bevel_corner_1_-1",
+      "position": [
+        1.0575,
+        -0.1074296875,
+        -1.0575
+      ],
+      "size": [
+        0.09545941546,
+        0.165590625,
+        0.09545941546
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "part_0__bevel_corner_1_1",
+      "position": [
+        1.0575,
+        -0.1074296875,
+        1.0575
+      ],
+      "size": [
+        0.09545941546,
+        0.165590625,
+        0.09545941546
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

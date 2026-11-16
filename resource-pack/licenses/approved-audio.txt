@@ -1,0 +1,9 @@
+Immersive tabletop foley
+
+Input recordings: Kenney Casino Audio, Impact Sounds and Interface Sounds, CC0-1.0.
+Authored layering, envelopes, short room-free game masters and result-note arrangements are described in sources.json, approved_audio.
+Wood, chip and ceramic contact recordings are used as foley substitutes. No claim that every named real-world object was recorded directly.
+Original source files and approved dry masters are retained in originals/shared/sounds.
+https://kenney.nl/assets/casino-audio
+https://kenney.nl/assets/impact-sounds
+https://kenney.nl/assets/interface-sounds

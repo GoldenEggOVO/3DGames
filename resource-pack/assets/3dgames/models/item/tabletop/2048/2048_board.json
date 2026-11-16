@@ -1,0 +1,2105 @@
+{
+  "gui_light": "front",
+  "ambientocclusion": false,
+  "textures": {
+    "surface": "3dgames:item/tabletop/2048/2048_board_top",
+    "future_chassis": "3dgames:item/shared/materials/future_chassis",
+    "future_shell": "3dgames:item/shared/materials/future_shell",
+    "board_slot": "3dgames:item/shared/materials/board_2048_slot"
+  },
+  "elements": [
+    {
+      "name": "wood_base",
+      "from": [
+        -1.0,
+        6.88,
+        -1.26
+      ],
+      "to": [
+        17.0,
+        7.48,
+        17.26
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_-1_-1",
+      "from": [
+        -0.42,
+        -0.25,
+        -1.22
+      ],
+      "to": [
+        0.74,
+        6.88,
+        -0.06
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_-1_1",
+      "from": [
+        -0.42,
+        -0.25,
+        16.06
+      ],
+      "to": [
+        0.74,
+        6.88,
+        17.22
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_1_-1",
+      "from": [
+        15.26,
+        -0.25,
+        -1.22
+      ],
+      "to": [
+        16.42,
+        6.88,
+        -0.06
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_1_1",
+      "from": [
+        15.26,
+        -0.25,
+        16.06
+      ],
+      "to": [
+        16.42,
+        6.88,
+        17.22
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "rim_front_-1",
+      "from": [
+        -0.46,
+        7.48,
+        -1.8
+      ],
+      "to": [
+        16.46,
+        8.096,
+        -1.08
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_side_-1",
+      "from": [
+        -1.0,
+        7.48,
+        -1.26
+      ],
+      "to": [
+        -0.28,
+        8.0978,
+        17.26
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_front_1",
+      "from": [
+        -0.46,
+        7.48,
+        17.08
+      ],
+      "to": [
+        16.46,
+        8.096,
+        17.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_side_1",
+      "from": [
+        16.28,
+        7.48,
+        -1.26
+      ],
+      "to": [
+        17.0,
+        8.0978,
+        17.26
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "inlay_0",
+      "from": [
+        -0.28,
+        7.48,
+        -1.08
+      ],
+      "to": [
+        16.28,
+        8.064,
+        17.08
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.6400000000000006,
+            0.5877551020408172,
+            15.36,
+            15.412244897959184
+          ],
+          "texture": "#surface"
+        }
+      }
+    },
+    {
+      "name": "socket_0,0",
+      "from": [
+        0.98,
+        8.072,
+        0.98
+      ],
+      "to": [
+        4.22,
+        8.08,
+        4.22
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_1,0",
+      "from": [
+        4.58,
+        8.072,
+        0.98
+      ],
+      "to": [
+        7.82,
+        8.08,
+        4.22
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_2,0",
+      "from": [
+        8.18,
+        8.072,
+        0.98
+      ],
+      "to": [
+        11.42,
+        8.08,
+        4.22
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_3,0",
+      "from": [
+        11.78,
+        8.072,
+        0.98
+      ],
+      "to": [
+        15.02,
+        8.08,
+        4.22
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_0,1",
+      "from": [
+        0.98,
+        8.072,
+        4.58
+      ],
+      "to": [
+        4.22,
+        8.08,
+        7.82
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_1,1",
+      "from": [
+        4.58,
+        8.072,
+        4.58
+      ],
+      "to": [
+        7.82,
+        8.08,
+        7.82
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_2,1",
+      "from": [
+        8.18,
+        8.072,
+        4.58
+      ],
+      "to": [
+        11.42,
+        8.08,
+        7.82
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_3,1",
+      "from": [
+        11.78,
+        8.072,
+        4.58
+      ],
+      "to": [
+        15.02,
+        8.08,
+        7.82
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_0,2",
+      "from": [
+        0.98,
+        8.072,
+        8.18
+      ],
+      "to": [
+        4.22,
+        8.08,
+        11.42
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_1,2",
+      "from": [
+        4.58,
+        8.072,
+        8.18
+      ],
+      "to": [
+        7.82,
+        8.08,
+        11.42
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_2,2",
+      "from": [
+        8.18,
+        8.072,
+        8.18
+      ],
+      "to": [
+        11.42,
+        8.08,
+        11.42
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_3,2",
+      "from": [
+        11.78,
+        8.072,
+        8.18
+      ],
+      "to": [
+        15.02,
+        8.08,
+        11.42
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_0,3",
+      "from": [
+        0.98,
+        8.072,
+        11.78
+      ],
+      "to": [
+        4.22,
+        8.08,
+        15.02
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_1,3",
+      "from": [
+        4.58,
+        8.072,
+        11.78
+      ],
+      "to": [
+        7.82,
+        8.08,
+        15.02
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_2,3",
+      "from": [
+        8.18,
+        8.072,
+        11.78
+      ],
+      "to": [
+        11.42,
+        8.08,
+        15.02
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "socket_3,3",
+      "from": [
+        11.78,
+        8.072,
+        11.78
+      ],
+      "to": [
+        15.02,
+        8.08,
+        15.02
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#board_slot"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "from": [
+        -0.46,
+        6.88,
+        -1.8
+      ],
+      "to": [
+        16.46,
+        7.48,
+        -1.26
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "from": [
+        -0.46,
+        6.88,
+        17.26
+      ],
+      "to": [
+        16.46,
+        7.48,
+        17.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "from": [
+        -0.84183766184,
+        6.8782,
+        -1.64183766184
+      ],
+      "to": [
+        -0.07816233816,
+        7.4782,
+        -0.87816233816
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -0.46,
+          7.1782,
+          -1.26
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "from": [
+        -0.84183766184,
+        6.8782,
+        16.87816233816
+      ],
+      "to": [
+        -0.07816233816,
+        7.4782,
+        17.64183766184
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -0.46,
+          7.1782,
+          17.26
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "from": [
+        16.07816233816,
+        6.8782,
+        -1.64183766184
+      ],
+      "to": [
+        16.84183766184,
+        7.4782,
+        -0.87816233816
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          16.46,
+          7.1782,
+          -1.26
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "from": [
+        16.07816233816,
+        6.8782,
+        16.87816233816
+      ],
+      "to": [
+        16.84183766184,
+        7.4782,
+        17.64183766184
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          16.46,
+          7.1782,
+          17.26
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "from": [
+        -0.88683766184,
+        7.4782,
+        -1.623198051532
+      ],
+      "to": [
+        -0.12316233816,
+        8.0996,
+        -0.986801948468
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -0.505,
+          7.7889,
+          -1.305
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "from": [
+        -0.88683766184,
+        7.4782,
+        16.986801948468
+      ],
+      "to": [
+        -0.12316233816,
+        8.0996,
+        17.623198051532
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -0.505,
+          7.7889,
+          17.305
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "from": [
+        16.12316233816,
+        7.4782,
+        -1.623198051532
+      ],
+      "to": [
+        16.88683766184,
+        8.0996,
+        -0.986801948468
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          16.505,
+          7.7889,
+          -1.305
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "from": [
+        16.12316233816,
+        7.4782,
+        16.986801948468
+      ],
+      "to": [
+        16.88683766184,
+        8.0996,
+        17.623198051532
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          16.505,
+          7.7889,
+          17.305
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    }
+  }
+}

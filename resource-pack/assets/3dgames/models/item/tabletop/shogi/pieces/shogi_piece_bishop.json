@@ -1,0 +1,418 @@
+{
+  "gui_light": "front",
+  "ambientocclusion": false,
+  "textures": {
+    "art": "3dgames:item/tabletop/shogi/pieces/shogi_piece_bishop"
+  },
+  "elements": [
+    {
+      "name": "body_strip_0",
+      "from": [
+        7.04,
+        8,
+        4
+      ],
+      "to": [
+        8.96,
+        9.6,
+        5.28
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "down": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "west": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "east": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_strip_1",
+      "from": [
+        4.96,
+        8,
+        5.28
+      ],
+      "to": [
+        11.04,
+        9.6,
+        7.04
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "down": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "west": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "east": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_shoulder_1_left",
+      "from": [
+        4.96,
+        8,
+        5.28
+      ],
+      "to": [
+        7.04,
+        9.6,
+        5.28
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_shoulder_1_right",
+      "from": [
+        8.96,
+        8,
+        5.28
+      ],
+      "to": [
+        11.04,
+        9.6,
+        5.28
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_strip_2",
+      "from": [
+        4.48,
+        8,
+        7.04
+      ],
+      "to": [
+        11.52,
+        9.6,
+        9.6
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "down": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "west": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "east": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_shoulder_2_left",
+      "from": [
+        4.48,
+        8,
+        7.04
+      ],
+      "to": [
+        4.96,
+        9.6,
+        7.04
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_shoulder_2_right",
+      "from": [
+        11.04,
+        8,
+        7.04
+      ],
+      "to": [
+        11.52,
+        9.6,
+        7.04
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_strip_3",
+      "from": [
+        4,
+        8,
+        9.6
+      ],
+      "to": [
+        12,
+        9.6,
+        12
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "down": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "west": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "east": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        },
+        "south": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_shoulder_3_left",
+      "from": [
+        4,
+        8,
+        9.6
+      ],
+      "to": [
+        4.48,
+        9.6,
+        9.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "body_shoulder_3_right",
+      "from": [
+        11.52,
+        8,
+        9.6
+      ],
+      "to": [
+        12,
+        9.6,
+        9.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            13,
+            5.125,
+            13.125
+          ],
+          "texture": "#art"
+        }
+      }
+    },
+    {
+      "name": "face_art",
+      "from": [
+        4,
+        9.68,
+        4
+      ],
+      "to": [
+        12,
+        9.68,
+        12
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2,
+            1.375,
+            14,
+            15.125
+          ],
+          "texture": "#art"
+        }
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    }
+  }
+}

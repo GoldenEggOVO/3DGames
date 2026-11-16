@@ -1,0 +1,19 @@
+{
+  "blocks": [
+    {
+      "name": "body",
+      "position": [
+        0,
+        0.006,
+        0
+      ],
+      "size": [
+        0.094,
+        0.012,
+        0.146
+      ],
+      "material": "SMOOTH_QUARTZ"
+    }
+  ],
+  "labels": []
+}

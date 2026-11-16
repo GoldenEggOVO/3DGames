@@ -1,0 +1,51 @@
+package GoldenEggOVO.TDGames.Core.command;
+
+import GoldenEggOVO.TDGames.SessionTestSupport;
+
+import GoldenEggOVO.TDGames.Shared.session.GameSession;
+import GoldenEggOVO.TDGames.Multiplayer.game.connectfour.ConnectFourGame;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.UUID;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class CommandSuggestionsTest {
+    @Test
+    void newerGamesSuggestAllSupportedPlayerCounts() {
+        assertEquals(List.of("3"), players("doudizhu"));
+        assertEquals(List.of("2", "3", "4"), players("liars-bar"));
+        assertEquals(List.of("2", "3", "4"), players("yacht"));
+        assertEquals(List.of("2", "3", "4", "5", "6"), players("texas-holdem"));
+        assertTrue(players("unknown").isEmpty());
+    }
+
+    private static List<String> players(String game) {
+        return CommandSuggestions.complete(
+                new String[] {"create", game, ""}, List.of(), null, false, true);
+    }
+
+    @Test void rootSuggestionsHideOnlyDuplicateNamespacedCommand() {
+        var commands = new java.util.LinkedHashSet<>(List.of("3dgames", "3dgames:3dgames", "other:command"));
+        CommandSuggestions.hideDuplicateRoot(commands);
+        assertEquals(List.of("3dgames", "other:command"), List.copyOf(commands));
+    }
+    @Test void suggestsOnlyContextualCommandsAndPrefixes() {
+        var room = new GameSession(UUID.randomUUID(), "connectfour", 2, 1L, 0);
+        UUID player = UUID.randomUUID();
+        room.join(player, "player");
+        assertEquals(List.of("status"), CommandSuggestions.complete(new String[]{"s"}, List.of(room), null, true, true));
+        assertEquals(List.of("create"), CommandSuggestions.complete(new String[]{"cr"}, List.of(room), null, false, true));
+        assertTrue(CommandSuggestions.complete(new String[]{""}, List.of(room), room, false, false).isEmpty());
+        assertEquals(List.of("connectfour"), CommandSuggestions.complete(new String[]{"create", "conn"}, List.of(room), null, false, true));
+        assertEquals(List.of("2", "3", "4", "6"), CommandSuggestions.complete(new String[]{"create", "checkers", ""}, List.of(room), null, false, true));
+        assertEquals(List.of(room.id.toString()), CommandSuggestions.complete(new String[]{"join", room.id.toString().substring(0, 4)}, List.of(room), null, false, true));
+        SessionTestSupport.set(room, "phase", GameSession.Phase.PLAYING);
+        assertFalse(CommandSuggestions.complete(new String[]{""}, List.of(room), room, false, true).contains("undo"));
+        SessionTestSupport.set(room, "board", new ConnectFourGame());
+        assertEquals(List.of("drop:3"), CommandSuggestions.complete(new String[]{"move", "drop:3"}, List.of(room), room, false, true));
+        assertTrue(CommandSuggestions.complete(new String[]{"join", ""}, List.of(room), null, false, true).isEmpty());
+    }
+}

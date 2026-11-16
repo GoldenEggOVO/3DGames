@@ -1,0 +1,70 @@
+package GoldenEggOVO.TDGames.Multiplayer.room;
+
+import GoldenEggOVO.TDGames.Shared.session.GameSession;
+import com.google.gson.JsonParser;
+
+import GoldenEggOVO.TDGames.Shared.game.GameOptions;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class RoomReplayVerifierTest {
+    @Test
+    void rejectsTheSameFutureSchemaAsRoomStorage() {
+        var source = JsonParser.parseString("{\"schema\":999,\"rooms\":[],\"returns\":{}}")
+                .getAsJsonObject();
+        assertThrows(IllegalArgumentException.class, () -> RoomReplayVerifier.verify(source));
+    }
+
+    @Test
+    void colorEightHistoryRequiresTheNewRulesVersion() {
+        var room =
+                JsonParser.parseString(
+                                """
+                                {"id":"cards","kind":"color-eight","capacity":5,"seed":1,"rulesVersion":1,
+                                "options":{},"history":[{"seat":0,"action":"pass"}]}
+                                """)
+                        .getAsJsonObject();
+        assertThrows(IllegalArgumentException.class, () -> GameSession.readOptions(room));
+        room.addProperty("rulesVersion", 2);
+        assertTrue(GameSession.readOptions(room).isEmpty());
+        var source = new com.google.gson.JsonObject();
+        var array = new com.google.gson.JsonArray();
+        array.add(room);
+        source.add("rooms", array);
+        assertDoesNotThrow(() -> RoomReplayVerifier.verify(source));
+        var options =
+                GoldenEggOVO.TDGames.Shared.game.GameOptions.validate("color-eight", GameSession.readOptions(room));
+        assertTrue(options.isEmpty());
+    }
+
+    @Test
+    void acceptsAValidConnectFourHistory() {
+        var source =
+                JsonParser.parseString(
+                                """
+                                {"rooms":[{"id":"a","kind":"connectfour","capacity":2,"seed":1,
+                                "history":[{"seat":0,"action":"drop:3"},{"seat":1,"action":"drop:4"}]}]}
+                                """)
+                        .getAsJsonObject();
+        assertDoesNotThrow(() -> RoomReplayVerifier.verify(source));
+    }
+
+    @Test
+    void identifiesTheFirstUnreplayableMove() {
+        var source =
+                JsonParser.parseString(
+                                """
+                                {"rooms":[{"id":"invalid-moves","kind":"connectfour","capacity":2,"seed":1003,
+                                "history":[{"seat":0,"action":"drop:0"},{"seat":1,"action":"drop:1"},
+                                {"seat":0,"action":"drop:0"},{"seat":0,"action":"drop:0"}]}]}
+                                """)
+                        .getAsJsonObject();
+        var error =
+                assertThrows(
+                        IllegalArgumentException.class, () -> RoomReplayVerifier.verify(source));
+        assertTrue(error.getMessage().contains("invalid-moves"));
+        assertTrue(error.getMessage().contains("event 3"));
+    }
+}

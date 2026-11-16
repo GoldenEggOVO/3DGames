@@ -1,0 +1,19 @@
+Shogi piece artwork
+
+Source: https://github.com/Kadagaden/shogi-pieces/tree/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood
+Pinned commit: 3a7643b8f6aa9910b360b61e062961e70213c6cc
+
+Kadagaden: wood piece artwork, CC BY 4.0
+https://creativecommons.org/licenses/by/4.0/
+
+Hari Seldon: two-kanji characters, CC BY-SA 3.0
+https://creativecommons.org/licenses/by-sa/3.0/
+Original character source: https://commons.wikimedia.org/wiki/Category:SVG_traditional_shogi_pieces
+
+The original SVG files are retained byte-for-byte in originals/tabletop/shogi/.
+Raster derivatives are direct transparent 128x128 renders of the original SVGs.
+The artwork and kanji have not been redrawn, recolored or retouched.
+The combined artwork and raster derivatives are distributed under CC BY-SA 3.0,
+with attribution to both creators and the additional CC BY 4.0 component notice.
+A stepped solid body, sampled from the original wood color, supports each image.
+Upstream attribution and the full upstream license are retained beside the SVGs.

@@ -1,0 +1,75 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        0.024,
+        0.0
+      ],
+      "size": [
+        0.13,
+        0.048,
+        0.085
+      ],
+      "material": "RED_CONCRETE"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        0.0,
+        0.07200000000000001,
+        0.0
+      ],
+      "size": [
+        0.21,
+        0.048,
+        0.085
+      ],
+      "material": "RED_CONCRETE"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        0.0,
+        0.12,
+        0.0
+      ],
+      "size": [
+        0.24,
+        0.048,
+        0.085
+      ],
+      "material": "RED_CONCRETE"
+    },
+    {
+      "name": "part_3",
+      "position": [
+        0.0,
+        0.168,
+        0.0
+      ],
+      "size": [
+        0.21,
+        0.048,
+        0.085
+      ],
+      "material": "RED_CONCRETE"
+    },
+    {
+      "name": "part_4",
+      "position": [
+        0.0,
+        0.216,
+        0.0
+      ],
+      "size": [
+        0.13,
+        0.048,
+        0.085
+      ],
+      "material": "RED_CONCRETE"
+    }
+  ],
+  "labels": []
+}

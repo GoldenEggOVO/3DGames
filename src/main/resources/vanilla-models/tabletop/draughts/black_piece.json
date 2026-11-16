@@ -1,0 +1,47 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        0.095,
+        0.0
+      ],
+      "size": [
+        0.5168,
+        0.19,
+        0.76
+      ],
+      "material": "POLISHED_BLACKSTONE"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        -0.3192,
+        0.095,
+        0.0
+      ],
+      "size": [
+        0.1216,
+        0.19,
+        0.5168
+      ],
+      "material": "POLISHED_BLACKSTONE"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        0.3192,
+        0.095,
+        0.0
+      ],
+      "size": [
+        0.1216,
+        0.19,
+        0.5168
+      ],
+      "material": "POLISHED_BLACKSTONE"
+    }
+  ],
+  "labels": []
+}

@@ -1,0 +1,33 @@
+{
+  "blocks": [
+    {
+      "name": "border",
+      "position": [
+        0,
+        0.112,
+        0
+      ],
+      "size": [
+        0.168,
+        0.224,
+        0.008
+      ],
+      "material": "SMOOTH_QUARTZ"
+    },
+    {
+      "name": "blue_back",
+      "position": [
+        0,
+        0.112,
+        -0.0055
+      ],
+      "size": [
+        0.156,
+        0.212,
+        0.002
+      ],
+      "material": "BLUE_CONCRETE"
+    }
+  ],
+  "labels": []
+}

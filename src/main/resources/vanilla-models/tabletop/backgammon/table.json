@@ -1,0 +1,2691 @@
+{
+  "blocks": [
+    {
+      "name": "wood_base",
+      "position": [
+        0,
+        -0.1025,
+        0
+      ],
+      "size": [
+        2.8,
+        0.075,
+        2.303
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_-1",
+      "position": [
+        -1.255,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_1",
+      "position": [
+        -1.255,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_-1",
+      "position": [
+        1.255,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_1",
+      "position": [
+        1.255,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "rim_front_-1",
+      "position": [
+        0.0,
+        -0.0265,
+        -1.18
+      ],
+      "size": [
+        2.653,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_-1",
+      "position": [
+        -1.355,
+        -0.0263775,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077245,
+        2.303
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_front_1",
+      "position": [
+        0.0,
+        -0.0265,
+        1.18
+      ],
+      "size": [
+        2.653,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_1",
+      "position": [
+        1.355,
+        -0.0263775,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077245,
+        2.303
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "inlay_0",
+      "position": [
+        0.0,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        2.62,
+        0.073,
+        2.27
+      ],
+      "material": "STRIPPED_BIRCH_WOOD"
+    },
+    {
+      "name": "center_bar",
+      "position": [
+        0,
+        0.011,
+        0
+      ],
+      "size": [
+        0.075,
+        0.004,
+        1.69
+      ],
+      "material": "DARK_OAK_PLANKS"
+    },
+    {
+      "name": "point_p1_0",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p1_1",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p1_2",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p1_3",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p1_4",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p1_5",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p1_6",
+      "position": [
+        -1.045,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p2_0",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p2_1",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p2_2",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p2_3",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p2_4",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p2_5",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p2_6",
+      "position": [
+        -0.865,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p3_0",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p3_1",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p3_2",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p3_3",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p3_4",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p3_5",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p3_6",
+      "position": [
+        -0.685,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p4_0",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p4_1",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p4_2",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p4_3",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p4_4",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p4_5",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p4_6",
+      "position": [
+        -0.505,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p5_0",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p5_1",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p5_2",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p5_3",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p5_4",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p5_5",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p5_6",
+      "position": [
+        -0.325,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p6_0",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p6_1",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p6_2",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p6_3",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p6_4",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p6_5",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p6_6",
+      "position": [
+        -0.145,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p7_0",
+      "position": [
+        0.145,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p7_1",
+      "position": [
+        0.145,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p7_2",
+      "position": [
+        0.145,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p7_3",
+      "position": [
+        0.145,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p7_4",
+      "position": [
+        0.145,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p7_5",
+      "position": [
+        0.145,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p7_6",
+      "position": [
+        0.145,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p8_0",
+      "position": [
+        0.325,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p8_1",
+      "position": [
+        0.325,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p8_2",
+      "position": [
+        0.325,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p8_3",
+      "position": [
+        0.325,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p8_4",
+      "position": [
+        0.325,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p8_5",
+      "position": [
+        0.325,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p8_6",
+      "position": [
+        0.325,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p9_0",
+      "position": [
+        0.505,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p9_1",
+      "position": [
+        0.505,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p9_2",
+      "position": [
+        0.505,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p9_3",
+      "position": [
+        0.505,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p9_4",
+      "position": [
+        0.505,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p9_5",
+      "position": [
+        0.505,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p9_6",
+      "position": [
+        0.505,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p10_0",
+      "position": [
+        0.685,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p10_1",
+      "position": [
+        0.685,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p10_2",
+      "position": [
+        0.685,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p10_3",
+      "position": [
+        0.685,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p10_4",
+      "position": [
+        0.685,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p10_5",
+      "position": [
+        0.685,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p10_6",
+      "position": [
+        0.685,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p11_0",
+      "position": [
+        0.865,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p11_1",
+      "position": [
+        0.865,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p11_2",
+      "position": [
+        0.865,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p11_3",
+      "position": [
+        0.865,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p11_4",
+      "position": [
+        0.865,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p11_5",
+      "position": [
+        0.865,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p11_6",
+      "position": [
+        0.865,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p12_0",
+      "position": [
+        1.045,
+        0.0095,
+        -0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p12_1",
+      "position": [
+        1.045,
+        0.0095,
+        -0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p12_2",
+      "position": [
+        1.045,
+        0.0095,
+        -0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p12_3",
+      "position": [
+        1.045,
+        0.0095,
+        -0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p12_4",
+      "position": [
+        1.045,
+        0.0095,
+        -0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p12_5",
+      "position": [
+        1.045,
+        0.0095,
+        -0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p12_6",
+      "position": [
+        1.045,
+        0.0095,
+        -0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p13_0",
+      "position": [
+        1.045,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p13_1",
+      "position": [
+        1.045,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p13_2",
+      "position": [
+        1.045,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p13_3",
+      "position": [
+        1.045,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p13_4",
+      "position": [
+        1.045,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p13_5",
+      "position": [
+        1.045,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p13_6",
+      "position": [
+        1.045,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p14_0",
+      "position": [
+        0.865,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p14_1",
+      "position": [
+        0.865,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p14_2",
+      "position": [
+        0.865,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p14_3",
+      "position": [
+        0.865,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p14_4",
+      "position": [
+        0.865,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p14_5",
+      "position": [
+        0.865,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p14_6",
+      "position": [
+        0.865,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p15_0",
+      "position": [
+        0.685,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p15_1",
+      "position": [
+        0.685,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p15_2",
+      "position": [
+        0.685,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p15_3",
+      "position": [
+        0.685,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p15_4",
+      "position": [
+        0.685,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p15_5",
+      "position": [
+        0.685,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p15_6",
+      "position": [
+        0.685,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p16_0",
+      "position": [
+        0.505,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p16_1",
+      "position": [
+        0.505,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p16_2",
+      "position": [
+        0.505,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p16_3",
+      "position": [
+        0.505,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p16_4",
+      "position": [
+        0.505,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p16_5",
+      "position": [
+        0.505,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p16_6",
+      "position": [
+        0.505,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p17_0",
+      "position": [
+        0.325,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p17_1",
+      "position": [
+        0.325,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p17_2",
+      "position": [
+        0.325,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p17_3",
+      "position": [
+        0.325,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p17_4",
+      "position": [
+        0.325,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p17_5",
+      "position": [
+        0.325,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p17_6",
+      "position": [
+        0.325,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p18_0",
+      "position": [
+        0.145,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p18_1",
+      "position": [
+        0.145,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p18_2",
+      "position": [
+        0.145,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p18_3",
+      "position": [
+        0.145,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p18_4",
+      "position": [
+        0.145,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p18_5",
+      "position": [
+        0.145,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p18_6",
+      "position": [
+        0.145,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p19_0",
+      "position": [
+        -0.145,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p19_1",
+      "position": [
+        -0.145,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p19_2",
+      "position": [
+        -0.145,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p19_3",
+      "position": [
+        -0.145,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p19_4",
+      "position": [
+        -0.145,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p19_5",
+      "position": [
+        -0.145,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p19_6",
+      "position": [
+        -0.145,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p20_0",
+      "position": [
+        -0.325,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p20_1",
+      "position": [
+        -0.325,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p20_2",
+      "position": [
+        -0.325,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p20_3",
+      "position": [
+        -0.325,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p20_4",
+      "position": [
+        -0.325,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p20_5",
+      "position": [
+        -0.325,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p20_6",
+      "position": [
+        -0.325,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p21_0",
+      "position": [
+        -0.505,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p21_1",
+      "position": [
+        -0.505,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p21_2",
+      "position": [
+        -0.505,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p21_3",
+      "position": [
+        -0.505,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p21_4",
+      "position": [
+        -0.505,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p21_5",
+      "position": [
+        -0.505,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p21_6",
+      "position": [
+        -0.505,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p22_0",
+      "position": [
+        -0.685,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p22_1",
+      "position": [
+        -0.685,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p22_2",
+      "position": [
+        -0.685,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p22_3",
+      "position": [
+        -0.685,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p22_4",
+      "position": [
+        -0.685,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p22_5",
+      "position": [
+        -0.685,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p22_6",
+      "position": [
+        -0.685,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p23_0",
+      "position": [
+        -0.865,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p23_1",
+      "position": [
+        -0.865,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p23_2",
+      "position": [
+        -0.865,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p23_3",
+      "position": [
+        -0.865,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p23_4",
+      "position": [
+        -0.865,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p23_5",
+      "position": [
+        -0.865,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p23_6",
+      "position": [
+        -0.865,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "RED_TERRACOTTA"
+    },
+    {
+      "name": "point_p24_0",
+      "position": [
+        -1.045,
+        0.0095,
+        0.7728571
+      ],
+      "size": [
+        0.16,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p24_1",
+      "position": [
+        -1.045,
+        0.0095,
+        0.6785714
+      ],
+      "size": [
+        0.1371429,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p24_2",
+      "position": [
+        -1.045,
+        0.0095,
+        0.5842857
+      ],
+      "size": [
+        0.1142857,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p24_3",
+      "position": [
+        -1.045,
+        0.0095,
+        0.49
+      ],
+      "size": [
+        0.0914286,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p24_4",
+      "position": [
+        -1.045,
+        0.0095,
+        0.3957143
+      ],
+      "size": [
+        0.0685714,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p24_5",
+      "position": [
+        -1.045,
+        0.0095,
+        0.3014286
+      ],
+      "size": [
+        0.0457143,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "point_p24_6",
+      "position": [
+        -1.045,
+        0.0095,
+        0.2071429
+      ],
+      "size": [
+        0.0228571,
+        0.001,
+        0.0942857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "position": [
+        0,
+        -0.1025,
+        -1.18825
+      ],
+      "size": [
+        2.653,
+        0.075,
+        0.0735
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "position": [
+        0,
+        -0.1025,
+        1.18825
+      ],
+      "size": [
+        2.653,
+        0.075,
+        0.0735
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "position": [
+        -1.3265,
+        -0.102745,
+        -1.1515
+      ],
+      "size": [
+        0.103944696834,
+        0.075,
+        0.103944696834
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "position": [
+        -1.3265,
+        -0.102745,
+        1.1515
+      ],
+      "size": [
+        0.103944696834,
+        0.075,
+        0.103944696834
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "position": [
+        1.3265,
+        -0.102745,
+        -1.1515
+      ],
+      "size": [
+        0.103944696834,
+        0.075,
+        0.103944696834
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "position": [
+        1.3265,
+        -0.102745,
+        1.1515
+      ],
+      "size": [
+        0.103944696834,
+        0.075,
+        0.103944696834
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.336625,
+        -0.0263775,
+        -1.161625
+      ],
+      "size": [
+        0.103944696834,
+        0.077735,
+        0.075306872196
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.336625,
+        -0.0263775,
+        1.161625
+      ],
+      "size": [
+        0.103944696834,
+        0.077735,
+        0.075306872196
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.336625,
+        -0.0263775,
+        -1.161625
+      ],
+      "size": [
+        0.103944696834,
+        0.077735,
+        0.075306872196
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.336625,
+        -0.0263775,
+        1.161625
+      ],
+      "size": [
+        0.103944696834,
+        0.077735,
+        0.075306872196
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

@@ -1,0 +1,829 @@
+{
+  "blocks": [
+    {
+      "name": "wood_base",
+      "position": [
+        0,
+        -0.1025,
+        0
+      ],
+      "size": [
+        2.25,
+        0.075,
+        2.315
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_-1",
+      "position": [
+        -0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_1",
+      "position": [
+        -0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_-1",
+      "position": [
+        0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_1",
+      "position": [
+        0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "rim_front_-1",
+      "position": [
+        0.0,
+        -0.0265,
+        -1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_-1",
+      "position": [
+        -1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_front_1",
+      "position": [
+        0.0,
+        -0.0265,
+        1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_1",
+      "position": [
+        1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "inlay_0",
+      "position": [
+        0.0,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        2.07,
+        0.073,
+        2.27
+      ],
+      "material": "STRIPPED_BIRCH_WOOD"
+    },
+    {
+      "name": "socket_m0",
+      "position": [
+        -0.75,
+        0.0095,
+        -0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m1",
+      "position": [
+        -0.45,
+        0.0095,
+        -0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m2",
+      "position": [
+        -0.15,
+        0.0095,
+        -0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m3",
+      "position": [
+        0.15,
+        0.0095,
+        -0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m4",
+      "position": [
+        0.45,
+        0.0095,
+        -0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m5",
+      "position": [
+        0.75,
+        0.0095,
+        -0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m6",
+      "position": [
+        -0.75,
+        0.0095,
+        -0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m7",
+      "position": [
+        -0.45,
+        0.0095,
+        -0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m8",
+      "position": [
+        -0.15,
+        0.0095,
+        -0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m9",
+      "position": [
+        0.15,
+        0.0095,
+        -0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m10",
+      "position": [
+        0.45,
+        0.0095,
+        -0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m11",
+      "position": [
+        0.75,
+        0.0095,
+        -0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m12",
+      "position": [
+        -0.75,
+        0.0095,
+        -0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m13",
+      "position": [
+        -0.45,
+        0.0095,
+        -0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m14",
+      "position": [
+        -0.15,
+        0.0095,
+        -0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m15",
+      "position": [
+        0.15,
+        0.0095,
+        -0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m16",
+      "position": [
+        0.45,
+        0.0095,
+        -0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m17",
+      "position": [
+        0.75,
+        0.0095,
+        -0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m18",
+      "position": [
+        -0.75,
+        0.0095,
+        0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m19",
+      "position": [
+        -0.45,
+        0.0095,
+        0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m20",
+      "position": [
+        -0.15,
+        0.0095,
+        0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m21",
+      "position": [
+        0.15,
+        0.0095,
+        0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m22",
+      "position": [
+        0.45,
+        0.0095,
+        0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m23",
+      "position": [
+        0.75,
+        0.0095,
+        0.15
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m24",
+      "position": [
+        -0.75,
+        0.0095,
+        0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m25",
+      "position": [
+        -0.45,
+        0.0095,
+        0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m26",
+      "position": [
+        -0.15,
+        0.0095,
+        0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m27",
+      "position": [
+        0.15,
+        0.0095,
+        0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m28",
+      "position": [
+        0.45,
+        0.0095,
+        0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m29",
+      "position": [
+        0.75,
+        0.0095,
+        0.45
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m30",
+      "position": [
+        -0.75,
+        0.0095,
+        0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m31",
+      "position": [
+        -0.45,
+        0.0095,
+        0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m32",
+      "position": [
+        -0.15,
+        0.0095,
+        0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m33",
+      "position": [
+        0.15,
+        0.0095,
+        0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m34",
+      "position": [
+        0.45,
+        0.0095,
+        0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "socket_m35",
+      "position": [
+        0.75,
+        0.0095,
+        0.75
+      ],
+      "size": [
+        0.27,
+        0.001,
+        0.27
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "position": [
+        0,
+        -0.1025,
+        -1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "position": [
+        0,
+        -0.1025,
+        1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "position": [
+        1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "position": [
+        1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

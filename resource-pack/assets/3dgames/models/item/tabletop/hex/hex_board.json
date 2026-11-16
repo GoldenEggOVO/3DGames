@@ -1,0 +1,1024 @@
+{
+  "gui_light": "front",
+  "ambientocclusion": false,
+  "textures": {
+    "surface": "3dgames:item/tabletop/hex/hex_board_top",
+    "future_chassis": "3dgames:item/shared/materials/future_chassis",
+    "future_shell": "3dgames:item/shared/materials/future_shell"
+  },
+  "elements": [
+    {
+      "name": "wood_base",
+      "from": [
+        -4.8,
+        6.88,
+        -1.212
+      ],
+      "to": [
+        20.8,
+        7.48,
+        17.212
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_-1_-1",
+      "from": [
+        -4.22,
+        -0.25,
+        -1.22
+      ],
+      "to": [
+        -3.06,
+        6.88,
+        -0.06
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_-1_1",
+      "from": [
+        -4.22,
+        -0.25,
+        16.06
+      ],
+      "to": [
+        -3.06,
+        6.88,
+        17.22
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_1_-1",
+      "from": [
+        19.06,
+        -0.25,
+        -1.22
+      ],
+      "to": [
+        20.22,
+        6.88,
+        -0.06
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "leg_1_1",
+      "from": [
+        19.06,
+        -0.25,
+        16.06
+      ],
+      "to": [
+        20.22,
+        6.88,
+        17.22
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "rim_front_-1",
+      "from": [
+        -4.212,
+        7.48,
+        -1.8
+      ],
+      "to": [
+        20.212,
+        8.096,
+        -1.08
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_side_-1",
+      "from": [
+        -4.8,
+        7.48,
+        -1.212
+      ],
+      "to": [
+        -4.08,
+        8.09796,
+        17.212
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_front_1",
+      "from": [
+        -4.212,
+        7.48,
+        17.08
+      ],
+      "to": [
+        20.212,
+        8.096,
+        17.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "rim_side_1",
+      "from": [
+        20.08,
+        7.48,
+        -1.212
+      ],
+      "to": [
+        20.8,
+        8.09796,
+        17.212
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      }
+    },
+    {
+      "name": "inlay_0",
+      "from": [
+        -4.08,
+        7.48,
+        -1.08
+      ],
+      "to": [
+        20.08,
+        8.064,
+        17.08
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.45,
+            0.5877551020408172,
+            15.55,
+            15.412244897959184
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "from": [
+        -4.212,
+        6.88,
+        -1.8
+      ],
+      "to": [
+        20.212,
+        7.48,
+        -1.212
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "from": [
+        -4.212,
+        6.88,
+        17.212
+      ],
+      "to": [
+        20.212,
+        7.48,
+        17.8
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "from": [
+        -4.627778787336,
+        6.87804,
+        -1.627778787336
+      ],
+      "to": [
+        -3.796221212664,
+        7.47804,
+        -0.796221212664
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.212,
+          7.17804,
+          -1.212
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "from": [
+        -4.627778787336,
+        6.87804,
+        16.796221212664
+      ],
+      "to": [
+        -3.796221212664,
+        7.47804,
+        17.627778787336
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.212,
+          7.17804,
+          17.212
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "from": [
+        19.796221212664,
+        6.87804,
+        -1.627778787336
+      ],
+      "to": [
+        20.627778787336,
+        7.47804,
+        -0.796221212664
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.212,
+          7.17804,
+          -1.212
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "from": [
+        19.796221212664,
+        6.87804,
+        16.796221212664
+      ],
+      "to": [
+        20.627778787336,
+        7.47804,
+        17.627778787336
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.212,
+          7.17804,
+          17.212
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "from": [
+        -4.708778787336,
+        7.47804,
+        -1.594227488784
+      ],
+      "to": [
+        -3.877221212664,
+        8.09992,
+        -0.991772511216
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.293,
+          7.78898,
+          -1.293
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "from": [
+        -4.708778787336,
+        7.47804,
+        16.991772511216
+      ],
+      "to": [
+        -3.877221212664,
+        8.09992,
+        17.594227488784
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          -4.293,
+          7.78898,
+          17.293
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "from": [
+        19.877221212664,
+        7.47804,
+        -1.594227488784
+      ],
+      "to": [
+        20.708778787336,
+        8.09992,
+        -0.991772511216
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.293,
+          7.78898,
+          -1.293
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "from": [
+        19.877221212664,
+        7.47804,
+        16.991772511216
+      ],
+      "to": [
+        20.708778787336,
+        8.09992,
+        17.594227488784
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "rotation": {
+        "origin": [
+          20.293,
+          7.78898,
+          17.293
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "name": "hex_board_face",
+      "from": [
+        -3.2,
+        8.072,
+        1.53367699
+      ],
+      "to": [
+        19.2,
+        8.08,
+        14.46632301
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#surface"
+        }
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        2,
+        2,
+        2
+      ]
+    }
+  }
+}

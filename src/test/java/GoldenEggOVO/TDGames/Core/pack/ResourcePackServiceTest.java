@@ -1,0 +1,504 @@
+package GoldenEggOVO.TDGames.Core.pack;
+
+import GoldenEggOVO.TDGames.SessionTestSupport;
+
+import GoldenEggOVO.TDGames.TDGamesPlugin;
+import GoldenEggOVO.TDGames.Core.menu.GameMenus;
+import GoldenEggOVO.TDGames.Core.text.Language;
+
+import org.bukkit.*;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerResourcePackStatusEvent.Status;
+import org.bukkit.inventory.ItemStack;
+import org.junit.jupiter.api.*;
+import org.mockbukkit.mockbukkit.MockBukkit;
+import org.junit.jupiter.api.io.TempDir;
+import GoldenEggOVO.TDGames.Shared.support.WorkspaceTempFactory;
+
+import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
+
+class ResourcePackServiceTest {
+    @TempDir(factory = WorkspaceTempFactory.class) java.nio.file.Path folder;
+    TDGamesPlugin plugin;
+    Player player;
+    YamlConfiguration config;
+    ResourcePackService pack;
+    boolean available = true;
+
+    @BeforeEach
+    void setup() throws Exception {
+        var server = MockBukkit.mock();
+        plugin = SessionTestSupport.plugin();
+        player = mock(Player.class);
+        when(player.getUniqueId()).thenReturn(UUID.randomUUID());
+        when(player.isOnline()).thenReturn(true);
+        var data = server.addPlayer().getPersistentDataContainer();
+        when(player.getPersistentDataContainer()).thenReturn(data);
+        config = new YamlConfiguration();
+        when(plugin.getConfig()).thenReturn(config);
+        config.set("rendering.mode", "mixed");
+        config.set("rendering.resource-pack.source", "external");
+        config.set("rendering.resource-pack.url", "https://example.org/tabletop.zip");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+    }
+
+    @AfterEach
+    void cleanup() {
+        if (pack != null) pack.close();
+        MockBukkit.unmock();
+    }
+
+    @Test
+    void terminalOwnedStatusRefreshesOpenMenuAndInvalidatesOldActions() throws Exception {
+        when(player.getWorld()).thenReturn(Bukkit.getWorlds().getFirst());
+        when(plugin.allowed(player)).thenReturn(true);
+        SessionTestSupport.module(plugin, "menus", new GameMenus(plugin));
+        var field = GameMenus.class.getDeclaredField("sessions");
+        field.setAccessible(true);
+        @SuppressWarnings("unchecked")
+        Map<UUID, GameMenus.Session> sessions =
+                (Map<UUID, GameMenus.Session>) field.get(plugin.menus());
+        for (Status terminal : List.of(Status.SUCCESSFULLY_LOADED, Status.FAILED_DOWNLOAD)) {
+            pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+            SessionTestSupport.module(plugin, "pack", pack);
+            pack.toggle(player);
+            UUID request = pack.requestId(player);
+            plugin.menus().settings(player);
+            var loading = sessions.get(player.getUniqueId());
+            pack.status(player, request, terminal);
+            var updated = sessions.get(player.getUniqueId());
+            assertNotEquals(
+                    loading.token(), updated.token(), "Terminal status must redraw an active menu");
+            assertEquals(pack.button(player), updated.buttons().stream().filter(b -> b.id().equals("resource-pack")).findFirst().orElseThrow().component());
+            plugin.menus().handle(player, "3dgames:" + loading.token() + " 0");
+            assertEquals(
+                    request, pack.requestId(player), "Old loading-menu action must be invalid");
+            plugin.menus().forget(player);
+            pack.status(player, request, terminal);
+            assertFalse(plugin.menus().active(player), "A closed menu must stay closed");
+        }
+    }
+
+    @Test
+    void toggleAppearsOnlyInMenuSettings() throws Exception {
+        when(player.getWorld()).thenReturn(Bukkit.getWorlds().getFirst());
+        when(plugin.allowed(player)).thenReturn(true); SessionTestSupport.module(plugin, "pack", pack); SessionTestSupport.module(plugin, "menus", new GameMenus(plugin));
+        var field = GameMenus.class.getDeclaredField("sessions"); field.setAccessible(true);
+        @SuppressWarnings("unchecked") Map<UUID, GameMenus.Session> sessions = (Map<UUID, GameMenus.Session>) field.get(plugin.menus());
+        plugin.menus().main(player);
+        assertFalse(sessions.get(player.getUniqueId()).buttons().stream().anyMatch(b -> b.id().equals("resource-pack")));
+        plugin.menus().settings(player);
+        assertEquals(1, sessions.get(player.getUniqueId()).buttons().stream().filter(b -> b.id().equals("resource-pack")).count());
+    }
+
+    @Test
+    void defaultAutoUsesMixedWithEnabledCraftEngine() {
+        config.set("rendering.mode", null);
+        MockBukkit.createMockPlugin("CraftEngine");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        assertTrue(pack.hasToggle());
+        assertEquals(ResourcePackService.Mode.MIXED, pack.mode);
+        pack.toggle(player);
+        assertNotNull(pack.requestId(player));
+        assertTrue(pack.canPlay(player, "mahjong"));
+    }
+
+    @Test
+    void autoFallsBackToVanillaWhenCraftEngineIsMissingOrDisabled() {
+        config.set("rendering.mode", "auto");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        assertFalse(pack.hasToggle());
+        assertEquals(ResourcePackService.Mode.VANILLA, pack.mode);
+        var engine = MockBukkit.createMockPlugin("CraftEngine");
+        Bukkit.getPluginManager().disablePlugin(engine);
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        pack.toggle(player);
+        assertNull(pack.requestId(player));
+        assertTrue(pack.canPlay(player, "mahjong"));
+    }
+
+    @Test
+    void explicitVanillaOverrideSurvivesEnabledCraftEngine() {
+        MockBukkit.createMockPlugin("CraftEngine");
+        config.set("rendering.mode", "vanilla");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        assertFalse(pack.hasToggle());
+        assertEquals(ResourcePackService.Mode.VANILLA, pack.mode);
+    }
+
+    @Test
+    void requestsUseBundledHashAndGeneratedIdentityWithoutConfigFields() {
+        config.set("rendering.resource-pack.sha1", null);
+        config.set("rendering.resource-pack.uuid", null);
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        assertNotNull(request);
+        verify(player)
+                .addResourcePack(
+                        eq(request),
+                        eq("https://example.org/tabletop.zip"),
+                        argThat(hash -> hash != null && hash.length == 20),
+                        anyString(),
+                        eq(false));
+    }
+
+    @Test
+    void defaultSourceDoesNotInferExternalHostingFromAnUnusedUrl() {
+        var defaults = new YamlConfiguration();
+        defaults.set("rendering.resource-pack.source", "craftengine");
+        config.setDefaults(defaults);
+        config.set("rendering.resource-pack.source", null);
+        when(plugin.getDataFolder()).thenReturn(folder.toFile());
+        when(plugin.getLogger()).thenReturn(java.util.logging.Logger.getLogger("DefaultSourceTest"));
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        pack.toggle(player);
+        verify(player, never()).addResourcePack(any(), eq("https://example.org/tabletop.zip"), any(), anyString(), eq(false));
+    }
+
+    @Test
+    void craftEngineSourceDoesNotStartTheStandaloneHostOrUseAnExternalUrl() throws Exception {
+        config.set("rendering.resource-pack.source", "craftengine");
+        when(plugin.getDataFolder()).thenReturn(folder.toFile());
+        when(plugin.getLogger()).thenReturn(java.util.logging.Logger.getLogger("UnifiedPackTest"));
+        pack = assertDoesNotThrow(() -> new ResourcePackService(plugin, () -> available,
+                id -> new ItemStack(Material.PAPER)));
+        pack.toggle(player);
+        verify(player, never()).addResourcePack(any(), eq("https://example.org/tabletop.zip"),
+                any(), anyString(), anyBoolean());
+        assertFalse(pack.packed(player));
+    }
+
+    @Test
+    void delayedJoinRequestDoesNotReplaceAPackStartedFromTheMenu() {
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        pack.request(player);
+        assertEquals(request, pack.requestId(player));
+        pack.status(player, request, Status.SUCCESSFULLY_LOADED);
+        pack.request(player);
+        assertTrue(pack.packed(player));
+        assertEquals(request, pack.requestId(player));
+        verify(player, times(1))
+                .addResourcePack(any(), anyString(), any(), anyString(), eq(false));
+        verify(player, never()).removeResourcePack(any());
+    }
+
+    @Test
+    void toggleColoursDistinguishEnableLoadingAndDisable() {
+        assertEquals(
+                net.kyori.adventure.text.format.NamedTextColor.GREEN, pack.button(player).color());
+        pack.toggle(player);
+        assertEquals(
+                net.kyori.adventure.text.format.NamedTextColor.AQUA, pack.button(player).color());
+        pack.status(player, pack.requestId(player), Status.SUCCESSFULLY_LOADED);
+        assertEquals(
+                net.kyori.adventure.text.format.NamedTextColor.GOLD, pack.button(player).color());
+    }
+
+    @Test
+    void onlySuccessfulOwnedPackLoadsModels() {
+        assertFalse(pack.packed(player));
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        assertNotNull(request);
+        assertFalse(pack.packed(player));
+        pack.status(player, UUID.randomUUID(), Status.SUCCESSFULLY_LOADED);
+        assertFalse(pack.packed(player));
+        pack.status(player, request, Status.ACCEPTED);
+        assertFalse(pack.packed(player));
+        pack.status(player, request, Status.SUCCESSFULLY_LOADED);
+        assertTrue(pack.packed(player));
+    }
+
+    @Test
+    void closingAndRetryingRejectsOldCallbacksAndOnlyRemovesOwnedPack() {
+        pack.toggle(player);
+        UUID first = pack.requestId(player);
+        pack.toggle(player);
+        verify(player).removeResourcePack(first);
+        verify(player, never()).removeResourcePacks();
+        pack.toggle(player);
+        UUID second = pack.requestId(player);
+        assertNotEquals(first, second);
+        pack.status(player, first, Status.SUCCESSFULLY_LOADED);
+        assertFalse(pack.packed(player));
+        pack.status(player, second, Status.SUCCESSFULLY_LOADED);
+        assertTrue(pack.packed(player));
+    }
+
+    @Test
+    void failedLoadFallsBackAndCanRetry() {
+        pack.toggle(player);
+        UUID first = pack.requestId(player);
+        pack.status(player, first, Status.FAILED_DOWNLOAD);
+        assertFalse(pack.packed(player));
+        assertTrue(pack.canPlay(player, "mahjong"));
+        pack.toggle(player);
+        assertNotEquals(first, pack.requestId(player));
+    }
+
+    @Test
+    void requiredPackKeepsItsSpecificTranslatedError() {
+        config.set("rendering.mode", "resource-pack");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        var error = assertThrows(IllegalArgumentException.class, () -> pack.require(player, "chess"));
+        assertEquals(Language.component("pack.required"), Language.error(error));
+        assertNotNull(pack.requestId(player));
+    }
+
+    @Test
+    void pureModesOmitToggleAndOnlyPurePackGatesSupportedGames() {
+        config.set("rendering.mode", "resource-pack");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        assertFalse(pack.hasToggle());
+        assertFalse(pack.canPlay(player, "mahjong"));
+        assertFalse(pack.canPlay(player, "color-eight"));
+        assertFalse(pack.canPlay(player, "chess"));
+        assertFalse(pack.canPlay(player, "connectfour"));
+        assertFalse(pack.canPlay(player, "yacht"));
+        pack.request(player);
+        pack.status(player, pack.requestId(player), Status.SUCCESSFULLY_LOADED);
+        assertTrue(pack.canPlay(player, "mahjong"));
+        assertTrue(pack.canPlay(player, "chess"));
+        config.set("rendering.mode", "vanilla");
+        pack = new ResourcePackService(plugin, () -> false, id -> null);
+        assertFalse(pack.hasToggle());
+        assertFalse(pack.packed(player));
+        assertTrue(pack.canPlay(player, "mahjong"));
+    }
+
+    @Test
+    void preferenceSurvivesServiceRecreationButLoadedStatusDoesNot() {
+        pack.toggle(player);
+        pack.status(player, pack.requestId(player), Status.SUCCESSFULLY_LOADED);
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        assertTrue(pack.preferred(player));
+        assertFalse(pack.packed(player));
+        pack.request(player);
+        assertNotNull(pack.requestId(player));
+    }
+
+    @Test
+    void missingCraftEngineAndInvalidUrlDoNotSendPack() {
+        available = false;
+        pack.toggle(player);
+        assertNull(pack.requestId(player));
+        assertFalse(pack.packed(player));
+        available = true;
+        config.set("rendering.resource-pack.url", "file:///tabletop.zip");
+        pack.request(player);
+        assertNull(pack.requestId(player));
+    }
+
+    private void localPack() {
+        serverPack("local");
+    }
+
+    private void serverPack(String source) {
+        config.set("rendering.resource-pack.source", source);
+        config.set("rendering.resource-pack.local.bind-address", "127.0.0.1");
+        config.set("rendering.resource-pack.local.port", 0);
+        config.set("rendering.resource-pack.local.public-url", "https://example.org");
+        when(plugin.getDataFolder()).thenReturn(folder.toFile());
+        when(plugin.getLogger()).thenReturn(java.util.logging.Logger.getLogger("LocalPackTest"));
+        when(plugin.getName()).thenReturn("3DGames");
+        when(plugin.isEnabled()).thenReturn(true);
+        var online = spy(new org.mockbukkit.mockbukkit.entity.PlayerMock(MockBukkit.getMock(), "PackPlayer"));
+        MockBukkit.getMock().addPlayer(online);
+        doNothing().when(online).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+        doNothing().when(online).removeResourcePack(any());
+        player = online;
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        SessionTestSupport.module(plugin, "pack", pack);
+    }
+
+    private CraftEngineResourcePack unifiedPack() throws Exception {
+        serverPack("craftengine");
+        var engine = mock(CraftEngineResourcePack.class);
+        when(engine.hash()).thenReturn("11".repeat(20));
+        var field = ResourcePackService.class.getDeclaredField("engine");
+        field.setAccessible(true);
+        field.set(pack, engine);
+        return engine;
+    }
+
+    @Test
+    void unifiedDownloadUsesOneReturnedUrlAndHashWithAnOwnedIdentity() throws Exception {
+        var engine = unifiedPack();
+        var download = new java.util.concurrent.CompletableFuture<CraftEngineResourcePack.Download>();
+        when(engine.download(player.getUniqueId())).thenReturn(download);
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        pack.request(player);
+        verify(engine, times(1)).download(player.getUniqueId());
+        verify(player, never()).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+        String hash = "12".repeat(20);
+        download.complete(new CraftEngineResourcePack.Download("http://cards.example.org:25565/pack?token=test", hash));
+        MockBukkit.getMock().getScheduler().performOneTick();
+        verify(player).addResourcePack(eq(request), eq("http://cards.example.org:25565/pack?token=test"),
+                argThat(bytes -> HexFormat.of().formatHex(bytes).equals(hash)), anyString(), eq(false));
+        assertFalse(pack.packed(player));
+        pack.status(player, UUID.randomUUID(), Status.SUCCESSFULLY_LOADED);
+        assertFalse(pack.packed(player));
+        pack.status(player, request, Status.SUCCESSFULLY_LOADED);
+        assertTrue(pack.packed(player));
+        pack.toggle(player);
+        verify(player).removeResourcePack(request);
+        verify(player, never()).removeResourcePacks();
+    }
+
+    @Test
+    void cancelledRetriedAndDisconnectedUnifiedDownloadsCannotSendStalePacks() throws Exception {
+        var engine = unifiedPack();
+        var first = new java.util.concurrent.CompletableFuture<CraftEngineResourcePack.Download>();
+        var second = new java.util.concurrent.CompletableFuture<CraftEngineResourcePack.Download>();
+        when(engine.download(player.getUniqueId())).thenReturn(first, second);
+        pack.toggle(player);
+        UUID old = pack.requestId(player);
+        pack.toggle(player);
+        pack.toggle(player);
+        UUID current = pack.requestId(player);
+        assertNotEquals(old, current);
+        first.complete(new CraftEngineResourcePack.Download("http://example.org/old.zip", "11".repeat(20)));
+        MockBukkit.getMock().getScheduler().performOneTick();
+        verify(player, never()).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+        second.completeExceptionally(new java.io.IOException("Hosting failed"));
+        MockBukkit.getMock().getScheduler().performOneTick();
+        assertFalse(pack.packed(player));
+        var third = new java.util.concurrent.CompletableFuture<CraftEngineResourcePack.Download>();
+        when(engine.download(player.getUniqueId())).thenReturn(third);
+        pack.toggle(player);
+        pack.quit(new org.bukkit.event.player.PlayerQuitEvent(player, net.kyori.adventure.text.Component.empty()));
+        third.complete(new CraftEngineResourcePack.Download("http://example.org/current.zip", "12".repeat(20)));
+        MockBukkit.getMock().getScheduler().performOneTick();
+        assertNull(pack.requestId(player));
+        verify(player, never()).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+    }
+
+    @Test
+    void invalidUnifiedInputOrFailedBuildKeepsTheLoadedPackAndDoesNotPublish() throws Exception {
+        var engine = unifiedPack();
+        when(engine.download(player.getUniqueId())).thenReturn(java.util.concurrent.CompletableFuture.completedFuture(
+                new CraftEngineResourcePack.Download("http://example.org/pack.zip", "11".repeat(20))));
+        pack.toggle(player);
+        MockBukkit.getMock().getScheduler().performOneTick();
+        UUID request = pack.requestId(player);
+        pack.status(player, request, Status.SUCCESSFULLY_LOADED);
+        var path = folder.resolve("resource-pack/assets/3dgames/textures/item/tabletop/color_eight/color_eight_blue_2_face.png");
+        byte[] original = java.nio.file.Files.readAllBytes(path);
+        java.nio.file.Files.writeString(path, "Not a PNG");
+        var console = mock(org.bukkit.command.CommandSender.class);
+        pack.reload(console);
+        finishReload(console, "pack.reload-failed");
+        verify(engine, never()).rebuild(any());
+        assertEquals(request, pack.requestId(player));
+        assertTrue(pack.packed(player));
+        java.nio.file.Files.write(path, original);
+        when(engine.rebuild(any())).thenThrow(new java.io.IOException("Unified build failed"));
+        clearInvocations(console);
+        pack.reload(console);
+        finishReload(console, "pack.reload-failed");
+        assertEquals(request, pack.requestId(player));
+        assertTrue(pack.packed(player));
+        verify(player, times(1)).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+    }
+
+    private void finishReload(org.bukkit.command.CommandSender sender, String key) throws Exception {
+        long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(30);
+        while (System.nanoTime() < deadline) {
+            MockBukkit.getMock().getScheduler().performOneTick();
+            if (mockingDetails(sender).getInvocations().stream().anyMatch(invocation ->
+                    invocation.getMethod().getName().equals("sendMessage")
+                            && invocation.getArgument(0).equals(Language.component(key)))) return;
+            Thread.sleep(10);
+        }
+        fail("Resource reload did not complete: " + key);
+    }
+
+    @Test
+    void requestUsesOneArchiveSnapshotWhileResolvingVirtualHost() throws Exception {
+        localPack();
+        pack.close();
+        config.set("rendering.resource-pack.local.public-url", "");
+        pack = new ResourcePackService(plugin, () -> available, id -> new ItemStack(Material.PAPER));
+        var field = ResourcePackService.class.getDeclaredField("local");
+        field.setAccessible(true);
+        var resources = (LocalResourcePack) field.get(pack);
+        String oldHash = resources.current().sha1();
+        doAnswer(invocation -> {
+            var path = folder.resolve("resource-pack/assets/3dgames/textures/item/tabletop/color_eight/color_eight_blue_2_face.png");
+            var image = javax.imageio.ImageIO.read(path.toFile());
+            image.setRGB(0, 0, 0xff00ff00);
+            javax.imageio.ImageIO.write(image, "png", path.toFile());
+            resources.reload();
+            return java.net.InetSocketAddress.createUnresolved("cards.example.org", 25565);
+        }).when(player).getVirtualHost();
+        pack.toggle(player);
+        assertNotEquals(oldHash, resources.current().sha1());
+        verify(player).addResourcePack(any(),
+                eq("http://cards.example.org:" + resources.port() + "/3dgames/" + oldHash + ".zip"),
+                argThat(hash -> HexFormat.of().formatHex(hash).equals(oldHash)), anyString(), eq(false));
+    }
+
+    @Test
+    void localReloadResendsOnlyToOptedInPlayersAndRejectsOldCallbacks() throws Exception {
+        localPack();
+        pack.toggle(player);
+        UUID oldRequest = pack.requestId(player);
+        assertNotNull(oldRequest);
+        pack.status(player, oldRequest, Status.SUCCESSFULLY_LOADED);
+        var uninterested = spy(new org.mockbukkit.mockbukkit.entity.PlayerMock(MockBukkit.getMock(), "NativePlayer"));
+        MockBukkit.getMock().addPlayer(uninterested);
+        var imagePath = folder.resolve("resource-pack/assets/3dgames/textures/item/tabletop/color_eight/color_eight_blue_2_face.png");
+        var image = javax.imageio.ImageIO.read(imagePath.toFile());
+        image.setRGB(0, 0, 0xff00ff00);
+        javax.imageio.ImageIO.write(image, "png", imagePath.toFile());
+        var console = mock(org.bukkit.command.CommandSender.class);
+        pack.reload(console);
+        pack.reload(console);
+        verify(console).sendMessage(Language.component("pack.reload-busy"));
+        finishReload(console, "pack.reloaded");
+        UUID newRequest = pack.requestId(player);
+        assertNotEquals(oldRequest, newRequest);
+        assertFalse(pack.packed(player));
+        pack.status(player, oldRequest, Status.SUCCESSFULLY_LOADED);
+        assertFalse(pack.packed(player));
+        pack.status(player, newRequest, Status.SUCCESSFULLY_LOADED);
+        assertTrue(pack.packed(player));
+        verify(player).removeResourcePack(oldRequest);
+        verify(player, never()).removeResourcePacks();
+        verify(uninterested, never()).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+        var hashes = org.mockito.ArgumentCaptor.forClass(byte[].class);
+        verify(player, times(2)).addResourcePack(any(), startsWith("https://example.org/3dgames/"), hashes.capture(), anyString(), eq(false));
+        assertFalse(Arrays.equals(hashes.getAllValues().getFirst(), hashes.getAllValues().getLast()));
+        verify(console).sendMessage(Language.component("pack.reloaded"));
+    }
+
+    @Test
+    void invalidOrUnchangedLocalReloadKeepsLoadedPlayersAndCustomFiles() throws Exception {
+        localPack();
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        pack.status(player, request, Status.SUCCESSFULLY_LOADED);
+        var path = folder.resolve("resource-pack/assets/3dgames/textures/item/tabletop/color_eight/color_eight_blue_2_face.png");
+        byte[] original = java.nio.file.Files.readAllBytes(path);
+        java.nio.file.Files.writeString(path, "Not a PNG");
+        var console = mock(org.bukkit.command.CommandSender.class);
+        pack.reload(console);
+        finishReload(console, "pack.reload-failed");
+        verify(console).sendMessage(Language.component("pack.reload-failed"));
+        assertEquals(request, pack.requestId(player));
+        assertTrue(pack.packed(player));
+        java.nio.file.Files.write(path, original);
+        pack.reload(console);
+        finishReload(console, "pack.reload-unchanged");
+        verify(console).sendMessage(Language.component("pack.reload-unchanged"));
+        assertEquals(request, pack.requestId(player));
+        verify(player, times(1)).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+    }
+}

@@ -1,0 +1,8 @@
+3DGames - board game room and native tabletop integration.
+Derived from the existing ServerGames integration, GPL-3.0-or-later.
+Corresponding source and build instructions accompany this distribution.
+Upstream components retain their original copyrights and licenses:
+META-INF/NOTICE-board-rules.txt and META-INF/licenses/.
+Optional economy integration uses the server's registered Vault API provider.
+Core/text/MessageText.java and Core/text/LabelLayout.java are adapted from
+GoldenEggOVO/3DCasinoGames revision a4ddd20, GPL-3.0.

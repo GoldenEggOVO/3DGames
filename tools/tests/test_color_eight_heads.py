@@ -1,0 +1,62 @@
+"""Reconstruct all Color Eight head skins and compare with the approved B-style artwork."""
+import importlib.util
+import tempfile
+import unittest
+from pathlib import Path
+from PIL import Image
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+class ColorEightHeadsTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        spec = importlib.util.spec_from_file_location("color_heads", ROOT / "tools/native_heads/build-color-eight-heads.py")
+        cls.builder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.builder)
+        directory = ROOT / "target/color-head-tests"
+        directory.mkdir(parents=True, exist_ok=True)
+        cls.workspace = tempfile.TemporaryDirectory(dir=directory)
+        cls.output = Path(cls.workspace.name)
+        cls.manifest = cls.builder.build(cls.output)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.workspace.cleanup()
+
+    def test_playable_and_colored_wild_faces_reconstruct_exactly_from_twenty_four_heads(self):
+        self.assertEqual((32, 48), (self.manifest["width"], self.manifest["height"]))
+        self.assertEqual(54, len(self.manifest["faces"]))
+        self.assertNotIn("back", self.manifest["faces"])
+        for face, tiles in self.manifest["faces"].items():
+            self.assertEqual(24, len(tiles), face)
+            actual = Image.new("RGBA", (32, 48))
+            for tile in tiles:
+                skin = Image.open(self.output / tile["skin"]).convert("RGBA")
+                actual.paste(skin.crop((8, 8, 16, 16)), (tile["column"] * 8, tile["row"] * 8))
+            colors = {"r": "red", "b": "blue", "y": "yellow", "p": "purple"}
+            ranks = {"Draw1": "draw_one", "Reverse": "reverse", "Skip": "skip"}
+            name = face if face in ("wild", "swap") else colors[face[0]] + "_" + ranks.get(face[1:], face[1:])
+            expected = Image.open(ROOT / "resource-pack/originals/tabletop/native-cards/color-eight" /
+                                  ("color_eight_" + name + ".png")).convert("RGBA")
+            self.assertEqual(expected.tobytes(), actual.tobytes(), face)
+
+    def test_native_art_uses_the_approved_b_style_palette_and_dimensions(self):
+        reference = {"r": (186, 21, 29), "b": (8, 101, 180),
+                     "y": (229, 175, 0), "p": (108, 40, 169)}
+        for face in self.manifest["faces"]:
+            actual = Image.open(self.output / "cards" / (face + ".png")).convert("RGB")
+            self.assertEqual((32, 48), actual.size)
+            self.assertLessEqual(len(actual.getcolors(32 * 48)), 20, face)
+            if face[0] in reference:
+                self.assertIn(reference[face[0]], [color for count, color in actual.getcolors(32 * 48)], face)
+
+    def test_heads_are_opaque_with_an_empty_hat_layer(self):
+        for path in (self.output / "skins").glob("*.png"):
+            skin = Image.open(path).convert("RGBA")
+            self.assertEqual((255, 255), skin.crop((0, 0, 32, 16)).getchannel("A").getextrema())
+            self.assertEqual((0, 0), skin.crop((32, 0, 64, 16)).getchannel("A").getextrema())
+
+
+if __name__ == "__main__":
+    unittest.main()

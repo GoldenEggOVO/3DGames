@@ -1,0 +1,145 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        0.06,
+        0.0
+      ],
+      "size": [
+        0.256,
+        0.12,
+        0.64
+      ],
+      "material": "WAXED_EXPOSED_COPPER"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        -0.192,
+        0.06,
+        0.0
+      ],
+      "size": [
+        0.128,
+        0.12,
+        0.5632
+      ],
+      "material": "WAXED_EXPOSED_COPPER"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        -0.28800000000000003,
+        0.06,
+        0.0
+      ],
+      "size": [
+        0.064,
+        0.12,
+        0.384
+      ],
+      "material": "WAXED_EXPOSED_COPPER"
+    },
+    {
+      "name": "part_3",
+      "position": [
+        0.192,
+        0.06,
+        0.0
+      ],
+      "size": [
+        0.128,
+        0.12,
+        0.5632
+      ],
+      "material": "WAXED_EXPOSED_COPPER"
+    },
+    {
+      "name": "part_4",
+      "position": [
+        0.28800000000000003,
+        0.06,
+        0.0
+      ],
+      "size": [
+        0.064,
+        0.12,
+        0.384
+      ],
+      "material": "WAXED_EXPOSED_COPPER"
+    },
+    {
+      "name": "part_5",
+      "position": [
+        0.0,
+        0.255,
+        0.0
+      ],
+      "size": [
+        0.34,
+        0.27,
+        0.34
+      ],
+      "material": "PINK_CONCRETE"
+    },
+    {
+      "name": "part_6",
+      "position": [
+        0.0,
+        0.43,
+        0.0
+      ],
+      "size": [
+        0.24,
+        0.08,
+        0.24
+      ],
+      "material": "PINK_CONCRETE"
+    },
+    {
+      "name": "part_7",
+      "position": [
+        0.0,
+        0.62,
+        0.0
+      ],
+      "size": [
+        0.36,
+        0.3,
+        0.46
+      ],
+      "material": "PINK_CONCRETE"
+    },
+    {
+      "name": "part_8",
+      "position": [
+        -0.21,
+        0.62,
+        0.0
+      ],
+      "size": [
+        0.06,
+        0.22,
+        0.34
+      ],
+      "material": "PINK_CONCRETE"
+    },
+    {
+      "name": "part_9",
+      "position": [
+        0.21,
+        0.62,
+        0.0
+      ],
+      "size": [
+        0.06,
+        0.22,
+        0.34
+      ],
+      "material": "PINK_CONCRETE"
+    }
+  ],
+  "labels": []
+}

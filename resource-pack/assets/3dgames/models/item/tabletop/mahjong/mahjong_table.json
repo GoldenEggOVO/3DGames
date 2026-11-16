@@ -1,0 +1,1031 @@
+{
+  "gui_light": "front",
+  "ambientocclusion": false,
+  "textures": {
+    "cap_cloth_mahjong_table_cloth": "3dgames:item/tabletop/mahjong/mahjong_table_cloth",
+    "future_chassis": "3dgames:item/shared/materials/future_chassis",
+    "future_shell": "3dgames:item/shared/materials/future_shell"
+  },
+  "elements": [
+    {
+      "from": [
+        -16.0,
+        4.96,
+        -14.56
+      ],
+      "to": [
+        32.0,
+        8.0,
+        30.56
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body"
+    },
+    {
+      "from": [
+        -14.56,
+        4.96,
+        -16.0
+      ],
+      "to": [
+        30.56,
+        8.0,
+        -14.56
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body__bevel_end_-1"
+    },
+    {
+      "from": [
+        -14.56,
+        4.96,
+        30.56
+      ],
+      "to": [
+        30.56,
+        8.0,
+        32.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body__bevel_end_1"
+    },
+    {
+      "from": [
+        -15.578233764909,
+        4.9552,
+        -15.578233764909
+      ],
+      "to": [
+        -13.541766235091,
+        7.9952,
+        -13.541766235091
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body__bevel_corner_-1_-1",
+      "rotation": {
+        "origin": [
+          -14.56,
+          6.4752,
+          -14.56
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        -15.578233764909,
+        4.9552,
+        29.541766235091
+      ],
+      "to": [
+        -13.541766235091,
+        7.9952,
+        31.578233764909
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body__bevel_corner_-1_1",
+      "rotation": {
+        "origin": [
+          -14.56,
+          6.4752,
+          30.56
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        29.541766235091,
+        4.9552,
+        -15.578233764909
+      ],
+      "to": [
+        31.578233764909,
+        7.9952,
+        -13.541766235091
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body__bevel_corner_1_-1",
+      "rotation": {
+        "origin": [
+          30.56,
+          6.4752,
+          -14.56
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        29.541766235091,
+        4.9552,
+        29.541766235091
+      ],
+      "to": [
+        31.578233764909,
+        7.9952,
+        31.578233764909
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_body__bevel_corner_1_1",
+      "rotation": {
+        "origin": [
+          30.56,
+          6.4752,
+          30.56
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        -14.48,
+        8.176,
+        -14.48
+      ],
+      "to": [
+        30.48,
+        8.176,
+        30.48
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.506666666667,
+            0.506666666667,
+            15.493333333333,
+            15.493333333333
+          ],
+          "texture": "#cap_cloth_mahjong_table_cloth"
+        }
+      },
+      "name": "table_playing_surface"
+    },
+    {
+      "from": [
+        -13.2,
+        -8.5,
+        -13.2
+      ],
+      "to": [
+        -10.8,
+        4.96,
+        -10.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "name": "table_leg_0"
+    },
+    {
+      "from": [
+        -13.2,
+        -8.5,
+        26.8
+      ],
+      "to": [
+        -10.8,
+        4.96,
+        29.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "name": "table_leg_1"
+    },
+    {
+      "from": [
+        26.8,
+        -8.5,
+        -13.2
+      ],
+      "to": [
+        29.2,
+        4.96,
+        -10.8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "name": "table_leg_2"
+    },
+    {
+      "from": [
+        26.8,
+        -8.5,
+        26.8
+      ],
+      "to": [
+        29.2,
+        4.96,
+        29.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_chassis"
+        }
+      },
+      "name": "table_leg_3"
+    },
+    {
+      "from": [
+        -14.56,
+        8.0,
+        -16.0
+      ],
+      "to": [
+        30.56,
+        8.96,
+        -14.4
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_north"
+    },
+    {
+      "from": [
+        -16.0,
+        8.0,
+        -14.56
+      ],
+      "to": [
+        -14.4,
+        8.9648,
+        30.56
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_west"
+    },
+    {
+      "from": [
+        -14.56,
+        8.0,
+        30.4
+      ],
+      "to": [
+        30.56,
+        8.96,
+        32.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_south"
+    },
+    {
+      "from": [
+        30.4,
+        8.0,
+        -14.56
+      ],
+      "to": [
+        32.0,
+        8.9648,
+        30.56
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_east"
+    },
+    {
+      "from": [
+        -15.858233764909,
+        7.9952,
+        -15.462253967444
+      ],
+      "to": [
+        -13.821766235091,
+        8.9696,
+        -14.217746032556
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_bevel_-1_-1",
+      "rotation": {
+        "origin": [
+          -14.84,
+          8.4824,
+          -14.84
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        -15.858233764909,
+        7.9952,
+        30.217746032556
+      ],
+      "to": [
+        -13.821766235091,
+        8.9696,
+        31.462253967444
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_bevel_-1_1",
+      "rotation": {
+        "origin": [
+          -14.84,
+          8.4824,
+          30.84
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "from": [
+        29.821766235091,
+        7.9952,
+        -15.462253967444
+      ],
+      "to": [
+        31.858233764909,
+        8.9696,
+        -14.217746032556
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_bevel_1_-1",
+      "rotation": {
+        "origin": [
+          30.84,
+          8.4824,
+          -14.84
+        ],
+        "axis": "y",
+        "angle": -45
+      }
+    },
+    {
+      "from": [
+        29.821766235091,
+        7.9952,
+        30.217746032556
+      ],
+      "to": [
+        31.858233764909,
+        8.9696,
+        31.462253967444
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#future_shell"
+        }
+      },
+      "name": "table_rim_bevel_1_1",
+      "rotation": {
+        "origin": [
+          30.84,
+          8.4824,
+          30.84
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ]
+    }
+  }
+}

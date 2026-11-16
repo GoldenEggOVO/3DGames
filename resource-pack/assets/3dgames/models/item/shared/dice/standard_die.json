@@ -1,0 +1,91 @@
+{
+  "gui_light": "front",
+  "ambientocclusion": false,
+  "textures": {
+    "one": "3dgames:item/shared/dice/dice_face_1",
+    "two": "3dgames:item/shared/dice/dice_face_2",
+    "three": "3dgames:item/shared/dice/dice_face_3",
+    "four": "3dgames:item/shared/dice/dice_face_4",
+    "five": "3dgames:item/shared/dice/dice_face_5",
+    "six": "3dgames:item/shared/dice/dice_face_6"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#one"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#two"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#three"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#four"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#five"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#six"
+        }
+      }
+    }
+  ],
+  "display": {
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ]
+    }
+  }
+}

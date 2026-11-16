@@ -1,0 +1,521 @@
+{
+  "blocks": [
+    {
+      "name": "wood_base",
+      "position": [
+        0,
+        -0.1025,
+        0
+      ],
+      "size": [
+        2.25,
+        0.075,
+        2.315
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_-1",
+      "position": [
+        -0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_1",
+      "position": [
+        -0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_-1",
+      "position": [
+        0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_1",
+      "position": [
+        0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "rim_front_-1",
+      "position": [
+        0.0,
+        -0.0265,
+        -1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_-1",
+      "position": [
+        -1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_front_1",
+      "position": [
+        0.0,
+        -0.0265,
+        1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_1",
+      "position": [
+        1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "inlay_0",
+      "position": [
+        0.0,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        2.07,
+        0.073,
+        2.27
+      ],
+      "material": "STRIPPED_BIRCH_WOOD"
+    },
+    {
+      "name": "grid_v_0",
+      "position": [
+        -0.72,
+        0.00875,
+        0
+      ],
+      "size": [
+        0.006,
+        0.0005,
+        1.446
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_h_0",
+      "position": [
+        0,
+        0.0095,
+        -0.72
+      ],
+      "size": [
+        1.446,
+        0.001,
+        0.006
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_v_1",
+      "position": [
+        -0.432,
+        0.00875,
+        0
+      ],
+      "size": [
+        0.006,
+        0.0005,
+        1.446
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_h_1",
+      "position": [
+        0,
+        0.0095,
+        -0.432
+      ],
+      "size": [
+        1.446,
+        0.001,
+        0.006
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_v_2",
+      "position": [
+        -0.144,
+        0.00875,
+        0
+      ],
+      "size": [
+        0.006,
+        0.0005,
+        1.446
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_h_2",
+      "position": [
+        0,
+        0.0095,
+        -0.144
+      ],
+      "size": [
+        1.446,
+        0.001,
+        0.006
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_v_3",
+      "position": [
+        0.144,
+        0.00875,
+        0
+      ],
+      "size": [
+        0.006,
+        0.0005,
+        1.446
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_h_3",
+      "position": [
+        0,
+        0.0095,
+        0.144
+      ],
+      "size": [
+        1.446,
+        0.001,
+        0.006
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_v_4",
+      "position": [
+        0.432,
+        0.00875,
+        0
+      ],
+      "size": [
+        0.006,
+        0.0005,
+        1.446
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_h_4",
+      "position": [
+        0,
+        0.0095,
+        0.432
+      ],
+      "size": [
+        1.446,
+        0.001,
+        0.006
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_v_5",
+      "position": [
+        0.72,
+        0.00875,
+        0
+      ],
+      "size": [
+        0.006,
+        0.0005,
+        1.446
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "grid_h_5",
+      "position": [
+        0,
+        0.0095,
+        0.72
+      ],
+      "size": [
+        1.446,
+        0.001,
+        0.006
+      ],
+      "material": "BLACK_CONCRETE"
+    },
+    {
+      "name": "held_tray_-1",
+      "position": [
+        0,
+        0.011,
+        -0.85
+      ],
+      "size": [
+        1.72,
+        0.004,
+        0.15
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "held_tray_1",
+      "position": [
+        0,
+        0.011,
+        0.85
+      ],
+      "size": [
+        1.72,
+        0.004,
+        0.15
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "position": [
+        0,
+        -0.1025,
+        -1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "position": [
+        0,
+        -0.1025,
+        1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "position": [
+        1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "position": [
+        1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

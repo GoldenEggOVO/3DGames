@@ -1,0 +1,1613 @@
+{
+  "blocks": [
+    {
+      "name": "wood_base",
+      "position": [
+        0,
+        -0.1025,
+        0
+      ],
+      "size": [
+        3.2,
+        0.075,
+        1.88
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_-1",
+      "position": [
+        -1.455,
+        -0.585625,
+        -0.855
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_1",
+      "position": [
+        -1.455,
+        -0.585625,
+        0.855
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_-1",
+      "position": [
+        1.455,
+        -0.585625,
+        -0.855
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_1",
+      "position": [
+        1.455,
+        -0.585625,
+        0.855
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "rim_front_-1",
+      "position": [
+        0.0,
+        -0.0265,
+        -0.955
+      ],
+      "size": [
+        3.08,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_-1",
+      "position": [
+        -1.555,
+        -0.0264,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.0772,
+        1.88
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_front_1",
+      "position": [
+        0.0,
+        -0.0265,
+        0.955
+      ],
+      "size": [
+        3.08,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_1",
+      "position": [
+        1.555,
+        -0.0264,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.0772,
+        1.88
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "inlay_0",
+      "position": [
+        0.0,
+        -0.0285,
+        -0.6975
+      ],
+      "size": [
+        3.02,
+        0.073,
+        0.425
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_1",
+      "position": [
+        -1.26,
+        -0.0285,
+        -0.48
+      ],
+      "size": [
+        0.5,
+        0.073,
+        0.01
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_2",
+      "position": [
+        -0.69,
+        -0.0285,
+        -0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_3",
+      "position": [
+        -0.345,
+        -0.0285,
+        -0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_4",
+      "position": [
+        0.0,
+        -0.0285,
+        -0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_5",
+      "position": [
+        0.345,
+        -0.0285,
+        -0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_6",
+      "position": [
+        0.69,
+        -0.0285,
+        -0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_7",
+      "position": [
+        1.26,
+        -0.0285,
+        -0.48
+      ],
+      "size": [
+        0.5,
+        0.073,
+        0.01
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_8",
+      "position": [
+        -1.4325,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        0.155,
+        0.073,
+        0.95
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_9",
+      "position": [
+        -1.0675,
+        -0.0285,
+        -0.28
+      ],
+      "size": [
+        0.115,
+        0.073,
+        0.39
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_10",
+      "position": [
+        1.0675,
+        -0.0285,
+        -0.28
+      ],
+      "size": [
+        0.115,
+        0.073,
+        0.39
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_11",
+      "position": [
+        1.4325,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        0.155,
+        0.073,
+        0.95
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_12",
+      "position": [
+        0.0,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        2.25,
+        0.073,
+        0.17
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_13",
+      "position": [
+        -1.0675,
+        -0.0285,
+        0.28
+      ],
+      "size": [
+        0.115,
+        0.073,
+        0.39
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_14",
+      "position": [
+        -0.69,
+        -0.0285,
+        0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_15",
+      "position": [
+        -0.345,
+        -0.0285,
+        0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_16",
+      "position": [
+        0.0,
+        -0.0285,
+        0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_17",
+      "position": [
+        0.345,
+        -0.0285,
+        0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_18",
+      "position": [
+        0.69,
+        -0.0285,
+        0.285
+      ],
+      "size": [
+        0.05,
+        0.073,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_19",
+      "position": [
+        1.0675,
+        -0.0285,
+        0.28
+      ],
+      "size": [
+        0.115,
+        0.073,
+        0.39
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_20",
+      "position": [
+        -1.26,
+        -0.0285,
+        0.48
+      ],
+      "size": [
+        0.5,
+        0.073,
+        0.01
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_21",
+      "position": [
+        1.26,
+        -0.0285,
+        0.48
+      ],
+      "size": [
+        0.5,
+        0.073,
+        0.01
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "inlay_22",
+      "position": [
+        0.0,
+        -0.0285,
+        0.6975
+      ],
+      "size": [
+        3.02,
+        0.073,
+        0.425
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_0",
+      "position": [
+        -0.8625,
+        -0.0565,
+        0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_0_-1",
+      "position": [
+        -1.003,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_0_-1",
+      "position": [
+        -0.8625,
+        -0.042,
+        0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_0_1",
+      "position": [
+        -0.722,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_0_1",
+      "position": [
+        -0.8625,
+        -0.042,
+        0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_1",
+      "position": [
+        -0.5175,
+        -0.0565,
+        0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_1_-1",
+      "position": [
+        -0.658,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_1_-1",
+      "position": [
+        -0.5175,
+        -0.042,
+        0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_1_1",
+      "position": [
+        -0.377,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_1_1",
+      "position": [
+        -0.5175,
+        -0.042,
+        0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_2",
+      "position": [
+        -0.1725,
+        -0.0565,
+        0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_2_-1",
+      "position": [
+        -0.313,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_2_-1",
+      "position": [
+        -0.1725,
+        -0.042,
+        0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_2_1",
+      "position": [
+        -0.032,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_2_1",
+      "position": [
+        -0.1725,
+        -0.042,
+        0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_3",
+      "position": [
+        0.1725,
+        -0.0565,
+        0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_3_-1",
+      "position": [
+        0.032,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_3_-1",
+      "position": [
+        0.1725,
+        -0.042,
+        0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_3_1",
+      "position": [
+        0.313,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_3_1",
+      "position": [
+        0.1725,
+        -0.042,
+        0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_4",
+      "position": [
+        0.5175,
+        -0.0565,
+        0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_4_-1",
+      "position": [
+        0.377,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_4_-1",
+      "position": [
+        0.5175,
+        -0.042,
+        0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_4_1",
+      "position": [
+        0.658,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_4_1",
+      "position": [
+        0.5175,
+        -0.042,
+        0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_5",
+      "position": [
+        0.8625,
+        -0.0565,
+        0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_5_-1",
+      "position": [
+        0.722,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_5_-1",
+      "position": [
+        0.8625,
+        -0.042,
+        0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_5_1",
+      "position": [
+        1.003,
+        -0.042,
+        0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_5_1",
+      "position": [
+        0.8625,
+        -0.042,
+        0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_6",
+      "position": [
+        1.24,
+        -0.0565,
+        0.0
+      ],
+      "size": [
+        0.23,
+        0.017,
+        0.95
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_6_-1",
+      "position": [
+        1.132,
+        -0.042,
+        0.0
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.95
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_6_-1",
+      "position": [
+        1.24,
+        -0.042,
+        -0.468
+      ],
+      "size": [
+        0.202,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_6_1",
+      "position": [
+        1.348,
+        -0.042,
+        0.0
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.95
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_6_1",
+      "position": [
+        1.24,
+        -0.042,
+        0.468
+      ],
+      "size": [
+        0.202,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_7",
+      "position": [
+        0.8625,
+        -0.0565,
+        -0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_7_-1",
+      "position": [
+        0.722,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_7_-1",
+      "position": [
+        0.8625,
+        -0.042,
+        -0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_7_1",
+      "position": [
+        1.003,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_7_1",
+      "position": [
+        0.8625,
+        -0.042,
+        -0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_8",
+      "position": [
+        0.5175,
+        -0.0565,
+        -0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_8_-1",
+      "position": [
+        0.377,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_8_-1",
+      "position": [
+        0.5175,
+        -0.042,
+        -0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_8_1",
+      "position": [
+        0.658,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_8_1",
+      "position": [
+        0.5175,
+        -0.042,
+        -0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_9",
+      "position": [
+        0.1725,
+        -0.0565,
+        -0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_9_-1",
+      "position": [
+        0.032,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_9_-1",
+      "position": [
+        0.1725,
+        -0.042,
+        -0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_9_1",
+      "position": [
+        0.313,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_9_1",
+      "position": [
+        0.1725,
+        -0.042,
+        -0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_10",
+      "position": [
+        -0.1725,
+        -0.0565,
+        -0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_10_-1",
+      "position": [
+        -0.313,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_10_-1",
+      "position": [
+        -0.1725,
+        -0.042,
+        -0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_10_1",
+      "position": [
+        -0.032,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_10_1",
+      "position": [
+        -0.1725,
+        -0.042,
+        -0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_11",
+      "position": [
+        -0.5175,
+        -0.0565,
+        -0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_11_-1",
+      "position": [
+        -0.658,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_11_-1",
+      "position": [
+        -0.5175,
+        -0.042,
+        -0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_11_1",
+      "position": [
+        -0.377,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_11_1",
+      "position": [
+        -0.5175,
+        -0.042,
+        -0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_12",
+      "position": [
+        -0.8625,
+        -0.0565,
+        -0.285
+      ],
+      "size": [
+        0.295,
+        0.017,
+        0.4
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_12_-1",
+      "position": [
+        -1.003,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_12_-1",
+      "position": [
+        -0.8625,
+        -0.042,
+        -0.478
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_12_1",
+      "position": [
+        -0.722,
+        -0.042,
+        -0.285
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.4
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_12_1",
+      "position": [
+        -0.8625,
+        -0.042,
+        -0.092
+      ],
+      "size": [
+        0.267,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_floor_13",
+      "position": [
+        -1.24,
+        -0.0565,
+        0.0
+      ],
+      "size": [
+        0.23,
+        0.017,
+        0.95
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "well_step_x_13_-1",
+      "position": [
+        -1.348,
+        -0.042,
+        0.0
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.95
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_13_-1",
+      "position": [
+        -1.24,
+        -0.042,
+        -0.468
+      ],
+      "size": [
+        0.202,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_x_13_1",
+      "position": [
+        -1.132,
+        -0.042,
+        0.0
+      ],
+      "size": [
+        0.014,
+        0.012,
+        0.95
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "well_step_z_13_1",
+      "position": [
+        -1.24,
+        -0.042,
+        0.468
+      ],
+      "size": [
+        0.202,
+        0.012,
+        0.014
+      ],
+      "material": "STRIPPED_OAK_WOOD"
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "position": [
+        0,
+        -0.1025,
+        -0.97
+      ],
+      "size": [
+        3.08,
+        0.075,
+        0.06
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "position": [
+        0,
+        -0.1025,
+        0.97
+      ],
+      "size": [
+        3.08,
+        0.075,
+        0.06
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "position": [
+        -1.54,
+        -0.1027,
+        -0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.075,
+        0.084852813742
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "position": [
+        -1.54,
+        -0.1027,
+        0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.075,
+        0.084852813742
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "position": [
+        1.54,
+        -0.1027,
+        -0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.075,
+        0.084852813742
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "position": [
+        1.54,
+        -0.1027,
+        0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.075,
+        0.084852813742
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.54,
+        -0.0264,
+        -0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.0776,
+        0.084852813742
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.54,
+        -0.0264,
+        0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.0776,
+        0.084852813742
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.54,
+        -0.0264,
+        -0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.0776,
+        0.084852813742
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.54,
+        -0.0264,
+        0.94
+      ],
+      "size": [
+        0.084852813742,
+        0.0776,
+        0.084852813742
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

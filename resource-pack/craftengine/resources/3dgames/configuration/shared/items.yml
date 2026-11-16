@@ -1,0 +1,175 @@
+items:
+  3dgames:playing_back:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_back
+  3dgames:playing_clubs_10:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_10
+  3dgames:playing_clubs_2:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_2
+  3dgames:playing_clubs_3:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_3
+  3dgames:playing_clubs_4:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_4
+  3dgames:playing_clubs_5:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_5
+  3dgames:playing_clubs_6:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_6
+  3dgames:playing_clubs_7:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_7
+  3dgames:playing_clubs_8:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_8
+  3dgames:playing_clubs_9:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_9
+  3dgames:playing_clubs_ace:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_ace
+  3dgames:playing_clubs_jack:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_jack
+  3dgames:playing_clubs_king:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_king
+  3dgames:playing_clubs_queen:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_clubs_queen
+  3dgames:playing_diamonds_10:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_10
+  3dgames:playing_diamonds_2:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_2
+  3dgames:playing_diamonds_3:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_3
+  3dgames:playing_diamonds_4:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_4
+  3dgames:playing_diamonds_5:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_5
+  3dgames:playing_diamonds_6:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_6
+  3dgames:playing_diamonds_7:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_7
+  3dgames:playing_diamonds_8:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_8
+  3dgames:playing_diamonds_9:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_9
+  3dgames:playing_diamonds_ace:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_ace
+  3dgames:playing_diamonds_jack:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_jack
+  3dgames:playing_diamonds_king:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_king
+  3dgames:playing_diamonds_queen:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_diamonds_queen
+  3dgames:playing_hearts_10:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_10
+  3dgames:playing_hearts_2:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_2
+  3dgames:playing_hearts_3:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_3
+  3dgames:playing_hearts_4:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_4
+  3dgames:playing_hearts_5:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_5
+  3dgames:playing_hearts_6:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_6
+  3dgames:playing_hearts_7:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_7
+  3dgames:playing_hearts_8:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_8
+  3dgames:playing_hearts_9:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_9
+  3dgames:playing_hearts_ace:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_ace
+  3dgames:playing_hearts_jack:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_jack
+  3dgames:playing_hearts_king:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_king
+  3dgames:playing_hearts_queen:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_hearts_queen
+  3dgames:playing_joker_big:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_joker_big
+  3dgames:playing_joker_small:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_joker_small
+  3dgames:playing_spades_10:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_10
+  3dgames:playing_spades_2:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_2
+  3dgames:playing_spades_3:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_3
+  3dgames:playing_spades_4:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_4
+  3dgames:playing_spades_5:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_5
+  3dgames:playing_spades_6:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_6
+  3dgames:playing_spades_7:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_7
+  3dgames:playing_spades_8:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_8
+  3dgames:playing_spades_9:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_9
+  3dgames:playing_spades_ace:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_ace
+  3dgames:playing_spades_jack:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_jack
+  3dgames:playing_spades_king:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_king
+  3dgames:playing_spades_queen:
+    material: paper
+    item_model: 3dgames:shared/playing_cards/playing_spades_queen
+  3dgames:stone_black:
+    material: paper
+    item_model: 3dgames:shared/pieces/stone_black
+  3dgames:stone_white:
+    material: paper
+    item_model: 3dgames:shared/pieces/stone_white
+  3dgames:yacht_die:
+    material: paper
+    item_model: 3dgames:shared/dice/standard_die

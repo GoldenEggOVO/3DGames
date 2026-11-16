@@ -1,0 +1,89 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        0.0325,
+        0.0
+      ],
+      "size": [
+        0.52,
+        0.065,
+        0.76
+      ],
+      "material": "SMOOTH_QUARTZ"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        -0.32,
+        0.0325,
+        0.0
+      ],
+      "size": [
+        0.12,
+        0.065,
+        0.52
+      ],
+      "material": "SMOOTH_QUARTZ"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        0.32,
+        0.0325,
+        0.0
+      ],
+      "size": [
+        0.12,
+        0.065,
+        0.52
+      ],
+      "material": "SMOOTH_QUARTZ"
+    },
+    {
+      "name": "part_3",
+      "position": [
+        0.0,
+        0.0975,
+        0.0
+      ],
+      "size": [
+        0.52,
+        0.065,
+        0.76
+      ],
+      "material": "POLISHED_BLACKSTONE"
+    },
+    {
+      "name": "part_4",
+      "position": [
+        -0.32,
+        0.0975,
+        0.0
+      ],
+      "size": [
+        0.12,
+        0.065,
+        0.52
+      ],
+      "material": "POLISHED_BLACKSTONE"
+    },
+    {
+      "name": "part_5",
+      "position": [
+        0.32,
+        0.0975,
+        0.0
+      ],
+      "size": [
+        0.12,
+        0.065,
+        0.52
+      ],
+      "material": "POLISHED_BLACKSTONE"
+    }
+  ],
+  "labels": []
+}

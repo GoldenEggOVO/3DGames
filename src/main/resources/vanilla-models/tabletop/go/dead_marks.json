@@ -1,0 +1,47 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        0.1775,
+        0.0
+      ],
+      "size": [
+        0.65,
+        0.035,
+        0.1
+      ],
+      "material": "RED_CONCRETE"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        0.0,
+        0.1775,
+        -0.1875
+      ],
+      "size": [
+        0.1,
+        0.035,
+        0.275
+      ],
+      "material": "RED_CONCRETE"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        0.0,
+        0.1775,
+        0.1875
+      ],
+      "size": [
+        0.1,
+        0.035,
+        0.275
+      ],
+      "material": "RED_CONCRETE"
+    }
+  ],
+  "labels": []
+}

@@ -1,0 +1,511 @@
+items:
+  3dgames:board_checkers:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_board
+  3dgames:board_chess:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_board
+  3dgames:board_connectfour:
+    material: paper
+    item_model: 3dgames:tabletop/connect_four/connect_four_board
+  3dgames:board_draughts:
+    material: paper
+    item_model: 3dgames:tabletop/draughts/draughts_board
+  3dgames:board_go:
+    material: paper
+    item_model: 3dgames:tabletop/go/go_board_19x19
+  3dgames:board_go13:
+    material: paper
+    item_model: 3dgames:tabletop/go/go_board_13x13
+  3dgames:board_go9:
+    material: paper
+    item_model: 3dgames:tabletop/go/go_board_9x9
+  3dgames:board_gomoku:
+    material: paper
+    item_model: 3dgames:tabletop/gomoku/gomoku_board
+  3dgames:board_ludo:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_board
+  3dgames:board_reversi:
+    material: paper
+    item_model: 3dgames:tabletop/reversi/reversi_board
+  3dgames:board_xiangqi:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_board
+  3dgames:card_b1:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_1
+  3dgames:card_b10:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_10
+  3dgames:card_b2:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_2
+  3dgames:card_b3:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_3
+  3dgames:card_b4:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_4
+  3dgames:card_b5:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_5
+  3dgames:card_b6:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_6
+  3dgames:card_b7:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_7
+  3dgames:card_b8:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_8
+  3dgames:card_b9:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_9
+  3dgames:card_back:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_back
+  3dgames:card_bdraw:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_draw
+  3dgames:card_breverse:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_reverse
+  3dgames:card_bskip:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_blue_skip
+  3dgames:card_p1:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_1
+  3dgames:card_p10:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_10
+  3dgames:card_p2:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_2
+  3dgames:card_p3:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_3
+  3dgames:card_p4:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_4
+  3dgames:card_p5:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_5
+  3dgames:card_p6:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_6
+  3dgames:card_p7:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_7
+  3dgames:card_p8:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_8
+  3dgames:card_p9:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_9
+  3dgames:card_pdraw:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_draw
+  3dgames:card_preverse:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_reverse
+  3dgames:card_pskip:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_purple_skip
+  3dgames:card_r1:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_1
+  3dgames:card_r10:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_10
+  3dgames:card_r2:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_2
+  3dgames:card_r3:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_3
+  3dgames:card_r4:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_4
+  3dgames:card_r5:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_5
+  3dgames:card_r6:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_6
+  3dgames:card_r7:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_7
+  3dgames:card_r8:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_8
+  3dgames:card_r9:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_9
+  3dgames:card_rdraw:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_draw
+  3dgames:card_rreverse:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_reverse
+  3dgames:card_rskip:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_red_skip
+  3dgames:card_swap:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_swap
+  3dgames:card_table:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_table
+  3dgames:card_wild:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_wild
+  3dgames:card_y1:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_1
+  3dgames:card_y10:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_10
+  3dgames:card_y2:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_2
+  3dgames:card_y3:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_3
+  3dgames:card_y4:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_4
+  3dgames:card_y5:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_5
+  3dgames:card_y6:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_6
+  3dgames:card_y7:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_7
+  3dgames:card_y8:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_8
+  3dgames:card_y9:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_9
+  3dgames:card_ydraw:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_draw
+  3dgames:card_yreverse:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_reverse
+  3dgames:card_yskip:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_card_yellow_skip
+  3dgames:chess_black_bishop:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_black_bishop
+  3dgames:chess_black_king:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_black_king
+  3dgames:chess_black_knight:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_black_knight
+  3dgames:chess_black_pawn:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_black_pawn
+  3dgames:chess_black_queen:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_black_queen
+  3dgames:chess_black_rook:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_black_rook
+  3dgames:chess_white_bishop:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_white_bishop
+  3dgames:chess_white_king:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_white_king
+  3dgames:chess_white_knight:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_white_knight
+  3dgames:chess_white_pawn:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_white_pawn
+  3dgames:chess_white_queen:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_white_queen
+  3dgames:chess_white_rook:
+    material: paper
+    item_model: 3dgames:tabletop/chess/chess_white_rook
+  3dgames:connectfour_red:
+    material: paper
+    item_model: 3dgames:tabletop/connect_four/connect_four_red_disc
+  3dgames:connectfour_yellow:
+    material: paper
+    item_model: 3dgames:tabletop/connect_four/connect_four_yellow_disc
+  3dgames:doudizhu_table:
+    material: paper
+    item_model: 3dgames:tabletop/doudizhu/doudizhu_table
+  3dgames:draught_black:
+    material: paper
+    item_model: 3dgames:tabletop/draughts/draughts_piece_black
+  3dgames:draught_black_king:
+    material: paper
+    item_model: 3dgames:tabletop/draughts/draughts_piece_black_king
+  3dgames:draught_white:
+    material: paper
+    item_model: 3dgames:tabletop/draughts/draughts_piece_white
+  3dgames:draught_white_king:
+    material: paper
+    item_model: 3dgames:tabletop/draughts/draughts_piece_white_king
+  3dgames:liars_bar_table:
+    material: paper
+    item_model: 3dgames:tabletop/liars_bar/liars_bar_table
+  3dgames:ludo_blue:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_pawn_blue
+  3dgames:ludo_dice_tray:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_dice_tray
+  3dgames:ludo_green:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_pawn_green
+  3dgames:ludo_pink:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_pawn_pink
+  3dgames:ludo_purple:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_pawn_purple
+  3dgames:ludo_red:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_pawn_red
+  3dgames:ludo_yellow:
+    material: paper
+    item_model: 3dgames:tabletop/ludo/ludo_pawn_yellow
+  3dgames:mahjong_back:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_tile_back
+  3dgames:mahjong_f1:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_flower_plum
+  3dgames:mahjong_f2:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_flower_orchid
+  3dgames:mahjong_f3:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_flower_bamboo
+  3dgames:mahjong_f4:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_flower_chrysanthemum
+  3dgames:mahjong_f5:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_season_spring
+  3dgames:mahjong_f6:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_season_summer
+  3dgames:mahjong_f7:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_season_autumn
+  3dgames:mahjong_f8:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_season_winter
+  3dgames:mahjong_m0:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_red_five
+  3dgames:mahjong_m1:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_1
+  3dgames:mahjong_m2:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_2
+  3dgames:mahjong_m3:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_3
+  3dgames:mahjong_m4:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_4
+  3dgames:mahjong_m5:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_5
+  3dgames:mahjong_m6:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_6
+  3dgames:mahjong_m7:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_7
+  3dgames:mahjong_m8:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_8
+  3dgames:mahjong_m9:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_characters_9
+  3dgames:mahjong_p0:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_red_five
+  3dgames:mahjong_p1:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_1
+  3dgames:mahjong_p2:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_2
+  3dgames:mahjong_p3:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_3
+  3dgames:mahjong_p4:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_4
+  3dgames:mahjong_p5:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_5
+  3dgames:mahjong_p6:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_6
+  3dgames:mahjong_p7:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_7
+  3dgames:mahjong_p8:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_8
+  3dgames:mahjong_p9:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dots_9
+  3dgames:mahjong_panel:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_control_panel
+  3dgames:mahjong_s0:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_red_five
+  3dgames:mahjong_s1:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_1
+  3dgames:mahjong_s2:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_2
+  3dgames:mahjong_s3:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_3
+  3dgames:mahjong_s4:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_4
+  3dgames:mahjong_s5:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_5
+  3dgames:mahjong_s6:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_6
+  3dgames:mahjong_s7:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_7
+  3dgames:mahjong_s8:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_8
+  3dgames:mahjong_s9:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_bamboo_9
+  3dgames:mahjong_table:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_table
+  3dgames:mahjong_z1:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_wind_east
+  3dgames:mahjong_z2:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_wind_south
+  3dgames:mahjong_z3:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_wind_west
+  3dgames:mahjong_z4:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_wind_north
+  3dgames:mahjong_z5:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dragon_white
+  3dgames:mahjong_z6:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dragon_green
+  3dgames:mahjong_z7:
+    material: paper
+    item_model: 3dgames:tabletop/mahjong/mahjong_dragon_red
+  3dgames:peg_blue:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_peg_blue
+  3dgames:peg_green:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_peg_green
+  3dgames:peg_pink:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_peg_pink
+  3dgames:peg_purple:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_peg_purple
+  3dgames:peg_red:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_peg_red
+  3dgames:peg_yellow:
+    material: paper
+    item_model: 3dgames:tabletop/checkers/checkers_peg_yellow
+  3dgames:poker_dealer:
+    material: paper
+    item_model: 3dgames:tabletop/texas_holdem/texas_holdem_dealer_button
+  3dgames:reversi_disc:
+    material: paper
+    item_model: 3dgames:tabletop/reversi/reversi_disc
+  3dgames:ring_forward:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_direction_forward
+  3dgames:ring_reverse:
+    material: paper
+    item_model: 3dgames:tabletop/color_eight/color_eight_direction_reverse
+  3dgames:stone_black_dead:
+    material: paper
+    item_model: 3dgames:tabletop/go/stone_black_dead
+  3dgames:stone_white_dead:
+    material: paper
+    item_model: 3dgames:tabletop/go/stone_white_dead
+  3dgames:texas_holdem_table:
+    material: paper
+    item_model: 3dgames:tabletop/texas_holdem/texas_holdem_table
+  3dgames:xiangqi_black_advisor:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_advisor
+  3dgames:xiangqi_black_cannon:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_cannon
+  3dgames:xiangqi_black_elephant:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_elephant
+  3dgames:xiangqi_black_general:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_general
+  3dgames:xiangqi_black_horse:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_horse
+  3dgames:xiangqi_black_pawn:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_pawn
+  3dgames:xiangqi_black_rook:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_black_rook
+  3dgames:xiangqi_red_advisor:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_advisor
+  3dgames:xiangqi_red_cannon:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_cannon
+  3dgames:xiangqi_red_elephant:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_elephant
+  3dgames:xiangqi_red_general:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_general
+  3dgames:xiangqi_red_horse:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_horse
+  3dgames:xiangqi_red_pawn:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_pawn
+  3dgames:xiangqi_red_rook:
+    material: paper
+    item_model: 3dgames:tabletop/xiangqi/xiangqi_red_rook
+  3dgames:yacht_table:
+    material: paper
+    item_model: 3dgames:tabletop/yacht/yacht_table

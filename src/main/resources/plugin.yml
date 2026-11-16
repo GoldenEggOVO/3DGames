@@ -1,0 +1,14 @@
+name: 3DGames
+version: 1.0.0
+main: GoldenEggOVO.TDGames.TDGamesPlugin
+api-version: '26.1.1'
+softdepend: [CraftEngine, Vault, PlaceholderAPI]
+commands:
+  3dgames:
+    description: 3D tabletop games and rooms
+    permission: 3dgames.use
+permissions:
+  3dgames.use:
+    default: true
+  3dgames.admin:
+    default: op

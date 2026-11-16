@@ -1,0 +1,9 @@
+Mahjong materials
+
+Plain green felt artwork by the 3DGames contributors, GPL-3.0-or-later.
+Source: originals/tabletop/textures/mahjong/mahjong_table_cloth.svg
+
+Mahjong sound samples by Kenney (https://kenney.nl), CC0-1.0.
+Sources: https://kenney.nl/assets/impact-sounds, https://kenney.nl/assets/interface-sounds, and https://kenney.nl/assets/casino-audio
+Sound files are copied without modification from the credited source recordings.
+Exact file mappings and SHA-256 digests are recorded in sources.json.

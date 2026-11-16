@@ -1,0 +1,64 @@
+items:
+  3dgames:classic_2048_board:
+    material: paper
+    item_model: 3dgames:tabletop/2048/2048_board
+  3dgames:classic_mancala_board:
+    material: paper
+    item_model: 3dgames:tabletop/mancala/mancala_board
+  3dgames:classic_nine_mens_morris_board:
+    material: paper
+    item_model: 3dgames:tabletop/nine_mens_morris/nine_mens_morris_board
+  3dgames:classic_dots_and_boxes_board:
+    material: paper
+    item_model: 3dgames:tabletop/dots_and_boxes/dots_and_boxes_board
+  3dgames:classic_mastermind_board:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_board
+  3dgames:classic_hex_board:
+    material: paper
+    item_model: 3dgames:tabletop/hex/hex_board
+  3dgames:classic_hex_piece_red:
+    material: paper
+    item_model: 3dgames:tabletop/hex/hex_piece_red
+  3dgames:classic_hex_piece_blue:
+    material: paper
+    item_model: 3dgames:tabletop/hex/hex_piece_blue
+  3dgames:classic_memory_board:
+    material: paper
+    item_model: 3dgames:tabletop/memory/memory_board
+  3dgames:classic_backgammon_board:
+    material: paper
+    item_model: 3dgames:tabletop/backgammon/backgammon_board
+  3dgames:classic_battleship_board:
+    material: paper
+    item_model: 3dgames:tabletop/battleship/battleship_board
+  3dgames:classic_klondike_board:
+    material: paper
+    item_model: 3dgames:tabletop/klondike/klondike_board
+  3dgames:classic_shogi_board:
+    material: paper
+    item_model: 3dgames:tabletop/shogi/shogi_board
+  3dgames:classic_mini_shogi_board:
+    material: paper
+    item_model: 3dgames:tabletop/mini_shogi/mini_shogi_board
+  3dgames:classic_monopoly_board:
+    material: paper
+    item_model: 3dgames:tabletop/monopoly/monopoly_board
+  3dgames:classic_mastermind_peg_0:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_peg_blue
+  3dgames:classic_mastermind_peg_1:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_peg_red
+  3dgames:classic_mastermind_peg_2:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_peg_green
+  3dgames:classic_mastermind_peg_3:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_peg_yellow
+  3dgames:classic_mastermind_peg_4:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_peg_pink
+  3dgames:classic_mastermind_peg_5:
+    material: paper
+    item_model: 3dgames:tabletop/mastermind/mastermind_peg_white

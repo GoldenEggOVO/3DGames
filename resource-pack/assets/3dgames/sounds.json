@@ -1,0 +1,422 @@
+{
+  "mahjong.select": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/select",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.countdown": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/countdown",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.discard": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/discard",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.meld": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/meld",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.kan": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/kan",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.win": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/win",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.dora": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/dora",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.riichi": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/riichi",
+        "stream": false
+      }
+    ]
+  },
+  "mahjong.draw": {
+    "sounds": [
+      {
+        "name": "3dgames:mahjong/draw",
+        "stream": false
+      }
+    ]
+  },
+  "cards.play": {
+    "sounds": [
+      {
+        "name": "3dgames:cards/play/card_play",
+        "stream": false
+      }
+    ]
+  },
+  "board.wood": {
+    "sounds": [
+      {
+        "name": "3dgames:board/wood/wood_place",
+        "stream": false
+      }
+    ]
+  },
+  "board.stone": {
+    "sounds": [
+      {
+        "name": "3dgames:board/stone/stone_place",
+        "stream": false
+      }
+    ]
+  },
+  "board.drop": {
+    "sounds": [
+      {
+        "name": "3dgames:board/drop/connect_four_drop",
+        "stream": false
+      }
+    ]
+  },
+  "board.flip": {
+    "sounds": [
+      {
+        "name": "3dgames:board/flip/reversi_flip",
+        "stream": false
+      }
+    ]
+  },
+  "board.capture": {
+    "sounds": [
+      {
+        "name": "3dgames:board/capture/capture",
+        "stream": false
+      }
+    ]
+  },
+  "dice.roll": {
+    "sounds": [
+      {
+        "name": "3dgames:dice/roll/dice_shake",
+        "stream": false
+      }
+    ]
+  },
+  "dice.single": {
+    "sounds": [
+      {
+        "name": "3dgames:dice/single/dice_pickup",
+        "stream": false
+      }
+    ]
+  },
+  "dice.hold": {
+    "sounds": [
+      {
+        "name": "3dgames:dice/hold/dice_hold",
+        "stream": false
+      }
+    ]
+  },
+  "cards.draw": {
+    "sounds": [
+      {
+        "name": "3dgames:cards/draw/card_pickup",
+        "stream": false
+      }
+    ]
+  },
+  "chips.bet": {
+    "sounds": [
+      {
+        "name": "3dgames:chips/bet/chips_bet",
+        "stream": false
+      }
+    ]
+  },
+  "table.select": {
+    "sounds": [
+      {
+        "name": "3dgames:table/select/tick_001",
+        "stream": false
+      },
+      {
+        "name": "3dgames:table/select/tick_002",
+        "stream": false
+      },
+      {
+        "name": "3dgames:table/select/tick_004",
+        "stream": false
+      }
+    ]
+  },
+  "table.pass": {
+    "sounds": [
+      {
+        "name": "3dgames:table/pass/table_pass",
+        "stream": false
+      }
+    ]
+  },
+  "table.confirm": {
+    "sounds": [
+      {
+        "name": "3dgames:table/confirm/toggle_001",
+        "stream": false
+      },
+      {
+        "name": "3dgames:table/confirm/toggle_002",
+        "stream": false
+      },
+      {
+        "name": "3dgames:table/confirm/toggle_003",
+        "stream": false
+      }
+    ]
+  },
+  "table.start": {
+    "sounds": [
+      {
+        "name": "3dgames:table/start/start",
+        "stream": false
+      }
+    ]
+  },
+  "table.win": {
+    "sounds": [
+      {
+        "name": "3dgames:table/win/win",
+        "stream": false
+      }
+    ]
+  },
+  "table.draw": {
+    "sounds": [
+      {
+        "name": "3dgames:table/draw/loss",
+        "stream": false
+      }
+    ]
+  },
+  "table.home": {
+    "sounds": [
+      {
+        "name": "3dgames:table/home/table_home",
+        "stream": false
+      }
+    ]
+  },
+  "board.slide": {
+    "sounds": [
+      {
+        "name": "3dgames:board/slide/tile_slide_merge",
+        "stream": false
+      }
+    ]
+  },
+  "board.glass": {
+    "sounds": [
+      {
+        "name": "3dgames:board/glass/contact_1",
+        "stream": false
+      },
+      {
+        "name": "3dgames:board/glass/contact_2",
+        "stream": false
+      },
+      {
+        "name": "3dgames:board/glass/contact_3",
+        "stream": false
+      }
+    ]
+  },
+  "dice.contact": {
+    "sounds": [
+      {
+        "name": "3dgames:dice/contact/approved_contact_1",
+        "stream": false
+      },
+      {
+        "name": "3dgames:dice/contact/approved_contact_2",
+        "stream": false
+      },
+      {
+        "name": "3dgames:dice/contact/approved_contact_3",
+        "stream": false
+      }
+    ]
+  },
+  "peg.place": {
+    "sounds": [
+      {
+        "name": "3dgames:peg/place/peg_place",
+        "stream": false
+      }
+    ]
+  },
+  "peg.feedback": {
+    "sounds": [
+      {
+        "name": "3dgames:peg/feedback/feedback_pin",
+        "stream": false
+      }
+    ]
+  },
+  "board.reveal": {
+    "sounds": [
+      {
+        "name": "3dgames:board/reveal/open_002",
+        "stream": false
+      },
+      {
+        "name": "3dgames:board/reveal/open_003",
+        "stream": false
+      }
+    ]
+  },
+  "cards.flip": {
+    "sounds": [
+      {
+        "name": "3dgames:cards/flip/card_fan_flip",
+        "stream": false
+      }
+    ]
+  },
+  "cards.shuffle": {
+    "sounds": [
+      {
+        "name": "3dgames:cards/shuffle/card_shuffle",
+        "stream": false
+      }
+    ]
+  },
+  "dice.settle": {
+    "sounds": [
+      {
+        "name": "3dgames:dice/settle/dice_settle",
+        "stream": false
+      }
+    ]
+  },
+  "chips.collect": {
+    "sounds": [
+      {
+        "name": "3dgames:chips/collect/chips_collect",
+        "stream": false
+      }
+    ]
+  },
+  "board.pickup.wood": {
+    "sounds": [
+      {
+        "name": "3dgames:board/pickup/wood/wood_pickup",
+        "stream": false
+      }
+    ]
+  },
+  "board.pickup.stone": {
+    "sounds": [
+      {
+        "name": "3dgames:board/pickup/stone/stone_pickup",
+        "stream": false
+      }
+    ]
+  },
+  "board.move": {
+    "sounds": [
+      {
+        "name": "3dgames:board/move/piece_slide",
+        "stream": false
+      }
+    ]
+  },
+  "board.promote": {
+    "sounds": [
+      {
+        "name": "3dgames:board/promote/shogi_promote",
+        "stream": false
+      }
+    ]
+  },
+  "board.collect": {
+    "sounds": [
+      {
+        "name": "3dgames:board/collect/pieces_collect",
+        "stream": false
+      }
+    ]
+  },
+  "board.clear": {
+    "sounds": [
+      {
+        "name": "3dgames:board/clear/connect_four_clear",
+        "stream": false
+      }
+    ]
+  },
+  "board.sow.pickup": {
+    "sounds": [
+      {
+        "name": "3dgames:board/sow/pickup/mancala_pickup",
+        "stream": false
+      }
+    ]
+  },
+  "board.sow.last": {
+    "sounds": [
+      {
+        "name": "3dgames:board/sow/last/mancala_last_seed",
+        "stream": false
+      }
+    ]
+  },
+  "peg.remove": {
+    "sounds": [
+      {
+        "name": "3dgames:peg/remove/peg_remove",
+        "stream": false
+      }
+    ]
+  },
+  "cards.align": {
+    "sounds": [
+      {
+        "name": "3dgames:cards/align/cards_align",
+        "stream": false
+      }
+    ]
+  },
+  "cards.collect": {
+    "sounds": [
+      {
+        "name": "3dgames:cards/collect/cards_collect",
+        "stream": false
+      }
+    ]
+  }
+}

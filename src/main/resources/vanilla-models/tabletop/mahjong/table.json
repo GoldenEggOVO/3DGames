@@ -1,0 +1,325 @@
+{
+  "blocks": [
+    {
+      "name": "part_0",
+      "position": [
+        0.0,
+        -0.12,
+        0.0
+      ],
+      "size": [
+        3.0,
+        0.14,
+        2.82
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_1",
+      "position": [
+        -1.365,
+        -0.580625,
+        -1.365
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_2",
+      "position": [
+        -1.365,
+        -0.580625,
+        1.365
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_3",
+      "position": [
+        1.365,
+        -0.580625,
+        -1.365
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_4",
+      "position": [
+        1.365,
+        -0.580625,
+        1.365
+      ],
+      "size": [
+        0.15,
+        0.90125,
+        0.15
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "part_5",
+      "position": [
+        -1.435,
+        0.005,
+        0.0
+      ],
+      "size": [
+        0.1,
+        0.110594,
+        2.7918
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_6",
+      "position": [
+        0.0,
+        0.005,
+        -1.435
+      ],
+      "size": [
+        2.7918,
+        0.11,
+        0.1
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_7",
+      "position": [
+        1.435,
+        0.005,
+        0.0
+      ],
+      "size": [
+        0.1,
+        0.110594,
+        2.7918
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_8",
+      "position": [
+        0.0,
+        0.005,
+        1.435
+      ],
+      "size": [
+        2.7918,
+        0.11,
+        0.1
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_9",
+      "position": [
+        0.0,
+        -0.025,
+        0.0
+      ],
+      "size": [
+        2.79,
+        0.05,
+        2.79
+      ],
+      "material": "GREEN_TERRACOTTA"
+    },
+    {
+      "name": "part_0__bevel_end_-1",
+      "position": [
+        0.0,
+        -0.12,
+        -1.455
+      ],
+      "size": [
+        2.82,
+        0.14,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_0__bevel_end_1",
+      "position": [
+        0.0,
+        -0.12,
+        1.455
+      ],
+      "size": [
+        2.82,
+        0.14,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "part_0__bevel_corner_-1_-1",
+      "position": [
+        -1.41,
+        -0.12,
+        -1.41
+      ],
+      "size": [
+        0.127279220614,
+        0.1406,
+        0.127279220614
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "part_0__bevel_corner_-1_1",
+      "position": [
+        -1.41,
+        -0.12,
+        1.41
+      ],
+      "size": [
+        0.127279220614,
+        0.1406,
+        0.127279220614
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "part_0__bevel_corner_1_-1",
+      "position": [
+        1.41,
+        -0.12,
+        -1.41
+      ],
+      "size": [
+        0.127279220614,
+        0.1406,
+        0.127279220614
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "part_0__bevel_corner_1_1",
+      "position": [
+        1.41,
+        -0.12,
+        1.41
+      ],
+      "size": [
+        0.127279220614,
+        0.1406,
+        0.127279220614
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.412725,
+        0.005,
+        -1.412725
+      ],
+      "size": [
+        0.126006428407,
+        0.111188,
+        0.078418142034
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.412725,
+        0.005,
+        1.412725
+      ],
+      "size": [
+        0.126006428407,
+        0.111188,
+        0.078418142034
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.412725,
+        0.005,
+        -1.412725
+      ],
+      "size": [
+        0.126006428407,
+        0.111188,
+        0.078418142034
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.412725,
+        0.005,
+        1.412725
+      ],
+      "size": [
+        0.126006428407,
+        0.111188,
+        0.078418142034
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

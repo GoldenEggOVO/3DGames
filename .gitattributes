@@ -1,0 +1,13 @@
+* text=auto
+*.java text eol=lf
+*.py text eol=lf
+*.cmd text eol=crlf
+*.md text eol=lf
+*.yml text eol=lf
+*.xml text eol=lf
+*.json text eol=lf
+*.mcmeta text eol=lf
+*.png binary
+*.jar binary
+*.zip binary
+resource-pack/licenses/** -text whitespace=-blank-at-eol,cr-at-eol

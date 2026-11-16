@@ -1,0 +1,418 @@
+{
+  "blocks": [
+    {
+      "material": "SMOOTH_QUARTZ",
+      "name": "body",
+      "size": [
+        0.18,
+        0.18,
+        0.18
+      ],
+      "position": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "position": [
+        0.0,
+        0.092,
+        0.0
+      ],
+      "name": "face_1_dot_0",
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.092,
+        0.0504,
+        -0.0504
+      ],
+      "name": "face_2_dot_1",
+      "rotation": [
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.092,
+        -0.0504,
+        0.0504
+      ],
+      "name": "face_2_dot_2",
+      "rotation": [
+        0.0,
+        0.0,
+        -90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0504,
+        -0.0504,
+        0.092
+      ],
+      "name": "face_3_dot_2",
+      "rotation": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.0504,
+        0.0504,
+        0.092
+      ],
+      "name": "face_3_dot_1",
+      "rotation": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0,
+        0.0,
+        0.092
+      ],
+      "name": "face_3_dot_0",
+      "rotation": [
+        90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0504,
+        -0.0504,
+        -0.092
+      ],
+      "name": "face_4_dot_4",
+      "rotation": [
+        -90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.0504,
+        0.0504,
+        -0.092
+      ],
+      "name": "face_4_dot_3",
+      "rotation": [
+        -90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0504,
+        0.0504,
+        -0.092
+      ],
+      "name": "face_4_dot_2",
+      "rotation": [
+        -90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.0504,
+        -0.0504,
+        -0.092
+      ],
+      "name": "face_4_dot_1",
+      "rotation": [
+        -90.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.092,
+        0.0504,
+        -0.0504
+      ],
+      "name": "face_5_dot_4",
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.092,
+        -0.0504,
+        0.0504
+      ],
+      "name": "face_5_dot_3",
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.092,
+        0.0504,
+        0.0504
+      ],
+      "name": "face_5_dot_2",
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.092,
+        -0.0504,
+        -0.0504
+      ],
+      "name": "face_5_dot_1",
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.092,
+        0.0,
+        0.0
+      ],
+      "name": "face_5_dot_0",
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0504,
+        -0.092,
+        0.0
+      ],
+      "name": "face_6_dot_6",
+      "rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.0504,
+        -0.092,
+        -0.0
+      ],
+      "name": "face_6_dot_5",
+      "rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0504,
+        -0.092,
+        0.0504
+      ],
+      "name": "face_6_dot_4",
+      "rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.0504,
+        -0.092,
+        -0.0504
+      ],
+      "name": "face_6_dot_3",
+      "rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        0.0504,
+        -0.092,
+        -0.0504
+      ],
+      "name": "face_6_dot_2",
+      "rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    },
+    {
+      "position": [
+        -0.0504,
+        -0.092,
+        0.0504
+      ],
+      "name": "face_6_dot_1",
+      "rotation": [
+        180.0,
+        0.0,
+        0.0
+      ],
+      "material": "BLACK_CONCRETE",
+      "size": [
+        0.0234,
+        0.004,
+        0.0234
+      ]
+    }
+  ],
+  "labels": []
+}

@@ -1,0 +1,661 @@
+{
+  "blocks": [
+    {
+      "name": "wood_base",
+      "position": [
+        0,
+        -0.1025,
+        0
+      ],
+      "size": [
+        2.25,
+        0.075,
+        2.315
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_-1",
+      "position": [
+        -0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_-1_1",
+      "position": [
+        -0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_-1",
+      "position": [
+        0.98,
+        -0.585625,
+        -1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "leg_1_1",
+      "position": [
+        0.98,
+        -0.585625,
+        1.08
+      ],
+      "size": [
+        0.145,
+        0.89125,
+        0.145
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "rim_front_-1",
+      "position": [
+        0.0,
+        -0.0265,
+        -1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_-1",
+      "position": [
+        -1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_front_1",
+      "position": [
+        0.0,
+        -0.0265,
+        1.18
+      ],
+      "size": [
+        2.115,
+        0.077,
+        0.09
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "rim_side_1",
+      "position": [
+        1.08,
+        -0.0263875,
+        0.0
+      ],
+      "size": [
+        0.09,
+        0.077225,
+        2.315
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "inlay_0",
+      "position": [
+        0.0,
+        -0.0285,
+        0.0
+      ],
+      "size": [
+        2.07,
+        0.073,
+        2.27
+      ],
+      "material": "STRIPPED_BIRCH_WOOD"
+    },
+    {
+      "name": "morris_line_0",
+      "position": [
+        0.0,
+        0.0095,
+        -0.7714286
+      ],
+      "size": [
+        1.5528571,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_1",
+      "position": [
+        -0.7714286,
+        0.0095,
+        -0.3857143
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.7614286
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_2",
+      "position": [
+        0.0,
+        0.0095,
+        -0.6428571
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_3",
+      "position": [
+        0.7714286,
+        0.0095,
+        -0.3857143
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.7614286
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_4",
+      "position": [
+        0.0,
+        0.0095,
+        -0.5142857
+      ],
+      "size": [
+        1.0385714,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_5",
+      "position": [
+        -0.5142857,
+        0.0095,
+        -0.2571429
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.5042857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_6",
+      "position": [
+        0.0,
+        0.0095,
+        -0.3857143
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_7",
+      "position": [
+        0.5142857,
+        0.0095,
+        -0.2571429
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.5042857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_8",
+      "position": [
+        0.0,
+        0.0095,
+        -0.2571429
+      ],
+      "size": [
+        0.5242857,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_9",
+      "position": [
+        -0.2571429,
+        0.0095,
+        -0.1285714
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_10",
+      "position": [
+        0.2571429,
+        0.0095,
+        -0.1285714
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_11",
+      "position": [
+        -0.5142857,
+        0.0095,
+        0.0
+      ],
+      "size": [
+        0.5242857,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_12",
+      "position": [
+        0.5142857,
+        0.0095,
+        0.0
+      ],
+      "size": [
+        0.5242857,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_13",
+      "position": [
+        -0.7714286,
+        0.0095,
+        0.3857143
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.7614286
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_14",
+      "position": [
+        -0.5142857,
+        0.0095,
+        0.2571429
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.5042857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_15",
+      "position": [
+        -0.2571429,
+        0.0095,
+        0.1285714
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_16",
+      "position": [
+        0.2571429,
+        0.0095,
+        0.1285714
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_17",
+      "position": [
+        0.5142857,
+        0.0095,
+        0.2571429
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.5042857
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_18",
+      "position": [
+        0.7714286,
+        0.0095,
+        0.3857143
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.7614286
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_19",
+      "position": [
+        0.0,
+        0.0095,
+        0.2571429
+      ],
+      "size": [
+        0.5242857,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_20",
+      "position": [
+        0.0,
+        0.0095,
+        0.3857143
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_21",
+      "position": [
+        0.0,
+        0.0095,
+        0.5142857
+      ],
+      "size": [
+        1.0385714,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_22",
+      "position": [
+        0.0,
+        0.0095,
+        0.6428571
+      ],
+      "size": [
+        0.01,
+        0.001,
+        0.2471429
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "morris_line_23",
+      "position": [
+        0.0,
+        0.0095,
+        0.7714286
+      ],
+      "size": [
+        1.5528571,
+        0.001,
+        0.01
+      ],
+      "material": "BROWN_CONCRETE"
+    },
+    {
+      "name": "wood_base__bevel_end_-1",
+      "position": [
+        0,
+        -0.1025,
+        -1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_end_1",
+      "position": [
+        0,
+        -0.1025,
+        1.19125
+      ],
+      "size": [
+        2.115,
+        0.075,
+        0.0675
+      ],
+      "material": "BROWN_TERRACOTTA"
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_-1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_-1_1",
+      "position": [
+        -1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_-1",
+      "position": [
+        1.0575,
+        -0.102725,
+        -1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "wood_base__bevel_corner_1_1",
+      "position": [
+        1.0575,
+        -0.102725,
+        1.1575
+      ],
+      "size": [
+        0.09545941546,
+        0.075,
+        0.09545941546
+      ],
+      "material": "BROWN_TERRACOTTA",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_-1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_-1_1",
+      "position": [
+        -1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_-1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        -1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        -45,
+        0
+      ]
+    },
+    {
+      "name": "table_rim_bevel_1_1",
+      "position": [
+        1.063125,
+        -0.0263875,
+        1.163125
+      ],
+      "size": [
+        0.09545941546,
+        0.077675,
+        0.079549512883
+      ],
+      "material": "BROWN_CONCRETE",
+      "rotation": [
+        0,
+        45,
+        0
+      ]
+    }
+  ],
+  "labels": []
+}

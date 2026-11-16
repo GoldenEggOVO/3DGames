@@ -1,0 +1,112 @@
+{
+  "repository": "https://github.com/Kadagaden/shogi-pieces",
+  "commit": "3a7643b8f6aa9910b360b61e062961e70213c6cc",
+  "source_directory": "2-kanji_red_wood",
+  "files": [
+    {
+      "name": "shogi_piece_pawn.svg",
+      "upstream_path": "2-kanji_red_wood/0FU.svg",
+      "sha256": "eda66e64813c820e49bb569f179783433c4b495d17480c9a428112ad49cee265",
+      "raster_file": "shogi_piece_pawn.png",
+      "raster_sha256": "cdb097367f45c7d1557615a780dce9b3054f8cbcc2f673bd055d699d7d2550f5"
+    },
+    {
+      "name": "shogi_piece_lance.svg",
+      "upstream_path": "2-kanji_red_wood/0KY.svg",
+      "sha256": "b37f0e6b771a8a7593f2579d5154819b63041a767f6adeed23b0b400337e52e9",
+      "raster_file": "shogi_piece_lance.png",
+      "raster_sha256": "aa1dc634257e014cee0814597f9ad142aa9f4954556b6cf3df0c06d62cca8186"
+    },
+    {
+      "name": "shogi_piece_knight.svg",
+      "upstream_path": "2-kanji_red_wood/0KE.svg",
+      "sha256": "1ec6eb68c85d3dc93c98d762c435ee63a2c4e3451ccef8f80a858d0d5b4baf7c",
+      "raster_file": "shogi_piece_knight.png",
+      "raster_sha256": "5432ab42499242a4e32103907da30e7d9f969f04ee12b73c87c38067862dbd45"
+    },
+    {
+      "name": "shogi_piece_silver.svg",
+      "upstream_path": "2-kanji_red_wood/0GI.svg",
+      "sha256": "c6d4a50fa197002d1b389c54a6cafe774ee51deef10f520530b55eb8d1498d29",
+      "raster_file": "shogi_piece_silver.png",
+      "raster_sha256": "8b6b65bef6c49753eaebd26f27e1ae724cf695ab89d01033cc5dcb6c3c5589ce"
+    },
+    {
+      "name": "shogi_piece_gold.svg",
+      "upstream_path": "2-kanji_red_wood/0KI.svg",
+      "sha256": "014f3f4b5a8e97101fc3e3b6209e5561bccd0ec2b1984420b02e69051ed09a48",
+      "raster_file": "shogi_piece_gold.png",
+      "raster_sha256": "c9a5b455f85f6c9e914bd849fc405013056cc57e7d742490181780c74fb64bf6"
+    },
+    {
+      "name": "shogi_piece_bishop.svg",
+      "upstream_path": "2-kanji_red_wood/0KA.svg",
+      "sha256": "ab61fe2fc88701e971d4e23b32d2f2b2b51e480d945860bd2c00f5279829ca23",
+      "raster_file": "shogi_piece_bishop.png",
+      "raster_sha256": "42ba37a8c0c8f519474c4a20bed715d72752fac213ed1059c61b88ae185f6986"
+    },
+    {
+      "name": "shogi_piece_rook.svg",
+      "upstream_path": "2-kanji_red_wood/0HI.svg",
+      "sha256": "fe7189ed76a28cc164656de426f0b224a114bc887fbb4ee77b9f5d9b9ca40f79",
+      "raster_file": "shogi_piece_rook.png",
+      "raster_sha256": "b32130b01a0383f60af24d8ae15673a5d1f4a10c10359e2f8f38b7c06cc0546d"
+    },
+    {
+      "name": "shogi_piece_king.svg",
+      "upstream_path": "2-kanji_red_wood/0OU.svg",
+      "sha256": "c277728d7ec9051baecdae986052b3d26b404c6e8328c5c94968fd65583ec318",
+      "raster_file": "shogi_piece_king.png",
+      "raster_sha256": "02247b7587a910397db298a3dc1b87dba38df49872b1c6601bcae92ef86adfc3"
+    },
+    {
+      "name": "shogi_piece_jeweled_king.svg",
+      "upstream_path": "2-kanji_red_wood/0GY.svg",
+      "sha256": "4b001540d5e026e97b7959a1c05a3e42b39c33839abb8120231c368552db439f",
+      "raster_file": "shogi_piece_jeweled_king.png",
+      "raster_sha256": "00867afd8a888d2e0c7a7d232ab02e4fee297845f3f61ca34e1bef52d74b0f31"
+    },
+    {
+      "name": "shogi_piece_promoted_pawn.svg",
+      "upstream_path": "2-kanji_red_wood/0TO.svg",
+      "sha256": "808846f5cce83750c4ce38d45affa09e2f0e5b583f1e599a87ec641548144889",
+      "raster_file": "shogi_piece_promoted_pawn.png",
+      "raster_sha256": "2649573abf12df563afe84e715c08a559c13c3d3ee15b253a2dce2b9ba2d3e3e"
+    },
+    {
+      "name": "shogi_piece_promoted_lance.svg",
+      "upstream_path": "2-kanji_red_wood/0NY.svg",
+      "sha256": "3fa37c462190644185423bcaf92f6bb440091dfcafb3090d5c22d834e341f72f",
+      "raster_file": "shogi_piece_promoted_lance.png",
+      "raster_sha256": "dd23617d7f4ffcc66d34cfaedd7d4f8b49b87790a3902475a39efe5c7b1609e0"
+    },
+    {
+      "name": "shogi_piece_promoted_knight.svg",
+      "upstream_path": "2-kanji_red_wood/0NK.svg",
+      "sha256": "7cc12943c813636e097f59126286e1c780956d3352edbf41e02c20cb2c27f9da",
+      "raster_file": "shogi_piece_promoted_knight.png",
+      "raster_sha256": "186668e90dd3607a085c73c36e83c1835bb05a9ee5fda676908190cd7d0c54a5"
+    },
+    {
+      "name": "shogi_piece_promoted_silver.svg",
+      "upstream_path": "2-kanji_red_wood/0NG.svg",
+      "sha256": "8caa79c5dc142ec4841477dc35b25bd1a756b6a85bde588db75418b0d1d976dc",
+      "raster_file": "shogi_piece_promoted_silver.png",
+      "raster_sha256": "1f22e38bec68a0b9377ac57d270b24cc5514087df3c1eb3a89888622656029ad"
+    },
+    {
+      "name": "shogi_piece_promoted_bishop.svg",
+      "upstream_path": "2-kanji_red_wood/0UM.svg",
+      "sha256": "310e93294e54a31be42ca1080b9eca63464a090c6849e6cbce1bcc4a26e84f6c",
+      "raster_file": "shogi_piece_promoted_bishop.png",
+      "raster_sha256": "01e384298552f87b158a8bd6cd774026579e899675d9fbcb70c023698ed41fd1"
+    },
+    {
+      "name": "shogi_piece_promoted_rook.svg",
+      "upstream_path": "2-kanji_red_wood/0RY.svg",
+      "sha256": "420d163473fac64730acd8ac28c3bfea0eb8c985f6168fc31d0280cfe3764331",
+      "raster_file": "shogi_piece_promoted_rook.png",
+      "raster_sha256": "ef1a611d38b25d07ae1d76ab8af2d3b287a4e976397cecb167d619c7a76fb6a9"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+package GoldenEggOVO.TDGames.Core.probe;
+
+import GoldenEggOVO.TDGames.Core.internal.gson.*;
+import GoldenEggOVO.TDGames.Shared.game.BoardGame;
+import GoldenEggOVO.TDGames.Core.game.GameFactory;
+import GoldenEggOVO.TDGames.Shared.game.HandGame;
+
+import org.bukkit.*;
+import org.bukkit.entity.Entity;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.lang.reflect.*;
+import java.nio.file.*;
+import java.util.*;
+
+/** Test-only long-running room/model/replay exercise on an isolated loopback server. */
+public final class BoardsSoakProbe extends JavaPlugin {
+    private Plugin boards;private Object tableWorld,games;private Class<?> roomType,roundType;
+    private final List<Object> rooms=new ArrayList<>();
+    private final Map<String,Integer> moves=new LinkedHashMap<>(),rounds=new LinkedHashMap<>();
+    private final Map<UUID,Integer> lengths=new HashMap<>();
+    private long started;private int seconds,samples,replays,peakEntities;private boolean finished;
+    @Override public void onEnable(){Bukkit.getScheduler().runTaskLater(this,this::begin,80);}
+    @SuppressWarnings("unchecked") private void begin(){
+        try{
+            require(Bukkit.getIp().equals("127.0.0.1")&&Bukkit.getPort()==25617,"isolated loopback server");
+            for(String name:List.of("ServerGames","ServerMenu","ServerCasino","KaMenu"))require(Bukkit.getPluginManager().getPlugin(name)==null,"unexpected dependency "+name);
+            boards=Objects.requireNonNull(Bukkit.getPluginManager().getPlugin("3DGames"));tableWorld=field(boards,"tableWorld");
+            games=call(boards,"games",new Class<?>[0]);
+            roomType=Class.forName("GoldenEggOVO.TDGames.Shared.session.GameSession",true,boards.getClass().getClassLoader());
+            roundType=Class.forName("GoldenEggOVO.TDGames.Multiplayer.room.RoundActions",true,boards.getClass().getClassLoader());
+            reflectionContract();
+            Map<UUID,Object> registry=(Map<UUID,Object>)field(field(games,"runtime"),"sessions");require(registry.isEmpty(),"fresh fixture required");
+            var ctor=roomType.getDeclaredConstructor(UUID.class,String.class,int.class,long.class,int.class,Map.class);ctor.setAccessible(true);
+            List<String> kinds=List.of("chess","xiangqi","gomoku","ludo","checkers","draughts","reversi","go9","go13","go","connectfour","color-eight",
+                "mahjong:riichi","mahjong:guangdong","mahjong:sichuan","mahjong:taiwan","doudizhu","liars-bar","texas-holdem","yacht");
+            for(int i=0;i<kinds.size();i++){
+                String label=kinds.get(i),kind=label.split(":")[0];int capacity=kind.equals("doudizhu")?3:kind.equals("texas-holdem")?6:kind.equals("checkers")?6:Set.of("ludo","color-eight","mahjong","liars-bar").contains(kind)?4:2;
+                Map<String,String> options=kind.equals("mahjong")?Map.of("profile",label.split(":")[1],"rounds","1"):kind.equals("ludo")?Map.of("blocking","on"):Map.of();
+                Object room=ctor.newInstance(UUID.randomUUID(),kind,capacity,1000L+i,i,options);
+                if(kind.equals("ludo")){Field tray=roomType.getDeclaredField("sideTray");tray.setAccessible(true);tray.setBoolean(room,true);}
+                call(tableWorld,"anchor",new Class<?>[]{roomType,Location.class},room,new Location(Bukkit.getWorlds().getFirst(),(i%4)*12,83,(i/4)*12));
+                call(room,"fillBots",new Class<?>[0]);registry.put((UUID)field(room,"id"),room);rooms.add(room);
+                call(tableWorld,"retainTableChunks",new Class<?>[]{int.class},i);call(games,"start",new Class<?>[]{roomType},room);
+                moves.put(label,0);rounds.put(label,0);lengths.put((UUID)field(room,"id"),0);
+            }
+            validateEntities();
+            seconds=Integer.getInteger("tabletop.soak.seconds",3600);require(seconds>=60&&seconds<=7200,"bounded duration");
+            started=System.currentTimeMillis();getLogger().info("TABLETOP_SOAK_STARTED seconds="+seconds+" games="+kinds.size());
+            Bukkit.getScheduler().runTaskTimer(this,this::sample,20,20);
+        }catch(Throwable error){fail(error);}
+    }
+    private void sample(){
+        if(finished)return;
+        try{
+            samples++;long elapsed=(System.currentTimeMillis()-started)/1000;
+            for(Object room:rooms){
+                String kind=label(room);UUID id=(UUID)field(room,"id");int count=historyLength(room);
+                int last=lengths.get(id);if(count>last)moves.merge(kind,count-last,Integer::sum);
+                String phase=field(room,"phase").toString();require(!phase.equals("PAUSED")&&!phase.equals("ABORTED"),kind+" unexpected "+phase);
+                if(phase.equals("FINISHED")){
+                    replay(room);rounds.merge(kind,1,Integer::sum);call(tableWorld,"remove",new Class<?>[]{roomType},room);
+                    invoke(roundType,null,"fresh",new Class<?>[]{roomType,long.class},room,2000L+rounds.get(kind));
+                    call(tableWorld,"retainTableChunks",new Class<?>[]{int.class},(int)field(room,"table"));call(games,"start",new Class<?>[]{roomType},room);
+                }
+                lengths.put(id,historyLength(room));
+            }
+            if(samples%60==0){
+                validateEntities();replay(rooms.get((samples/60-1)%rooms.size()));call(games,"save",new Class<?>[0]);
+                write(false,elapsed,-1);getLogger().info("TABLETOP_SOAK_PROGRESS elapsed="+elapsed+" moves="+moves.values().stream().mapToInt(Integer::intValue).sum()+" rounds="+rounds.values().stream().mapToInt(Integer::intValue).sum()+" entities="+peakEntities);
+            }
+            if(elapsed>=seconds){
+                for(Object room:rooms)replay(room);validateEntities();
+                call(games,"save",new Class<?>[0]);
+                Files.copy(boards.getDataFolder().toPath().resolve("rooms.json"),getDataFolder().toPath().resolve("recovery-snapshot.json"));
+                for(Object room:rooms)call(games,"remove",new Class<?>[]{roomType},room);call(games,"save",new Class<?>[0]);
+                int remaining=ownedEntities().size();require(remaining==0,"owned entities remain after room removal: "+remaining);
+                require(moves.values().stream().allMatch(n->n>0),"every game must make progress");
+                write(true,elapsed,remaining);finished=true;Bukkit.getScheduler().cancelTasks(this);getLogger().info("TABLETOP_SOAK_PASS elapsed="+elapsed+" moves="+moves+" rounds="+rounds+" replays="+replays);
+            }
+        }catch(Throwable error){fail(error);}
+    }
+    private void replay(Object room)throws Exception{
+        String kind=(String)field(room,"kind");BoardGame live=(BoardGame)field(room,"board");
+        @SuppressWarnings("unchecked") Map<String,String> options=(Map<String,String>)field(room,"options");
+        BoardGame copy=GameFactory.create(kind,(int)field(room,"capacity"),(long)field(room,"seed"),options);
+        for(JsonElement e:(JsonArray)call(field(room,"history"),"snapshot",new Class<?>[0])){var move=e.getAsJsonObject();copy.apply(move.get("seat").getAsInt(),move.get("action").getAsString());}
+        require(copy.cells().equals(live.cells())&&copy.currentPlayer()==live.currentPlayer()&&copy.finished()==live.finished()&&Objects.equals(copy.outcome(),live.outcome()),kind+" replay differs");
+        if(copy instanceof HandGame expected&&live instanceof HandGame actual)for(int seat=0;seat<copy.playerCount();seat++)
+            require(expected.hand(seat).equals(actual.hand(seat))&&expected.discards(seat).equals(actual.discards(seat))&&expected.exposed(seat).equals(actual.exposed(seat)),"hand replay differs");
+        replays++;
+    }
+    @SuppressWarnings("unchecked") private void validateEntities()throws Exception{
+        Set<UUID> expected=new HashSet<>();Map<?,?> views=(Map<?,?>)field(tableWorld,"views");
+        require(views.size()==rooms.size(),"one view per room");
+        for(Object view:views.values()){
+            for(String key:List.of("furniture","lastMove"))for(Entity e:(List<Entity>)field(view,key)){require(e.isValid(),"tracked entity is invalid");expected.add(e.getUniqueId());}
+            addEntities(expected,(List<Entity>)field(view,"nativeBoardFurniture"));
+            addEntities(expected,(List<Entity>)field(view,"handFurniture"));
+            Entity packedTable=(Entity)field(view,"packedTable");if(packedTable!=null)addEntities(expected,List.of(packedTable));
+            Entity packedBoard=(Entity)field(view,"packedBoard");if(packedBoard!=null)addEntities(expected,List.of(packedBoard));
+            for(Object token:((Map<?,?>)field(view,"tokens")).values())for(Entity e:(List<Entity>)field(token,"parts")){require(e.isValid(),"tracked piece is invalid");expected.add(e.getUniqueId());}
+            Object tray=field(view,"diceTray");if(tray!=null){
+                for(String key:List.of("entities","nativeTable"))addEntities(expected,(List<Entity>)field(tray,key));
+                Entity table=(Entity)field(tray,"packedTable");if(table!=null)addEntities(expected,List.of(table));
+                for(String key:List.of("nativeDice","packedDice"))for(Object die:(List<?>)field(tray,key))addEntities(expected,(List<Entity>)field(die,"entities"));
+            }
+            Object yacht=field(view,"yachtTable");if(yacht!=null){
+                for(String key:List.of("common","nativeTable","packedTable"))addEntities(expected,(List<Entity>)field(yacht,key));
+                for(String key:List.of("nativeDice","packedDice"))for(Object die:(List<?>)field(yacht,key))addEntities(expected,(List<Entity>)field(die,"entities"));
+            }
+            Object cards=field(view,"playingTable");if(cards!=null){
+                for(String key:List.of("publicEntities","nativeFurniture","dealerMarkers"))addEntities(expected,(List<Entity>)field(cards,key));
+                for(Object card:((Map<?,?>)field(cards,"publicCards")).values())addEntities(expected,(List<Entity>)field(card,"parts"));
+                Entity packed=(Entity)field(cards,"packedFurniture");if(packed!=null)addEntities(expected,List.of(packed));
+                addTurn(expected,field(cards,"turn"));
+                for(Object owner:((Map<?,?>)field(cards,"privateViews")).values()){
+                    for(Object card:((Map<?,?>)field(owner,"cards")).values())addEntities(expected,(List<Entity>)field(card,"parts"));
+                    for(Object button:((Map<?,?>)field(owner,"buttons")).values())addEntities(expected,(List<Entity>)button);
+                }
+            }
+            Object hand=field(view,"handTable");if(hand!=null){
+                addTurn(expected,field(hand,"cardTurn"));
+                Entity deckLabel=(Entity)field(hand,"deckLabel");if(deckLabel!=null)addEntities(expected,List.of(deckLabel));
+                for(String key:List.of("furniture","packFurniture"))addEntities(expected,(List<Entity>)field(hand,key));
+                Object hud=field(hand,"mahjongHud");if(hud!=null)addEntities(expected,(List<Entity>)field(hud,"entities"));
+                Object ring=field(hand,"turnRing");if(ring!=null)for(Object part:(List<?>)field(ring,"parts"))addEntities(expected,List.of((Entity)field(part,"entity")));
+                for(String key:List.of("publicPieces","packPieces"))for(Object piece:((Map<?,?>)field(hand,key)).values())addEntities(expected,(List<Entity>)field(piece,"parts"));
+                for(Object owner:((Map<?,?>)field(hand,"privateViews")).values()){
+                    Entity remaining=(Entity)field(owner,"remaining");if(remaining!=null)addEntities(expected,List.of(remaining));
+                    Entity counters=(Entity)field(owner,"counters");if(counters!=null)addEntities(expected,List.of(counters));
+                    for(Object match:((Map<?,?>)field(owner,"matches")).values())addEntities(expected,List.of((Entity)match));
+                    for(Object piece:((Map<?,?>)field(owner,"pieces")).values())addEntities(expected,(List<Entity>)field(piece,"parts"));
+                    for(Object button:((Map<?,?>)field(owner,"calls")).values())addEntities(expected,(List<Entity>)field(button,"parts"));
+                    for(Object button:((Map<?,?>)field(owner,"cardButtons")).values())addEntities(expected,(List<Entity>)field(button,"parts"));
+                    for(Object button:((Map<?,?>)field(owner,"assistanceButtons")).values())addEntities(expected,(List<Entity>)field(button,"parts"));
+                    for(Object indicator:((Map<?,?>)field(owner,"indicators")).values())addEntities(expected,(List<Entity>)field(indicator,"parts"));
+                }
+            }
+        }
+        Set<UUID> actual=ownedEntities();
+        if(!actual.equals(expected)){
+            Map<String,Integer> unexpected=new TreeMap<>();NamespacedKey key=new NamespacedKey("3dgames","board-cell");
+            for(World world:Bukkit.getWorlds())for(Entity entity:world.getEntities())if(actual.contains(entity.getUniqueId())&&!expected.contains(entity.getUniqueId())){
+                String tag=entity.getPersistentDataContainer().get(key,org.bukkit.persistence.PersistentDataType.STRING);
+                unexpected.merge(tag+":"+entity.getType(),1,Integer::sum);
+            }
+            getLogger().warning("UNTRACKED_MODEL_PARTS "+unexpected);
+        }
+        require(actual.equals(expected),"model entity leak or missing part: actual="+actual.size()+" expected="+expected.size());peakEntities=Math.max(peakEntities,actual.size());
+    }
+    private static void addEntities(Set<UUID> expected,List<Entity> entities){for(Entity entity:entities){require(entity.isValid(),"tracked display is invalid");expected.add(entity.getUniqueId());}}
+    private void reflectionContract()throws Exception{
+        ClassLoader loader=boards.getClass().getClassLoader();
+        String prefix="GoldenEggOVO.TDGames.";
+        for(String entry:List.of(
+                "TDGamesPlugin tableWorld",
+                "Core.game.GameService runtime",
+                "Shared.session.SessionRuntime sessions",
+                "Shared.session.GameSession id kind capacity seed table options board phase history sideTray",
+                "Shared.interaction.TableWorldController views",
+                "Shared.render.TableView furniture lastMove nativeBoardFurniture handFurniture packedTable packedBoard tokens diceTray yachtTable playingTable handTable",
+                "Shared.render.TableView$TokenView parts",
+                "Shared.render.dice.DiceTray entities nativeTable packedTable nativeDice packedDice",
+                "Shared.render.dice.YachtDie entities",
+                "Shared.render.dice.YachtTable common nativeTable packedTable nativeDice packedDice",
+                "Shared.render.cards.PlayingCardTable publicEntities nativeFurniture dealerMarkers publicCards packedFurniture turn privateViews",
+                "Shared.render.cards.PlayingCardTable$CardVisual parts",
+                "Shared.render.cards.PlayingCardTable$PrivateView cards buttons",
+                "Shared.render.HandTable cardTurn deckLabel furniture packFurniture mahjongHud turnRing publicPieces packPieces privateViews",
+                "Shared.render.HandTable$PieceView parts",
+                "Shared.render.HandTable$PrivateView remaining counters matches pieces calls cardButtons assistanceButtons indicators",
+                "Shared.render.HandTable$CallView parts",
+                "Shared.render.HandTable$CardButton parts",
+                "Shared.render.mahjong.MahjongTableHud entities",
+                "Shared.render.cards.TurnRing parts",
+                "Shared.render.cards.TurnRing$Part entity",
+                "Shared.render.cards.CardTurnIndicator bar caption")){
+            String[] words=entry.split(" ");Class<?> type=Class.forName(prefix+words[0],false,loader);
+            for(int i=1;i<words.length;i++)type.getDeclaredField(words[i]);
+        }
+        boards.getClass().getDeclaredMethod("games");
+        tableWorld.getClass().getDeclaredMethod("anchor",roomType,Location.class);
+        tableWorld.getClass().getDeclaredMethod("retainTableChunks",int.class);
+        tableWorld.getClass().getDeclaredMethod("remove",roomType);
+        roomType.getDeclaredMethod("fillBots");
+        roundType.getDeclaredMethod("fresh",roomType,long.class);
+        Class<?> history=Class.forName(prefix+"Shared.session.SessionHistory",false,loader);
+        history.getDeclaredMethod("size");history.getDeclaredMethod("snapshot");
+        games.getClass().getDeclaredMethod("start",roomType);
+        games.getClass().getDeclaredMethod("save");games.getClass().getDeclaredMethod("remove",roomType);
+        getLogger().info("TABLETOP_SOAK_REFLECTION_PASS owners=22 private_collections=verified current_dice_lists=true");
+    }
+    private static void addTurn(Set<UUID> expected,Object turn)throws Exception{
+        if(turn!=null)for(String key:List.of("bar","caption")){Entity entity=(Entity)field(turn,key);if(entity!=null)addEntities(expected,List.of(entity));}
+    }
+    private static String label(Object room)throws Exception{
+        String kind=(String)field(room,"kind");Object profile=((Map<?,?>)field(room,"options")).get("profile");return kind.equals("mahjong")?kind+":"+(profile==null?"riichi":profile):kind;
+    }
+    private static int historyLength(Object room)throws Exception{
+        return (int)call(field(room,"history"),"size",new Class<?>[0]);
+    }
+    private Set<UUID> ownedEntities(){Set<UUID> ids=new HashSet<>();NamespacedKey key=new NamespacedKey("3dgames","board-cell");for(World world:Bukkit.getWorlds())for(Entity entity:world.getEntities())if(entity.isValid()&&entity.getPersistentDataContainer().has(key))ids.add(entity.getUniqueId());return ids;}
+    private void write(boolean pass,long elapsed,int remaining)throws Exception{
+        JsonObject report=new JsonObject();report.addProperty("pass",pass);report.addProperty("elapsed_seconds",elapsed);report.addProperty("requested_seconds",seconds);report.addProperty("samples",samples);report.addProperty("replays",replays);report.addProperty("peak_owned_entities",peakEntities);report.addProperty("final_owned_entities",remaining);report.add("moves",new Gson().toJsonTree(moves));report.add("rounds",new Gson().toJsonTree(rounds));
+        Files.createDirectories(getDataFolder().toPath());Files.writeString(getDataFolder().toPath().resolve("soak.json"),new GsonBuilder().setPrettyPrinting().create().toJson(report));
+    }
+    private void fail(Throwable error){finished=true;getLogger().log(java.util.logging.Level.SEVERE,"TABLETOP_SOAK_FAIL",error);Bukkit.getScheduler().cancelTasks(this);}
+    private static Object field(Object target,String name)throws Exception{Field field=target.getClass().getDeclaredField(name);field.setAccessible(true);return field.get(target);}
+    private static Object call(Object target,String name,Class<?>[] types,Object... args)throws Exception{return invoke(target.getClass(),target,name,types,args);}
+    private static Object invoke(Class<?> type,Object target,String name,Class<?>[] types,Object... args)throws Exception{Method method=type.getDeclaredMethod(name,types);method.setAccessible(true);return method.invoke(target,args);}
+    private static void require(boolean ok,String message){if(!ok)throw new IllegalStateException(message);}
+}

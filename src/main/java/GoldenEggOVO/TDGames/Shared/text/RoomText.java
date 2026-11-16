@@ -1,0 +1,172 @@
+package GoldenEggOVO.TDGames.Shared.text;
+
+import GoldenEggOVO.TDGames.Core.text.Language;
+
+import GoldenEggOVO.TDGames.Shared.session.GameSession;
+import GoldenEggOVO.TDGames.Shared.game.GameCatalog;
+import GoldenEggOVO.TDGames.Shared.game.GameOptions;
+import GoldenEggOVO.TDGames.Multiplayer.game.coloreight.ColorEightGame;
+import GoldenEggOVO.TDGames.Multiplayer.game.ludo.LudoGame;
+
+import net.kyori.adventure.text.Component;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public final class RoomText {
+    private RoomText() {}
+
+    public static Component game(String kind) {
+        return GameCatalog.IDS.contains(kind)
+                ? Language.component("game." + kind)
+                : Component.text(kind);
+    }
+
+    public static Component name(GameSession room) {
+        return Language.component(
+                "room.name", "game", game(room.kind), "id", room.id.toString().substring(0, 6));
+    }
+
+    public static Component option(String kind, GameOptions.Option option, Map<String, String> settings) {
+        if (option.key().equals("first")) kind = "common";
+        String value = option.value(settings);
+        Component displayed =
+                value.matches("[0-9]+") && !option.key().equals("rounds")
+                        ? Component.text(value)
+                        : value.equals("true") || value.equals("false")
+                                ? Language.component("option.boolean." + value)
+                                : Language.component(
+                                        "option." + kind + "." + option.key() + "." + value);
+        return Language.component(
+                "setup.option",
+                "rule",
+                Language.component("option." + kind + "." + option.key()),
+                "value",
+                displayed);
+    }
+
+    public static Component options(String kind, Map<String, String> settings) {
+        var available = GameOptions.forGame(kind, settings);
+        Component result = Component.empty();
+        for (var option : available) {
+            if (kind.equals("mahjong")
+                    && !Set.of("profile", "rounds").contains(option.key())
+                    && !settings.containsKey(option.key())) continue;
+            if (!result.equals(Component.empty())) result = result.append(Component.newline());
+            result = result.append(option(kind, option, settings));
+        }
+        return available.isEmpty()
+                ? Language.component("setup.standard")
+                : result;
+    }
+
+    public static Component ranking(GameSession room) {
+        if (room.board() == null) return Component.empty();
+        List<Integer> seats =
+                room.board() instanceof LudoGame ludo
+                        ? ludo.placements()
+                        : room.board() instanceof ColorEightGame cards
+                                ? cards.placements()
+                                : java.util.Arrays.stream(
+                                                room.board()
+                                                        .publicInfo()
+                                                        .getOrDefault("ranking", "")
+                                                        .split(","))
+                                        .filter(s -> !s.isBlank())
+                                        .map(Integer::parseInt)
+                                        .toList();
+        Component result = Component.empty();
+        for (int i = 0; i < seats.size(); i++) {
+            int seat = seats.get(i);
+            if (seat >= 0 && seat < room.seats.size())
+                result =
+                        result.append(Component.newline())
+                                .append(
+                                        Language.component(
+                                                "room.ranking",
+                                                "place",
+                                                i + 1,
+                                                "player",
+                                                player(room.seats.get(seat), seat + 1)));
+        }
+        return result;
+    }
+
+    public static Component scores(GameSession room) {
+        if (!Set.of("mahjong","doudizhu").contains(room.kind) || room.board() == null) return Component.empty();
+        var info = room.board().publicInfo();
+        Component result = Component.empty();
+        for (int seat = 0; seat < room.seats.size(); seat++)
+            if (info.containsKey("score." + seat))
+                result =
+                        result.append(Component.newline())
+                                .append(
+                                        Language.component(
+                                                "hand.score",
+                                                "player",
+                                                player(room.seats.get(seat), seat + 1),
+                                                "points",
+                                                info.get("score." + seat)));
+        return result;
+    }
+
+    public static Component player(GameSession.Seat seat, int number) {
+        return seat.bot()
+                ? Language.component("room.bot", "number", number)
+                : Component.text(seat.name());
+    }
+
+    public static Component phase(GameSession room) {
+        return Language.component("status." + room.phase().name().toLowerCase(java.util.Locale.ROOT));
+    }
+
+    public static Component roster(List<GameSession.Seat> seats, int capacity) {
+        Component names = Component.empty();
+        for (int i = 0; i < seats.size(); i++) {
+            if (i > 0) names = names.append(Language.component("room.roster.separator"));
+            names = names.append(player(seats.get(i), i + 1));
+        }
+        return rosterNames(
+                seats.isEmpty() ? Language.component("room.roster.empty") : names,
+                seats.size(),
+                capacity);
+    }
+
+    static Component rosterNames(Component names, int size, int capacity) {
+        return Language.component(
+                "room.roster",
+                "players",
+                names,
+                "empty",
+                Math.max(0, capacity - size),
+                "capacity",
+                capacity);
+    }
+
+    public static Component outcome(GameSession room, String outcome) {
+        if (outcome.startsWith("winners:")) {
+            Component names=Component.empty();
+            for(String value:outcome.substring(8).split(",")) {
+                int seat=Integer.parseInt(value);
+                if(!names.equals(Component.empty())) names=names.append(Language.component("room.roster.separator"));
+                names=names.append(player(room.seats.get(seat),seat+1));
+            }
+            return Language.component("result.team-winners","players",names);
+        }
+        if (outcome.startsWith("winner:")) {
+            try {
+                int seat = Integer.parseInt(outcome.substring(7));
+                return Language.component(
+                        "result.winner", "player", player(room.seats.get(seat), seat + 1));
+            } catch (IndexOutOfBoundsException | NumberFormatException ignored) {
+            }
+        }
+        return outcome.startsWith("draw:")
+                ? Language.component(
+                        "result.draw",
+                        "reason",
+                        Language.component("result.reason." + outcome.substring(5)))
+                : Language.component(outcome);
+    }
+}

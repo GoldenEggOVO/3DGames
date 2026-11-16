@@ -1,0 +1,50 @@
+import com.google.gson.*;
+import java.nio.file.*;
+import java.util.Map;
+import java.util.stream.Collectors;
+import net.minecraft.client.resources.model.cuboid.ItemTransforms;
+import net.minecraft.client.resources.model.cuboid.ItemTransform;
+import net.minecraft.client.resources.model.cuboid.CuboidModel;
+import net.minecraft.world.item.ItemDisplayContext;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
+
+class ClientTransformProbe {
+    private static Object decoder(Class<?> type) throws Exception {var ctor=type.getDeclaredConstructor();ctor.setAccessible(true);return ctor.newInstance();}
+    public static void main(String[] args) throws Exception {
+        Gson gson=new GsonBuilder().registerTypeAdapter(ItemTransforms.class,decoder(Class.forName("net.minecraft.client.resources.model.cuboid.ItemTransforms$Deserializer")))
+            .registerTypeAdapter(ItemTransform.class,decoder(Class.forName("net.minecraft.client.resources.model.cuboid.ItemTransform$Deserializer"))).create();
+        ItemTransforms ignored=gson.fromJson("{\"none\":{\"rotation\":[0,180,0]}}",ItemTransforms.class);
+        if(ignored.getTransform(ItemDisplayContext.NONE).rotation().lengthSquared()!=0)throw new AssertionError("NONE must be ignored");
+        Path assets=Path.of(args[0]);
+        Map<String,Path> items;
+        try(var paths=Files.walk(assets.resolve("items"))){
+            items=paths.filter(p->p.toString().endsWith(".json")).collect(Collectors.toMap(
+                p->p.getFileName().toString().replace(".json",""),p->p));
+        }
+        for(String name:new String[]{"mahjong_characters_1","mahjong_wind_east","color_eight_card_red_3","color_eight_card_wild"}){
+            if(!items.containsKey(name))throw new AssertionError("Missing item: "+name);
+            var item=JsonParser.parseString(Files.readString(items.get(name))).getAsJsonObject();
+            String modelId=item.getAsJsonObject("model").get("model").getAsString().split(":",2)[1];
+            var model=JsonParser.parseString(Files.readString(assets.resolve("models/"+modelId+".json"))).getAsJsonObject();
+            ItemTransform transform=gson.fromJson(model.get("display"),ItemTransforms.class).getTransform(ItemDisplayContext.FIXED);
+            Vector3f front=new Quaternionf().rotateY((float)Math.PI).transform(new Quaternionf()
+                .rotationXYZ((float)Math.toRadians(transform.rotation().x()),(float)Math.toRadians(transform.rotation().y()),(float)Math.toRadians(transform.rotation().z()))
+                .transform(new Vector3f(0,0,1)));
+            if(front.z()<.999)throw new AssertionError(name+" faces away");
+            if(new Quaternionf().rotateX((float)-Math.PI/2).transform(new Vector3f(front)).y()<.999)throw new AssertionError(name+" faces down");
+        }
+        int models = 0;
+        try (var paths = Files.walk(assets.resolve("models/item"))) {
+            for (Path path : paths.filter(p -> p.toString().endsWith(".json")).toList()) {
+                try (var reader = Files.newBufferedReader(path)) {
+                    if (CuboidModel.fromStream(reader).geometry() == null)
+                        throw new AssertionError(path + " has no geometry");
+                }
+                models++;
+            }
+        }
+        System.out.println("CLIENT_26_2_TRANSFORM_PASS actual_deserializer=true models=" + models
+            + " none_ignored=true fixed_faces_owner_and_up=true client_visual_test=false");
+    }
+}
