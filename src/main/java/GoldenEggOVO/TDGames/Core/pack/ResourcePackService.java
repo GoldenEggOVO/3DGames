@@ -1,5 +1,8 @@
 package GoldenEggOVO.TDGames.Core.pack;
 
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+import GoldenEggOVO.TDGames.Core.platform.PlatformScheduler;
+
 import GoldenEggOVO.TDGames.Shared.render.packed.BoardModelKeys;
 
 import GoldenEggOVO.TDGames.Core.text.MessageText;
@@ -64,7 +67,9 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     private final TDGamesPlugin plugin;
     private final BooleanSupplier available;
     private final Function<String, ItemStack> models;
-    private final Map<UUID, Request> requests = new HashMap<>();
+    private final Map<UUID, Request> requests = new java.util.concurrent.ConcurrentHashMap<>();
+    private final Map<UUID, String> virtualHosts = new java.util.concurrent.ConcurrentHashMap<>();
+    private final Set<UUID> optedIn = java.util.concurrent.ConcurrentHashMap.newKeySet();
     private final NamespacedKey preference = new NamespacedKey("3dgames", "resource_pack");
     private final String source;
     private final Path localFolder;
@@ -74,14 +79,26 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     private volatile CraftEngineResourcePack engine;
     private volatile boolean closed;
     private boolean reloading;
+    private PlatformScheduler.Task startup;
     public final Mode mode;
 
     public ResourcePackService(TDGamesPlugin plugin) {
-        this(plugin, new CraftEngineModels());
+        this(plugin, providers(plugin));
     }
 
-    private ResourcePackService(TDGamesPlugin plugin, CraftEngineModels models) {
-        this(plugin, models::ready, models::item);
+    private record Providers(BooleanSupplier available, Function<String, ItemStack> models) {}
+
+    private static Providers providers(TDGamesPlugin plugin) {
+        if (plugin.getConfig().getString("rendering.resource-pack.source", "craftengine").equals("craftengine")) {
+            var models = new CraftEngineModels();
+            return new Providers(models::ready, models::item);
+        }
+        var models = new PackedModels();
+        return new Providers(models::ready, models::item);
+    }
+
+    private ResourcePackService(TDGamesPlugin plugin, Providers providers) {
+        this(plugin, providers.available(), providers.models());
     }
 
     public ResourcePackService(TDGamesPlugin plugin, BooleanSupplier available, Function<String, ItemStack> models) {
@@ -130,42 +147,38 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
 
     public void start() {
         if (engine == null) return;
-        new org.bukkit.scheduler.BukkitRunnable() {
-            private int attempts;
-
-            @Override
-            public void run() {
-                if (closed) { cancel(); return; }
+        int[] attempts = {0};
+        startup = plugin.scheduler().repeat(() -> {
+                if (closed) { startup.cancel(); return; }
                 try {
                     if (engine.ready()) {
-                        cancel();
+                        startup.cancel();
                         reload(org.bukkit.Bukkit.getConsoleSender());
-                    } else if (++attempts >= 120) {
-                        cancel();
+                    } else if (++attempts[0] >= 120) {
+                        startup.cancel();
                         plugin.getLogger().warning("CraftEngine startup timed out; use 3dgames reload-pack after it is ready.");
                     }
                 } catch (ReflectiveOperationException exception) {
-                    cancel();
+                    startup.cancel();
                     plugin.getLogger().warning("Cannot prepare unified resource pack: " + exception.getMessage());
                 }
-            }
-        }.runTaskTimer(plugin, 20, 20);
+        }, 20, 20);
     }
 
     public void reload(org.bukkit.command.CommandSender sender) {
         if (closed || localFolder == null || source.equals("craftengine")
                 && !org.bukkit.Bukkit.getPluginManager().isPluginEnabled("CraftEngine") && engine == null) {
-            sender.sendMessage(Language.component("pack.reload-unavailable"));
+            PlatformMessages.send(sender, Language.component("pack.reload-unavailable"));
             return;
         }
         if (reloading) {
-            sender.sendMessage(Language.component("pack.reload-busy"));
+            PlatformMessages.send(sender, Language.component("pack.reload-busy"));
             return;
         }
         reloading = true;
         String previous = engine != null ? engine.hash() : local == null ? "" : local.current().sha1();
-        sender.sendMessage(Language.component("pack.reloading"));
-        org.bukkit.Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        PlatformMessages.send(sender, Language.component("pack.reloading"));
+        plugin.scheduler().async(() -> {
             try {
                 LocalResourcePack next = local;
                 if (next == null) {
@@ -184,26 +197,28 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
                     return;
                 }
                 String hash = engine == null ? next.current().sha1() : engine.rebuild(next.current());
-                org.bukkit.Bukkit.getScheduler().runTask(plugin, () -> {
+                plugin.scheduler().execute(() -> {
                     reloading = false;
                     if (closed) return;
                     boolean changed = !previous.equals(hash);
                     if (changed) {
                         for (Player player : org.bukkit.Bukkit.getOnlinePlayers()) {
-                            if (!preferred(player)) continue;
-                            remove(player);
-                            request(player);
-                            if (plugin.menus() != null) plugin.menus().refresh(player);
+                            plugin.scheduler().execute(player, () -> {
+                                if (closed || !preferred(player)) return;
+                                remove(player);
+                                request(player);
+                                if (plugin.menus() != null) plugin.menus().refresh(player);
+                            });
                         }
                     }
-                    sender.sendMessage(Language.component(changed ? "pack.reloaded" : "pack.reload-unchanged"));
+                    reply(sender, changed ? "pack.reloaded" : "pack.reload-unchanged");
                 });
             } catch (IOException | ReflectiveOperationException | RuntimeException exception) {
                 if (closed) return;
                 plugin.getLogger().warning("Cannot reload tabletop resource pack: " + exception.getMessage());
-                org.bukkit.Bukkit.getScheduler().runTask(plugin, () -> {
+                plugin.scheduler().execute(() -> {
                     reloading = false;
-                    if (!closed) sender.sendMessage(Language.component("pack.reload-failed"));
+                    if (!closed) reply(sender, "pack.reload-failed");
                 });
             }
         });
@@ -212,10 +227,17 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     private String localUrl(Player player, LocalResourcePack resources, LocalResourcePack.Archive archive) {
         String base = publicUrl;
         if (base.isBlank()) {
-            var host = player.getVirtualHost();
-            if (host == null) throw new IllegalArgumentException("Set local resource-pack public-url");
+            String host = virtualHosts.get(player.getUniqueId());
             try {
-                base = new URI("http", null, host.getHostString(), resources.port(), "", null, null).toString();
+                Object address = Player.class.getMethod("getVirtualHost").invoke(player);
+                if (address instanceof InetSocketAddress socket) host = socket.getHostString();
+            } catch (NoSuchMethodException ignored) {
+            } catch (ReflectiveOperationException exception) {
+                throw new IllegalArgumentException("Cannot read local resource-pack host", exception);
+            }
+            if (host == null || host.isBlank()) throw new IllegalArgumentException("Set local resource-pack public-url");
+            try {
+                base = new URI("http", null, host, resources.port(), "", null, null).toString();
             } catch (URISyntaxException exception) {
                 throw new IllegalArgumentException("Invalid local resource-pack host", exception);
             }
@@ -228,11 +250,11 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     }
 
     boolean preferred(Player player) {
-        return mode == Mode.RESOURCE_PACK
-                || mode == Mode.MIXED
-                        && player.getPersistentDataContainer()
-                                        .getOrDefault(preference, PersistentDataType.BYTE, (byte) 0)
-                                == 1;
+        boolean preferred = mode == Mode.RESOURCE_PACK || mode == Mode.MIXED
+                && player.getPersistentDataContainer().getOrDefault(preference, PersistentDataType.BYTE, (byte) 0) == 1;
+        if (preferred) optedIn.add(player.getUniqueId());
+        else optedIn.remove(player.getUniqueId());
+        return preferred;
     }
 
     @Override
@@ -249,7 +271,7 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     public boolean packed(Player player) {
         Request r = requests.get(player.getUniqueId());
         return mode != Mode.VANILLA
-                && preferred(player)
+                && (mode == Mode.RESOURCE_PACK || optedIn.contains(player.getUniqueId()))
                 && r != null
                 && r.stage() == Stage.READY
                 && available.getAsBoolean();
@@ -294,18 +316,29 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     }
 
     public void toggle(Player player) {
+        if (!plugin.scheduler().isOwned(player)) {
+            plugin.scheduler().execute(player, () -> toggle(player));
+            return;
+        }
         if (!hasToggle()) return;
         Request r = requests.get(player.getUniqueId());
         if (r != null && r.stage() != Stage.FAILED) {
             player.getPersistentDataContainer().set(preference, PersistentDataType.BYTE, (byte) 0);
+            optedIn.remove(player.getUniqueId());
             remove(player);
         } else {
             player.getPersistentDataContainer().set(preference, PersistentDataType.BYTE, (byte) 1);
+            optedIn.add(player.getUniqueId());
             request(player);
         }
+        capture(player);
     }
 
     void request(Player player) {
+        if (!plugin.scheduler().isOwned(player)) {
+            plugin.scheduler().execute(player, () -> request(player));
+            return;
+        }
         if (closed || mode == Mode.VANILLA || !preferred(player)) return;
         Request existing = requests.get(player.getUniqueId());
         if (existing != null && existing.stage() != Stage.FAILED) return;
@@ -323,7 +356,7 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
             requests.put(player.getUniqueId(), new Request(id, Stage.LOADING));
             engine.download(player.getUniqueId()).whenComplete((download, failure) -> {
                 if (closed) return;
-                org.bukkit.Bukkit.getScheduler().runTask(plugin, () -> {
+                plugin.scheduler().execute(player, () -> {
                     Request current = requests.get(player.getUniqueId());
                     if (closed || !player.isOnline() || !preferred(player)
                             || current == null || !current.id().equals(id)) return;
@@ -387,9 +420,14 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     private void failed(Player player, UUID id) {
         requests.put(player.getUniqueId(), new Request(id, Stage.FAILED));
         plugin.tell(player, Language.component("pack.failed"));
+        capture(player);
     }
 
     public void status(Player player, UUID id, PlayerResourcePackStatusEvent.Status status) {
+        if (!plugin.scheduler().isOwned(player)) {
+            plugin.scheduler().execute(player, () -> status(player, id, status));
+            return;
+        }
         Request r = requests.get(player.getUniqueId());
         if (r == null || !r.id().equals(id) || r.stage() == Stage.FAILED || !preferred(player))
             return;
@@ -407,6 +445,7 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
         if (status != PlayerResourcePackStatusEvent.Status.ACCEPTED
                 && status != PlayerResourcePackStatusEvent.Status.DOWNLOADED
                 && plugin.menus() != null) plugin.menus().refresh(player);
+        capture(player);
     }
 
     @EventHandler
@@ -416,9 +455,9 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
 
     @EventHandler
     public void joined(PlayerJoinEvent event) {
-        org.bukkit.Bukkit.getScheduler()
-                .runTaskLater(
-                        plugin,
+        plugin.scheduler()
+                .later(
+                        event.getPlayer(),
                         () -> {
                             if (event.getPlayer().isOnline()) request(event.getPlayer());
                         },
@@ -426,20 +465,52 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     }
 
     @EventHandler
+    public void login(PlayerLoginEvent event) {
+        String hostname = event.getHostname();
+        try {
+            String host = URI.create("http://" + hostname).getHost();
+            if (host != null) virtualHosts.put(event.getPlayer().getUniqueId(), host);
+        } catch (IllegalArgumentException ignored) {
+        }
+    }
+
+    @EventHandler
     public void quit(PlayerQuitEvent event) {
         requests.remove(event.getPlayer().getUniqueId());
+        optedIn.remove(event.getPlayer().getUniqueId());
+        virtualHosts.remove(event.getPlayer().getUniqueId());
     }
 
     private void remove(Player player) {
         Request r = requests.remove(player.getUniqueId());
         if (r != null) player.removeResourcePack(r.id());
+        capture(player);
+    }
+
+    private void capture(Player player) {
+        if (plugin.playerViews() != null) plugin.playerViews().capture(player);
+    }
+
+    private void reply(org.bukkit.command.CommandSender sender, String key) {
+        if (sender instanceof Player player)
+            plugin.scheduler().execute(player, () -> PlatformMessages.send(sender, Language.component(key)));
+        else PlatformMessages.send(sender, Language.component(key));
     }
 
     @Override
     public void close() {
         closed = true;
-        for (Player player : org.bukkit.Bukkit.getOnlinePlayers()) remove(player);
+        if (startup != null) startup.cancel();
+        for (Player player : org.bukkit.Bukkit.getOnlinePlayers()) {
+            Request request = requests.remove(player.getUniqueId());
+            if (request == null) continue;
+            // Disabled plugins cannot submit region tasks; popping this owned pack only sends a packet.
+            if (!plugin.isEnabled()) player.removeResourcePack(request.id());
+            else plugin.scheduler().execute(player, () -> player.removeResourcePack(request.id()));
+        }
         requests.clear();
+        optedIn.clear();
+        virtualHosts.clear();
         if (local != null) local.close();
         if (engine != null) engine.close();
     }

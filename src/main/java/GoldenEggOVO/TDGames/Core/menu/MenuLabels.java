@@ -4,10 +4,10 @@ import GoldenEggOVO.TDGames.Core.text.MessageText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 
-final class MenuLabels {
+public final class MenuLabels {
     private MenuLabels() {}
 
-    static Component caption(MenuView.Button button) {
+    public static Component caption(MenuView.Button button) {
         var result = Component.text("[" + name(button) + "]");
         if (button.key().equals("back")) return result.color(NamedTextColor.YELLOW);
         if (button.key().equals("close")) return result.color(NamedTextColor.GRAY);

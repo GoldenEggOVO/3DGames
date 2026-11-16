@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render.classic;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
+
 import org.bukkit.Location;
 import org.bukkit.entity.Display;
 import org.bukkit.entity.Entity;
@@ -46,7 +50,7 @@ final class PieceMotion {
     boolean tick() {
         frame++;
         if (frame > duration) {
-            if (temporary) targets.keySet().forEach(Entity::remove);
+            if (temporary) targets.keySet().forEach(DisplayAudience::retire);
             return true;
         }
         position(Math.min(1, (double) frame / duration));
@@ -55,7 +59,7 @@ final class PieceMotion {
     }
 
     void cancel() {
-        if (temporary) targets.keySet().forEach(Entity::remove);
+        if (temporary) targets.keySet().forEach(DisplayAudience::retire);
         else position(1);
     }
 
@@ -65,6 +69,6 @@ final class PieceMotion {
         double step = segment - index, ease = step * step * (3 - 2 * step);
         Vector shift = route.get(index).clone().multiply(1 - ease).add(route.get(index + 1).clone().multiply(ease))
                 .add(new Vector(0, Math.pow(Math.sin(Math.PI * step), 2) * lift, 0));
-        targets.forEach((part, target) -> part.teleport(target.clone().add(shift)));
+        targets.forEach((part, target) -> DisplayMovement.move(part, target.clone().add(shift)));
     }
 }

@@ -2,9 +2,13 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-Playable 3D tabletop games for Minecraft, with physical pieces, multiplayer rooms, private hands and native Dialog menus.
+3D tabletop games for Minecraft, with physical boards, pieces, cards and dice. Includes saved solo progress, multiplayer rooms, practice bots, spectating and private hands.
 
-Requires **Java 25 and a supported Paper / Purpur server**. Runs independently without client mods or other custom plugins. CraftEngine, Vault, PlaceholderAPI and the resource pack are optional. Current version: **1.0.0**.
+One JAR supports Paper, Purpur, Spigot, CraftBukkit and Folia, with native Dialog menus and no client mods. CraftEngine, Vault, PlaceholderAPI and the resource pack are optional.
+
+[Compatibility](#compatibility) · [Install](#install) · [Controls and menus](#controls-and-menus) · [Games](#games) · [Configuration](#configuration-and-languages) · [Resource pack](#optional-resource-pack) · [Build](#build) · [Source layout](#source-layout) · [License](#license)
+
+> This page describes the current `main` source. Existing 1.0.0 Release assets do not yet contain this compatibility update; build the current source to use the complete matrix below.
 
 ## Compatibility
 
@@ -12,27 +16,44 @@ Requires **Java 25 and a supported Paper / Purpur server**. Runs independently w
 | --- | --- | --- |
 | Paper | 26.1.1, 26.1.2, 26.2, 26.3 | Supported |
 | Purpur | 26.1.2, 26.2, 26.3 | Supported |
-| Spigot / CraftBukkit | 26.1.2, 26.3 | Unsupported; required Adventure and Paper APIs are absent |
-| Folia | 26.1.2, 26.2, 26.3 | Unsupported; region-threaded scheduling requires a separate implementation |
+| Spigot / CraftBukkit | 26.1, 26.1.1, 26.1.2, 26.2, 26.3 | Supported |
+| Folia | 26.1.2, 26.2, 26.3 | Supported |
 
-The supported combinations were checked with isolated server tests covering native Dialogs, table creation, game actions, entity cleanup and restart recovery. This matrix covers independent operation; optional plugins have their own server compatibility requirements. The resource pack's 264 models and 264 item definitions were also checked with the official client parsers for 26.1, 26.1.1, 26.1.2, 26.2 and 26.3. These automated checks cover parsing and behavior; graphical appearance and sound remain subject to in-game acceptance.
+Requires **Java 25**. As of 2026-11-16, the same JAR passed creation, gameplay and restart recovery across 20 platform/version combinations, together with 1,467 Java tests and 147 asset checks.
+
+Spigot / CraftBukkit 26.1 and 26.1.1 were rebuilt from exact official historical commits; the current BuildTools entries with those names resolve to 26.1.2. Paper currently provides no 26.1 build, and Purpur / Folia provide no 26.1 or 26.1.1 builds. This table covers specific builds, not every historical build, snapshot or future version.
+
+Paper / Purpur checks use proxy players with real worlds and entities; Spigot / CraftBukkit use actual ServerPlayer objects and in-memory connections. Folia 26.3 additionally passed two graphical clients through menus, pack downloads, cameras, directional input, cross-region actions and reconnect/restart recovery. The other Folia versions cover actual region entities and saved-game recovery. Automated checks and visual, audio and interaction acceptance are separate.
+
+Server differences live in `Core/platform/`; menus and game rules are shared. Folia routes table work to its owning region and player work to the player's scheduler. Optional plugins must also support the selected server.
+
+Some native asynchronous teleports on Folia do not fire `PlayerTeleportEvent`, a reproduced [upstream limitation](https://github.com/PaperMC/Folia/issues/490). Other plugins that cancel teleports through this event need separate checks. Replace JARs with a full server stop and restart; third-party hot-unload tools are outside the matrix.
 
 ## Install
 
-1. Download a published shaded JAR from [Releases](https://github.com/GoldenEggOVO/3DGames/releases), or [build from source](#build).
+1. Prepare Java 25 and a server from the table above, then [build](#build) the current plugin. Published versions are available from [Releases](https://github.com/GoldenEggOVO/3DGames/releases).
 2. Stop the server and back up worlds and `plugins/3DGames/`.
-3. Put one `3DGames-*.jar` in `plugins/`. Do not install `original-*.jar`.
-4. Start the server and run `/3dgames`. Choose Single Player or Multiplayer. Single Player includes solo tabletop games. Choose a game, customize its rules, then start playing.
+3. Put one `3DGames-*.jar` in `plugins/`; do not install `original-*.jar`.
+4. Start the server and run `/3dgames`. Choose Single Player or Multiplayer. Set `language: zh_CN` for Chinese.
 
-Menus use native Dialog text buttons. The resource-pack toggle is in Menu settings.
+The plugin alone provides vanilla models. For resource-pack models, optionally install CraftEngine; default `auto` mode selects mixed rendering and joins its unified pack. See [Optional resource pack](#optional-resource-pack).
 
-Sneak and right-click anywhere on a table to open its room menu. Choose pieces, cards, dice and scoring cells directly on the table. Mahjong also supports holding the sprint key (Ctrl by default) for a fixed table view; release it to return.
+## Controls and menus
 
-In 2048, press the sprint key (Ctrl by default) once to toggle the overhead view, use W/A/S/D to slide, and press it again to exit. In Mastermind, select a current-column hole and then a color from the tray; right-click or scroll also cycles colors. Orange hint pegs mean an exact match; white pegs mean the right color in another position. In Battleship, left-click the ship rack to select and your sea to place, right-click the sea to rotate, or right-click the selected ship to remove it. During setup, green and red previews indicate valid and invalid placements. After confirming placement, click the opponent's sea to fire. In Monopoly trades, click green-marked properties on the board to select or remove them; cyan marks selected properties.
+The home page offers Single Player and Multiplayer. Menu settings contain the pack toggle. Both model modes share native Dialog text buttons: player counts and descriptions appear in tooltips, lists use native scrolling, the home footer closes, and subpage footers go back. Amounts use validated native inputs.
 
-Plugin data lives in `plugins/3DGames/`. Back up this directory before updating, including rooms, payment records, languages and custom resources.
+Sneak and right-click a table to open its room menu. Operate pieces, cards, dice and scoring cells directly on the table. Multiplayer hosts can wait for friends to join and ready up, or fill empty seats with bots and start. Room rules lock after creation.
 
-Use `/3dgames`, `3dgames.use`, `3dgames.admin` and `%3dgames_...%`. Resource model and persistent player-data namespaces remain stable.
+| Game | Main controls |
+| --- | --- |
+| Board games | Select a piece, then a legal target; pointer and button feedback are private to the player |
+| Mahjong | Hold the sprint key (Ctrl by default) for a fixed table view; release to exit |
+| 2048 | Press sprint once for the fixed overhead view, slide with movement keys W/A/S/D, and press sprint again to exit |
+| Mastermind | Select a current-column hole and a tray colour; right-click or scroll cycles colours. Orange means exact match, white means right colour elsewhere |
+| Battleship | Left-click to select/place, right-click to rotate/remove; after setup, click the opposing sea to fire |
+| Monopoly trades | Click green-marked properties to select or remove; cyan marks selected properties. Confirm the table draft before submitting |
+
+Continue saved games from Single Player. Each game has its own save; Save and leave releases the table. Disconnects and shutdowns also save. Starting another game of the same kind requires confirmation before replacing progress.
 
 ## Games
 
@@ -82,13 +103,13 @@ Vanilla poker and Color Eight faces use 24 thin player heads for 32×48 artwork,
 | `/3dgames rematch` | Ready for a rematch |
 | `/3dgames move <action>` | Play a legal rule action, e.g. `drop:3` |
 | `/3dgames rules [kind]` | Show rules |
+| `/3dgames reload-language` | Administrator language reload |
+| `/3dgames reload-pack` | Administrator pack rebuild and resend |
 | `3dgames status` | Inspect room count from the console |
 
 Game IDs: `xiangqi`, `gomoku`, `chess`, `ludo`, `checkers`, `draughts`, `reversi`, `go`, `go9`, `go13`, `connectfour`, `color-eight`, `mahjong`, `yacht`, `doudizhu`, `liars-bar`, `texas-holdem`, `2048`, `mancala`, `nine-mens-morris`, `dots-and-boxes`, `mastermind`, `hex`, `memory`, `backgammon`, `battleship`, `klondike`, `shogi`, `mini-shogi`, `monopoly`. `checkers` selects Chinese Checkers; `go` selects 19×19 Go.
 
 Example: `/3dgames create connectfour`, then `/3dgames bots`. Command creation uses default rules; use the menu to customize rules. Tab completion suggests games, player counts, rooms and legal actions. `3dgames.use` defaults to everyone. `3dgames.admin` defaults to operators and controls administration and language reloads.
-
-
 
 ## Configuration and languages
 
@@ -154,13 +175,11 @@ With PlaceholderAPI installed, the built-in `3dgames` expansion registers automa
 | `%3dgames_ready%`, `%3dgames_your_turn%`, `%3dgames_turn_player%` | Readiness, active turn ownership and current player name |
 | `%3dgames_economy_available%`, `%3dgames_balance%`, `%3dgames_balance_formatted%` | Provider availability, raw balance and provider-formatted balance |
 
-Room values refresh once per second. Requested balances refresh at most once every five seconds on the server thread; the first request returns an empty string until the next refresh. No provider returns an empty balance. Missing membership returns empty text, zero counts or `false`; unknown placeholders remain unresolved. Placeholder callbacks only read immutable snapshots and never expose hidden hands or run provider/database operations.
+Room values refresh once per second. Requested balances refresh through plugin-scheduled tasks at most once every five seconds; the first request returns an empty string until the next refresh. No provider returns an empty balance. Missing membership returns empty text, zero counts or `false`; unknown placeholders remain unresolved. Placeholder callbacks only read immutable snapshots and never expose hidden hands or run provider/database operations.
 
 ## Optional resource pack
 
 For a fresh installation, place this plugin and CraftEngine's JARs in `plugins/` and start the server. Missing registration files and built-in item entries are installed under `plugins/CraftEngine/resources/3dgames/`, preserving existing custom entries. Tabletop assets join CraftEngine's unified pack and use its existing hosting. CraftEngine's default self-hosted `port: auto` shares the Minecraft game port; ordinary direct servers need no additional port 8137.
-
-The main menu offers Single Player and Multiplayer. Game entries show their names, with player counts and rules in hover tooltips, and separate Back and Close actions.
 
 The default configuration is below. Existing explicit settings are preserved; restart after switching an older installation:
 
@@ -201,7 +220,43 @@ java -cp target/3DGames-1.0.0.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomRepl
 
 For external delivery, update the matching ZIP and its URL as well. Unified and local delivery fill missing files from the JAR. After startup, check restored rooms, menus and table actions before removing the backup.
 
-This build uses `3dgames` for all internal resource identifiers. Existing installations need an offline update of server resource folders, CraftEngine registrations, custom resource references and stored plugin tags together with the JAR. Back up and validate the data copy first so custom textures and player preferences are preserved.
+## Build
+
+Install **JDK 25, Maven 3.9+ and Python 3.12+**. The first build needs access to dependency repositories; a populated cache allows offline builds. Packaging uses only Python's standard library; asset checks and native-head tools also need Pillow.
+
+```sh
+python tools/build.py
+```
+
+Use `python3` on Linux if needed. The script cleans old output, packages the default pack, compiles and runs Java tests, then verifies the JAR/ZIP checksums. It uses adjacent workspace Maven/cache installations when present, otherwise `PATH`; the JDK is detected through `JAVA_HOME` or `PATH`.
+
+For a manual build, complete each step before the next:
+
+```sh
+mvn -B -ntp clean
+python tools/package_resource_pack.py
+mvn -B -ntp package
+```
+
+Generate the pack before compiling. Maven embeds `target/3DGames-resource-pack.zip` and its checksum; Maven alone does not generate this ZIP from the asset directory.
+
+| Output | Purpose |
+| --- | --- |
+| `target/3DGames-1.0.0.jar` | Installable plugin with its default pack |
+| `target/3DGames-resource-pack.zip` | Client pack for inspection or external hosting |
+| `target/resource-pack-manifest.json` | Resource inventory, dimensions and digests |
+| `target/surefire-reports/` | Java test results |
+
+Asset checks and source export:
+
+```sh
+python -m unittest discover -s tools/tests -v
+python tools/package_source.py
+```
+
+Source export needs Git and a Git checkout, producing `target/3DGames-source.zip`. It includes current source and uncommitted new files, excluding ignored build outputs, logs and runtime data. Identical files produce identical resource ZIPs in the same Python environment.
+
+Build scripts do not deploy servers. There are no GitHub Actions workflows; pushing source does not automatically build or publish a Release.
 
 ## Source layout
 
@@ -233,6 +288,59 @@ This build uses `3dgames` for all internal resource identifiers. Existing instal
 
 Historical deliveries and runtime records are stored outside the repository. The source tree contains the files needed to maintain the current version.
 
+### Finding the code
+
+Plugin packages are under `src/main/java/GoldenEggOVO/TDGames/`; all paths below are relative to that directory. Tests follow the same structure.
+
+```text
+TDGames/
+├─ TDGamesPlugin.java   Plugin assembly, event registration and cleanup
+├─ Core/               Game coordination, commands, shared menus, packs and common services
+├─ Singleplayer/       2048/Klondike rules, personal progress and solo menus
+├─ Multiplayer/        Multiplayer rules, rooms, preparation/reconnection, bots, payments and room menus
+└─ Shared/             Mastermind/Memory rules, common sessions, models and input
+```
+
+| Change | Start here |
+|---|---|
+| Startup and configuration | `TDGamesPlugin.java` |
+| Commands and Tab suggestions | `Core/command/` |
+| Server compatibility and scheduling | `Core/platform/`; Paper and Bukkit Dialog backends share menu definitions |
+| Game creation and mode routing | `Core/game/GameFactory.java` and `GameService.java`; IDs, order and player counts in `Shared/game/GameCatalog.java` |
+| Personal sessions and progress | `Singleplayer/SingleplayerService.java` and `Singleplayer/progress/SoloProgressStore.java` |
+| Multiplayer preparation, reconnection and persistence | `Multiplayer/MultiplayerService.java`, `Multiplayer/room/RoomStore.java` and `RoundActions.java` |
+| Common session state and table execution | `Shared/session/GameSession.java`, `SessionHistory.java` and `SessionRuntime.java` |
+| Game rules and legal actions | `Singleplayer/game/<game>/`, `Multiplayer/game/<game>/`, `Shared/game/mastermind/` and `Shared/game/memory/` |
+| Clicks, hovering and table input | `Shared/interaction/TableWorldController.java` |
+| Joining rooms and opening menus at tables | `Shared/interaction/TableAccessController.java` |
+| Player focus camera, collision and state restoration | `Shared/interaction/TablePlayerController.java` |
+| Menu pages and buttons | `Core/menu/GameMenus.java` routes shared pages; `Singleplayer/menu/SoloMenus.java` and `Multiplayer/menu/RoomMenus.java` own mode actions; `Core/menu/GameMenuWindow.java` adapts windows |
+| Multiplayer amount input | `Multiplayer/menu/PokerRaiseWindow.java` and `StakeWindow.java` |
+| Fee, balance and settlement text | `Multiplayer/menu/RoomEconomyText.java` and `Multiplayer/economy/RoomPaymentLedger.java`; Vault/PAPI integration in `Multiplayer/integration/` |
+| Board display and viewer privacy | `Shared/render/TableView.java`, `Core/render/DisplayAudience.java` and `Core/render/PlayerViews.java` |
+| Board coordinates, hit regions and piece geometry | `Shared/render/TableGeometry.java` and `BoardPieceModels.java` |
+| Native board map artwork and map ID caching | `Shared/render/BoardMapArtwork.java` and `BoardMapStore.java` |
+| Card, Mahjong and dice layouts | `Shared/render/cards/`, `Shared/render/mahjong/` and `Shared/render/dice/` |
+| Resource-pack loading, delivery and CraftEngine integration | `Core/pack/ResourcePackService.java`; `Core/pack/PackedModels.java` reads the standalone model catalogue |
+| Packed model selection and display | `Shared/render/packed/BoardModelKeys.java` and `PackedDisplay.java` |
+| Bots, sounds and translations | `Multiplayer/bot/`, `Shared/audio/` and `Shared/text/`; player text in `src/main/resources/languages/` |
+
+The normal action flow is input → `Core/game/GameService` mode routing → singleplayer or multiplayer validation → common runtime rule execution → mode-specific saving and view updates. Singleplayer owns personal progress; multiplayer owns readiness, reconnection waiting and settlement. Both modes share player occupancy and table allocation. Membership, readiness, absence and departure collections are read-only to consumers. Game rules do not depend on Bukkit; rendering does not determine whether a move is legal.
+
+Shared card heads live in `Core/render/PlayingCardHeads.java`; display audiences query pack modes through `ResourcePackState`. Mahjong public-tile layouts, table geometry and native tile patterns live in `Shared/render/mahjong/MahjongLayout.java`, `MahjongTableFurniture.java` and `MahjongTilePatterns.java`.
+
+`Core/platform/` wraps native Dialogs, messages, events and scheduling. `Core/render/PlayerViews.java` captures player snapshots and `DisplayMovement.java` handles display movement. `Shared/interaction/TableChunks.java` owns shared chunk tickets; `TableWorldController.java` executes table actions after their region is ready.
+
+`Core/economy/` provides economy interfaces and the Vault adapter; `Core/text/Language.java` loads translations; `Core/menu/DialogMenus.java` builds native menus through the platform backend.
+
+`tools/tests/server/run_standalone.py` checks isolated startup, gameplay and restart recovery. Its `--server-dir` fixture needs Purpur 26.2 named `purpur-2622.jar`, prepared libraries/cache and an already accepted EULA. Use `--maven-repo` for a custom dependency cache (default `~/.m2/repository`). Optional CraftEngine arguments enable resource-model checks. `run_soak.py` checks repeated gameplay and entity cleanup. Keep receipts and logs in local build outputs.
+
+`tools/tests/client/run_probe.py <minecraft-home>` uses an installed official client parser to check model loading and card facing. It defaults to 26.2; select another installed client with `--version`.
+
+Native head export: `python tools/native_heads/build-native-card-heads.py --output target/native-heads`; Color Eight: `python tools/native_heads/build-color-eight-heads.py --output target/color-eight-heads`. Only `generate-native-card-heads.py` contacts MineSkin, and only when explicitly run with a local `--api-key-file`; it is not part of normal builds or runtime.
+
+Automated tests do not replace client acceptance. Check private hands from multiple seats and a spectator, pack switching and failed downloads, hover/click alignment, dice movement, sounds, restart recovery and frame-time performance in Minecraft.
+
 ### Editing native models
 
 JSON files under `vanilla-models/` describe tables, pieces, dice, mahjong patterns and card backs with one format. `Core/render/model/` loads and validates definitions and calculates their transforms. Game Java classes select models and handle dynamic placement, animation, interaction and entity cleanup.
@@ -243,42 +351,7 @@ Tables use local block coordinates. Board pieces scale with cell spacing. Mahjon
 
 `shared/cards/head_textures.json` and `tabletop/color_eight/head_textures.json` hold signed native card textures and are separate from the geometry index. Use `tools/native_heads/` to regenerate those faces.
 
-After changing bundled native data, run the full build below and reinstall the JAR. Client resource-pack models remain separately editable under `resource-pack/assets/`. `reload-pack` does not reload native geometry bundled in the JAR.
-
-## Build
-
-Updates are built, tested and delivered locally, then source is synchronized after acceptance. The repository includes no GitHub Actions workflows; pushing source does not automatically build or publish a Release.
-
-This section is for maintainers changing source code or the JAR's bundled defaults. Installing the plugin and routine asset changes do not require these commands; edit server assets and use `/3dgames reload-pack`.
-
-Run `python tools/build.py` on Windows or `python3 tools/build.py` on Linux to clean the previous build, prepare the pack, compile and test the plugin, then verify the ZIP and JAR checksums. Cleaning prevents classes from deleted source files from remaining in the next JAR.
-
-The build script prefers Maven 3.9.11 under the workspace's adjacent `.tools/` directory. When that directory also contains an `m2/` cache, the build reuses it offline. Elsewhere, provide Maven through `PATH` and JDK 25 through `JAVA_HOME` or `PATH`. Outputs remain under `target/`; running the script does not deploy them to a server.
-
-Use **JDK 25 and Maven 3.9+**:
-
-```sh
-mvn -B -ntp clean
-python tools/package_resource_pack.py
-mvn -B -ntp package
-```
-
-Maven runs Java tests and writes results to `target/surefire-reports/`. Install the shaded `target/3DGames-*.jar`.
-
-The pack files are maintained directly; models and audio are not generated during builds. Packaging needs **Python 3.12+** and its standard library. Package the assets before compiling the plugin so the JAR contains the matching checksum:
-
-```sh
-mvn -B -ntp clean
-python tools/package_resource_pack.py
-mvn -B -ntp package
-python -m unittest discover -s tools/tests -t . -p "test_*.py"
-python -m compileall -q tools
-python tools/package_source.py
-```
-
-Outputs include `target/3DGames-resource-pack.zip`, `target/resource-pack-manifest.json`, the plugin JAR and `target/3DGames-source.zip`. Identical pack files produce an identical ZIP in the same Python environment. The client pack ZIP includes only `pack.mcmeta`, `assets/` and `licenses/`. Maven bundles CraftEngine registrations directly from their source directory into the JAR; they are excluded from the client ZIP. The source ZIP includes current source and untracked new files, excluding ignored build and runtime data.
-
-Asset and head-export tests need Pillow. Optional native head upload needs its own MineSkin credentials; neither ordinary packaging nor the server needs them.
+After changing bundled native data, follow the full [build](#build) and reinstall the JAR. Client resource-pack models remain separately editable under `resource-pack/assets/`. `reload-pack` does not reload native geometry bundled in the JAR.
 
 ### Editing the resource pack
 
@@ -286,15 +359,7 @@ Edit model JSONs under `resource-pack/assets/3dgames/models/item/`, item definit
 
 Asset filenames describe their game, color, suit, face or part: `poker_spades_ace`, `color_eight_card_blue_2` and `mahjong_characters_1`. Item definitions and model files share the same basename. Stable logical IDs are mapped to these filenames by CraftEngine's `item_model` registration; the packager uses that registration as its index. Renaming a client file updates its path references and registration while preserving logical IDs, native model IDs and gameplay code.
 
-When maintainers update default assets in the source tree, run these commands from the repository root, proceeding only when each step succeeds. They require Python 3.12+, JDK 25 and Maven 3.9+:
-
-```sh
-mvn -B -ntp clean
-python tools/package_resource_pack.py
-mvn -B -ntp package
-```
-
-The first step creates `target/3DGames-resource-pack.zip` and updates its checksum. The second runs Java tests and embeds both the default ZIP and its checksum into `target/3DGames-<version>.jar`. This builds source deliveries. Servers using unified or local resources edit their server resource folder and run `/3dgames reload-pack` for routine asset changes. External hosting still uses the ZIP matching the JAR. Editing an existing PNG does not require changing CraftEngine registrations.
+After editing the source defaults, follow the full [build](#build) sequence. Packaging creates `target/3DGames-resource-pack.zip` and updates its checksum; Maven then tests and embeds both in the plugin. Servers using unified or local resources edit their server resource folder and run `/3dgames reload-pack` for routine asset changes. External hosting still uses the ZIP matching the JAR. Editing an existing PNG does not require changing CraftEngine registrations.
 
 | Directory or file | How to customize it |
 | --- | --- |
@@ -329,56 +394,6 @@ Resource paths, CraftEngine item keys, sounds, world entity tags, player prefere
 
 Playing-card artwork is stored in `textures/item/shared/playing_cards/`. The 55 rounded Tabletop card models, including both jokers, live in `models/item/shared/playing_cards/`; item definitions follow the same paths under `items/`.
 
-### Finding the code
-
-Plugin packages are under `src/main/java/GoldenEggOVO/TDGames/`; all paths below are relative to that directory. Tests follow the same structure.
-
-```text
-TDGames/
-├─ TDGamesPlugin.java   Plugin assembly, event registration and cleanup
-├─ Core/               Game coordination, commands, shared menus, packs and common services
-├─ Singleplayer/       2048/Klondike rules, personal progress and solo menus
-├─ Multiplayer/        Multiplayer rules, rooms, preparation/reconnection, bots, payments and room menus
-└─ Shared/             Mastermind/Memory rules, common sessions, models and input
-```
-
-| Change | Start here |
-|---|---|
-| Startup and configuration | `TDGamesPlugin.java` |
-| Commands and Tab suggestions | `Core/command/` |
-| Game creation and mode routing | `Core/game/GameFactory.java` and `GameService.java`; IDs, order and player counts in `Shared/game/GameCatalog.java` |
-| Personal sessions and progress | `Singleplayer/SingleplayerService.java` and `Singleplayer/progress/SoloProgressStore.java` |
-| Multiplayer preparation, reconnection and persistence | `Multiplayer/MultiplayerService.java`, `Multiplayer/room/RoomStore.java` and `RoundActions.java` |
-| Common session state and table execution | `Shared/session/GameSession.java`, `SessionHistory.java` and `SessionRuntime.java` |
-| Game rules and legal actions | `Singleplayer/game/<game>/`, `Multiplayer/game/<game>/`, `Shared/game/mastermind/` and `Shared/game/memory/` |
-| Clicks, hovering and table input | `Shared/interaction/TableWorldController.java` |
-| Joining rooms and opening menus at tables | `Shared/interaction/TableAccessController.java` |
-| Player focus camera, collision and state restoration | `Shared/interaction/TablePlayerController.java` |
-| Menu pages and buttons | `Core/menu/GameMenus.java` routes shared pages; `Singleplayer/menu/SoloMenus.java` and `Multiplayer/menu/RoomMenus.java` own mode actions; `Core/menu/GameMenuWindow.java` adapts windows |
-| Multiplayer amount input | `Multiplayer/menu/PokerRaiseWindow.java` and `StakeWindow.java` |
-| Fee, balance and settlement text | `Multiplayer/menu/RoomEconomyText.java` and `Multiplayer/economy/RoomPaymentLedger.java`; Vault/PAPI integration in `Multiplayer/integration/` |
-| Board display and viewer privacy | `Shared/render/TableView.java` and `Core/render/DisplayAudience.java` |
-| Board coordinates, hit regions and piece geometry | `Shared/render/TableGeometry.java` and `BoardPieceModels.java` |
-| Native board map artwork and map ID caching | `Shared/render/BoardMapArtwork.java` and `BoardMapStore.java` |
-| Card, Mahjong and dice layouts | `Shared/render/cards/`, `Shared/render/mahjong/` and `Shared/render/dice/` |
-| Resource-pack loading, delivery and CraftEngine integration | `Core/pack/ResourcePackService.java` |
-| Packed model selection and display | `Shared/render/packed/BoardModelKeys.java` and `PackedDisplay.java` |
-| Bots, sounds and translations | `Multiplayer/bot/`, `Shared/audio/` and `Shared/text/`; player text in `src/main/resources/languages/` |
-
-The normal action flow is input → `Core/game/GameService` mode routing → singleplayer or multiplayer validation → common runtime rule execution → mode-specific saving and view updates. Singleplayer owns personal progress; multiplayer owns readiness, reconnection waiting and settlement. Both modes share player occupancy and table allocation. Membership, readiness, absence and departure collections are read-only to consumers. Game rules do not depend on Bukkit; rendering does not determine whether a move is legal.
-
-Shared card heads live in `Core/render/PlayingCardHeads.java`; display audiences query pack modes through `ResourcePackState`. Mahjong public-tile layouts, table geometry and native tile patterns live in `Shared/render/mahjong/MahjongLayout.java`, `MahjongTableFurniture.java` and `MahjongTilePatterns.java`.
-
-`Core/economy/` provides common economy interfaces and the Vault adapter. `Core/text/Language.java` loads translations. `Core/menu/DialogMenus.java` builds native Dialogs, which builds the native menus. `TableWorldController.retainTableChunks()` only keeps the table's chunks loaded.
-
-`tools/tests/server/run_standalone.py` checks isolated startup, gameplay and restart recovery. Supply `--server-dir` with a prepared Purpur 26.2 cache and already accepted EULA; use `--maven-repo` for a custom dependency cache (the default is `~/.m2/repository`). Optional CraftEngine arguments enable resource-model checks. `run_soak.py` checks repeated gameplay and entity cleanup. Keep receipts and logs in local build outputs.
-
-`tools/tests/client/run_probe.py <minecraft-home>` uses an installed Minecraft 26.2 client parser to check model loading and card facing.
-
-Native head export: `python tools/native_heads/build-native-card-heads.py --output target/native-heads`; Color Eight: `python tools/native_heads/build-color-eight-heads.py --output target/color-eight-heads`. Only `generate-native-card-heads.py` contacts MineSkin, and only when explicitly run with a local `--api-key-file`; it is not part of normal builds or runtime.
-
-Automated tests do not replace client acceptance. Check private hands from multiple seats and a spectator, pack switching and failed downloads, hover/click alignment, dice movement, sounds, restart recovery and frame-time performance in Minecraft.
-
 ## License
 
 The combined plugin is distributed under GPL-3.0-or-later; see [LICENSE](LICENSE). Corresponding source is available in this repository and `3DGames-source.zip` generated by the build tooling.
@@ -392,22 +407,28 @@ Original notices and exact source provenance are retained under [`src/main/resou
 - hongsenliu/chinese-checkers — GPL-3.0-or-later.
 - bhlangonijr/chesslib — Apache-2.0.
 - Gson — Apache-2.0 runtime libraries included in the shaded JAR.
+- Adventure API, MiniMessage and text serializers — MIT; bundled for Spigot and CraftBukkit. The original notice is retained in `META-INF/licenses/adventure-MIT.txt`.
+- Kyori Option — MIT; a bundled Adventure dependency. The original notice is retained in `META-INF/licenses/option-MIT.txt`.
 
 `Core/text/MessageText.java` and `Core/text/LabelLayout.java` are adapted from GoldenEggOVO/3DCasinoGames, revision `a4ddd20`, under its GPL-3.0 license. Tabletop's label fitting retains all status lines. These are bundled source utilities; installing Casino is not required.
 
-Paper/Adventure and JOML are supplied by the server API. Private fonts, runtime configuration, worlds and third-party server/plugin JARs are not distributed here.
+Server APIs and JOML are supplied by the selected server; Paper-specific entry points are isolated. Private fonts, runtime configuration, worlds and third-party server/plugin JARs are not distributed here.
 
 The bundled chesslib subset omits unused event observers, deprecated FEN aliases and Polyglot opening-book hashing. Standard move validation and repetition detection remain in use. The original Apache-2.0 notices and source provenance are retained. Embedded sources live under `Multiplayer/game/chess/engine/`, `Multiplayer/game/xiangqi/engine/` and `Multiplayer/game/chinesecheckers/engine/`.
 
-The optional resource pack uses transparent tile artwork from [lietxia/mahjong_graphic](https://github.com/lietxia/mahjong_graphic), revision `3e275804ff58325306710bef3a7406860444bc6a`, under its M+ fonts license permitting modification and commercial use. Selected PNGs and their SVG sources are retained under `resource-pack/originals/tabletop/textures/mahjong/tiles/`; the full notice and file hashes are centralized in `resource-pack/sources.json`, and the client pack includes the notice. The former Mahjong Soul tile atlas and project-generated flower substitutes have been removed.
+The optional resource pack uses transparent tile artwork from [lietxia/mahjong_graphic](https://github.com/lietxia/mahjong_graphic), revision `3e275804ff58325306710bef3a7406860444bc6a`, under its M+ fonts license permitting modification and commercial use. Selected PNGs and their SVG sources are retained under `resource-pack/originals/tabletop/textures/mahjong/tiles/`; the full notice and file hashes are centralized in `resource-pack/sources.json`, and the client pack includes the notice.
 
 The Mahjong tablecloth is original plain green felt by the 3DGames contributors, with its SVG source retained under `resource-pack/originals/tabletop/textures/mahjong/`. Mahjong sound effects use Kenney recordings under CC0-1.0. Exact source files, URLs, licenses and SHA-256 digests are recorded in `resource-pack/sources.json`; the client pack includes the notices. Color Eight artwork and model geometry are created by this project. CraftEngine is optional and its binary is not redistributed.
 
 The resource-pack Xiangqi faces use the user-selected traditional-character SVGs from Wikimedia Commons (Inductiveload, with current vector revisions by Wj654cj86), released into the public domain. The first red and third black piece are selected from each SVG. Original SVGs and locally rendered PNGs are retained under `resource-pack/originals/tabletop/textures/xiangqi/`; exact hashes and file page links are in `resource-pack/sources.json`. Resource-pack poker faces and the blue reverse use [Pixel Playing Cards Pack by George Blackwell](https://georgeblackwell.itch.io/playing-cards-sprite-pack), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The original 60x84 PNGs are retained under `resource-pack/originals/shared/textures/playing-cards/`. Faces retain the original aspect ratio without added padding, with nearest-neighbor 2x enlargement; the blue back is simplified to a solid field with an ivory border, and the large joker corner lettering is recolored red. Author credit, license links and these changes are recorded in `resource-pack/sources.json` and in the client pack notice. Native head catalogues and their source images are unchanged. Each packed card uses one model display entity.
 
-Shared card play uses the user-provided `oxidvideos-taking-playing-card-522520.mp3` recording; its original download page and license receipt were not supplied. Additional gameplay and menu effects use Kenney CC0 samples. Shared samples are grouped by purpose under `resource-pack/originals/shared/sounds/`, while Mahjong recordings are under `resource-pack/originals/tabletop/sounds/mahjong/`; `resource-pack/originals/shared/sounds/sound_events.json` maps shared events to samples. Source links, original file hashes and license notices are centralized in `resource-pack/sources.json`, including the supplied card recording's provenance. The static client pack retains the Kenney notices under resource-pack/licenses/.
+Current shared gameplay sounds, including card play, Reversi flips and dice, use physical foley compositions based on Kenney CC0 recordings. Selected masters live under `resource-pack/originals/shared/sounds/approved/`; events, processing and output digests are recorded in `sources.json` under `approved_audio`. Other Kenney recordings are grouped under `originals/shared/sounds/`, with Mahjong recordings under `originals/tabletop/sounds/mahjong/`; notices remain in the client pack. The source archive also retains the user-supplied `oxidvideos-taking-playing-card-522520.mp3`; its original download page and license receipt were not supplied, and this provenance status remains in `sources.json`. It is not the master used by the current card-play event.
 
 Native poker card faces use cropped zombie, skeleton and creeper head textures from the user's Minecraft 26.2 client JAR (`assets/minecraft/textures/entity/`). The card layout, suits and Wither sprite are project artwork. Minecraft textures remain Mojang/Microsoft assets, separate from GPL plugin code. Head-front pixels were imported into offline PNG sources; signed skin properties are embedded for native rendering. The API key and generation cache are excluded.
+
+Shogi and Mini Shogi share the user-selected [2-kanji red wood set by Kadagaden](https://github.com/Kadagaden/shogi-pieces/tree/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood). Kadagaden artwork is CC BY 4.0; the two-kanji calligraphy is by Hari Seldon under CC BY-SA 3.0. The 15 original SVG files and their hashes are retained under `resource-pack/originals/tabletop/shogi/`. Packed pieces use 128x128 RGBA rasterizations of these originals with the original ivory lettering and red-wood colors; each piece has one closed 3D carrier. Source, license links and modifications are recorded in `resource-pack/sources.json` and `resource-pack/licenses/shogi-art.txt`.
+
+Shared block-material PNGs were extracted from Minecraft 26.2 and remain Mojang/Microsoft assets, separate from the GPL code license; provenance and digests are recorded in `resource-pack/sources.json`.
 
 #### Public rule references
 
@@ -422,14 +443,3 @@ These references informed independently implemented rules; regional profiles use
 - [EMA 2025 Riichi rules](https://mahjong-europe.org/portal/images/docs/Riichi-rules-2025-EN.pdf)
 - [Sichuan Sports Venue Association rules](https://www.ssva.org.cn/upload/file/2025-08-22/6389146967009551555075859.pdf)
 - [New Mahjong Online terminology](https://new.mjonline.com.tw/aboutgame_d.html)
-
-## Menu interfaces
-
-The home page offers Single Player and Multiplayer. Menu settings contain the resource-pack toggle. Both rendering modes use native Dialog text buttons with actions and tooltips; player counts appear in tooltips. The home page has a Close button. Subpages use that same footer for Back, and lists use native scrolling. Numeric entry uses native Dialog inputs and retains its validation.
-
-
-Tabletop furniture uses subdued dark wood and green tones in both renderers. Card faces, dice pips and team colors remain distinct. Furniture and rims use solid-color material patches, while each board retains its own colors and markings.
-
-The 13 classic games store editable native chess-box geometry in `src/main/resources/vanilla-models/tabletop/<game>/table.json`. Their packed `<game>_board.json` includes the complete static box, rim and legs in one item display; pieces and per-player controls remain separate. Board dimensions and pointer bounds are maintained in `ClassicLayout.java`. New shared block material PNGs were extracted from the installed Minecraft 26.2 client; these remain Mojang/Microsoft assets, outside the GPL code license. Their provenance and hashes are recorded in `resource-pack/sources.json`.
-
-Shogi and Mini Shogi share the user-selected [2-kanji red wood set by Kadagaden](https://github.com/Kadagaden/shogi-pieces/tree/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood). Kadagaden artwork is CC BY 4.0; the two-kanji calligraphy is by Hari Seldon under CC BY-SA 3.0. The 15 original SVG files and their hashes are retained under `resource-pack/originals/tabletop/shogi/`. Packed pieces use 128x128 RGBA rasterizations of these originals with the original ivory lettering and red-wood colors; each piece has one closed 3D carrier. Source, license links and modifications are recorded in `resource-pack/sources.json` and `resource-pack/licenses/shogi-art.txt`.

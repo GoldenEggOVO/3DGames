@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render.cards;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Shared.game.BoardGame;
 import GoldenEggOVO.TDGames.Shared.game.Cell;
 import GoldenEggOVO.TDGames.Shared.game.HandGame;
@@ -132,7 +136,7 @@ public final class PlayingCardTable implements AutoCloseable {
         void pose(Pose pose) {
             if (spec.pose.equals(pose)) return;
             Vector change = at(pose).toVector().subtract(at(spec.pose).toVector());
-            for (Display entity : parts) entity.teleport(entity.getLocation().add(change));
+            for (Display entity : parts) DisplayMovement.move(entity, entity.getLocation().add(change));
             spec = new CardSpec(spec.face, pose, spec.standing, spec.owner);
         }
 
@@ -241,7 +245,7 @@ public final class PlayingCardTable implements AutoCloseable {
     }
 
     private void show(Entity entity, Player viewer) {
-        if (viewer != null) viewer.showEntity(plugin, entity);
+        if (viewer != null) DisplayAudience.show(plugin, viewer, entity);
     }
 
     private BlockDisplay block(
@@ -277,7 +281,7 @@ public final class PlayingCardTable implements AutoCloseable {
                                     configure(d, viewer, false);
                                     d.setBackgroundColor(Color.fromARGB(0));
                                     d.setShadowed(false);
-                                    d.text(content);
+                                    PlatformMessages.text(d, content);
                                     d.setLineWidth(500);
                                     d.setTransformation(
                                             new Transformation(
@@ -391,16 +395,16 @@ public final class PlayingCardTable implements AutoCloseable {
                                 entry.getValue().remove();
                                 return true;
                             });
-            status.text(PlayingCardText.status(room));
+            PlatformMessages.text(status, PlayingCardText.status(room));
             for (int seat = 0; seat < room.seats.size(); seat++)
-                seatLabels.get(seat).text(PlayingCardText.seat(room, seat));
+                PlatformMessages.text(seatLabels.get(seat), PlayingCardText.seat(room, seat));
             revision = room.revision();
             rendered = room.board();
             language = Language.generation();
             audienceGeneration = audience.generation;
         }
         turn.sync();
-        for (Player player : List.copyOf(origin.getWorld().getPlayers())) show(player);
+        for (var snapshot : plugin.playerViews().nearby(origin, 24)) show(snapshot.player());
         for (var entry : List.copyOf(privateViews.entrySet()))
             if (!eligible(entry.getValue().player)) clear(entry.getValue().player);
     }
@@ -509,16 +513,15 @@ public final class PlayingCardTable implements AutoCloseable {
                 position.add(0, .016, 0);
                 position.setPitch(-90);
             }
-            if (!marker.getLocation().equals(position)) marker.teleport(position);
+            if (!marker.getLocation().equals(position)) DisplayMovement.move(marker, position);
         }
     }
 
     private boolean eligible(Player player) {
-        return player.isOnline()
-                && plugin.allowed(player)
-                && player.getWorld().equals(origin.getWorld())
-                && player.getLocation().distanceSquared(origin) < 24 * 24
-                && room.seat(player.getUniqueId()) >= 0;
+        return plugin.playerViews().snapshot(player).filter(snapshot -> snapshot.allowed()
+                && snapshot.location().getWorld().equals(origin.getWorld())
+                && snapshot.location().distanceSquared(origin) < 24 * 24
+                && room.seat(snapshot.id()) >= 0).isPresent();
     }
 
     private void show(Player player) {
@@ -599,7 +602,7 @@ public final class PlayingCardTable implements AutoCloseable {
         }
         for (var visual : publicCards.values())
             if (visual.spec.owner == seat)
-                visual.parts.forEach(entity -> player.hideEntity(plugin, entity));
+                visual.parts.forEach(entity -> DisplayAudience.hide(plugin, player, entity));
     }
 
     public String cardAction(Player player, String id) {
@@ -631,7 +634,7 @@ public final class PlayingCardTable implements AutoCloseable {
             try {
                 return game().selectionAction(view.seat, List.copyOf(view.selection));
             } catch (RuleViolation error) {
-                player.sendActionBar(Language.error(error).colorIfAbsent(NamedTextColor.RED));
+                PlatformMessages.actionBar(player, Language.error(error).colorIfAbsent(NamedTextColor.RED));
                 return null;
             }
         }
@@ -754,7 +757,7 @@ public final class PlayingCardTable implements AutoCloseable {
         for (var entry : publicCards.entrySet())
             if (entry.getValue().spec.owner == view.seat
                     && entry.getKey().startsWith(packed ? "packed:" : "native:"))
-                entry.getValue().parts.forEach(entity -> player.showEntity(plugin, entity));
+                entry.getValue().parts.forEach(entity -> DisplayAudience.show(plugin, player, entity));
     }
 
     public void close() {

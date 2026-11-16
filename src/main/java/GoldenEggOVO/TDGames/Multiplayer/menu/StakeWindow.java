@@ -40,7 +40,7 @@ public final class StakeWindow {
                 try {
                     submit(plugin, player, room, revision, values.get("stake_amount"));
                 } catch (IllegalArgumentException error) {
-                    player.sendActionBar(Language.error(error));
+                    GoldenEggOVO.TDGames.Core.platform.PlatformMessages.actionBar(player, Language.error(error));
                     plugin.menus().room(player, room);
                 }
             }

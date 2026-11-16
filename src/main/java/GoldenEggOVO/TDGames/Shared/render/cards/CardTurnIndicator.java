@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render.cards;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
 import GoldenEggOVO.TDGames.Shared.session.GameSession;
 import GoldenEggOVO.TDGames.Core.text.Language;
@@ -76,9 +80,9 @@ public final class CardTurnIndicator implements AutoCloseable {
                                     });
         }
         if (seat != active || language != Language.generation()) {
-            bar.teleport(position(active, .87, .022));
-            caption.teleport(position(active, 1.03, .32));
-            caption.text(
+            DisplayMovement.move(bar, position(active, .87, .022));
+            DisplayMovement.move(caption, position(active, 1.03, .32));
+            PlatformMessages.text(caption,
                     Language.component(
                                     "color-eight.turn",
                                     "player",

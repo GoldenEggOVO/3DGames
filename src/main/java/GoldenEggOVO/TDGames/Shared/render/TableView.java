@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Shared.interaction.BoardSelection;
 
 import GoldenEggOVO.TDGames.Shared.text.BoardMessages;
@@ -309,7 +313,7 @@ public final class TableView implements AutoCloseable {
                         frame <= 10
                                 ? from.getY() + (to.getY() - from.getY()) * u * u
                                 : to.getY() + (frame < 12 ? .025 : 0);
-                return to.clone().set(to.getX(), y, to.getZ());
+                return to.clone().add(0, y - to.getY(), 0);
             }
             if (!path.isEmpty()) {
                 double segment = Math.min(1, (double) frame / duration()) * (path.size() - 1);
@@ -381,7 +385,7 @@ public final class TableView implements AutoCloseable {
                 }
                 dest.setYaw(part.getLocation().getYaw());
                 dest.setPitch(part.getLocation().getPitch());
-                part.teleport(dest);
+                DisplayMovement.move(part, dest);
             }
         }
 
@@ -410,8 +414,8 @@ public final class TableView implements AutoCloseable {
         }
 
         void remove() {
-            entities.forEach(Entity::remove);
-            hover.forEach(Entity::remove);
+            entities.forEach(DisplayAudience::retire);
+            hover.forEach(DisplayAudience::retire);
         }
     }
 
@@ -530,8 +534,6 @@ public final class TableView implements AutoCloseable {
                                             e.setItemDropChance(0);
                                         });
 
-                mapFrame.teleport(at);
-                mapFrame.setFacingDirection(BlockFace.UP, true);
                 furniture.add(mapFrame);
             }
         }
@@ -640,7 +642,7 @@ public final class TableView implements AutoCloseable {
             entity.setBlock(material.createBlockData());
             entity.setTransformation(pose);
         });
-        if (viewer != null) viewer.showEntity(plugin, result);
+        if (viewer != null) DisplayAudience.show(plugin, viewer, result);
         return result;
     }
 
@@ -665,7 +667,7 @@ public final class TableView implements AutoCloseable {
                             if (flat) {
                                 d.setRotation(0, -90);
                             }
-                            d.text(value.colorIfAbsent(color));
+                            PlatformMessages.text(d, value.colorIfAbsent(color));
                             d.setLineWidth(200);
                             d.setAlignment(TextDisplay.TextAlignment.CENTER);
                             d.setDefaultBackground(false);
@@ -848,15 +850,17 @@ public final class TableView implements AutoCloseable {
         if (!room.kind.equals("2048")) return;
         var controller = plugin.tablePlayers();
         Map<UUID, Player> focused = new HashMap<>();
-        if (controller != null) for (Player player : origin.getWorld().getPlayers())
+        if (controller != null) for (var snapshot : plugin.playerViews().nearby(origin, 24)) {
+            Player player = snapshot.player();
             if (room.seat(player.getUniqueId()) >= 0 && controller.hasTableFocus(player))
                 focused.put(player.getUniqueId(), player);
+        }
         for (var entry : focusedTitleViewers.entrySet())
-            if (!focused.containsKey(entry.getKey())) entry.getValue().showEntity(plugin, title);
+            if (!focused.containsKey(entry.getKey())) DisplayAudience.show(plugin, entry.getValue(), title);
         boolean audienceChanged = titleAudienceGeneration != classicTable.audience.generation;
         for (var entry : focused.entrySet())
             if (audienceChanged || !focusedTitleViewers.containsKey(entry.getKey()))
-                entry.getValue().hideEntity(plugin, title);
+                DisplayAudience.hide(plugin, entry.getValue(), title);
         focusedTitleViewers.clear();
         focusedTitleViewers.putAll(focused);
         titleAudienceGeneration = classicTable.audience.generation;
@@ -1059,7 +1063,7 @@ public final class TableView implements AutoCloseable {
                 && room.phase() != GameSession.Phase.LOBBY
                 && room.phase() != GameSession.Phase.STARTING) {
             if (!Component.empty().equals(lastTitle)) {
-                title.text(Component.empty());
+                PlatformMessages.text(title, Component.empty());
                 lastTitle = Component.empty();
             }
             titleState = null;
@@ -1117,7 +1121,7 @@ public final class TableView implements AutoCloseable {
                                             .colorIfAbsent(NamedTextColor.GRAY));
             if (!value.equals(lastTitle)) {
                 var fit = LabelLayout.fit(value, 2.8f, .48f);
-                title.text(fit.text());
+                PlatformMessages.text(title, fit.text());
 
                 title.setLineWidth(Integer.MAX_VALUE);
                 title.setTransformation(
@@ -1431,7 +1435,7 @@ public final class TableView implements AutoCloseable {
         }
         if (!reset && Objects.equals(old.cell, hover)) {
             if (++old.ticks % 10 == 0) {
-                player.sendActionBar(old.feedback);
+                PlatformMessages.actionBar(player, old.feedback);
             }
             return;
         }
@@ -1473,7 +1477,7 @@ public final class TableView implements AutoCloseable {
             } else {
                 Location at = origin.clone().add(geometry.x(cell), BOARD_CURSOR_Y + (packedMapViewer(player) ? 0 : nativeMapOffset()), geometry.z(cell));
                 for (BlockDisplay d : old.hover) {
-                    d.teleport(at);
+                    DisplayMovement.move(d, at);
                     d.setBlock(material.createBlockData());
                 }
             }
@@ -1500,7 +1504,7 @@ public final class TableView implements AutoCloseable {
                                     Language.component(hint))
                             .colorIfAbsent(legal ? NamedTextColor.YELLOW : NamedTextColor.GRAY);
         } else {
-            old.hover.forEach(Entity::remove);
+            old.hover.forEach(DisplayAudience::retire);
             old.hover.clear();
             old.feedback =
                     ("@roll".equals(hover)
@@ -1513,7 +1517,7 @@ public final class TableView implements AutoCloseable {
                                             : Component.empty())
                             .colorIfAbsent(NamedTextColor.GOLD);
         }
-        player.sendActionBar(old.feedback);
+        PlatformMessages.actionBar(player, old.feedback);
     }
 
     private String blockedHint() {
@@ -1539,13 +1543,13 @@ public final class TableView implements AutoCloseable {
         }
         if (!reset && Objects.equals(overlay.cell, hover)) {
             if (++overlay.ticks % 10 == 0) {
-                player.sendActionBar(overlay.feedback);
+                PlatformMessages.actionBar(player, overlay.feedback);
             }
             return;
         }
         overlay.cell = hover;
         overlay.ticks = 0;
-        overlay.hover.forEach(Entity::remove);
+        overlay.hover.forEach(DisplayAudience::retire);
         overlay.hover.clear();
         List<String> choices = turn ? BoardSelection.sourceActions(room.board(), seat, hover) : List.of();
         if (!choices.isEmpty()) {
@@ -1586,7 +1590,7 @@ public final class TableView implements AutoCloseable {
             }
             overlay.feedback = Language.component(key).colorIfAbsent(NamedTextColor.GOLD);
         }
-        player.sendActionBar(overlay.feedback);
+        PlatformMessages.actionBar(player, overlay.feedback);
     }
 
     private void columnCursor(
@@ -1595,7 +1599,7 @@ public final class TableView implements AutoCloseable {
         String column = aimed == null ? null : Integer.toString(aimed.x());
         if (!reset && Objects.equals(overlay.cell, column)) {
             if (++overlay.ticks % 10 == 0) {
-                player.sendActionBar(overlay.feedback);
+                PlatformMessages.actionBar(player, overlay.feedback);
             }
             return;
         }
@@ -1644,10 +1648,10 @@ public final class TableView implements AutoCloseable {
                                     player));
                 }
             } else {
-                overlay.hover.forEach(entity -> entity.teleport(at));
+                overlay.hover.forEach(entity -> DisplayMovement.move(entity, at));
             }
         } else {
-            overlay.hover.forEach(Entity::remove);
+            overlay.hover.forEach(DisplayAudience::retire);
             overlay.hover.clear();
         }
         overlay.feedback =
@@ -1660,7 +1664,7 @@ public final class TableView implements AutoCloseable {
                                                 "column",
                                                 aimed.x() + 1))
                         .colorIfAbsent(legal ? NamedTextColor.GREEN : NamedTextColor.GRAY);
-        player.sendActionBar(overlay.feedback);
+        PlatformMessages.actionBar(player, overlay.feedback);
     }
 
     private void ring(
@@ -1720,9 +1724,9 @@ public final class TableView implements AutoCloseable {
         }
         tokens.values().forEach(TokenView::remove);
         tokens.clear();
-        handFurniture.forEach(Entity::remove);
+        handFurniture.forEach(DisplayAudience::retire);
         if (packedTable != null) {
-            packedTable.remove();
+            DisplayAudience.retire(packedTable);
         }
         if (packedBoard != null) {
             boardAudience.remove(packedBoard);
@@ -1732,7 +1736,7 @@ public final class TableView implements AutoCloseable {
                     if (playingTable != null) {
                         playingTable.audience.remove(entity);
                     } else if (boardAudience == null) {
-                        entity.remove();
+                        DisplayAudience.retire(entity);
                     } else {
                         boardAudience.remove(entity);
                     }
@@ -1742,7 +1746,7 @@ public final class TableView implements AutoCloseable {
         if (boardAudience != null) {
             lastMove.forEach(boardAudience::remove);
         } else {
-            lastMove.forEach(Entity::remove);
+            lastMove.forEach(DisplayAudience::retire);
         }
     }
 }

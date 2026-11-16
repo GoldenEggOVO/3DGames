@@ -59,9 +59,13 @@ public class TableViewTest {
 
     @Test void focused2048PlayerDoesNotSeeTheTitleAcrossTheBoard() throws Exception {
         Fixture f = new Fixture("2048", 1);
+        when(f.player.isOnline()).thenReturn(true);
+        when(f.player.getLocation()).thenReturn(f.view.origin.clone());
+        when(f.plugin.allowed(f.player)).thenReturn(true);
         var controller = mock(GoldenEggOVO.TDGames.Shared.interaction.TablePlayerController.class);
         var observer = mock(Player.class);
         when(observer.getUniqueId()).thenReturn(UUID.randomUUID());
+        when(observer.getLocation()).thenReturn(f.view.origin.clone());
         when(f.plugin.tablePlayers()).thenReturn(controller);
         when(f.world.getPlayers()).thenReturn(List.of(f.player, observer));
         when(controller.hasTableFocus(f.player)).thenReturn(true);

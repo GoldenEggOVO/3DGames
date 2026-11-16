@@ -1,5 +1,7 @@
 package GoldenEggOVO.TDGames.Shared.render.classic;
 
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.TDGamesPlugin;
 import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
 import GoldenEggOVO.TDGames.Core.render.PlayingCardHeads;
@@ -83,7 +85,7 @@ public final class ClassicTable implements AutoCloseable {
             this.monopoly = monopoly;
             drawCell(view, this);
         }
-        void close() { parts.forEach(Entity::remove); }
+        void close() { parts.forEach(DisplayAudience::retire); }
     }
 
     private final class View {
@@ -123,8 +125,8 @@ public final class ClassicTable implements AutoCloseable {
         void clearVisuals() {
             stopMotion();
             visuals.values().forEach(Visual::close); visuals.clear();
-            controls.values().forEach(parts -> parts.forEach(Entity::remove)); controls.clear();
-            highlights.values().forEach(parts -> parts.forEach(Entity::remove)); highlights.clear(); highlightColors.clear();
+            controls.values().forEach(parts -> parts.forEach(DisplayAudience::retire)); controls.clear();
+            highlights.values().forEach(parts -> parts.forEach(DisplayAudience::retire)); highlights.clear(); highlightColors.clear();
             feedbackText = null;
             lastFeedback = null;
             selected = hover = null; choices = List.of(); input = null;
@@ -165,7 +167,7 @@ public final class ClassicTable implements AutoCloseable {
 
         private void reveal() {
             for (Visual visual : view.visuals.values())
-                for (Entity part : visual.parts) view.player.showEntity(plugin, part);
+                for (Entity part : visual.parts) DisplayAudience.show(plugin, view.player, part);
         }
     }
 
@@ -222,15 +224,15 @@ public final class ClassicTable implements AutoCloseable {
                 view.packed = usePack;
             }
             if (fresh || modeChanged) {
-                for (Entity entity : usePack ? nativeFurniture : packedFurniture) player.hideEntity(plugin, entity);
-                for (Entity entity : usePack ? packedFurniture : nativeFurniture) player.showEntity(plugin, entity);
+                for (Entity entity : usePack ? nativeFurniture : packedFurniture) DisplayAudience.hide(plugin, player, entity);
+                for (Entity entity : usePack ? packedFurniture : nativeFurniture) DisplayAudience.show(plugin, player, entity);
             }
             syncView(view);
         }
         for (UUID id : List.copyOf(views.keySet())) if (!present.contains(id)) {
             View old = views.remove(id); old.clearVisuals();
-            for (Entity entity : nativeFurniture) old.player.hideEntity(plugin, entity);
-            for (Entity entity : packedFurniture) old.player.hideEntity(plugin, entity);
+            for (Entity entity : nativeFurniture) DisplayAudience.hide(plugin, old.player, entity);
+            for (Entity entity : packedFurniture) DisplayAudience.hide(plugin, old.player, entity);
         }
     }
 
@@ -287,8 +289,8 @@ public final class ClassicTable implements AutoCloseable {
     }
 
     private void syncFurniture(boolean natives, boolean packed) {
-        if (!natives && !nativeFurniture.isEmpty()) { nativeFurniture.forEach(Entity::remove); nativeFurniture.clear(); }
-        if (!packed && !packedFurniture.isEmpty()) { packedFurniture.forEach(Entity::remove); packedFurniture.clear(); }
+        if (!natives && !nativeFurniture.isEmpty()) { nativeFurniture.forEach(DisplayAudience::retire); nativeFurniture.clear(); }
+        if (!packed && !packedFurniture.isEmpty()) { packedFurniture.forEach(DisplayAudience::retire); packedFurniture.clear(); }
         if (natives && nativeFurniture.isEmpty()) {
             String model = "tabletop/" + room.kind.replace('-', '_') + "/table";
             for (var part : ModelRepository.require(model).blocks())
@@ -303,7 +305,7 @@ public final class ClassicTable implements AutoCloseable {
     }
 
     private void showFurniture(List<Entity> parts, boolean packed) {
-        for (View view : views.values()) if (view.packed == packed) for (Entity entity : parts) view.player.showEntity(plugin, entity);
+        for (View view : views.values()) if (view.packed == packed) for (Entity entity : parts) DisplayAudience.show(plugin, view.player, entity);
     }
 
     private List<Cell> displayCells(ClassicGame game, int seat) {
@@ -344,7 +346,7 @@ public final class ClassicTable implements AutoCloseable {
             visual.pawns.forEach((seat, parts) -> oldPawnPositions.put(seat, parts.getFirst().getLocation().clone()));
         if (view.board != board || view.revision != room.revision() || room.phase() != GameSession.Phase.PLAYING) {
             view.selected = view.hover = null; view.choices = List.of(); view.input = null;
-            view.highlights.values().forEach(parts -> parts.forEach(Entity::remove));
+            view.highlights.values().forEach(parts -> parts.forEach(DisplayAudience::retire));
             view.highlights.clear(); view.highlightColors.clear();
         }
         boolean languageChanged = view.language != Language.generation();
@@ -391,7 +393,7 @@ public final class ClassicTable implements AutoCloseable {
         if (board instanceof MonopolyGame estate) {
             if (animate && !room.restoring() && view.seat >= 0 && view.accounts != null) {
                 Component notice = MonopolyText.changes(estate, view.accounts, view.deeds, view.seat);
-                if (!notice.equals(Component.empty())) view.player.sendMessage(notice);
+                if (!notice.equals(Component.empty())) PlatformMessages.send(view.player, notice);
             }
             view.accounts = estate.players();
             view.deeds = estate.properties();
@@ -624,13 +626,13 @@ public final class ClassicTable implements AutoCloseable {
         if (view.board instanceof MonopolyGame monopoly) {
             var trade = monopoly.trade();
             if (trade != null && !trade.equals(view.shownTrade) && (view.seat == trade.proposer() || view.seat == trade.recipient()))
-                view.player.sendMessage(ClassicText.tradeSummary(monopoly));
+                PlatformMessages.send(view.player, ClassicText.tradeSummary(monopoly));
             view.shownTrade = trade;
         }
     }
 
     private void feedback(View view, Component message) {
-        view.player.sendActionBar(message);
+        PlatformMessages.actionBar(view.player, message);
         view.lastFeedback = message;
     }
 
@@ -669,7 +671,7 @@ public final class ClassicTable implements AutoCloseable {
     }
 
     private void syncControls(View view) {
-        view.controls.values().forEach(parts -> parts.forEach(Entity::remove)); view.controls.clear();
+        view.controls.values().forEach(parts -> parts.forEach(DisplayAudience::retire)); view.controls.clear();
         for (var slot : view.layout.slots()) {
             if (!slot.id().startsWith("@")) continue;
             List<Entity> parts = new ArrayList<>();
@@ -870,7 +872,7 @@ public final class ClassicTable implements AutoCloseable {
         int shown = Math.min(count, 8);
         var slot = visual.slot;
         while (visual.seeds.size() > shown) {
-            Entity removed = visual.seeds.removeLast(); visual.parts.remove(removed); removed.remove();
+            Entity removed = visual.seeds.removeLast(); visual.parts.remove(removed); DisplayAudience.retire(removed);
         }
         while (visual.seeds.size() < shown) {
             int index = visual.seeds.size();
@@ -885,7 +887,7 @@ public final class ClassicTable implements AutoCloseable {
             counter.setYaw((float)-Math.toDegrees(angle));
             visual.count = text(counter, Component.text(count), .28f, NamedTextColor.BLACK, view.player, true);
             visual.parts.add(visual.count);
-        } else if (!visual.cell.piece().equals(cell.piece())) visual.count.text(Component.text(count, NamedTextColor.BLACK));
+        } else if (!visual.cell.piece().equals(cell.piece())) PlatformMessages.text(visual.count, Component.text(count, NamedTextColor.BLACK));
         visual.cell = cell;
     }
 
@@ -904,7 +906,7 @@ public final class ClassicTable implements AutoCloseable {
             var entity = origin.getWorld().spawn(at, BlockDisplay.class, display -> {
                 configure(display); display.setBlock(material.createBlockData()); display.setTransformationMatrix(pose);
             });
-            if (player != null) player.showEntity(plugin, entity);
+            if (player != null) DisplayAudience.show(plugin, player, entity);
             parts.add(entity);
         }
     }
@@ -998,7 +1000,7 @@ public final class ClassicTable implements AutoCloseable {
                         display.setItemStack(PlayingCardHeads.item(tiles.get(index)));
                         display.setTransformation(PlayingCardHeads.pose(slot.width(), slot.fullDepth(), false, index, 4, 6));
                     });
-                    view.player.showEntity(plugin, head); visual.parts.add(head);
+                    DisplayAudience.show(plugin, view.player, head); visual.parts.add(head);
                 }
             }
         }
@@ -1032,7 +1034,7 @@ public final class ClassicTable implements AutoCloseable {
             if (index < 0 || index >= view.controlActions.size()) return null;
             String action = view.controlActions.get(index);
             if (action.equals("@assets") && game() instanceof MonopolyGame monopoly) {
-                view.player.sendMessage(MonopolyText.ledger(monopoly));
+                PlatformMessages.send(view.player, MonopolyText.ledger(monopoly));
                 return null;
             }
             if (view.input != null) {
@@ -1057,7 +1059,7 @@ public final class ClassicTable implements AutoCloseable {
         if (hitId.equals(view.selected)) { view.selected = null; refreshSelection(view); return null; }
         List<String> related = game().actionsForCell(view.seat, hitId);
         if (room.kind.equals("monopoly")) {
-            view.player.sendMessage(MonopolyText.details((MonopolyGame) game(), Integer.parseInt(hitId.substring(1)), view.seat));
+            PlatformMessages.send(view.player, MonopolyText.details((MonopolyGame) game(), Integer.parseInt(hitId.substring(1)), view.seat));
             view.selected = hitId;
             view.choices = List.copyOf(related);
             refreshControls(view); return null;
@@ -1139,7 +1141,7 @@ public final class ClassicTable implements AutoCloseable {
             if (old.expanded != old.cell.id().equals(view.selected) && room.kind.equals("klondike")) {
                 old.close(); view.visuals.put(entry.getKey(), new Visual(view, old.cell, old.slot, old.monopoly));
                 List<Entity> frame = view.highlights.remove(entry.getKey());
-                if (frame != null) frame.forEach(Entity::remove);
+                if (frame != null) frame.forEach(DisplayAudience::retire);
                 view.highlightColors.remove(entry.getKey());
             }
         }
@@ -1200,7 +1202,7 @@ public final class ClassicTable implements AutoCloseable {
             footprint.forEach(id -> desired.put(id, color));
         }
         for (String id : List.copyOf(view.highlights.keySet())) if (!Objects.equals(desired.get(id), view.highlightColors.get(id))) {
-            view.highlights.remove(id).forEach(Entity::remove); view.highlightColors.remove(id);
+            view.highlights.remove(id).forEach(DisplayAudience::retire); view.highlightColors.remove(id);
         }
         for (var entry : desired.entrySet()) {
             if (view.highlights.containsKey(entry.getKey())) continue;
@@ -1331,7 +1333,7 @@ public final class ClassicTable implements AutoCloseable {
         var entity = origin.getWorld().spawn(at, BlockDisplay.class, display -> {
             configure(display); display.setBlock(material.createBlockData()); display.setTransformation(pose);
         });
-        if (player != null) player.showEntity(plugin, entity);
+        if (player != null) DisplayAudience.show(plugin, player, entity);
         return entity;
     }
 
@@ -1344,17 +1346,17 @@ public final class ClassicTable implements AutoCloseable {
             configure(display); display.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED); display.setItemStack(item);
             display.setTransformation(new Transformation(new Vector3f(), rotation, scale, new Quaternionf()));
         });
-        if (player != null) player.showEntity(plugin, entity);
+        if (player != null) DisplayAudience.show(plugin, player, entity);
         return entity;
     }
 
     private TextDisplay text(Location at, Component value, float scale, NamedTextColor color, Player player, boolean flat) {
         if (flat) at.setPitch(-90);
         var entity = origin.getWorld().spawn(at, TextDisplay.class, display -> {
-            configure(display); display.text(value.color(color)); display.setShadowed(false); display.setBackgroundColor(Color.fromARGB(0));
+            configure(display); PlatformMessages.text(display, value.color(color)); display.setShadowed(false); display.setBackgroundColor(Color.fromARGB(0));
             display.setLineWidth(500); display.setTransformation(new Transformation(new Vector3f(0, flat ? -.125f * scale : 0, 0), new Quaternionf(), new Vector3f(scale), new Quaternionf()));
         });
-        if (player != null) player.showEntity(plugin, entity);
+        if (player != null) DisplayAudience.show(plugin, player, entity);
         return entity;
     }
 
@@ -1365,7 +1367,7 @@ public final class ClassicTable implements AutoCloseable {
         clickTargets.clear();
         if (diceTray != null) diceTray.close();
         views.values().forEach(View::clearVisuals); views.clear();
-        nativeFurniture.forEach(Entity::remove); nativeFurniture.clear();
-        packedFurniture.forEach(Entity::remove); packedFurniture.clear();
+        nativeFurniture.forEach(DisplayAudience::retire); nativeFurniture.clear();
+        packedFurniture.forEach(DisplayAudience::retire); packedFurniture.clear();
     }
 }

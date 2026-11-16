@@ -28,6 +28,9 @@ public final class SessionRuntime {
     private final Map<UUID, GameSession> sessions = new LinkedHashMap<>();
     private final Map<UUID, GameSession> view = Collections.unmodifiableMap(sessions);
     private final SecureRandom random = new SecureRandom();
+    private final Map<UUID, Transfer> transfers = new HashMap<>();
+    private final Set<UUID> unseatedRooms = new HashSet<>();
+    private record Transfer(GameSession room, Location before, boolean newRoom, boolean newSeat) {}
     public SessionRuntime(TDGamesPlugin plugin, GameService games) {
         this.plugin = plugin;
         this.games = games;
@@ -81,6 +84,7 @@ public final class SessionRuntime {
         plugin.tableWorld().anchor(r, p.getLocation());
         r.join(p.getUniqueId(), p.getName());
         sessions.put(r.id, r);
+        if (plugin.scheduler().folia()) unseatedRooms.add(r.id);
         try {
             for (int seat = 0; seat < r.capacity; seat++) plugin.tableWorld().seatLocation(r, seat);
             plugin.tableWorld().retainTableChunks(index);
@@ -89,9 +93,10 @@ public final class SessionRuntime {
         } catch (RuntimeException ex) {
             plugin.tableWorld().remove(r);
             sessions.remove(r.id);
+            unseatedRooms.remove(r.id);
             throw ex;
         }
-        if (!enterArena(p, r)) {
+        if (!enterArena(p, r, true, false)) {
             remove(r);
             throw new RuleViolation(
                     "error.teleport-cancelled-room-was-not-created-remove",
@@ -101,17 +106,94 @@ public final class SessionRuntime {
     }
 
     public boolean enterArena(Player p, GameSession r) {
+        return enterArena(p, r, false, false);
+    }
+
+    public boolean enterJoinedArena(Player player, GameSession room, boolean newSeat) {
+        return enterArena(player, room, false, newSeat);
+    }
+
+    public boolean transferring(UUID player) { return transfers.containsKey(player); }
+    public boolean awaitingFirstSeat(GameSession room) { return unseatedRooms.contains(room.id); }
+    public void cancelTransfer(UUID player) { transfers.remove(player); }
+
+    private boolean enterArena(Player p, GameSession r, boolean newRoom, boolean newSeat) {
         if (!plugin.allowed(p)) return false;
         requireLiveSession(r);
         if (plugin.pack() != null) plugin.pack().require(p, r.kind);
         if (r.seat(p.getUniqueId()) < 0)
             throw new RuleViolation("error.you-have-not-joined-a-room", "You have not joined a room");
+        if (plugin.scheduler().folia()) {
+            if (transfers.containsKey(p.getUniqueId())) return true;
+            Location before = plugin.scheduler().isOwned(p) ? p.getLocation()
+                    : plugin.playerViews().snapshot(p.getUniqueId()).orElseThrow().location();
+            var transfer = new Transfer(r, before, newRoom, newSeat);
+            transfers.put(p.getUniqueId(), transfer);
+            plugin.scheduler().later(() -> {
+                if (transfers.get(p.getUniqueId()) == transfer) transferFinished(p, transfer, false);
+            }, 200);
+            r.markOffline(p.getUniqueId(), System.currentTimeMillis());
+            plugin.tableWorld().atTable(r, () -> {
+                if (transfers.get(p.getUniqueId()) != transfer) return;
+                Location target;
+                try {
+                    target = plugin.tableWorld().seatLocation(r, r.seat(p.getUniqueId()));
+                } catch (RuntimeException failure) {
+                    transferFinished(p, transfer, false);
+                    return;
+                }
+                plugin.scheduler().execute(target, () -> {
+                    if (transfers.get(p.getUniqueId()) != transfer) return;
+                    if (!target.getBlock().isPassable() || !target.clone().add(0, 1, 0).getBlock().isPassable()) {
+                        transferFinished(p, transfer, false);
+                        return;
+                    }
+                    plugin.scheduler().teleport(p, target, moved -> transferFinished(p, transfer, moved));
+                });
+            }, () -> transferFinished(p, transfer, false));
+            return transfers.get(p.getUniqueId()) == transfer
+                    || sessions.get(r.id) == r && r.seat(p.getUniqueId()) >= 0
+                    && !r.offline.containsKey(p.getUniqueId());
+        }
         if (!p.teleport(plugin.tableWorld().seatLocation(r, r.seat(p.getUniqueId())))) {
             r.markOffline(p.getUniqueId(), System.currentTimeMillis());
             return false;
         }
         r.markOnline(p.getUniqueId());
         return true;
+    }
+
+    private void transferFinished(Player player, Transfer transfer, boolean moved) {
+        UUID id = player.getUniqueId();
+        if (transfers.get(id) != transfer) {
+            if (moved && plugin.isEnabled() && !transfers.containsKey(id)) {
+                GameSession current = session(id);
+                if (current == null) plugin.scheduler().teleport(player, transfer.before(), ignored -> {});
+                else enterArena(player, current);
+            }
+            return;
+        }
+        transfers.remove(id);
+        GameSession room = transfer.room();
+        if (sessions.get(room.id) != room) return;
+        if (moved) {
+            unseatedRooms.remove(room.id);
+            room.markOnline(id);
+            plugin.scheduler().execute(player, () -> {
+                if (sessions.get(room.id) == room && session(id) == room) {
+                    plugin.playerViews().capture(player);
+                }
+            });
+        } else {
+            room.markOffline(id, System.currentTimeMillis());
+            if (transfer.newRoom()) games.remove(room);
+            else if (transfer.newSeat() && room.phase() == GameSession.Phase.LOBBY) {
+                room.removeSeat(id);
+                plugin.sessions().release(id, room.kind);
+            }
+            plugin.tell(player, Language.component("error.teleport-cancelled-could-not-take-a-seat"));
+        }
+        games.save();
     }
 
     public void resume(Player p, GameSession r) {
@@ -259,11 +341,16 @@ public final class SessionRuntime {
         if (!sessions.containsKey(r.id)) return;
         for (GameSession.Seat s : r.seats) {
             Player p = Bukkit.getPlayer(s.id());
-            if (!s.bot() && !r.departed.contains(s.id()) && p != null && plugin.allowed(p) && plugin.tableWorld().atTableWorld(p, r)) plugin.menus().room(p, r);
+            if (!s.bot() && !r.departed.contains(s.id()) && p != null && plugin.allowed(p) && plugin.tableWorld().atTableWorld(p, r))
+                plugin.scheduler().execute(p, () -> {
+                    if (sessions.get(r.id) == r && session(p) == r) plugin.menus().room(p, r);
+                });
         }
     }
 
     public void remove(GameSession r) {
+        unseatedRooms.remove(r.id);
+        transfers.entrySet().removeIf(entry -> entry.getValue().room() == r);
         for (GameSession.Seat seat : r.seats) if (!seat.bot() && !r.departed.contains(seat.id())) plugin.sessions().release(seat.id(), r.kind);
         plugin.tableWorld().remove(r);
         sessions.remove(r.id);

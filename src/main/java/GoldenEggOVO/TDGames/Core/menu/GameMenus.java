@@ -17,6 +17,8 @@ import GoldenEggOVO.TDGames.Shared.text.HandText;
 import GoldenEggOVO.TDGames.Core.text.Language;
 import GoldenEggOVO.TDGames.Shared.text.RoomText;
 import GoldenEggOVO.TDGames.Core.text.MessageText;
+import GoldenEggOVO.TDGames.Core.platform.NativeDialogs;
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
 
 import net.kyori.adventure.text.Component;
 
@@ -116,7 +118,7 @@ public final class GameMenus implements AutoCloseable {
         if (!plugin.allowed(p)) return;
         if (!plugin.getConfig().getBoolean("menu-enabled", true)) {
             forget(p);
-            p.sendMessage(Language.component("menu.disabled"));
+            PlatformMessages.send(p, Language.component("menu.disabled"));
             return;
         }
         if (plugin.tablePlayers() != null) plugin.tablePlayers().releaseFocus(p);
@@ -158,12 +160,12 @@ public final class GameMenus implements AutoCloseable {
                         System.currentTimeMillis() + 120000,
                         List.copyOf(entries),
                         refresh));
-        p.sendMessage(title.append(Component.newline()).append(displayedDescription));
+        PlatformMessages.send(p, title.append(Component.newline()).append(displayedDescription));
         for (int i = 0; i < entries.size(); i++) {
             var b = entries.get(i);
             Component caption = b.component() != null ? b.component() : GameMenuWindow.text(b.label());
             if (b.tooltip() != null) caption = caption.hoverEvent(b.tooltip());
-            p.sendMessage(
+            PlatformMessages.send(p,
                     Component.text("[ ")
                             .append(caption)
                             .append(Component.text(" ] "))
@@ -188,7 +190,7 @@ public final class GameMenus implements AutoCloseable {
             if (System.currentTimeMillis() >= s.expires()) {
                 if (s.buttons().get(index).id().equals("close")) { forget(p); return; }
                 if (plugin.allowed(p)) {
-                    p.sendMessage(Language.component("menu.expired"));
+                    PlatformMessages.send(p, Language.component("menu.expired"));
                     refreshExpired(p, a[0]);
                 }
                 return;
@@ -571,7 +573,33 @@ public final class GameMenus implements AutoCloseable {
                                     games(p, r.kind);
                                     return;
                                 }
-                                p.teleport(plugin.tableWorld().seatLocation(r, 0));
+                                Location target = plugin.tableWorld().seatLocation(r, 0);
+                                if (!plugin.scheduler().folia()) {
+                                    plugin.scheduler().teleport(p, target, success -> {});
+                                    return;
+                                }
+                                plugin.scheduler().execute(target, () -> {
+                                    if (plugin.games().activeSessions().get(r.id) != r) {
+                                        plugin.tell(p, Language.component("error.page-changed"));
+                                        return;
+                                    }
+                                    if (!target.getBlock().isPassable()
+                                            || !target.clone().add(0, 1, 0).getBlock().isPassable()) {
+                                        plugin.tell(p, Language.component("error.the-seat-is-blocked-choose-a-more"));
+                                        return;
+                                    }
+                                    plugin.scheduler().execute(p, () -> {
+                                        if (plugin.games().activeSessions().get(r.id) != r) {
+                                            plugin.tell(p, Language.component("error.page-changed"));
+                                            return;
+                                        }
+                                        if (plugin.games().session(p) != null) {
+                                            plugin.tell(p, Language.component("chat.observe.own-game"));
+                                            return;
+                                        }
+                                        plugin.scheduler().teleport(p, target, success -> {});
+                                    });
+                                });
                             }));
         show(
                 p,
@@ -694,7 +722,7 @@ public final class GameMenus implements AutoCloseable {
         for (UUID id : List.copyOf(sessions.keySet())) {
             Player player = Bukkit.getPlayer(id);
             if (player != null) {
-                player.closeDialog();
+                NativeDialogs.clear(player);
                 forget(player);
             }
         }

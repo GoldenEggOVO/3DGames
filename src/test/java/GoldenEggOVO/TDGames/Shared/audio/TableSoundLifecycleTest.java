@@ -56,7 +56,7 @@ class TableSoundLifecycleTest {
 
     @BeforeEach void setup() throws Exception {
         MockBukkit.mock();
-        plugin = mock(TDGamesPlugin.class);
+        plugin = GoldenEggOVO.TDGames.SessionTestSupport.plugin();
         when(plugin.getConfig()).thenReturn(new YamlConfiguration());
         when(plugin.getDataFolder()).thenReturn(temporary.toFile());
         world = mock(World.class);

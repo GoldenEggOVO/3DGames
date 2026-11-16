@@ -33,10 +33,12 @@ class ResourcePackServiceTest {
     @BeforeEach
     void setup() throws Exception {
         var server = MockBukkit.mock();
+        var world = server.addSimpleWorld("world");
         plugin = SessionTestSupport.plugin();
         player = mock(Player.class);
         when(player.getUniqueId()).thenReturn(UUID.randomUUID());
         when(player.isOnline()).thenReturn(true);
+        when(player.getLocation()).thenReturn(new Location(world, 0, 80, 0));
         var data = server.addPlayer().getPersistentDataContainer();
         when(player.getPersistentDataContainer()).thenReturn(data);
         config = new YamlConfiguration();
@@ -216,6 +218,17 @@ class ResourcePackServiceTest {
     }
 
     @Test
+    void repeatedExternalRequestsSendOnlyOneOwnedPack() {
+        pack.toggle(player);
+        UUID id = pack.requestId(player);
+        pack.request(player);
+        pack.request(player);
+        assertEquals(id, pack.requestId(player));
+        verify(player, times(1)).addResourcePack(eq(id), anyString(), any(), anyString(), eq(false));
+        verify(player, never()).removeResourcePacks();
+    }
+
+    @Test
     void closingAndRetryingRejectsOldCallbacksAndOnlyRemovesOwnedPack() {
         pack.toggle(player);
         UUID first = pack.requestId(player);
@@ -378,6 +391,38 @@ class ResourcePackServiceTest {
         MockBukkit.getMock().getScheduler().performOneTick();
         assertNull(pack.requestId(player));
         verify(player, never()).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+    }
+
+    @Test
+    void closingRejectsAPendingUnifiedDownloadAndRemovesOnlyItsOwnedPack() throws Exception {
+        var engine = unifiedPack();
+        var download = new java.util.concurrent.CompletableFuture<CraftEngineResourcePack.Download>();
+        when(engine.download(player.getUniqueId())).thenReturn(download);
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        pack.close();
+        download.complete(new CraftEngineResourcePack.Download("http://example.org/pack.zip", "11".repeat(20)));
+        MockBukkit.getMock().getScheduler().performOneTick();
+        assertNull(pack.requestId(player));
+        verify(player).removeResourcePack(request);
+        verify(player, never()).removeResourcePacks();
+        verify(player, never()).addResourcePack(any(), anyString(), any(), anyString(), anyBoolean());
+    }
+
+    @Test
+    void disabledPluginPopsOnlyItsOwnedPackWithoutSubmittingARegionTask() throws Exception {
+        var engine = unifiedPack();
+        when(engine.download(player.getUniqueId())).thenReturn(java.util.concurrent.CompletableFuture.completedFuture(
+                new CraftEngineResourcePack.Download("http://example.org/pack.zip", "11".repeat(20))));
+        pack.toggle(player);
+        UUID request = pack.requestId(player);
+        when(plugin.isEnabled()).thenReturn(false);
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(plugin.scheduler()).thenReturn(scheduler);
+        pack.close();
+        verify(player).removeResourcePack(request);
+        verify(player, never()).removeResourcePacks();
+        verifyNoInteractions(scheduler);
     }
 
     @Test

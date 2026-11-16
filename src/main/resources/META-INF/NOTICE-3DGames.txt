@@ -6,3 +6,11 @@ META-INF/NOTICE-board-rules.txt and META-INF/licenses/.
 Optional economy integration uses the server's registered Vault API provider.
 Core/text/MessageText.java and Core/text/LabelLayout.java are adapted from
 GoldenEggOVO/3DCasinoGames revision a4ddd20, GPL-3.0.
+Bundled Adventure API, MiniMessage and serializers: MIT, KyoriPowered.
+Original notice: META-INF/licenses/adventure-MIT.txt.
+Source: https://github.com/PaperMC/adventure (net.kyori 5.2.0).
+License source blob: 94af85c20745557345897d0059232868c0f25ee3.
+Bundled Kyori Option 1.1.0: MIT, KyoriPowered.
+Original notice: META-INF/licenses/option-MIT.txt.
+Source: https://github.com/KyoriPowered/option.
+License source blob: 4d8d798a24df88575105cbc88d4744528343458a.

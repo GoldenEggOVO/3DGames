@@ -2,9 +2,13 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-带实体棋子、多人房间、私有手牌和原生 Dialog 菜单的 Minecraft 3D 游戏插件。
+Minecraft 3D 桌游插件。棋子、卡牌、骰子与棋盘直接显示在世界中，提供单人进度、多人房间、陪练、观战和私有手牌。
 
-需要 **Java 25 与下表支持的 Paper／Purpur 服务端**。可独立运行，无需客户端模组或其他自定义插件；CraftEngine、Vault、PlaceholderAPI 与资源包为可选项。当前版本为 **1.0.0**。
+同一份 JAR 支持 Paper、Purpur、Spigot、CraftBukkit 与 Folia，使用原生 Dialog 菜单，无需客户端模组。CraftEngine、Vault、PlaceholderAPI 和资源包均为可选项。
+
+[兼容性](#兼容性) · [安装](#安装) · [操作与菜单](#操作与菜单) · [游戏](#游戏) · [配置](#配置与语言) · [资源包](#可选资源包) · [构建](#构建) · [源码目录](#源码目录) · [许可](#许可)
+
+> 本页对应 `main` 当前源码。现有 1.0.0 Release 附件尚未包含这轮跨平台兼容更新；使用下表完整兼容范围时，请先构建当前源码。
 
 ## 兼容性
 
@@ -12,27 +16,44 @@
 | --- | --- | --- |
 | Paper | 26.1.1、26.1.2、26.2、26.3 | 支持 |
 | Purpur | 26.1.2、26.2、26.3 | 支持 |
-| Spigot／CraftBukkit | 26.1.2、26.3 | 不支持，缺少所需的 Adventure 与 Paper API |
-| Folia | 26.1.2、26.2、26.3 | 不支持，需要针对区域线程重新实现调度 |
+| Spigot／CraftBukkit | 26.1、26.1.1、26.1.2、26.2、26.3 | 支持 |
+| Folia | 26.1.2、26.2、26.3 | 支持 |
 
-支持组合已通过隔离服务端测试，覆盖原生 Dialog 菜单、棋桌创建、游戏操作、实体清理与重启恢复。该矩阵验证插件独立运行的情况，可选插件还需符合各自的服务端兼容要求。资源包的 264 个模型与 264 个物品定义也通过了 26.1、26.1.1、26.1.2、26.2、26.3 官方客户端解析器检查。上述自动化检查覆盖解析和行为，实际画面与听感仍需进游戏验收。
+需要 **Java 25**。截至 2026-11-16，同一份 JAR 已通过 20 个平台／版本组合的创建、游戏操作与重启恢复检查，以及 1,467 项 Java 测试和 147 项资源检查。
+
+Spigot／CraftBukkit 的 26.1、26.1.1 使用官方历史提交精确重建后验证，当前同名 BuildTools 入口实际指向 26.1.2。Paper 当前没有提供 26.1 构建，Purpur 与 Folia 没有提供 26.1、26.1.1 构建。表格覆盖指定构建，不包含所有历史 build、快照或未来版本。
+
+Paper／Purpur 检查使用代理玩家和真实世界／实体；Spigot／CraftBukkit 使用真实 ServerPlayer 与内存连接。Folia 26.3 另通过了双图形客户端的菜单、资源包下载、固定视角、方向输入、跨区域操作和断线／停服恢复检查。其他 Folia 版本验证真实区域实体和存档恢复。自动检查与实际画面、声音、手感验收分别处理。
+
+服务端差异集中在 `Core/platform/`，菜单与游戏规则共用。Folia 按区域调度棋桌操作，按玩家调度器处理玩家操作；可选插件也需要支持所用服务端。
+
+Folia 的部分原生异步传送不触发 `PlayerTeleportEvent`，这是已复现的[上游限制](https://github.com/PaperMC/Folia/issues/490)。通过此事件取消传送的其他插件需要额外核对。更换 JAR 时完整停服再启动，第三方热卸载不在兼容范围内。
 
 ## 安装
 
-1. 从 [Releases](https://github.com/GoldenEggOVO/3DGames/releases) 下载已发布 JAR，或[自行编译](#构建)。
+1. 准备 Java 25 与上表中的服务端，按[构建](#构建)生成当前插件；已发布版本也可从 [Releases](https://github.com/GoldenEggOVO/3DGames/releases) 下载。
 2. 完全停服，备份世界与 `plugins/3DGames/`。
-3. 将一个 `3DGames-*.jar` 放进 `plugins/`，不安装 `original-*.jar`。
-4. 启动后使用 `/3dgames`，选择“单人游戏”或“多人游戏”。猜颜色、记忆卡牌按人数出现在对应分类。悬停桌游可查看人数；选好游戏、调整规则后开始。
+3. 将一份 `3DGames-*.jar` 放进 `plugins/`，不要安装 `original-*.jar`。
+4. 启动后执行 `/3dgames`，选择“单人游戏”或“多人游戏”。需要中文时设置 `language: zh_CN`。
 
-菜单使用原生 Dialog 文字按钮。资源包开关位于“菜单设置”。
+直接安装本插件即可使用原版模型。需要资源包模型时，可额外安装 CraftEngine，默认 `auto` 模式会选择混合显示并加入其统一资源包，见[可选资源包](#可选资源包)。
 
-所有桌子均使用潜行＋右键桌面打开房间菜单。棋子、卡牌、骰子和计分格直接在桌面操作。麻将可按住疾跑键（默认 Ctrl）进入固定看桌视角，松开恢复。
+## 操作与菜单
 
-2048 按一次疾跑键（默认 Ctrl）切换固定俯视，以 W/A/S/D 滑动棋块，再按一次退出。猜颜色先点当前列孔位，再点下方六色托盘，也可右键或滚轮切色；橙色提示钉表示颜色与位置全对，白色表示只有颜色对。海战棋左键舰船选择区选船、左键己方海域落船、右键海域旋转，右键已选舰船撤回；布阵时绿色／红色预览和提示分别表示可放置／不可放置，确认后直接点击对方海域射击。大富翁交易地产时，直接点击棋盘上绿色标记的地产选择或取消；青色表示已选择。
+主页提供“单人游戏”和“多人游戏”，资源包开关位于“菜单设置”。两种模型模式共用原生 Dialog 文字按钮：游戏人数和说明放在悬停提示中，列表使用原生滚动；主页底部是“关闭”，子页同一位置是“返回”。金额输入使用原生输入框并校验。
 
-插件数据统一位于 `plugins/3DGames/`。更新前备份此目录，包括房间、资金记录、语言和自定义资源。
+所有桌子都可以潜行＋右键桌面打开房间菜单。棋子、卡牌、骰子和计分格直接在桌面操作。多人房主创建房间后，可以等待好友加入并准备，或使用“补齐陪练并开始”；选择规则后创建的房间不再更换规则。
 
-主命令为 `/3dgames`，权限为 `3dgames.use` 与 `3dgames.admin`，PAPI 使用 `%3dgames_...%`。资源模型和玩家持久化数据的内部命名空间保持稳定。
+| 游戏 | 主要操作 |
+| --- | --- |
+| 棋类 | 先选棋子，再选合法目标；预选与按钮反馈只向操作玩家显示 |
+| 麻将 | 按住疾跑键（默认 Ctrl）进入固定看桌视角，松开退出 |
+| 2048 | 按一次疾跑键切换固定俯视，以移动键 W/A/S/D 滑动，再按一次退出 |
+| 猜颜色 | 点当前列孔位，再点六色托盘；右键或滚轮切色。橙色钉表示颜色与位置全对，白色钉表示只有颜色对 |
+| 海战棋 | 左键选船和落船，右键旋转或撤回；确认布阵后点击对方海域射击 |
+| 大富翁交易 | 点棋盘上绿色标记的地产选择或取消，青色为已选择；确认桌面草稿后提交提案 |
+
+单人游戏页提供“继续单人进度”。每款游戏独立保存；保存并离开会释放桌位，掉线和停服也保存。重新开始同款游戏前需确认覆盖已有进度。
 
 ## 游戏
 
@@ -62,9 +83,9 @@
 | 将棋、五将棋 | 2 | 升变、持驹打入、王安全与重复局面判决 |
 | 大富翁 | 2～6 | 四十格、购买拍卖、建设库存、抵押交易与连锁破产 |
 
-桌游桌体采用黑白与青色未来风，棋盘保留各游戏常见配色，提供原版和资源包两套显示。桌面按钮统一深灰底、青色细边和浅色文字；双陆棋、大富翁在独立侧桌掷两颗骰子。桌面上的格子和近侧控制按钮可直接点击，移动类游戏先选棋子再选目标，多候选动作也在桌面选择；潜行＋右键仍打开房间管理菜单。大富翁的拍卖和交易使用桌面上的金额加减与资产选择按钮，确认草稿后才提交提案；地产局内资金与外部奖池独立。
+桌体以低饱和深木色和深绿色为主，棋盘保留各游戏常见配色，提供原版和资源包两套显示。桌面按钮统一深灰底、青色细边和浅色文字；双陆棋、大富翁在独立侧桌掷两颗骰子。桌面上的格子和近侧控制按钮可直接点击，移动类游戏先选棋子再选目标，多候选动作也在桌面选择；潜行＋右键仍打开房间管理菜单。大富翁的拍卖和交易使用桌面上的金额加减与资产选择按钮，确认草稿后才提交提案；地产局内资金与外部奖池独立。
 
-单人容量的 2048、纸牌接龙、猜颜色和记忆卡牌创建后直接开始。选择“保存并离开”会释放桌位；主菜单“继续单人进度”可选择并恢复已保存的游戏，`/3dgames resume` 恢复最近保存的进度。每款游戏独立保存；重新开始已有进度的同一游戏时需要确认覆盖。掉线和停服也保存。单人不使用入场费、下注或经济奖励。进度文件在 `solo/<玩家UUID>.<游戏ID>.json`；旧格式仍可读取，替换旧格式时先备份到 `solo/legacy-backups/`。损坏文件不自动删除。长局达到动作记录安全预算时保留进度，不自动判为完成。
+单人容量的 2048、纸牌接龙、猜颜色和记忆卡牌创建后直接开始。选择“保存并离开”会释放桌位；单人游戏页“继续单人进度”可选择并恢复已保存的游戏，`/3dgames resume` 恢复最近保存的进度。每款游戏独立保存；重新开始已有进度的同一游戏时需要确认覆盖。掉线和停服也保存。单人不使用入场费、下注或经济奖励。进度文件在 `solo/<玩家UUID>.<游戏ID>.json`；旧格式仍可读取，替换旧格式时先备份到 `solo/legacy-backups/`。损坏文件不自动删除。长局达到动作记录安全预算时保留进度，不自动判为完成。
 
 支持准备、陪练、观战、再来一局和重启恢复。房间创建后规则锁定，需要更换规则时创建新房间。麻将提供广东、四川、台湾和日本立直四套房规。麻将分数和德州筹码仍为局内点数，可选经济功能按完整对局收取费用和发放奖励。具体规则可在菜单或 `/3dgames rules` 中查看。
 
@@ -82,13 +103,13 @@
 | `/3dgames rematch` | 准备再来一局 |
 | `/3dgames move <action>` | 执行合法动作，例如 `drop:3` |
 | `/3dgames rules [kind]` | 查看规则 |
+| `/3dgames reload-language` | 管理员重载语言文件 |
+| `/3dgames reload-pack` | 管理员重建并重新发送本插件资源包 |
 | `3dgames status` | 控制台查看房间数量 |
 
 游戏标识：`xiangqi`、`gomoku`、`chess`、`ludo`、`checkers`、`draughts`、`reversi`、`go`、`go9`、`go13`、`connectfour`、`color-eight`、`mahjong`、`yacht`、`doudizhu`、`liars-bar`、`texas-holdem`、`2048`、`mancala`、`nine-mens-morris`、`dots-and-boxes`、`mastermind`、`hex`、`memory`、`backgammon`、`battleship`、`klondike`、`shogi`、`mini-shogi`、`monopoly`。其中 `checkers` 是中国跳棋，`go` 是 19 路围棋。
 
 例如先执行 `/3dgames create connectfour`，再执行 `/3dgames bots`。指令创建使用默认规则，自定义规则请使用菜单。Tab 会提示游戏、人数、房间和合法动作。`3dgames.use` 默认所有玩家可用，`3dgames.admin` 默认 OP，用于管理与语言重载。
-
-
 
 ## 配置与语言
 
@@ -154,7 +175,7 @@ economy:
 | `%3dgames_ready%`、`%3dgames_your_turn%`、`%3dgames_turn_player%` | 是否准备、是否轮到自己、当前行动玩家 |
 | `%3dgames_economy_available%`、`%3dgames_balance%`、`%3dgames_balance_formatted%` | 经济服务是否可用、余额、经济插件格式化后的余额 |
 
-房间数据每秒刷新；被请求的余额在服务端主线程最多每五秒刷新一次，首次请求在下一次刷新前为空。没有经济服务时余额为空。未入座玩家的房间文字为空、人数为零、布尔值为 `false`；未知变量保持未解析。变量回调只读取不可变快照，不会读取隐藏手牌，也不会在回调里操作数据库或经济插件。
+房间数据每秒刷新；被请求的余额通过插件调度任务最多每五秒刷新一次，首次请求在下一次刷新前为空。没有经济服务时余额为空。未入座玩家的房间文字为空、人数为零、布尔值为 `false`；未知变量保持未解析。变量回调只读取不可变快照，不会读取隐藏手牌，也不会在回调里操作数据库或经济插件。
 
 ## 可选资源包
 
@@ -199,7 +220,43 @@ java -cp target/3DGames-1.0.0.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomRepl
 
 使用外部资源分发时同时更新匹配的 ZIP 和 URL；统一包与本地模式从 JAR 中补充缺少的文件。启动后检查房间恢复、菜单与桌面操作，再决定是否清理备份。
 
-本版内部资源标识统一为 `3dgames`。已有服务器升级时，须停服后随 JAR 一起调整服务端资源目录、CraftEngine 注册、自定义资源引用及已保存的插件标签。先在备份副本上处理并验证，保留自定义贴图和玩家偏好。
+## 构建
+
+安装 **JDK 25、Maven 3.9+、Python 3.12+**。首次构建需要访问依赖仓库；已准备好缓存时可离线构建。普通打包只使用 Python 标准库，素材测试和头颅切片另需 Pillow。
+
+```sh
+python tools/build.py
+```
+
+Linux 可将 `python` 换成 `python3`。脚本依次清理旧输出、准备内置资源包、编译并运行 Java 测试，再核对 JAR 与 ZIP 的校验值。它优先查找工作区相邻的 Maven／缓存，否则使用 `PATH`；JDK 从 `JAVA_HOME` 或 `PATH` 检测。
+
+也可以逐步构建，每步成功后再执行下一步：
+
+```sh
+mvn -B -ntp clean
+python tools/package_resource_pack.py
+mvn -B -ntp package
+```
+
+先生成资源包，再编译插件；Maven 会将 `target/3DGames-resource-pack.zip` 与校验值一起内置到 JAR。只运行 Maven 不会从素材目录生成这个 ZIP。
+
+| 输出 | 用途 |
+| --- | --- |
+| `target/3DGames-1.0.0.jar` | 安装的插件，已内置默认资源包 |
+| `target/3DGames-resource-pack.zip` | 独立客户端资源包，供检查或外部托管 |
+| `target/resource-pack-manifest.json` | 资源清单、尺寸与摘要 |
+| `target/surefire-reports/` | Java 测试结果 |
+
+资源检查与源码导出：
+
+```sh
+python -m unittest discover -s tools/tests -v
+python tools/package_source.py
+```
+
+源码导出需安装 Git，并在 Git 检出中运行，生成 `target/3DGames-source.zip`。它包含当前源码和未提交的新文件，排除 Git 忽略的构建、日志和运行数据。相同文件在同一 Python 环境中会得到相同资源 ZIP。
+
+构建脚本不部署服务器。仓库没有 GitHub Actions 工作流，推送源码不会自动编译或发布。
 
 ## 源码目录
 
@@ -231,6 +288,59 @@ java -cp target/3DGames-1.0.0.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomRepl
 
 历史交付和运行记录保存在仓库外；源码仓库只保留维护当前版本需要的文件。
 
+### 从哪里看代码
+
+插件代码位于 `src/main/java/GoldenEggOVO/TDGames/`，下表路径均相对于该目录；测试按相同结构分类。
+
+```text
+TDGames/
+├─ TDGamesPlugin.java   插件总装、事件注册与清理
+├─ Core/               游戏协调、命令、共用菜单、资源包与基础服务
+├─ Singleplayer/       2048／接龙规则、个人进度与单人菜单
+├─ Multiplayer/        多人规则、房间、准备／重连、机器人、经济与多人菜单
+└─ Shared/             猜颜色／记忆规则、共用会话、模型与交互
+```
+
+| 想修改什么 | 从哪里开始 |
+|---|---|
+| 启动与配置 | `TDGamesPlugin.java` |
+| 命令与 Tab 提示 | `Core/command/` |
+| 服务端兼容与调度 | `Core/platform/`；Paper 与 Bukkit Dialog 后端共用菜单定义 |
+| 游戏创建与模式路由 | `Core/game/GameFactory.java`、`GameService.java`；名称、顺序和人数在 `Shared/game/GameCatalog.java` |
+| 单人会话与进度 | `Singleplayer/SingleplayerService.java`、`Singleplayer/progress/SoloProgressStore.java` |
+| 多人准备、重连与存档 | `Multiplayer/MultiplayerService.java`、`Multiplayer/room/RoomStore.java`、`RoundActions.java` |
+| 共用会话状态和桌面执行 | `Shared/session/GameSession.java`、`SessionHistory.java`、`SessionRuntime.java` |
+| 游戏规则和合法操作 | `Singleplayer/game/<game>/`、`Multiplayer/game/<game>/`、`Shared/game/mastermind/` 和 `Shared/game/memory/` |
+| 点击、准星与桌面交互 | `Shared/interaction/TableWorldController.java` |
+| 桌边加入房间和打开菜单 | `Shared/interaction/TableAccessController.java` |
+| 玩家聚焦视角、碰撞和状态恢复 | `Shared/interaction/TablePlayerController.java` |
+| 菜单页面与按钮 | `Core/menu/GameMenus.java` 分派共用页面；`Singleplayer/menu/SoloMenus.java` 和 `Multiplayer/menu/RoomMenus.java` 管理模式动作；`Core/menu/GameMenuWindow.java` 适配窗口 |
+| 多人金额输入 | `Multiplayer/menu/PokerRaiseWindow.java`、`StakeWindow.java` |
+| 费用、余额和结算提示 | `Multiplayer/menu/RoomEconomyText.java`、`Multiplayer/economy/RoomPaymentLedger.java`；Vault/PAPI 接入在 `Multiplayer/integration/` |
+| 棋盘显示与玩家可见范围 | `Shared/render/TableView.java`、`Core/render/DisplayAudience.java`、`Core/render/PlayerViews.java` |
+| 棋盘坐标、点击区域与棋子几何 | `Shared/render/TableGeometry.java`、`BoardPieceModels.java` |
+| 原版棋盘地图绘制和地图 ID 缓存 | `Shared/render/BoardMapArtwork.java`、`BoardMapStore.java` |
+| 卡牌、麻将与骰子布局 | `Shared/render/cards/`、`Shared/render/mahjong/`、`Shared/render/dice/` |
+| 共用资源包加载、发送和 CraftEngine 对接 | `Core/pack/ResourcePackService.java`；独立模型目录由 `Core/pack/PackedModels.java` 读取 |
+| 资源包模型选择与显示 | `Shared/render/packed/BoardModelKeys.java`、`PackedDisplay.java` |
+| 机器人、音效与翻译 | `Multiplayer/bot/`、`Shared/audio/`、`Shared/text/`；玩家文字在 `src/main/resources/languages/` |
+
+通常一次操作会经过：输入 → `Core/game/GameService` 分派模式 → 单人或多人服务校验 → 共用运行时执行规则 → 对应模式保存并更新画面。单人服务管理个人进度，多人服务管理准备、断线等待与结算。两种模式共用玩家占用和桌号分配；座位、准备、离线和离席集合对使用方只读。游戏规则不依赖 Bukkit；显示代码不负责判断出牌是否合法。
+
+共用扑克头颅位于 `Core/render/PlayingCardHeads.java`；原版与资源包观众通过 `ResourcePackState` 查询显示模式。麻将公共牌布局、桌体和原版牌面分别位于 `Shared/render/mahjong/MahjongLayout.java`、`MahjongTableFurniture.java` 和 `MahjongTilePatterns.java`。
+
+`Core/platform/` 封装原生 Dialog、消息、事件和线程调度。`Core/render/PlayerViews.java` 保存玩家快照，`DisplayMovement.java` 处理展示实体移动；`Shared/interaction/TableChunks.java` 管理共享区块票据，`TableWorldController.java` 在区域准备好后执行桌面操作。
+
+`Core/economy/` 提供经济接口和 Vault 适配；`Core/text/Language.java` 加载翻译；`Core/menu/DialogMenus.java` 通过平台适配层生成原生菜单。
+
+`tools/tests/server/run_standalone.py` 检查隔离启动、玩法与重启恢复。`--server-dir` 测试目录需包含命名为 `purpur-2622.jar` 的 Purpur 26.2、已准备的依赖／缓存和已接受的 EULA。`--maven-repo` 指定自定义依赖缓存，默认 `~/.m2/repository`；可选 CraftEngine 参数用于资源模型检查。`run_soak.py` 检查连续对局与实体清理。回执与日志保存在本地生成目录。
+
+`tools/tests/client/run_probe.py <Minecraft目录>` 使用已安装的官方客户端解析器检查模型加载和牌面朝向，默认版本为 26.2，可用 `--version` 选择其他已安装客户端。
+
+原版扑克切片：`python tools/native_heads/build-native-card-heads.py --output target/native-heads`；彩八切片：`python tools/native_heads/build-color-eight-heads.py --output target/color-eight-heads`。只有手动运行 `generate-native-card-heads.py` 并指定本地 `--api-key-file` 时才会访问 MineSkin，普通构建和运行不需要密钥。
+
+自动检查不能替代客户端验收。应在 Minecraft 中检查多人暗手隐私、资源包切换与下载失败、准星和点击范围、骰子移动、音量、重启恢复及帧时间表现。
+
 ### 修改原版模型
 
 原版模型由 `vanilla-models/` 中的 JSON 描述，桌子、棋子、骰子、麻将图案和牌背都使用同一种格式。`Core/render/model/` 负责加载、校验和坐标变换；各游戏的 Java 负责选择模型、动态摆放、动画、点击和实体回收。
@@ -241,42 +351,7 @@ java -cp target/3DGames-1.0.0.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomRepl
 
 `shared/cards/head_textures.json` 和 `tabletop/color_eight/head_textures.json` 是原版头颅牌面的签名纹理数据，不属于几何索引。重新制作这些牌面使用 `tools/native_heads/`。
 
-修改上述内置数据后运行下面的完整构建，重新安装 JAR。客户端资源包的模型仍在 `resource-pack/assets/` 中，两套模型分别维护；`reload-pack` 不会重新加载 JAR 内的原版几何。
-
-## 构建
-
-更新时先在本地编译、测试和交付，验收后再同步源码。仓库未包含 GitHub Actions 工作流，推送源码不会自动编译或发布 Release。
-
-本节供维护者修改源码或 JAR 内置默认素材后构建插件。安装插件和日常换图无需执行这些命令；服务端换图使用 `/3dgames reload-pack`。
-
-Windows 使用 `python tools/build.py`，Linux 使用 `python3 tools/build.py`。脚本会清理上次构建、准备资源包、编译和测试插件，并核对 ZIP 与 JAR 的校验值。构建前清理可防止已删除源码对应的旧类继续留在新 JAR 中。
-
-脚本优先使用工作区相邻 `.tools/` 中的 Maven 3.9.11；该目录同时提供 `m2/` 缓存时，会复用缓存进行离线构建。其他目录下可通过 `PATH` 提供 Maven，通过 `JAVA_HOME` 或 `PATH` 提供 JDK 25。生成文件保存在 `target/`，运行脚本不会自动部署到服务器。
-
-手动构建时先准备资源包，再使用 **JDK 25、Maven 3.9+**：
-
-```sh
-mvn -B -ntp clean
-python tools/package_resource_pack.py
-mvn -B -ntp package
-```
-
-Maven 自动运行 Java 测试，结果保存在 `target/surefire-reports/`。安装生成的 `target/3DGames-*.jar`。
-
-资源包现在直接维护完整文件，构建时不生成模型、不转换音频。打包只需要 **Python 3.12+** 及其标准库。先打包资源，再编译插件，让 JAR 写入匹配的校验值：
-
-```sh
-mvn -B -ntp clean
-python tools/package_resource_pack.py
-mvn -B -ntp package
-python -m unittest discover -s tools/tests -t . -p "test_*.py"
-python -m compileall -q tools
-python tools/package_source.py
-```
-
-输出包括 `target/3DGames-resource-pack.zip`、`target/resource-pack-manifest.json`、插件 JAR 和 `target/3DGames-source.zip`。同一 Python 环境下，相同文件会得到相同的 ZIP。客户端资源包 ZIP 只包含 `pack.mcmeta`、`assets/` 和 `licenses/`；CraftEngine 注册从源码目录直接内置到 JAR，不加入客户端 ZIP。源码包包含当前源码及未提交的新文件，排除 Git 忽略的构建和运行数据。
-
-素材检查及头颅切片工具需要 Pillow。可选的头颅上传工具使用单独的 MineSkin 凭据，普通打包和服务端运行都不需要。
+修改上述内置数据后按[构建](#构建)流程重新安装 JAR。客户端资源包的模型仍在 `resource-pack/assets/` 中，两套模型分别维护；`reload-pack` 不会重新加载 JAR 内的原版几何。
 
 ### 修改资源包
 
@@ -284,15 +359,7 @@ python tools/package_source.py
 
 文件名写明游戏、颜色、花色、牌面或部件，例如 `poker_spades_ace`（黑桃 A）、`color_eight_card_blue_2`（彩八蓝色 2）和 `mahjong_characters_1`（一万）。物品定义与模型文件使用相同文件名。稳定的逻辑标识通过 CraftEngine 的 `item_model` 注册对应到文件，打包器以注册表为索引。修改客户端文件名时同步路径引用与注册，逻辑标识、原版模型标识及玩法代码保持不变。
 
-维护者更新源码中的默认素材时，在仓库根目录依次执行以下命令；每一步成功后再执行下一步。需要 Python 3.12+、JDK 25 和 Maven 3.9+：
-
-```sh
-mvn -B -ntp clean
-python tools/package_resource_pack.py
-mvn -B -ntp package
-```
-
-第一步生成 `target/3DGames-resource-pack.zip` 并更新校验值，第二步运行 Java 测试，将默认 ZIP 和校验值一起内置到 `target/3DGames-<版本>.jar`。这是源码交付的构建流程；使用统一包或本地资源模式的服务器换图时，直接修改服务端资源文件夹并执行 `/3dgames reload-pack` 即可。外部模式仍须上传与 JAR 匹配的 ZIP。只修改现有 PNG 不需要调整 CraftEngine 注册。
+维护源码中的默认素材后，按[构建](#构建)的完整流程重新打包。资源打包步骤生成 `target/3DGames-resource-pack.zip` 并更新校验值，随后 Maven 运行 Java 测试，将默认 ZIP 和校验值一起内置到 `target/3DGames-<版本>.jar`。这是源码交付的构建流程；使用统一包或本地资源模式的服务器换图时，直接修改服务端资源文件夹并执行 `/3dgames reload-pack` 即可。外部模式仍须上传与 JAR 匹配的 ZIP。只修改现有 PNG 不需要调整 CraftEngine 注册。
 
 | 目录或文件 | 自定义方式 |
 | --- | --- |
@@ -327,56 +394,6 @@ JSON 使用两空格缩进，方便直接编辑。
 
 扑克牌图案位于 `textures/item/shared/playing_cards/`，55 张圆角牌模型（含大小王）位于 `models/item/shared/playing_cards/`；物品定义在 `items/` 下使用相同路径。
 
-### 从哪里看代码
-
-插件代码位于 `src/main/java/GoldenEggOVO/TDGames/`，下表路径均相对于该目录；测试按相同结构分类。
-
-```text
-TDGames/
-├─ TDGamesPlugin.java   插件总装、事件注册与清理
-├─ Core/               游戏协调、命令、共用菜单、资源包与基础服务
-├─ Singleplayer/       2048／接龙规则、个人进度与单人菜单
-├─ Multiplayer/        多人规则、房间、准备／重连、机器人、经济与多人菜单
-└─ Shared/             猜颜色／记忆规则、共用会话、模型与交互
-```
-
-| 想修改什么 | 从哪里开始 |
-|---|---|
-| 启动与配置 | `TDGamesPlugin.java` |
-| 命令与 Tab 提示 | `Core/command/` |
-| 游戏创建与模式路由 | `Core/game/GameFactory.java`、`GameService.java`；名称、顺序和人数在 `Shared/game/GameCatalog.java` |
-| 单人会话与进度 | `Singleplayer/SingleplayerService.java`、`Singleplayer/progress/SoloProgressStore.java` |
-| 多人准备、重连与存档 | `Multiplayer/MultiplayerService.java`、`Multiplayer/room/RoomStore.java`、`RoundActions.java` |
-| 共用会话状态和桌面执行 | `Shared/session/GameSession.java`、`SessionHistory.java`、`SessionRuntime.java` |
-| 游戏规则和合法操作 | `Singleplayer/game/<game>/`、`Multiplayer/game/<game>/`、`Shared/game/mastermind/` 和 `Shared/game/memory/` |
-| 点击、准星与桌面交互 | `Shared/interaction/TableWorldController.java` |
-| 桌边加入房间和打开菜单 | `Shared/interaction/TableAccessController.java` |
-| 玩家聚焦视角、碰撞和状态恢复 | `Shared/interaction/TablePlayerController.java` |
-| 菜单页面与按钮 | `Core/menu/GameMenus.java` 分派共用页面；`Singleplayer/menu/SoloMenus.java` 和 `Multiplayer/menu/RoomMenus.java` 管理模式动作；`Core/menu/GameMenuWindow.java` 适配窗口 |
-| 多人金额输入 | `Multiplayer/menu/PokerRaiseWindow.java`、`StakeWindow.java` |
-| 费用、余额和结算提示 | `Multiplayer/menu/RoomEconomyText.java`、`Multiplayer/economy/RoomPaymentLedger.java`；Vault/PAPI 接入在 `Multiplayer/integration/` |
-| 棋盘显示与玩家可见范围 | `Shared/render/TableView.java`、`Core/render/DisplayAudience.java` |
-| 棋盘坐标、点击区域与棋子几何 | `Shared/render/TableGeometry.java`、`BoardPieceModels.java` |
-| 原版棋盘地图绘制和地图 ID 缓存 | `Shared/render/BoardMapArtwork.java`、`BoardMapStore.java` |
-| 卡牌、麻将与骰子布局 | `Shared/render/cards/`、`Shared/render/mahjong/`、`Shared/render/dice/` |
-| 共用资源包加载、发送和 CraftEngine 对接 | `Core/pack/ResourcePackService.java` |
-| 资源包模型选择与显示 | `Shared/render/packed/BoardModelKeys.java`、`PackedDisplay.java` |
-| 机器人、音效与翻译 | `Multiplayer/bot/`、`Shared/audio/`、`Shared/text/`；玩家文字在 `src/main/resources/languages/` |
-
-通常一次操作会经过：输入 → `Core/game/GameService` 分派模式 → 单人或多人服务校验 → 共用运行时执行规则 → 对应模式保存并更新画面。单人服务管理个人进度，多人服务管理准备、断线等待与结算。两种模式共用玩家占用和桌号分配；座位、准备、离线和离席集合对使用方只读。游戏规则不依赖 Bukkit；显示代码不负责判断出牌是否合法。
-
-共用扑克头颅位于 `Core/render/PlayingCardHeads.java`；原版与资源包观众通过 `ResourcePackState` 查询显示模式。麻将公共牌布局、桌体和原版牌面分别位于 `Shared/render/mahjong/MahjongLayout.java`、`MahjongTableFurniture.java` 和 `MahjongTilePatterns.java`。
-
-`Core/economy/` 提供共用经济接口和 Vault 适配。`Core/text/Language.java` 加载全插件翻译。`Core/menu/DialogMenus.java` 生成原生 Dialog。`TableWorldController.retainTableChunks()` 只为桌子保留区块加载。
-
-`tools/tests/server/run_standalone.py` 检查隔离启动、玩法与重启恢复。通过 `--server-dir` 指定已准备好 Purpur 26.2 缓存及已接受 EULA 的目录，`--maven-repo` 指定自定义依赖缓存，默认使用 `~/.m2/repository`；可选 CraftEngine 参数用于资源模型检查。`run_soak.py` 检查连续对局与实体清理。回执与日志保存在本地生成目录。
-
-`tools/tests/client/run_probe.py <Minecraft目录>` 使用已安装的 Minecraft 26.2 客户端解析器检查模型是否可加载，以及牌面的朝向。
-
-原版扑克切片：`python tools/native_heads/build-native-card-heads.py --output target/native-heads`；彩八切片：`python tools/native_heads/build-color-eight-heads.py --output target/color-eight-heads`。只有手动运行 `generate-native-card-heads.py` 并指定本地 `--api-key-file` 时才会访问 MineSkin，普通构建和运行不需要密钥。
-
-自动检查不能替代客户端验收。应在 Minecraft 中检查多人暗手隐私、资源包切换与下载失败、准星和点击范围、骰子移动、音量、重启恢复及帧时间表现。
-
 ## 许可
 
 整合后的插件采用 [GPL-3.0-or-later](LICENSE)。对应源码可在本仓库及构建工具生成的 `3DGames-source.zip` 中获取。
@@ -390,22 +407,28 @@ TDGames/
 - hongsenliu/chinese-checkers — GPL-3.0-or-later。
 - bhlangonijr/chesslib — Apache-2.0。
 - Gson — Apache-2.0，运行时库已包含在打包后的 JAR 中。
+- Adventure API、MiniMessage 与文本序列化库 — MIT；内置于 JAR，供 Spigot 和 CraftBukkit 使用。原始声明保留在 `META-INF/licenses/adventure-MIT.txt`。
+- Kyori Option — MIT；内置的 Adventure 依赖。原始声明保留在 `META-INF/licenses/option-MIT.txt`。
 
 `Core/text/MessageText.java` 和 `Core/text/LabelLayout.java` 改编自 GoldenEggOVO/3DCasinoGames 的 `a4ddd20` 修订版，沿用其 GPL-3.0 许可。本插件的文字排版会保留所有状态行。这些工具的源码已内置，不要求安装其他插件。
 
-Paper/Adventure 和 JOML 由服务端 API 提供。私人字体、运行配置、世界数据以及第三方服务端或插件 JAR 不包含在本仓库交付中。
+服务端 API 和 JOML 由所选服务端提供；Paper 专用入口隔离加载。私人字体、运行配置、世界数据以及第三方服务端或插件 JAR 不包含在本仓库交付中。
 
 内置的 chesslib 子集移除了未使用的事件观察器、废弃 FEN 别名和 Polyglot 开局库哈希；标准走子验证与重复局面检测仍保留。原始 Apache-2.0 声明和代码来源也保留。内置源码位于 `Multiplayer/game/chess/engine/`、`Multiplayer/game/xiangqi/engine/` 和 `Multiplayer/game/chinesecheckers/engine/`。
 
-资源包使用 [lietxia/mahjong_graphic](https://github.com/lietxia/mahjong_graphic) 的透明麻将牌图案，修订版为 `3e275804ff58325306710bef3a7406860444bc6a`，采用允许修改和商业使用的 M+ fonts 许可。选用的 PNG 和 SVG 源文件保存在 `resource-pack/originals/tabletop/textures/mahjong/tiles/`；完整声明和文件摘要集中记录于 `resource-pack/sources.json`，客户端资源包也包含声明。此前使用的雀魂麻将牌图集和项目绘制的替代花牌已移除。
+资源包使用 [lietxia/mahjong_graphic](https://github.com/lietxia/mahjong_graphic) 的透明麻将牌图案，修订版为 `3e275804ff58325306710bef3a7406860444bc6a`，采用允许修改和商业使用的 M+ fonts 许可。选用的 PNG 和 SVG 源文件保存在 `resource-pack/originals/tabletop/textures/mahjong/tiles/`；完整声明和文件摘要集中记录于 `resource-pack/sources.json`，客户端资源包也包含声明。
 
 麻将桌布为本项目原创的纯色绿色桌布，SVG 源文件保存在 `resource-pack/originals/tabletop/textures/mahjong/`。麻将音效采用 Kenney 的 CC0-1.0 素材，准确来源、许可和 SHA-256 摘要记录于 `resource-pack/sources.json`，客户端资源包包含声明。Color Eight 图案和模型几何由本项目制作。CraftEngine 为可选组件，其二进制文件不随本项目分发。
 
 资源包的象棋棋子采用用户选定的 Wikimedia Commons 繁体字 SVG，作者为 Inductiveload，现用矢量修订由 Wj654cj86 提供，已释出至公有领域。每张 SVG 选用第一枚红棋和第三枚黑棋。原始 SVG 与本地渲染的 PNG 保存在 `resource-pack/originals/tabletop/textures/xiangqi/`；准确摘要和文件页面链接记录于 `resource-pack/sources.json`。资源包扑克牌面和蓝色牌背使用 George Blackwell 的 [Pixel Playing Cards Pack](https://georgeblackwell.itch.io/playing-cards-sprite-pack)，采用 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) 许可。原始 60×84 PNG 保存在 `resource-pack/originals/shared/textures/playing-cards/`。牌面保持原有宽高比，不增加空白，通过最近邻方式放大两倍；蓝色牌背简化为纯色底和象牙白边框；大王角标文字改为红色。作者署名、许可链接及上述改动记录于 `resource-pack/sources.json` 和客户端资源包声明。原版头颅纹理和源图片内容未改变；资源包每张牌使用一个模型显示实体。
 
-共用出牌音效使用用户提供的 `oxidvideos-taking-playing-card-522520.mp3`，未提供原始下载页面或许可凭证。其余玩法和菜单音效使用 Kenney CC0 样本。通用音频按用途存放于 `resource-pack/originals/shared/sounds/`，麻将录音单独存放于 `resource-pack/originals/tabletop/sounds/mahjong/`，`resource-pack/originals/shared/sounds/sound_events.json` 记录共用事件与样本的对应关系。来源链接、原始文件摘要和许可声明集中记录于 `resource-pack/sources.json`，其中也包含用户提供的出牌录音来源信息。客户端资源包在 `resource-pack/licenses/` 中保留 Kenney 声明。
+当前共用玩法音效（包括出牌、黑白棋翻面和骰子）使用基于 Kenney CC0 录音制作的实物音效与混音；确认采用的母带位于 `resource-pack/originals/shared/sounds/approved/`，对应事件、处理方式和成品摘要记录在 `resource-pack/sources.json` 的 `approved_audio` 中。其他 Kenney 原始录音按用途保存在 `originals/shared/sounds/`，麻将录音在 `originals/tabletop/sounds/mahjong/`；客户端包保留许可声明。原稿目录另保留用户提供的 `oxidvideos-taking-playing-card-522520.mp3`，其原始下载页面与许可凭证未提供，来源状态仍记录在 `sources.json`，它不是当前出牌事件采用的母带。
 
 原版扑克使用从用户的 Minecraft 26.2 客户端 JAR（`assets/minecraft/textures/entity/`）中裁切的僵尸、骷髅和苦力怕头部纹理。卡牌布局、花色和凋零像素图案由本项目制作。Minecraft 纹理归 Mojang/Microsoft 所有，与 GPL 插件代码分别处理。离线 PNG 源文件仅导入头部正面像素，原版渲染所需的带签名皮肤属性已内置。API Key 和生成缓存不包含在交付中。
+
+将棋与五将棋共用用户选定的 [Kadagaden 双字红木棋子](https://github.com/Kadagaden/shogi-pieces/tree/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood)。Kadagaden 的美术采用 CC BY 4.0；双字字形由 Hari Seldon 制作，采用 CC BY-SA 3.0。15 张原始 SVG 和摘要保存在 `resource-pack/originals/tabletop/shogi/`。资源包以 128×128 透明图像呈现原稿，保留奶白字与红木色，每颗棋子使用一个封闭立体模型。来源、许可链接及转换说明记录于 `resource-pack/sources.json` 和 `resource-pack/licenses/shogi-art.txt`。
+
+共用方块材质 PNG 来自 Minecraft 26.2 客户端，仍属于 Mojang/Microsoft 素材，不采用插件代码的 GPL 许可；来源与摘要记录在 `resource-pack/sources.json`。
 
 #### 公开规则参考
 
@@ -420,14 +443,3 @@ Paper/Adventure 和 JOML 由服务端 API 提供。私人字体、运行配置�
 - [EMA 2025 日麻规则](https://mahjong-europe.org/portal/images/docs/Riichi-rules-2025-EN.pdf)
 - [四川省体育场馆协会规则](https://www.ssva.org.cn/upload/file/2025-08-22/6389146967009551555075859.pdf)
 - [麻将术语参考](https://new.mjonline.com.tw/aboutgame_d.html)
-
-## 菜单界面
-
-主页分为单人和多人，资源包开关位于菜单设置。无论是否加载资源包，菜单都使用原生 Dialog 文字按钮，并提供点击动作和悬停提示；人数放在悬停提示中。主页底部显示关闭，子页在相同位置显示返回，列表支持原生滚动。金额输入使用原生 Dialog 并保留校验。
-
-
-桌游家具在原版和资源包中以低饱和的深木色和深绿色为主。牌面、骰点和阵营色保留辨识度，桌体与边框使用纯色块拼接，各棋盘保留自己的配色和标记。
-
-13款新桌游的可编辑原版棋盒图纸位于 `src/main/resources/vanilla-models/tabletop/<game>/table.json`。资源包的 `<game>_board.json` 包含完整静态棋盒、桌边和桌腿，以一个物品展示实体呈现；棋具与每位玩家的操作区单独显示。棋盘尺寸与指针范围位于 `ClassicLayout.java`。新增共用方块材质 PNG 来自本机 Minecraft 26.2 客户端，仍属于 Mojang/Microsoft 素材，不采用插件代码的 GPL 许可；来源与摘要保存在 `resource-pack/sources.json`。
-
-将棋与五将棋共用用户选定的 [Kadagaden 双字红木棋子](https://github.com/Kadagaden/shogi-pieces/tree/3a7643b8f6aa9910b360b61e062961e70213c6cc/2-kanji_red_wood)。Kadagaden 的美术采用 CC BY 4.0；双字字形由 Hari Seldon 制作，采用 CC BY-SA 3.0。15 张原始 SVG 和摘要保存在 `resource-pack/originals/tabletop/shogi/`。资源包以 128×128 透明图像呈现原稿，保留奶白字与红木色，每颗棋子使用一个封闭立体模型。来源、许可链接及转换说明记录于 `resource-pack/sources.json` 和 `resource-pack/licenses/shogi-art.txt`。

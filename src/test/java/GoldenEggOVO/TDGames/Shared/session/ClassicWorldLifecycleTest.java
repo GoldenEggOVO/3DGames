@@ -23,6 +23,7 @@ class ClassicWorldLifecycleTest {
 
     private TDGamesPlugin plugin() {
         var plugin = mock(TDGamesPlugin.class);
+        SessionTestSupport.platform(plugin);
         var service = new GameService(plugin);
         when(plugin.games()).thenReturn(service);
         SessionTestSupport.set(service, "loaded", true);

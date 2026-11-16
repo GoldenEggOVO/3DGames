@@ -8,6 +8,7 @@ import GoldenEggOVO.TDGames.Shared.session.GameSession;
 import GoldenEggOVO.TDGames.Shared.game.HandGame;
 import GoldenEggOVO.TDGames.Core.text.RuleViolation;
 import GoldenEggOVO.TDGames.Core.text.Language;
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,6 +33,12 @@ public final class GameCommand implements Listener, CommandExecutor, TabComplete
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        synchronized (plugin) {
+            return execute(sender, command, label, args);
+        }
+    }
+
+    private boolean execute(CommandSender sender, Command command, String label, String[] args) {
         if (args.length > 0 && args[0].equalsIgnoreCase("reload-pack")) {
             if (sender instanceof Player player
                     && (!plugin.allowed(player) || !GoldenEggOVO.TDGames.Core.player.GamePermissions.admin(player))) {
@@ -56,18 +63,18 @@ public final class GameCommand implements Listener, CommandExecutor, TabComplete
                                 config.getString("language", "en_US"),
                                 plugin.getLogger()::warning);
                 if (changed && plugin.menus() != null) plugin.menus().languageChanged();
-                sender.sendMessage(
+                PlatformMessages.send(sender,
                         Language.component(changed ? "language.reloaded" : "language.failed"));
             } catch (Exception ex) {
                 plugin.getLogger().warning("Cannot reload languages: " + ex.getMessage());
-                sender.sendMessage(Language.component("language.failed"));
+                PlatformMessages.send(sender, Language.component("language.failed"));
             }
             return true;
         }
         if (!(sender instanceof Player p)) {
-            sender.sendMessage(Language.component("chat.console"));
+            PlatformMessages.send(sender, Language.component("chat.console"));
             if (args.length > 0 && args[0].equals("status"))
-                sender.sendMessage(
+                PlatformMessages.send(sender,
                         Language.component(
                                 "chat.status",
                                 "rooms",
@@ -146,6 +153,12 @@ public final class GameCommand implements Listener, CommandExecutor, TabComplete
     @Override
     public List<String> onTabComplete(
             CommandSender sender, Command cmd, String alias, String[] args) {
+        synchronized (plugin) {
+            return complete(sender, cmd, alias, args);
+        }
+    }
+
+    private List<String> complete(CommandSender sender, Command cmd, String alias, String[] args) {
         if (args.length == 1
                 && List.of("reload-language", "reload-pack").stream().anyMatch(
                         value -> value.startsWith(args[0].toLowerCase(Locale.ROOT)))

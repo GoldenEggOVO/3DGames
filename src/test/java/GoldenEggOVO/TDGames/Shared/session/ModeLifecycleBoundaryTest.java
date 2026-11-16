@@ -22,6 +22,7 @@ class ModeLifecycleBoundaryTest {
 
     private Fixture fixture() {
         TDGamesPlugin plugin = mock(TDGamesPlugin.class);
+        SessionTestSupport.platform(plugin);
         GameService service = new GameService(plugin);
         when(plugin.games()).thenReturn(service);
         when(plugin.getDataFolder()).thenReturn(directory.toFile());

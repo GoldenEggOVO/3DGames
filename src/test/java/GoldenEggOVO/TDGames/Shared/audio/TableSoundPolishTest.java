@@ -156,7 +156,7 @@ class TableSoundPolishTest {
     }
 
     @Test void perViewerPlaybackKeepsRoutingAndVolumeWithoutBroadcasting() {
-        var plugin = mock(TDGamesPlugin.class);
+        var plugin = GoldenEggOVO.TDGames.SessionTestSupport.plugin();
         var config = new YamlConfiguration();
         config.set("sounds.volume", .5);
         when(plugin.getConfig()).thenReturn(config);

@@ -7,6 +7,7 @@ import GoldenEggOVO.TDGames.TDGamesPlugin;
 import GoldenEggOVO.TDGames.Core.text.Language;
 import GoldenEggOVO.TDGames.Core.text.RuleViolation;
 import GoldenEggOVO.TDGames.Core.pack.ResourcePackService;
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
 import com.google.gson.*;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
@@ -24,6 +25,20 @@ public final class MultiplayerService {
     private final TDGamesPlugin plugin;
     private final SessionRuntime runtime;
     private final GameService games;
+    private final Map<UUID, Seating> seating = new HashMap<>();
+    private static final class Seating {
+        final GameSession room;
+        final List<GameSession.Seat> previous;
+        final long revision;
+        final Map<Player, Location> origins = new LinkedHashMap<>();
+        int remaining;
+        Seating(GameSession room, List<GameSession.Seat> previous, int remaining) {
+            this.room = room;
+            this.previous = previous;
+            this.revision = room.revision();
+            this.remaining = remaining;
+        }
+    }
     public MultiplayerService(TDGamesPlugin plugin, SessionRuntime runtime, GameService games) {
         this.plugin = plugin;
         this.runtime = runtime;
@@ -66,7 +81,7 @@ public final class MultiplayerService {
             throw new RuleViolation("error.leave-your-current-game-first", "Leave your current game first");
         boolean already = r.seat(p.getUniqueId()) >= 0;
         r.join(p.getUniqueId(), p.getName());
-        if (!games.enterArena(p, r)) {
+        if (!runtime.enterJoinedArena(p, r, !already)) {
             if (!already) {
                 r.removeSeat(p.getUniqueId());
                 games.save();
@@ -90,6 +105,7 @@ public final class MultiplayerService {
     }
 
     public void ready(Player p, GameSession r, Double confirmedStake) {
+        if (runtime.transferring(p.getUniqueId()) || seating.containsKey(r.id)) return;
         requireMultiplayer(r);
         if (!plugin.allowed(p)) return;
         games.requireLiveSession(r);
@@ -106,6 +122,7 @@ public final class MultiplayerService {
     }
 
     public void startWithBots(Player p, GameSession r) {
+        if (runtime.transferring(p.getUniqueId()) || seating.containsKey(r.id)) return;
         requireMultiplayer(r);
         if (!plugin.allowed(p)) return;
         games.requireLiveSession(r);
@@ -122,9 +139,14 @@ public final class MultiplayerService {
     }
 
     public boolean prepareSeats(GameSession room) {
+        if (seating.containsKey(room.id)) return false;
         List<GameSession.Seat> previous = List.copyOf(room.seats);
         room.prepareSeats();
         if (room.restoring() || previous.equals(room.seats)) return true;
+        if (plugin.scheduler().folia()) {
+            prepareAsync(room, previous);
+            return false;
+        }
         Map<Player, Location> moved = new LinkedHashMap<>();
         boolean success = false;
         try {
@@ -155,6 +177,78 @@ public final class MultiplayerService {
                 games.showRoomToHumans(room);
             }
         }
+    }
+
+    private void prepareAsync(GameSession room, List<GameSession.Seat> previous) {
+        List<GameSession.Seat> moving = room.seats.stream()
+                .filter(member -> !member.bot() && previous.indexOf(member) != room.seat(member.id()))
+                .toList();
+        Seating transfer = new Seating(room, previous, moving.size());
+        seating.put(room.id, transfer);
+        plugin.scheduler().later(() -> seatingFinished(transfer, false), 200);
+        if (moving.isEmpty()) { seatingFinished(transfer, true); return; }
+        plugin.tableWorld().atTable(room, () -> {
+            if (seating.get(room.id) != transfer) return;
+            for (var member : moving) {
+                Player player = Bukkit.getPlayer(member.id());
+                if (player == null || !plugin.allowed(player) || !plugin.tableWorld().atTableWorld(player, room)) {
+                    seatingFinished(transfer, false);
+                    return;
+                }
+                Location target;
+                try { target = plugin.tableWorld().seatLocation(room, room.seat(member.id())); }
+                catch (IllegalArgumentException failure) { seatingFinished(transfer, false); return; }
+                plugin.scheduler().execute(player, () -> {
+                    if (seating.get(room.id) != transfer) return;
+                    transfer.origins.put(player, player.getLocation().clone());
+                    plugin.closePlayerViews(player);
+                    plugin.scheduler().teleport(player, target, moved -> {
+                        if (seating.get(room.id) != transfer) {
+                            if (moved) restoreSeat(player, transfer);
+                            return;
+                        }
+                        if (!moved || room.revision() != transfer.revision) seatingFinished(transfer, false);
+                        else if (--transfer.remaining == 0) seatingFinished(transfer, true);
+                    });
+                });
+            }
+        }, () -> seatingFinished(transfer, false));
+    }
+
+    private void restoreSeat(Player player, Seating transfer) {
+        Location origin = transfer.origins.get(player);
+        if (origin != null && games.session(player) == transfer.room) {
+            if (seating.containsKey(transfer.room.id) || transfer.room.phase() != GameSession.Phase.LOBBY)
+                origin = plugin.tableWorld().seatLocation(transfer.room, transfer.room.seat(player.getUniqueId()));
+            plugin.scheduler().teleport(player, origin, ignored -> {});
+        }
+    }
+
+    private void seatingFinished(Seating transfer, boolean success) {
+        GameSession room = transfer.room;
+        if (seating.get(room.id) != transfer) return;
+        seating.remove(room.id);
+        if (games.activeSessions().get(room.id) != room) return;
+        if (success && room.revision() == transfer.revision && room.phase() == GameSession.Phase.LOBBY) {
+            games.start(room);
+            games.showRoomToHumans(room);
+            return;
+        }
+        List<GameSession.Seat> current = List.copyOf(room.seats);
+        List<GameSession.Seat> restored = new ArrayList<>(transfer.previous.stream().filter(current::contains).toList());
+        current.stream().filter(member -> !restored.contains(member)).forEach(restored::add);
+        room.restoreSeating(restored);
+        transfer.origins.keySet().forEach(player -> restoreSeat(player, transfer));
+        if (room.board() == null) runtime.preview(room);
+        else plugin.tableWorld().render(room);
+        games.save();
+        games.announce(room, Language.component("chat.seat-change-blocked"));
+        games.showRoomToHumans(room);
+    }
+
+    public void cancelSeating(UUID player) {
+        for (Seating transfer : List.copyOf(seating.values()))
+            if (transfer.previous.stream().anyMatch(member -> member.id().equals(player))) seatingFinished(transfer, false);
     }
 
     public void rematch(Player p, GameSession r) {
@@ -243,6 +337,7 @@ public final class MultiplayerService {
     }
 
     public void setStake(Player player, GameSession room, long revision, double amount) {
+        if (seating.containsKey(room.id)) return;
         requireMultiplayer(room);
         if (!plugin.allowed(player)) return;
         games.requireLiveSession(room);
@@ -285,6 +380,7 @@ public final class MultiplayerService {
     }
     public void start(GameSession session) {
         requireMultiplayer(session);
+        if (session.seats.stream().anyMatch(member -> runtime.transferring(member.id()))) return;
         runtime.requireResourcePacks(session);
         if (!games.prepareSeats(session)) return;
         if (!session.restoring() && plugin.integrations() != null) plugin.integrations().beforeStart(session);
@@ -322,6 +418,7 @@ public final class MultiplayerService {
     }
     public void remove(GameSession session) {
         requireMultiplayer(session);
+        seating.remove(session.id);
         if (plugin.integrations() != null) plugin.integrations().cancel(session);
         runtime.remove(session);
     }
@@ -403,7 +500,8 @@ public final class MultiplayerService {
             Component message = Language.component("stake.waiting", "seconds", remaining);
             for (GameSession.Seat seat : r.seats) {
                 Player player = Bukkit.getPlayer(seat.id());
-                if (!seat.bot() && player != null && plugin.allowed(player)) player.sendActionBar(message);
+                if (!seat.bot() && player != null && plugin.allowed(player))
+                    plugin.scheduler().execute(player, () -> PlatformMessages.actionBar(player, message));
             }
             return false;
         }

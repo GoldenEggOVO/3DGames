@@ -456,6 +456,10 @@ public class HandTableTest {
             when(spectator.getUniqueId()).thenReturn(UUID.randomUUID());
             when(owner.getWorld()).thenReturn(world);
             when(spectator.getWorld()).thenReturn(world);
+            for (Player player : List.of(owner, spectator)) {
+                when(player.isOnline()).thenReturn(true);
+                when(player.getLocation()).thenAnswer(call -> new Location(player.getWorld(), 0, 82, 0));
+            }
             when(plugin.allowed(any(Player.class))).thenReturn(true);
             room = new GameSession(UUID.randomUUID(), kind, 2, 0, 0);
             room.join(owner.getUniqueId(), "Owner");

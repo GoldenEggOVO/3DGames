@@ -4,6 +4,8 @@ import GoldenEggOVO.TDGames.TDGamesPlugin;
 import GoldenEggOVO.TDGames.Shared.render.TableGeometry;
 import GoldenEggOVO.TDGames.Shared.session.GameSession;
 import GoldenEggOVO.TDGames.Core.text.Language;
+import GoldenEggOVO.TDGames.Core.platform.PlatformEvents;
+import GoldenEggOVO.TDGames.Core.platform.PlatformScheduler;
 
 import org.bukkit.*;
 import org.bukkit.entity.*;
@@ -35,7 +37,7 @@ public final class TableAccessController implements Listener, AutoCloseable {
     private final TDGamesPlugin plugin;
     private final Map<UUID, Long> clicks = new HashMap<>();
     private List<Entry> entries = List.of();
-    private org.bukkit.scheduler.BukkitTask task;
+    private PlatformScheduler.Task task;
     private boolean readFailed;
 
     public TableAccessController(TDGamesPlugin plugin) {
@@ -43,8 +45,8 @@ public final class TableAccessController implements Listener, AutoCloseable {
     }
 
     public void start() {
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-        task = Bukkit.getScheduler().runTaskTimer(plugin, this::refresh, 100, 20);
+        PlatformEvents.register(plugin, this);
+        task = plugin.scheduler().repeat(this::refresh, 100, 20);
     }
 
     public List<Entry> collect() {
@@ -96,7 +98,8 @@ public final class TableAccessController implements Listener, AutoCloseable {
     @EventHandler(priority = EventPriority.LOWEST)
     public void use(PlayerInteractEvent e) {
         if (e.getHand() == EquipmentSlot.HAND
-                && e.getAction().isRightClick()
+                && (e.getAction() == org.bukkit.event.block.Action.RIGHT_CLICK_AIR
+                    || e.getAction() == org.bukkit.event.block.Action.RIGHT_CLICK_BLOCK)
                 && request(e.getPlayer())) e.setCancelled(true);
     }
 
@@ -129,9 +132,9 @@ public final class TableAccessController implements Listener, AutoCloseable {
         if (plugin.tablePlayers() != null && plugin.tablePlayers().hasTableFocus(p)) plugin.tablePlayers().releaseFocus(p);
         String id = target.id;
 
-        Bukkit.getScheduler()
-                .runTask(
-                        plugin,
+        plugin.scheduler()
+                .later(
+                        p,
                         () -> {
                             if (!p.isOnline() || !plugin.allowed(p)) return;
                             try {
@@ -167,7 +170,7 @@ public final class TableAccessController implements Listener, AutoCloseable {
                             } catch (IllegalStateException ex) {
                                 plugin.tell(p, Language.component("error.invalid"));
                             }
-                        });
+                        }, 1);
         return true;
     }
 

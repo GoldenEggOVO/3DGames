@@ -18,6 +18,7 @@ public final class SessionTestSupport {
     }
 
     public static GameService install(TDGamesPlugin plugin) {
+        platform(plugin);
         var service = plugin.games();
         if (service == null) {
             service = mock(GameService.class, withSettings().useConstructor(plugin)
@@ -32,6 +33,23 @@ public final class SessionTestSupport {
             doReturn(field(service, "multiplayer")).when(plugin).multiplayer();
         }
         return service;
+    }
+
+    public static void platform(TDGamesPlugin plugin) {
+        if (plugin.scheduler() == null || !mockingDetails(plugin.scheduler()).isMock()) {
+            var scheduler = spy(new GoldenEggOVO.TDGames.Core.platform.PlatformScheduler(plugin));
+            doReturn(true).when(scheduler).isOwned(any(org.bukkit.entity.Entity.class));
+            doReturn(true).when(scheduler).isOwned(any(org.bukkit.Location.class));
+            doAnswer(call -> { call.<Runnable>getArgument(0).run(); return (GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.Task) () -> {}; })
+                    .when(scheduler).execute(any(Runnable.class));
+            doAnswer(call -> { call.<Runnable>getArgument(1).run(); return (GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.Task) () -> {}; })
+                    .when(scheduler).execute(any(org.bukkit.entity.Entity.class), any(Runnable.class));
+            doAnswer(call -> { call.<Runnable>getArgument(1).run(); return (GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.Task) () -> {}; })
+                    .when(scheduler).execute(any(org.bukkit.Location.class), any(Runnable.class));
+            doReturn(scheduler).when(plugin).scheduler();
+        }
+        if (plugin.playerViews() == null)
+            doReturn(new GoldenEggOVO.TDGames.Core.render.PlayerViews(plugin)).when(plugin).playerViews();
     }
 
     public static GameService install(TDGamesPlugin plugin, Map<UUID, GameSession> rooms) {

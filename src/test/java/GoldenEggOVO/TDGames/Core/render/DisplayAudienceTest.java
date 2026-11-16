@@ -28,7 +28,7 @@ class DisplayAudienceTest {
     @BeforeEach
     void setup() {
         MockBukkit.mock();
-        plugin = mock(TDGamesPlugin.class);
+        plugin = GoldenEggOVO.TDGames.SessionTestSupport.plugin();
         pack = mock(ResourcePackState.class);
         when(pack.managed()).thenReturn(true);
         when(plugin.resourcePackState()).thenReturn(pack);
@@ -48,6 +48,7 @@ class DisplayAudienceTest {
 
     private Player player(boolean packed) {
         Player player = mock(Player.class);
+        when(player.getUniqueId()).thenReturn(java.util.UUID.randomUUID());
         when(player.isOnline()).thenReturn(true);
         when(player.getLocation()).thenReturn(new Location(world, 0, 81, 0));
         when(plugin.allowed(player)).thenReturn(true);
@@ -95,6 +96,51 @@ class DisplayAudienceTest {
         verify(nativePlayer, never()).showEntity(plugin, nativePart);
         verify(packedPlayer, never()).showEntity(plugin, packedPart);
         verify(nativePlayer, never()).hideEntity(plugin, nativePart);
+    }
+
+    @Test
+    void aQueuedPrivateShowCannotOverrideANewerHide() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(plugin.scheduler()).thenReturn(scheduler);
+        when(scheduler.isOwned(nativePart)).thenReturn(true);
+        var pending = new java.util.ArrayList<Runnable>();
+        doAnswer(call -> { pending.add(call.getArgument(1)); return null; })
+                .when(scheduler).execute(any(Entity.class), any(Runnable.class));
+        DisplayAudience.show(plugin, nativePlayer, nativePart);
+        DisplayAudience.hide(plugin, nativePlayer, nativePart);
+        pending.getLast().run();
+        pending.getFirst().run();
+        verify(nativePlayer).hideEntity(plugin, nativePart);
+        verify(nativePlayer, never()).showEntity(plugin, nativePart);
+    }
+
+    @Test
+    void retiringAPrivateEntityCancelsItsQueuedShow() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(plugin.scheduler()).thenReturn(scheduler);
+        var pending = new java.util.ArrayList<Runnable>();
+        doAnswer(call -> { pending.add(call.getArgument(1)); return null; })
+                .when(scheduler).execute(any(Entity.class), any(Runnable.class));
+        DisplayAudience.show(plugin, nativePlayer, nativePart);
+        DisplayAudience.retire(nativePart);
+        pending.getFirst().run();
+        verify(nativePart).remove();
+        verify(nativePlayer, never()).showEntity(plugin, nativePart);
+    }
+
+    @Test
+    void aDifferentRegionDefersVisibilityUntilThePlayerAndDisplayShareAnOwner() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(plugin.scheduler()).thenReturn(scheduler);
+        doAnswer(call -> { call.getArgument(1, Runnable.class).run(); return null; })
+                .when(scheduler).execute(any(Entity.class), any(Runnable.class));
+        DisplayAudience.hide(plugin, nativePlayer, nativePart);
+        verify(nativePlayer, never()).hideEntity(plugin, nativePart);
+        when(scheduler.isOwned(nativePart)).thenReturn(true);
+        DisplayAudience.retry(plugin, nativePlayer);
+        verify(nativePlayer).hideEntity(plugin, nativePart);
+        DisplayAudience.retry(plugin, nativePlayer);
+        verify(nativePlayer, times(1)).hideEntity(plugin, nativePart);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package GoldenEggOVO.TDGames.Shared.render.dice;
 
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
 import GoldenEggOVO.TDGames.Core.render.model.ModelRepository;
 
@@ -97,7 +99,7 @@ public final class YachtTable implements AutoCloseable {
         }
         for (int i = 0; i < categories.length; i++) {
             categories[i] = label(-1.99, .034, scoreZ(i), .135f);
-            categories[i].text(
+            PlatformMessages.text(categories[i],
                     (i < 6
                                     ? Component.text(String.valueOf((char) (0x2680 + i)))
                                             .append(Component.space())
@@ -165,7 +167,7 @@ public final class YachtTable implements AutoCloseable {
                                 0,
                                 name.offsetByCodePoints(
                                         0, Math.min(5, name.codePointCount(0, name.length()))));
-                headers[seat].text(
+                PlatformMessages.text(headers[seat],
                         Component.text((seat + 1) + "\n" + shortName).color(NamedTextColor.BLACK));
             }
         }
@@ -250,9 +252,9 @@ public final class YachtTable implements AutoCloseable {
         }
         if (!rolling()) {
             if (room.phase() == GameSession.Phase.PLAYING && !room.restoring())
-                for (var player : origin.getWorld().getPlayers())
-                    if (plugin.allowed(player) && player.getLocation().distanceSquared(origin) <= 24 * 24)
-                        TableSounds.detailFor(plugin, player, origin, "dice.settle", .12f);
+                for (var snapshot : plugin.playerViews().nearby(origin, 24))
+                    if (snapshot.allowed())
+                        TableSounds.detailFor(plugin, snapshot.player(), origin, "dice.settle", .12f);
             refreshLabels();
         }
     }
@@ -361,7 +363,7 @@ public final class YachtTable implements AutoCloseable {
     private void refreshLabels() {
         int seat = board.currentPlayer();
         for (int row = 0; row < summaryLabels.length; row++) {
-            summaryLabels[row].text(
+            PlatformMessages.text(summaryLabels[row],
                     Language.component(
                                     "table.yacht."
                                             + List.of("subtotal", "bonus", "total-label").get(row))
@@ -373,7 +375,7 @@ public final class YachtTable implements AutoCloseable {
                 completed++;
             }
         }
-        headerLabel.text(
+        PlatformMessages.text(headerLabel,
                 Language.component("table.yacht.round", "round", Math.min(12, completed + 1))
                         .color(NamedTextColor.BLACK));
         activeColumn.setTransformation(
@@ -403,20 +405,20 @@ public final class YachtTable implements AutoCloseable {
                                 : player == seat && board.rolls() > 0
                                         ? Integer.toString(YachtGame.score(category, board.dice()))
                                         : "—";
-                scores[player][category < 6 ? category : category + 2].text(
+                PlatformMessages.text(scores[player][category < 6 ? category : category + 2],
                         Component.text(value)
                                 .color(
                                         written < 0
                                                 ? NamedTextColor.DARK_GRAY
                                                 : NamedTextColor.BLACK));
             }
-            scores[player][6].text(Component.text(upper + "/63").color(NamedTextColor.BLACK));
-            scores[player][7].text(
+            PlatformMessages.text(scores[player][6], Component.text(upper + "/63").color(NamedTextColor.BLACK));
+            PlatformMessages.text(scores[player][7],
                     Component.text(upper >= 63 ? "+35" : "+0").color(NamedTextColor.BLACK));
-            scores[player][14].text(
+            PlatformMessages.text(scores[player][14],
                     Component.text(board.total(player)).color(NamedTextColor.BLACK));
         }
-        rollLabel.text(
+        PlatformMessages.text(rollLabel,
                 Language.component(
                         rolling()
                                 ? "hint.rolling"
@@ -426,7 +428,7 @@ public final class YachtTable implements AutoCloseable {
                         "count",
                         3 - board.rolls()));
         for (int i = 0; i < categories.length; i++) {
-            categories[i].text(
+            PlatformMessages.text(categories[i],
                     (i < 6
                                     ? Component.text(String.valueOf((char) (0x2680 + i)))
                                             .append(Component.space())
@@ -534,7 +536,7 @@ public final class YachtTable implements AutoCloseable {
                 hint = Language.component(hover.equals("@roll") ? "hint.roll" : "hint.menu");
             }
         }
-        player.sendActionBar(hint.colorIfAbsent(NamedTextColor.GOLD));
+        PlatformMessages.actionBar(player, hint.colorIfAbsent(NamedTextColor.GOLD));
     }
 
     private void focus(Player player, String target) {
@@ -620,12 +622,12 @@ public final class YachtTable implements AutoCloseable {
     public void clear(Player player) {
         Focus old = focuses.remove(player.getUniqueId());
         if (old != null) {
-            old.parts().forEach(Entity::remove);
+            old.parts().forEach(DisplayAudience::retire);
         }
     }
 
     private void clearFocuses() {
-        focuses.values().forEach(focus -> focus.parts().forEach(Entity::remove));
+        focuses.values().forEach(focus -> focus.parts().forEach(DisplayAudience::retire));
         focuses.clear();
     }
 
@@ -675,7 +677,7 @@ public final class YachtTable implements AutoCloseable {
                                                     new Quaternionf()));
                                 });
         if (viewer != null) {
-            viewer.showEntity(plugin, entity);
+            DisplayAudience.show(plugin, viewer, entity);
         }
         return entity;
     }

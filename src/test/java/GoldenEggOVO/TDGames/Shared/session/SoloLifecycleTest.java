@@ -29,6 +29,7 @@ class SoloLifecycleTest {
 
     private TDGamesPlugin plugin() {
         var plugin = mock(TDGamesPlugin.class);
+        SessionTestSupport.platform(plugin);
         var service = new GameService(plugin);
         when(plugin.games()).thenReturn(service);
         when(plugin.getDataFolder()).thenReturn(directory.toFile());

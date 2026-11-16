@@ -76,7 +76,7 @@ public final class SingleplayerService {
 
     public void persist(GameSession room) throws IOException {
         requireSolo(room);
-        if (room.seats.isEmpty()) return;
+        if (room.seats.isEmpty() || runtime.awaitingFirstSeat(room)) return;
         UUID player = room.seats.getFirst().id();
         if (room.phase() == GameSession.Phase.FINISHED || room.board() != null && room.board().finished()) soloStore().delete(player, room.kind);
         else soloStore().write(player, new SoloProgressStore.Progress(room.kind, room.seed(), room.options, room.history.snapshot()));
@@ -142,6 +142,7 @@ public final class SingleplayerService {
     }
     public void apply(GameSession session, int seat, JsonElement action, Player source, boolean reopenMenu) {
         requireSolo(session);
+        if (runtime.awaitingFirstSeat(session)) return;
         var result = runtime.apply(session, seat, action, source);
         if (result == SessionRuntime.ApplyResult.HISTORY_LIMIT) {
             if (source != null) plugin.tell(source, Language.component("error.solo.limit"));
@@ -170,6 +171,7 @@ public final class SingleplayerService {
     }
     public boolean tick(GameSession session, long now) {
         requireSolo(session);
+        if (runtime.awaitingFirstSeat(session)) return false;
         if (session.seats.isEmpty()) return true;
         Player player = Bukkit.getPlayer(session.seats.getFirst().id());
         if (player != null && runtime.atLoadedTableWorld(player, session)) return true;

@@ -92,6 +92,8 @@ public final class GameService implements Listener, AutoCloseable {
         if (solo(session)) runtime.remove(session); else multiplayer.remove(session);
     }
     public void leave(Player player) {
+        multiplayer.cancelSeating(player.getUniqueId());
+        runtime.cancelTransfer(player.getUniqueId());
         GameSession session = session(player);
         if (session != null && solo(session)) { singleplayer.saveAndLeave(player); plugin.menus().main(player); }
         else multiplayer.leave(player);
@@ -153,7 +155,7 @@ public final class GameService implements Listener, AutoCloseable {
     }
 
     public void onMain(Runnable action) {
-        if (!stopping && plugin.isEnabled()) Bukkit.getScheduler().runTask(plugin, action);
+        if (!stopping && plugin.isEnabled()) plugin.scheduler().later(action, 1);
     }
 
     public void tick() {
@@ -161,21 +163,29 @@ public final class GameService implements Listener, AutoCloseable {
         if (plugin.tablePlayers() != null) plugin.tablePlayers().syncPlayerState();
         long now = System.currentTimeMillis(); pulse++;
         for (GameSession session : List.copyOf(activeSessions().values())) {
-            if (session.phase() == GameSession.Phase.PAUSED) continue;
-            if (solo(session)) { if (!singleplayer.tick(session, now)) continue; }
-            else if (!multiplayer.presence(session, now)) continue;
-            if (session.phase() == GameSession.Phase.LOBBY && now - session.changed() > plugin.getConfig().getLong("idle-room-minutes", 30) * 60_000L) {
-                abort(session, "chat.abort.idle"); continue;
-            }
-            if (session.phase() == GameSession.Phase.FINISHED && now - session.changed() > 600_000L) { remove(session); continue; }
-            if (session.phase() != GameSession.Phase.PLAYING || session.busy()) continue;
-            if (runtime.automatic(session, now)) continue;
-            if (!solo(session)) multiplayer.tick(session, now);
+            if (plugin.scheduler().folia()) {
+                plugin.tableWorld().atTable(session, () -> tick(session, now));
+            } else tick(session, now);
         }
         if (pulse % 30 == 0) save();
         if (plugin.integrations() != null) plugin.integrations().tick();
     }
+
+    private void tick(GameSession session, long now) {
+        if (activeSessions().get(session.id) != session || session.phase() == GameSession.Phase.PAUSED) return;
+        if (solo(session)) { if (!singleplayer.tick(session, now)) return; }
+        else if (!multiplayer.presence(session, now)) return;
+        if (session.phase() == GameSession.Phase.LOBBY && now - session.changed() > plugin.getConfig().getLong("idle-room-minutes", 30) * 60_000L) {
+            abort(session, "chat.abort.idle"); return;
+        }
+        if (session.phase() == GameSession.Phase.FINISHED && now - session.changed() > 600_000L) { remove(session); return; }
+        if (session.phase() != GameSession.Phase.PLAYING || session.busy()) return;
+        if (runtime.automatic(session, now)) return;
+        if (!solo(session)) multiplayer.tick(session, now);
+    }
     @EventHandler public void quit(PlayerQuitEvent event) {
+        multiplayer.cancelSeating(event.getPlayer().getUniqueId());
+        runtime.cancelTransfer(event.getPlayer().getUniqueId());
         plugin.closePlayerViews(event.getPlayer());
         GameSession session = session(event.getPlayer());
         if (session != null && solo(session)) { singleplayer.disconnected(event.getPlayer()); return; }
@@ -194,9 +204,8 @@ public final class GameService implements Listener, AutoCloseable {
 
     @EventHandler
     public void joined(PlayerJoinEvent e) {
-        Bukkit.getScheduler()
-                .runTaskLater(
-                        plugin,
+        plugin.scheduler().later(
+                        e.getPlayer(),
                         () -> {
                             if (session(e.getPlayer()) != null)
                                 plugin.tell(e.getPlayer(), Language.component("chat.seat-held"));

@@ -1,5 +1,7 @@
 package GoldenEggOVO.TDGames.Shared.render.dice;
 
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Core.render.model.ModelDefinition;
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
 import GoldenEggOVO.TDGames.Core.render.model.ModelRepository;
@@ -75,7 +77,7 @@ public final class DiceTray implements AutoCloseable {
                 "tabletop/ludo/tray_legs_" + (compact ? "compact" : "large")).blocks())
             entities.add(block(part));
         label=center.getWorld().spawn(center.clone().add(0,.125,width/2+.015),TextDisplay.class,d->{
-            display(d);d.setRotation(0,-90);d.setBillboard(Display.Billboard.FIXED);d.text(lastLabel);
+            display(d);d.setRotation(0,-90);d.setBillboard(Display.Billboard.FIXED);PlatformMessages.text(d, lastLabel);
             d.setLineWidth(Integer.MAX_VALUE);d.setAlignment(TextDisplay.TextAlignment.CENTER);
             d.setDefaultBackground(false);d.setBackgroundColor(Color.fromARGB(0,0,0,0));d.setShadowed(false);d.setSeeThrough(false);
             d.setTransformation(new Transformation(new Vector3f(),new Quaternionf(),new Vector3f(compact?.13f:.22f),new Quaternionf()));
@@ -113,10 +115,10 @@ public final class DiceTray implements AutoCloseable {
                 TableSounds.diceImpact(frame));
         }
         if(frame>=DiceMotion.FRAMES) {
-            for (var player : center.getWorld().getPlayers())
+            for (var snapshot : plugin.playerViews().nearby(center, 24))
                 if (room.phase() == GameSession.Phase.PLAYING && !room.restoring()
-                        && plugin.allowed(player) && player.getLocation().distanceSquared(center) <= 24 * 24)
-                    TableSounds.detailFor(plugin, player, center, "dice.settle", .12f);
+                        && snapshot.allowed())
+                    TableSounds.detailFor(plugin, snapshot.player(), center, "dice.settle", .12f);
             java.util.Arrays.fill(motions,null);
         }
     }
@@ -129,7 +131,7 @@ public final class DiceTray implements AutoCloseable {
             nativeDice.get(i).pose(new DiceMotion.Pose(pose.x()+lane(i),FELT+pose.y(),pose.z(),pose.rotation()));
         }
     }
-    public void label(Component text){if(!closed&&!text.equals(lastLabel)){lastLabel=text;label.text(text);}}
+    public void label(Component text){if(!closed&&!text.equals(lastLabel)){lastLabel=text;PlatformMessages.text(label, text);}}
     Location center(){return center.clone();}
 
     public double hit(Location eye,Vector normalizedDirection) {

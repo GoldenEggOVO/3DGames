@@ -16,6 +16,10 @@ import GoldenEggOVO.TDGames.Core.pack.ResourcePackService;
 import GoldenEggOVO.TDGames.Core.pack.CraftEngineRegistration;
 import GoldenEggOVO.TDGames.Core.player.PlayerSessions;
 import GoldenEggOVO.TDGames.Core.text.Language;
+import GoldenEggOVO.TDGames.Core.platform.PlatformEvents;
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+import GoldenEggOVO.TDGames.Core.platform.PlatformScheduler;
+import GoldenEggOVO.TDGames.Core.render.PlayerViews;
 
 import net.kyori.adventure.text.Component;
 
@@ -34,6 +38,8 @@ public final class TDGamesPlugin extends JavaPlugin {
     private ResourcePackService pack;
     private PlayerSessions playerSessions;
     private OptionalIntegrations integrations;
+    private PlatformScheduler scheduler;
+    private PlayerViews playerViews;
     private final GameService games = new GameService(this);
 
     public GameMenus menus() { return menus; }
@@ -48,6 +54,11 @@ public final class TDGamesPlugin extends JavaPlugin {
 
     public PlayerSessions sessions() { return playerSessions; }
     public ResourcePackState resourcePackState() { return pack; }
+    public synchronized PlatformScheduler scheduler() {
+        if (scheduler == null) scheduler = new PlatformScheduler(this);
+        return scheduler;
+    }
+    public PlayerViews playerViews() { return playerViews; }
 
     @Override
     public void onLoad() {
@@ -68,8 +79,10 @@ public final class TDGamesPlugin extends JavaPlugin {
             Language.load(this);
             integrations = new OptionalIntegrations(this);
             pack = new ResourcePackService(this);
-            Bukkit.getPluginManager().registerEvents(pack, this);
+            PlatformEvents.register(this, pack);
             pack.start();
+            playerViews = new PlayerViews(this);
+            playerViews.start();
             menus = new GameMenus(this, new GameMenuWindow(this));
             tableWorld = new TableWorldController(this);
             playerSessions = new PlayerSessions();
@@ -79,11 +92,9 @@ public final class TDGamesPlugin extends JavaPlugin {
             var command = new GameCommand(this);
             Objects.requireNonNull(getCommand("3dgames")).setExecutor(command);
             getCommand("3dgames").setTabCompleter(command);
-            Bukkit.getPluginManager().registerEvents(command, this);
-            Bukkit.getPluginManager().registerEvents(games, this);
-            Bukkit.getScheduler()
-                    .runTask(
-                            this,
+            PlatformEvents.register(this, command);
+            PlatformEvents.register(this, games);
+            scheduler().later(
                             () -> {
                                 try {
                                     games.initialize();
@@ -96,8 +107,8 @@ public final class TDGamesPlugin extends JavaPlugin {
                                                     ex);
                                     Bukkit.getPluginManager().disablePlugin(this);
                                 }
-                            });
-            Bukkit.getScheduler().runTaskTimer(this, games::tick, 20, 20);
+                            }, 1);
+            scheduler().repeat(games::tick, 20, 20);
             getLogger().info("3DGames enabled.");
         } catch (Exception | LinkageError ex) {
             getLogger().log(java.util.logging.Level.SEVERE, "Could not initialize table rooms", ex);
@@ -106,7 +117,7 @@ public final class TDGamesPlugin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
+    public synchronized void onDisable() {
         cleanup("rooms", games::close);
         if (integrations != null) cleanup("integrations", integrations::close);
         if (tableAccess != null) cleanup("lobby", tableAccess::close);
@@ -114,6 +125,7 @@ public final class TDGamesPlugin extends JavaPlugin {
         if (tablePlayers != null) cleanup("view", tablePlayers::close);
         if (menus != null) cleanup("menus", menus::close);
         if (tableWorld != null) cleanup("tables", tableWorld::close);
+        if (playerViews != null) cleanup("player snapshots", playerViews::close);
         if (pack != null) cleanup("resource pack", pack::close);
     }
 
@@ -125,6 +137,10 @@ public final class TDGamesPlugin extends JavaPlugin {
     }
 
     public void closePlayerViews(Player player) {
+        if (scheduler().folia() && !scheduler().isOwned(player)) {
+            scheduler().execute(player, () -> closePlayerViews(player));
+            return;
+        }
         if (tablePlayers != null) tablePlayers.releaseFocus(player);
         if (menus != null) menus.forget(player);
         if (tableWorld != null) tableWorld.clearSelection(player);
@@ -135,10 +151,13 @@ public final class TDGamesPlugin extends JavaPlugin {
     }
 
     public boolean allowed(Player player) {
+        if (scheduler().folia() && !scheduler().isOwned(player) && playerViews != null) {
+            return playerViews.snapshot(player.getUniqueId()).map(PlayerViews.Snapshot::allowed).orElse(false);
+        }
         return player.isOnline() && GamePermissions.use(player);
     }
 
     public void tell(Player player, Component message) {
-        player.sendMessage(Language.component("chat.prefix", "message", message));
+        scheduler().execute(player, () -> PlatformMessages.send(player, Language.component("chat.prefix", "message", message)));
     }
 }

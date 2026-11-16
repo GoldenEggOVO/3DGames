@@ -36,6 +36,27 @@ class ApprovedSoundRoutingTest {
         assertEquals("cards.shuffle", TableSounds.move("klondike", 0, "recycle", List.of(), List.of()).resource());
     }
 
+    @Test void disabledFoliaCleanupClearsResultRecordsWithoutSubmittingPlayerTasks() {
+        var plugin = SessionTestSupport.plugin();
+        when(plugin.getConfig()).thenReturn(new YamlConfiguration());
+        when(plugin.isEnabled()).thenReturn(true);
+        var scheduler = plugin.scheduler();
+        doReturn(true).when(scheduler).folia();
+        SessionTestSupport.module(plugin, "pack", mock(ResourcePackService.class));
+        var player = mock(Player.class);
+        when(plugin.pack().packed(player)).thenReturn(true);
+        var source = new Location(mock(World.class), 0, 64, 0);
+        TableSounds.playFor(plugin, player, source, TableSounds.WIN, "chess");
+        when(plugin.isEnabled()).thenReturn(false);
+        clearInvocations(player, scheduler);
+        TableSounds.stopResults(source);
+        verify(scheduler, never()).execute(any(org.bukkit.entity.Entity.class), any(Runnable.class));
+        verifyNoInteractions(player);
+        when(plugin.isEnabled()).thenReturn(true);
+        TableSounds.stopResults(source);
+        verifyNoInteractions(player);
+    }
+
     @Test void promotionUsesTheWoodenTurnoverOnlyWhenAccepted() {
         var before = List.of(new Cell("a3", 0, 2, "P", 0));
         var after = List.of(new Cell("a2", 0, 1, "+P", 0));

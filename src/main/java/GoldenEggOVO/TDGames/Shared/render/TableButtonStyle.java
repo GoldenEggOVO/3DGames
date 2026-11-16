@@ -1,5 +1,7 @@
 package GoldenEggOVO.TDGames.Shared.render;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
+
 import GoldenEggOVO.TDGames.Core.render.model.ModelDefinition.Block;
 import GoldenEggOVO.TDGames.Core.render.model.ModelDefinition.Point;
 import org.bukkit.Material;
@@ -63,7 +65,7 @@ public final class TableButtonStyle {
             display.setBlock(((BlockDisplay)source).getBlock());
             outlinePose(display, pose);
         });
-        viewer.showEntity(plugin, copy);
+        DisplayAudience.show(plugin, viewer, copy);
         return copy;
     }
 

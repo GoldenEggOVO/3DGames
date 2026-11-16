@@ -16,6 +16,9 @@ import GoldenEggOVO.TDGames.Core.text.RuleViolation;
 import GoldenEggOVO.TDGames.Shared.game.SelectedHandGame;
 import GoldenEggOVO.TDGames.Multiplayer.game.go.GoGame;
 import GoldenEggOVO.TDGames.Core.text.Language;
+import GoldenEggOVO.TDGames.Core.platform.PlatformEvents;
+import GoldenEggOVO.TDGames.Core.platform.PlatformScheduler;
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
 
 import net.kyori.adventure.text.format.NamedTextColor;
 
@@ -36,10 +39,15 @@ public final class TableWorldController implements Listener, AutoCloseable {
     private final Map<UUID, TableView> views = new HashMap<>();
     private final BoardMapStore maps;
     private final Map<UUID, Long> clicks = new HashMap<>();
-    private org.bukkit.scheduler.BukkitTask pointerTask;
-    private org.bukkit.scheduler.BukkitTask nativeDiceTask;
+    private PlatformScheduler.Task pointerTask;
+    private PlatformScheduler.Task nativeDiceTask;
+    private record TableAction(Runnable action, Runnable failed) {}
+    private final Map<GameSession, List<TableAction>> preparing = new HashMap<>();
+    private final Map<GameSession, UUID> retentionOwners = new HashMap<>();
+    private final TableChunks tickets;
+    private boolean closed;
     private final Map<UUID, BoardSelection> selections = new HashMap<>();
-    private final Map<Integer, Set<Chunk>> tableChunks = new HashMap<>();
+    private final Map<GameSession, Set<Chunk>> tableChunks = new HashMap<>();
     private final Map<UUID, PendingSounds> pendingSounds = new HashMap<>();
 
     private record PendingSounds(GameSession room, TableView view, BoardGame board, int history,
@@ -49,16 +57,104 @@ public final class TableWorldController implements Listener, AutoCloseable {
 
     public TableWorldController(TDGamesPlugin plugin) {
         this.plugin = plugin;
+        tickets = new TableChunks(plugin);
         maps = new BoardMapStore(plugin);
         tag = new NamespacedKey("3dgames", "board-cell");
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        PlatformEvents.register(plugin, this);
     }
 
     public void initialize() {
 
-        pointerTask = Bukkit.getScheduler().runTaskTimer(plugin, this::pointers, 2, 2);
-        nativeDiceTask = Bukkit.getScheduler().runTaskTimer(plugin,
-                () -> views.values().forEach(TableView::renderNativeDiceMidpoint), 3, 2);
+        pointerTask = plugin.scheduler().repeat(this::pointers, 2, 2);
+        nativeDiceTask = plugin.scheduler().repeat(
+                () -> List.copyOf(views.values()).forEach(view ->
+                        atTable(view.room, () -> view.renderNativeDiceMidpoint())), 3, 2);
+    }
+
+    public void atTable(GameSession room, Runnable action) {
+        atTable(room, action, () -> {});
+    }
+
+    public void atTable(GameSession room, Runnable action, Runnable failed) {
+        if (closed) { failed.run(); return; }
+        if (!plugin.scheduler().folia()) {
+            action.run();
+            return;
+        }
+        Location center = center(room.table);
+        Set<Chunk> chunks = tableChunks.get(room);
+        if (chunks != null) {
+            plugin.scheduler().execute(center, () -> runOwned(room, center, chunks, new TableAction(action, failed), 0));
+            return;
+        }
+        List<TableAction> pending = preparing.get(room);
+        if (pending != null) {
+            pending.add(new TableAction(action, failed));
+            return;
+        }
+        pending = new ArrayList<>();
+        pending.add(new TableAction(action, failed));
+        preparing.put(room, pending);
+        UUID owner = UUID.randomUUID();
+        retentionOwners.put(room, owner);
+        tickets.retain(owner, center).whenComplete((retained, error) -> {
+            if (!plugin.isEnabled()) return;
+            plugin.scheduler().execute(center, () -> {
+                Set<Chunk> loaded = retained == null ? Set.of() : retained.chunks();
+                Throwable failure = error != null ? error : retained.failure();
+                finishPreparation(room, owner, center, loaded, failure, 0);
+            });
+        });
+    }
+
+    private boolean ownsChunks(Location center, Set<Chunk> chunks) {
+        return chunks.stream().allMatch(chunk -> plugin.scheduler().isOwned(
+                new Location(chunk.getWorld(), chunk.getX() * 16 + 8, center.getY(), chunk.getZ() * 16 + 8)));
+    }
+
+    private void runOwned(GameSession room, Location center, Set<Chunk> chunks, TableAction action, int attempt) {
+        if (closed || plugin.games().activeSessions().get(room.id) != room) {
+            action.failed().run();
+        } else if (ownsChunks(center, chunks)) {
+            action.action().run();
+        } else if (attempt < 100) {
+            plugin.scheduler().later(center, () -> runOwned(room, center, chunks, action, attempt + 1), 1);
+        } else {
+            action.failed().run();
+            if (plugin.games().activeSessions().get(room.id) == room) plugin.games().pause(room, "error.invalid");
+        }
+    }
+
+    private void finishPreparation(GameSession room, UUID owner, Location center, Set<Chunk> loaded, Throwable failure, int attempt) {
+        if (!owner.equals(retentionOwners.get(room))) { tickets.release(owner); return; }
+        if (closed || plugin.games().activeSessions().get(room.id) != room) {
+            List<TableAction> ready = preparing.remove(room);
+            releaseChunks(room, loaded);
+            if (ready != null) ready.forEach(action -> action.failed().run());
+            return;
+        }
+        if (failure == null && !ownsChunks(center, loaded)) {
+            if (attempt < 100) {
+                plugin.scheduler().later(center,
+                        () -> finishPreparation(room, owner, center, loaded, null, attempt + 1), 1);
+                return;
+            }
+            failure = new IllegalStateException("Table chunks have not merged into one owned region");
+        }
+        List<TableAction> ready = preparing.remove(room);
+        if (failure == null) {
+            try { requireTraySpace(room, center); }
+            catch (RuntimeException blocked) { failure = blocked; }
+        }
+        if (failure != null) {
+            releaseChunks(room, loaded);
+            plugin.getLogger().log(java.util.logging.Level.SEVERE, "Could not prepare table chunks", failure);
+            if (ready != null) ready.forEach(action -> action.failed().run());
+            if (plugin.games().activeSessions().get(room.id) == room) plugin.games().pause(room, "error.invalid");
+            return;
+        }
+        tableChunks.put(room, loaded);
+        if (ready != null) ready.forEach(action -> action.action().run());
     }
 
     public Location center(int index) {
@@ -79,6 +175,11 @@ public final class TableWorldController implements Listener, AutoCloseable {
     }
 
     public boolean atTableWorld(Player player, GameSession room) {
+        if (plugin.scheduler().folia() && !plugin.scheduler().isOwned(player)) {
+            return plugin.playerViews().snapshot(player.getUniqueId())
+                    .map(snapshot -> snapshot.location().getWorld().getUID().equals(room.anchorWorld))
+                    .orElse(false);
+        }
         return player.getWorld().equals(center(room.table).getWorld());
     }
 
@@ -103,6 +204,14 @@ public final class TableWorldController implements Listener, AutoCloseable {
                 throw new RuleViolation("error.table-overlap", "Another table is too close");
             }
         }
+        if (!plugin.scheduler().folia()) requireTraySpace(room, snapped);
+        room.anchorWorld = worldId;
+        room.anchorX = snapped.getX();
+        room.anchorY = snapped.getY();
+        room.anchorZ = snapped.getZ();
+    }
+
+    private void requireTraySpace(GameSession room, Location snapped) {
         if (room.sideTray) {
             double trayX = TablePlacement.sideTrayX(tableHalfWidth(room));
             for (int x = (int) Math.floor(snapped.getX() + trayX - .70);
@@ -119,10 +228,6 @@ public final class TableWorldController implements Listener, AutoCloseable {
                 }
             }
         }
-        room.anchorWorld = worldId;
-        room.anchorX = snapped.getX();
-        room.anchorY = snapped.getY();
-        room.anchorZ = snapped.getZ();
     }
 
     private static double tableHalfWidth(GameSession room) {
@@ -148,6 +253,12 @@ public final class TableWorldController implements Listener, AutoCloseable {
             throw new RuleViolation("error.invalid-table-number", "Invalid table number");
         }
         Location c = center(index);
+        GameSession room = plugin.games().activeSessions().values().stream()
+                .filter(session -> session.table == index).findFirst().orElseThrow();
+        if (plugin.scheduler().folia()) {
+            atTable(room, () -> {});
+            return;
+        }
         Set<Chunk> chunks = new HashSet<>();
         for (int x = (c.getBlockX() - 4) >> 4; x <= ((c.getBlockX() + 4) >> 4); x++) {
             for (int z = (c.getBlockZ() - 4) >> 4; z <= ((c.getBlockZ() + 4) >> 4); z++) {
@@ -155,7 +266,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
                 chunks.add(c.getWorld().getChunkAt(x, z));
             }
         }
-        tableChunks.put(index, chunks);
+        tableChunks.put(room, chunks);
     }
 
     public Location seatLocation(GameSession room, int seat) {
@@ -191,6 +302,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
         Location location =
                 c.add(dx, 0, dz)
                         .setDirection(new Vector(-dx, lookHeight, -dz));
+        if (plugin.scheduler().folia() && !plugin.scheduler().isOwned(location)) return location;
         if (!location.getBlock().isPassable()
                 || !location.clone().add(0, 1, 0).getBlock().isPassable()) {
             throw new RuleViolation(
@@ -201,6 +313,12 @@ public final class TableWorldController implements Listener, AutoCloseable {
     }
 
     public void render(GameSession room) {
+        if (plugin.scheduler().folia()
+                && (!plugin.scheduler().isOwned(center(room.table)) || !tableChunks.containsKey(room)
+                || !ownsChunks(center(room.table), tableChunks.get(room)))) {
+            atTable(room, () -> render(room));
+            return;
+        }
         if (room.board() == null) {
             removeView(room.id);
             return;
@@ -237,7 +355,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
         if (cue.delayTicks() > 0) {
             var state = new PendingSounds(room, view, room.board(), room.history.size(), room.revision(), room.phase(), List.of(), false);
             var immediate = new TableSounds.Cue(cue.sound(), cue.volume(), cue.pitch(), cue.resource(), 0);
-            Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            plugin.scheduler().later(view.origin, () -> {
                 if (current(state)) sound(room, immediate);
             }, cue.delayTicks());
             return;
@@ -256,9 +374,10 @@ public final class TableWorldController implements Listener, AutoCloseable {
     public void detail(GameSession room, String resource, float volume) {
         TableView view = views.get(room.id);
         if (view == null || room.restoring()) return;
-        for (Player player : view.origin.getWorld().getPlayers())
-            if (plugin.allowed(player) && player.getLocation().distanceSquared(view.origin) <= 24 * 24)
-                TableSounds.detailFor(plugin, player, view.origin, resource, volume);
+        for (var snapshot : plugin.playerViews().nearby(view.origin, 24))
+            if (snapshot.allowed())
+                plugin.scheduler().execute(snapshot.player(),
+                        () -> TableSounds.detailFor(plugin, snapshot.player(), view.origin, resource, volume));
     }
 
     private boolean current(PendingSounds state) {
@@ -357,48 +476,52 @@ public final class TableWorldController implements Listener, AutoCloseable {
 
     private void pointers() {
         TableSounds.expireResults();
-        views.values().forEach(view -> {
-            var room = view.room;
-            if (room.restoring() || room.phase() != GameSession.Phase.PLAYING && room.phase() != GameSession.Phase.FINISHED)
-                TableSounds.stopResults(view.origin);
-            view.tick();
-        });
-        for (var iterator = pendingSounds.values().iterator(); iterator.hasNext();) {
-            PendingSounds pending = iterator.next();
-            if (!current(pending)) iterator.remove();
-            else if (pending.view().moving()) {
-                if (pending.settled()) pendingSounds.put(pending.room().id, pending.waiting(false));
-            } else if (!pending.settled()) pendingSounds.put(pending.room().id, pending.waiting(true));
+        for (TableView view : List.copyOf(views.values())) {
+            atTable(view.room, () -> pointers(view));
+        }
+    }
+
+    private void pointers(TableView view) {
+        if (views.get(view.room.id) != view) return;
+        GameSession room = view.room;
+        if (room.restoring() || room.phase() != GameSession.Phase.PLAYING && room.phase() != GameSession.Phase.FINISHED)
+            TableSounds.stopResults(view.origin);
+        view.tick();
+        PendingSounds pending = pendingSounds.get(room.id);
+        if (pending != null) {
+            if (!current(pending)) pendingSounds.remove(room.id);
+            else if (view.moving()) {
+                if (pending.settled()) pendingSounds.put(room.id, pending.waiting(false));
+            } else if (!pending.settled()) pendingSounds.put(room.id, pending.waiting(true));
             else {
-                iterator.remove();
-                for (var cue : pending.cues())
-                    TableSounds.play(plugin, pending.view().origin, cue, pending.room().kind);
+                pendingSounds.remove(room.id);
+                for (var cue : pending.cues()) TableSounds.play(plugin, view.origin, cue, room.kind);
             }
         }
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            GameSession room = plugin.games().session(player);
-            TableView view = room == null ? null : views.get(room.id);
-            if (view == null || !player.getWorld().equals(view.origin.getWorld())) {
-                continue;
-            }
-            if (!plugin.allowed(player)) {
+        for (var member : room.seats) {
+            if (member.bot()) continue;
+            var snapshot = plugin.playerViews().snapshot(member.id()).orElse(null);
+            if (snapshot == null) continue;
+            Player player = snapshot.player();
+            if (plugin.games().session(player) != room) continue;
+            if (!snapshot.allowed()) {
                 view.clear(player);
                 continue;
             }
-            if (player.getEyeLocation().distanceSquared(view.origin) > 36) {
+            if (!snapshot.location().getWorld().equals(view.origin.getWorld())
+                    || snapshot.eyeLocation().distanceSquared(view.origin) > 36) {
                 view.clearInteraction(player);
                 continue;
             }
+            if (!plugin.scheduler().isOwned(player)) continue;
             BoardSelection pick = selections.get(player.getUniqueId());
             if (pick != null && !pick.current(room)) {
                 selections.remove(player.getUniqueId());
                 pick = null;
             }
-            if (plugin.tablePlayers() != null && plugin.tablePlayers().hasTableFocus(player)) {
+            if (plugin.tablePlayers() != null && plugin.tablePlayers().hasTableFocus(player))
                 view.cursor(player, null, null);
-            } else {
-                view.cursor(player, pick, aimed(player, view));
-            }
+            else view.cursor(player, pick, aimed(player, view));
         }
     }
 
@@ -421,7 +544,8 @@ public final class TableWorldController implements Listener, AutoCloseable {
         if (event.getAction() == Action.RIGHT_CLICK_AIR
                 || event.getAction() == Action.RIGHT_CLICK_BLOCK
                 || event.getAction() == Action.LEFT_CLICK_BLOCK) {
-            if (worldClick(event.getPlayer(), event.getAction().isRightClick())) {
+            if (worldClick(event.getPlayer(), event.getAction() == Action.RIGHT_CLICK_AIR
+                    || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                 event.setCancelled(true);
             }
         }
@@ -462,6 +586,9 @@ public final class TableWorldController implements Listener, AutoCloseable {
         boolean hasTableFocus = plugin.tablePlayers() != null && plugin.tablePlayers().hasTableFocus(player);
         GameSession room = plugin.games().session(player);
         TableView view = room == null ? null : views.get(room.id);
+        if (view != null && plugin.scheduler().folia() && !plugin.scheduler().isOwned(view.origin)) {
+            return true;
+        }
         if (view == null
                 || room.board() == null
                 || !player.getWorld().equals(view.origin.getWorld())) {
@@ -518,12 +645,12 @@ public final class TableWorldController implements Listener, AutoCloseable {
         int seat = room.seat(player.getUniqueId());
         if (room.board() instanceof ClassicGame ? seat != room.board().currentPlayer() && room.board().legalActions(seat).isEmpty()
                 : seat != room.board().currentPlayer() && !(room.board() instanceof GoGame go && go.scoring())) {
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component("hint.not-turn").colorIfAbsent(NamedTextColor.GRAY));
             return true;
         }
         if (view.rolling()) {
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component("hint.roll.wait").colorIfAbsent(NamedTextColor.GOLD));
             return true;
         }
@@ -603,7 +730,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
             if (room.board().legalActions(seat).contains("draw")) {
                 execute(player, room, List.of("draw"));
             } else {
-                player.sendActionBar(
+                PlatformMessages.actionBar(player,
                         Language.component("hint.hand.draw-unavailable")
                                 .colorIfAbsent(NamedTextColor.GRAY));
             }
@@ -617,7 +744,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
             if (room.board().legalActions(seat).contains("roll")) {
                 execute(player, room, List.of("roll"));
             } else {
-                player.sendActionBar(
+                PlatformMessages.actionBar(player,
                         Language.component("hint.roll.unavailable")
                                 .colorIfAbsent(NamedTextColor.GOLD));
             }
@@ -652,7 +779,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
             if (pick != null && pick.source().equals(cell)) {
                 selections.remove(player.getUniqueId());
                 if (view != null) view.cursor(player, null, cell);
-                player.sendActionBar(
+                PlatformMessages.actionBar(player,
                         Language.component("hint.cancelled").colorIfAbsent(NamedTextColor.GRAY));
                 return;
             }
@@ -660,20 +787,20 @@ public final class TableWorldController implements Listener, AutoCloseable {
             selections.put(player.getUniqueId(), selected);
             if (view != null) view.cursor(player, selected, cell);
             TableSounds.select(plugin, player);
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component("hint.selected").colorIfAbsent(NamedTextColor.GREEN));
         } else if (room.kind.equals("ludo") && room.board().legalActions(seat).contains("roll")) {
             plugin.tell(player, Language.component("chat.roll-first"));
         } else if (Set.of("gomoku", "go", "go9", "go13", "reversi", "connectfour")
                 .contains(room.kind)) {
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component(
                                     room.kind.equals("connectfour")
                                             ? "hint.column.unavailable"
                                             : "hint.position.unavailable")
                             .colorIfAbsent(NamedTextColor.RED));
         } else {
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component(pick == null ? "chat.select-first" : "chat.destination")
                             .colorIfAbsent(NamedTextColor.GRAY));
         }
@@ -733,7 +860,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
             if (action != null) {
                 execute(player, room, List.of(action));
             } else {
-                player.sendActionBar(
+                PlatformMessages.actionBar(player,
                         Language.component("hint.unavailable").colorIfAbsent(NamedTextColor.GRAY));
             }
             return;
@@ -746,7 +873,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
         if (action != null) {
             execute(player, room, List.of(action));
         } else {
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component("hint.unavailable").colorIfAbsent(NamedTextColor.GRAY));
         }
         return;
@@ -786,7 +913,7 @@ public final class TableWorldController implements Listener, AutoCloseable {
 
     public void clearSelection(Player player) {
         clicks.remove(player.getUniqueId());
-        views.values().forEach(view -> view.clear(player));
+        List.copyOf(views.values()).forEach(view -> atTable(view.room, () -> view.clear(player)));
         selections.remove(player.getUniqueId());
     }
 
@@ -795,37 +922,53 @@ public final class TableWorldController implements Listener, AutoCloseable {
         TableView old = views.remove(room);
         if (old != null) {
             TableSounds.stopResults(old.origin);
-            old.close();
+            if (plugin.scheduler().folia() && !plugin.isEnabled()) return;
+            if (!plugin.scheduler().folia() || plugin.scheduler().isOwned(old.origin)) old.close();
+            else if (plugin.isEnabled()) plugin.scheduler().execute(old.origin, old::close);
         }
     }
 
     public void remove(GameSession room) {
         removeView(room.id);
         selections.values().removeIf(pick -> pick.room().equals(room.id));
-        Set<Chunk> chunks = tableChunks.remove(room.table);
-        if (chunks != null) {
-            for (Chunk chunk : chunks) {
-                if (tableChunks.values().stream().noneMatch(set -> set.contains(chunk))) {
-                    chunk.removePluginChunkTicket(plugin);
-                }
-            }
+        List<TableAction> pending = preparing.remove(room);
+        Set<Chunk> chunks = tableChunks.remove(room);
+        releaseChunks(room, chunks == null ? Set.of() : chunks);
+        if (pending != null) pending.forEach(action -> action.failed().run());
+    }
+
+    private void releaseChunks(GameSession room, Set<Chunk> chunks) {
+        if (plugin.scheduler().folia()) {
+            UUID owner = retentionOwners.remove(room);
+            if (owner != null) tickets.release(owner);
+            return;
+        }
+        for (Chunk chunk : chunks) {
+            if (tableChunks.values().stream().anyMatch(set -> set.contains(chunk))) continue;
+            chunk.removePluginChunkTicket(plugin);
         }
     }
 
     @Override
     public void close() {
+        closed = true;
         if (pointerTask != null) {
             pointerTask.cancel();
         }
         if (nativeDiceTask != null) nativeDiceTask.cancel();
-        views.values().forEach(view -> { TableSounds.stopResults(view.origin); view.close(); });
-        views.clear();
+        for (UUID room : List.copyOf(views.keySet())) removeView(room);
         pendingSounds.clear();
         selections.clear();
         clicks.clear();
+        Set<Chunk> chunks = new HashSet<>();
+        tableChunks.values().forEach(chunks::addAll);
         tableChunks.clear();
+        if (plugin.scheduler().folia()) tickets.close();
+        else releaseChunks(null, chunks);
+        retentionOwners.clear();
+        preparing.clear();
         for (World world : Bukkit.getWorlds()) {
-            world.removePluginChunkTickets(plugin);
+            if (!plugin.scheduler().folia()) world.removePluginChunkTickets(plugin);
         }
     }
 }

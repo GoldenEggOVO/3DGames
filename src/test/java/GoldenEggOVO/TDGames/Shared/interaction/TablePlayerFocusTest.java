@@ -249,12 +249,153 @@ class TablePlayerFocusTest {
         }).when(f.player).setSpectatorTarget(any());
         f.input(true);assertTrue(f.tablePlayers.hasTableFocus(f.player));assertEquals(f.camera,f.target.get());f.input(false);
     }
+    @Test void spigotFallbackReattachesTheCameraAndStillReleasesFocus() {
+        Fixture f = new Fixture(0, "mahjong", false);
+        Location original = f.location.get().clone();
+        f.input(true);
+        assertTrue(f.tablePlayers.hasTableFocus(f.player));
+        f.target.set(null);
+        try (var bukkit = mockStatic(Bukkit.class, CALLS_REAL_METHODS)) {
+            bukkit.when(Bukkit::getOnlinePlayers).thenReturn(List.of(f.player));
+            MockBukkit.getMock().getScheduler().performOneTick();
+        }
+        assertEquals(f.camera, f.target.get());
+        f.input(false);
+        assertFalse(f.tablePlayers.hasTableFocus(f.player));
+        assertEquals(original, f.location.get());
+        assertEquals(GameMode.SURVIVAL, f.mode.get());
+        f.tablePlayers.close();
+    }
+
+    @Test void spigotFallbackKeeps2048DirectionKeysActive() {
+        Fixture f = new Fixture(0, "2048", false);
+        SessionTestSupport.set(f.room, "phase", GameSession.Phase.PLAYING);
+        SessionTestSupport.set(f.room, "board", GoldenEggOVO.TDGames.Core.game.GameFactory.create("2048", 1, 1));
+        SessionTestSupport.set(f.room.board(), "board", new int[] {
+                0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0});
+        f.input(true);
+        f.input(false);
+        f.target.set(null);
+        f.sync();
+        assertTrue(f.tablePlayers.hasTableFocus(f.player));
+        Input forward = mock(Input.class);
+        when(forward.isForward()).thenReturn(true);
+        f.tablePlayers.input(new PlayerInputEvent(f.player, forward));
+        verify(f.plugin.games()).applyTableAction(eq(f.room), eq(0),
+                eq(new com.google.gson.JsonPrimitive("slide:up")), eq(f.player));
+        f.tablePlayers.releaseFocus(f.player);
+        assertEquals(GameMode.SURVIVAL, f.mode.get());
+        f.tablePlayers.close();
+    }
+
+    @Test void releasingWhileTheCameraRegionIsPendingDoesNotCreateAnOrphan() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(scheduler.isOwned(any(org.bukkit.entity.Entity.class))).thenReturn(true);
+        when(scheduler.repeat(any(Runnable.class), anyLong(), anyLong())).thenReturn(() -> {});
+        List<Runnable> region = new ArrayList<>();
+        doAnswer(call -> { region.add(call.getArgument(1)); return null; })
+                .when(scheduler).execute(any(Location.class), any(Runnable.class));
+        Fixture f = new Fixture(0, "mahjong", true, scheduler);
+        f.input(true);
+        verify(f.world, never()).spawn(any(Location.class), eq(ArmorStand.class), any(java.util.function.Consumer.class));
+        f.input(false);
+        region.getFirst().run();
+        assertFalse(f.tablePlayers.hasTableFocus(f.player));
+        verify(f.world, never()).spawn(any(Location.class), eq(ArmorStand.class), any(java.util.function.Consumer.class));
+        verify(f.player, never()).setGravity(false);
+        f.tablePlayers.close();
+    }
+
+    @Test void pendingTeleportKeepsFocusAndOnlyAttachesAfterOwnerCompletion() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(scheduler.isOwned(any(org.bukkit.entity.Entity.class))).thenReturn(true);
+        when(scheduler.repeat(any(Runnable.class), anyLong(), anyLong())).thenReturn(() -> {});
+        doAnswer(call -> { ((Runnable) call.getArgument(1)).run(); return null; })
+                .when(scheduler).execute(any(org.bukkit.entity.Entity.class), any(Runnable.class));
+        List<Runnable> region = new ArrayList<>();
+        doAnswer(call -> { region.add(call.getArgument(1)); return null; })
+                .when(scheduler).execute(any(Location.class), any(Runnable.class));
+        List<java.util.function.Consumer<Boolean>> complete = new ArrayList<>();
+        List<Location> destination = new ArrayList<>();
+        doAnswer(call -> {
+            destination.add(call.getArgument(1)); complete.add(call.getArgument(2)); return null;
+        }).when(scheduler).teleport(any(), any(), any());
+        Fixture f = new Fixture(0, "2048", true, scheduler);
+        SessionTestSupport.set(f.room, "phase", GameSession.Phase.PLAYING);
+        f.input(true);
+        f.input(false);
+        region.removeFirst().run();
+        assertTrue(f.tablePlayers.hasTableFocus(f.player));
+        assertNull(f.target.get());
+        f.sync();
+        assertTrue(f.tablePlayers.hasTableFocus(f.player));
+        f.location.set(destination.getFirst().clone());
+        complete.getFirst().accept(true);
+        assertEquals(f.camera, f.target.get());
+        assertTrue(f.tablePlayers.hasTableFocus(f.player));
+        f.tablePlayers.releaseFocus(f.player);
+        assertEquals(GameMode.SURVIVAL, f.mode.get());
+        f.tablePlayers.close();
+    }
+
+    @Test void aRetiredPlayerCallbackCannotLeaveAnOrphanCamera() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(scheduler.isOwned(any(org.bukkit.entity.Entity.class))).thenReturn(true);
+        when(scheduler.repeat(any(Runnable.class), anyLong(), anyLong())).thenReturn(() -> {});
+        List<Runnable> region = new ArrayList<>(), cleanup = new ArrayList<>();
+        doAnswer(call -> { region.add(call.getArgument(1)); return null; })
+                .when(scheduler).execute(any(Location.class), any(Runnable.class));
+        doAnswer(call -> { cleanup.add(call.getArgument(1)); return null; })
+                .when(scheduler).later(any(org.bukkit.entity.Entity.class), any(Runnable.class), eq(40L));
+        Fixture f = new Fixture(0, "mahjong", true, scheduler);
+        f.input(true);
+        region.getFirst().run();
+        verify(f.world).spawn(any(Location.class), eq(ArmorStand.class), any(java.util.function.Consumer.class));
+        f.tablePlayers.quit(new PlayerQuitEvent(f.player, net.kyori.adventure.text.Component.empty(),
+                PlayerQuitEvent.QuitReason.DISCONNECTED));
+        cleanup.getFirst().run();
+        verify(f.camera).remove();
+        assertFalse(f.tablePlayers.hasTableFocus(f.player));
+        f.tablePlayers.close();
+    }
+
+    @Test void foliaShutdownPreservesTheRecoveryMarkerEvenWhenOwnershipReturnsTrue() {
+        var scheduler = mock(GoldenEggOVO.TDGames.Core.platform.PlatformScheduler.class);
+        when(scheduler.folia()).thenReturn(true);
+        when(scheduler.isOwned(any(org.bukkit.entity.Entity.class))).thenReturn(true);
+        doAnswer(call -> { ((Runnable) call.getArgument(1)).run(); return null; })
+                .when(scheduler).execute(any(org.bukkit.entity.Entity.class), any(Runnable.class));
+        doAnswer(call -> { ((Runnable) call.getArgument(1)).run(); return null; })
+                .when(scheduler).execute(any(Location.class), any(Runnable.class));
+        doAnswer(call -> {
+            boolean success = ((org.bukkit.entity.Entity) call.getArgument(0)).teleport((Location) call.getArgument(1));
+            ((java.util.function.Consumer<Boolean>) call.getArgument(2)).accept(success);
+            return null;
+        }).when(scheduler).teleport(any(), any(), any());
+        Fixture f = new Fixture(0, "mahjong", true, scheduler);
+        f.input(true);
+        assertTrue(f.tablePlayers.hasTableFocus(f.player));
+        assertFalse(f.saved.isEmpty());
+        clearInvocations(f.player, f.camera);
+        when(f.plugin.isEnabled()).thenReturn(false);
+        try (var bukkit = mockStatic(Bukkit.class, CALLS_REAL_METHODS)) {
+            bukkit.when(Bukkit::getOnlinePlayers).thenReturn(List.of(f.player));
+            f.tablePlayers.close();
+        }
+        verify(f.camera, never()).remove();
+        verify(f.player, never()).setGameMode(any());
+        assertFalse(f.saved.isEmpty());
+    }
+
     static final class Fixture {
         final TDGamesPlugin plugin=SessionTestSupport.plugin();final Player player=mock(Player.class);final World world=mock(World.class);final Block block=mock(Block.class);
         final AtomicReference<org.bukkit.entity.Entity> target=new AtomicReference<>();final Map<org.bukkit.NamespacedKey,String> saved=new HashMap<>();final ArmorStand camera=mock(ArmorStand.class);final AtomicReference<Location> cameraLocation=new AtomicReference<>();final AtomicReference<GameMode> mode=new AtomicReference<>(GameMode.SURVIVAL);
         final GameSession room;final AtomicReference<Location> location=new AtomicReference<>();final TablePlayerController tablePlayers;
         Fixture(int seat){this(seat,"mahjong");}
-        Fixture(int seat,String kind){
+        Fixture(int seat,String kind){this(seat,kind,true);}
+        Fixture(int seat,String kind,boolean paperEventsAvailable){this(seat,kind,paperEventsAvailable,null);}
+        Fixture(int seat,String kind,boolean paperEventsAvailable,GoldenEggOVO.TDGames.Core.platform.PlatformScheduler scheduler){
+            if(scheduler!=null)when(plugin.scheduler()).thenReturn(scheduler);
             room=new GameSession(UUID.randomUUID(),kind,kind.equals("2048")?1:4,0,0);
             when(plugin.getName()).thenReturn("3DGames");when(plugin.isEnabled()).thenReturn(true);when(plugin.getServer()).thenReturn(MockBukkit.getMock());
             when(plugin.getPluginLoader()).thenReturn(MockBukkit.createMockPlugin().getPluginLoader());
@@ -276,7 +417,7 @@ class TablePlayerFocusTest {
             double angle=2*Math.PI*seat/4;location.set(new Location(world,Math.sin(angle)*2.25,80,Math.cos(angle)*2.25,33,21));
             when(player.getLocation()).thenAnswer(inv->location.get().clone());when(player.hasGravity()).thenReturn(true);when(player.isCollidable()).thenReturn(true);
             when(player.teleport(any(Location.class))).thenAnswer(inv->{Location target=((Location)inv.getArgument(0)).clone();PlayerTeleportEvent event=new PlayerTeleportEvent(player,location.get().clone(),target,PlayerTeleportEvent.TeleportCause.PLUGIN);MockBukkit.getMock().getPluginManager().callEvent(event);if(event.isCancelled())return false;location.set(event.getTo().clone());return true;});
-            tablePlayers=new TablePlayerController(plugin);
+            tablePlayers=new TablePlayerController(plugin,paperEventsAvailable);
         }
         void input(boolean held){Input input=mock(Input.class);when(input.isSprint()).thenReturn(held);MockBukkit.getMock().getPluginManager().callEvent(new PlayerInputEvent(player,input));}
         void sync(){try(var bukkit=mockStatic(Bukkit.class,CALLS_REAL_METHODS)){bukkit.when(Bukkit::getOnlinePlayers).thenReturn(List.of(player));tablePlayers.syncPlayerState();}}

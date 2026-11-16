@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render.classic;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
+
 import GoldenEggOVO.TDGames.TDGamesPlugin;
 import org.bukkit.Location;
 import org.bukkit.entity.Display;
@@ -37,7 +41,7 @@ final class CardTurn {
         this.collection = List.copyOf(collection);
         this.halfDepth = halfDepth;
         body = (Display)before.getFirst();
-        after.set(0, body).remove();
+        DisplayAudience.retire(after.set(0, body));
         before.stream().filter(part -> part != body).forEach(part -> backs.put(part, part.getLocation().clone()));
         after.forEach(part -> faces.put(part, part.getLocation().clone()));
         collection.forEach(part -> collectionOrigins.put(part, part.getLocation().clone()));
@@ -49,7 +53,7 @@ final class CardTurn {
         }
         for (Entity part : collection) if (part instanceof Display display) display.setTeleportDuration(2);
         rotate(faces, -180);
-        after.stream().filter(part -> part != body).forEach(part -> player.showEntity(plugin, part));
+        after.stream().filter(part -> part != body).forEach(part -> DisplayAudience.show(plugin, player, part));
         originalPoses.keySet().forEach(display -> display.setInterpolationDuration(1));
     }
 
@@ -95,19 +99,19 @@ final class CardTurn {
     }
 
     private static void move(Map<Entity, Location> parts, Vector offset, double lift) {
-        parts.forEach((part, at) -> part.teleport(at.clone().add(offset).add(0, lift, 0)));
+        parts.forEach((part, at) -> DisplayMovement.move(part, at.clone().add(offset).add(0, lift, 0)));
     }
 
     private void collect() {
         if (collected || collection.isEmpty()) return;
-        faces.keySet().forEach(Entity::remove);
-        collection.forEach(Entity::remove);
+        faces.keySet().forEach(DisplayAudience::retire);
+        collection.forEach(DisplayAudience::retire);
         collected = true;
     }
 
     private void removePreviousFace() {
         if (previousRemoved) return;
-        backs.keySet().forEach(Entity::remove);
+        backs.keySet().forEach(DisplayAudience::retire);
         previousRemoved = true;
     }
 

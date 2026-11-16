@@ -10,6 +10,7 @@ import org.mockbukkit.mockbukkit.MockBukkit;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class PlayingCardHeadsTest {
     @BeforeEach
@@ -46,22 +47,31 @@ class PlayingCardHeadsTest {
     }
 
     @Test
-    void headItemsRetainTheGeneratedPropertyAndDoNotShareMutableStacks() throws Exception {
+    void headItemsRetainTheGeneratedMojangSkinAndDoNotShareMutableStacks() throws Exception {
         try (var input = getClass().getResourceAsStream("/native-card-head-sample.json")) {
             var sample = new com.google.gson.Gson().fromJson(
                     new java.io.InputStreamReader(input, java.nio.charset.StandardCharsets.UTF_8),
                     PlayingCardHeads.Texture.class);
-            var first = PlayingCardHeads.item(sample);
-            var second = PlayingCardHeads.item(sample);
+            var json = com.google.gson.JsonParser.parseString(new String(java.util.Base64.getDecoder().decode(sample.value()),
+                    java.nio.charset.StandardCharsets.UTF_8)).getAsJsonObject();
+            json.addProperty("test", "public-profile");
+            var texture = new PlayingCardHeads.Texture(java.util.Base64.getEncoder().encodeToString(
+                    json.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8)), sample.signature());
+            var id = java.util.UUID.nameUUIDFromBytes(texture.value().getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            org.bukkit.profile.PlayerProfile profile = spy(MockBukkit.getMock().createPlayerProfile(id, "TabletopCard"));
+            try (var bukkit = mockStatic(org.bukkit.Bukkit.class, CALLS_REAL_METHODS)) {
+            bukkit.when(() -> org.bukkit.Bukkit.createPlayerProfile(id, "TabletopCard")).thenReturn(profile);
+            var first = PlayingCardHeads.item(texture);
+            var second = PlayingCardHeads.item(texture);
             assertEquals(org.bukkit.Material.PLAYER_HEAD, first.getType());
             assertNotSame(first, second);
             first.setAmount(2);
             assertEquals(1, second.getAmount());
             var meta = (org.bukkit.inventory.meta.SkullMeta) second.getItemMeta();
-            var property = meta.getPlayerProfile().getProperties().stream()
-                    .filter(value -> value.getName().equals("textures")).findFirst().orElseThrow();
-            assertEquals(sample.value(), property.getValue());
-            assertEquals(sample.signature(), property.getSignature());
+            assertEquals(PlayingCardHeads.skin(sample), profile.getTextures().getSkin());
+            assertEquals(id, meta.getOwnerProfile().getUniqueId());
+            verify(profile, never()).update();
+            }
         }
     }
 

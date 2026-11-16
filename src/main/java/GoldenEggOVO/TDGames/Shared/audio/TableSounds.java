@@ -17,8 +17,8 @@ import java.util.Objects;
 import java.util.Set;
 
 public final class TableSounds {
-    private record PlayingResult(Location source, String resource, long expires) {}
-    private static final Map<Player, PlayingResult> RESULT_CHANNEL = new java.util.WeakHashMap<>();
+    private record PlayingResult(TDGamesPlugin plugin, Location source, String resource, long expires) {}
+    private static final Map<Player, PlayingResult> RESULT_CHANNEL = java.util.Collections.synchronizedMap(new java.util.WeakHashMap<>());
     public record Cue(Sound sound, float volume, float pitch, String resource, int delayTicks) {
         public Cue(Sound sound, float volume, float pitch) { this(sound, volume, pitch, null, 0); }
         Cue(Sound sound, float volume, float pitch, String resource) { this(sound, volume, pitch, resource, 0); }
@@ -292,13 +292,17 @@ public final class TableSounds {
             at.getWorld().playSound(at, cue.sound(), SoundCategory.BLOCKS, volume, cue.pitch());
             return;
         }
-        for (Player player : at.getWorld().getPlayers())
-            if (plugin.allowed(player) && player.getLocation().distanceSquared(at) <= 24 * 24)
-                playFor(plugin, player, at, cue, kind);
+        for (var snapshot : plugin.playerViews().nearby(at, 24))
+            if (snapshot.allowed()) playFor(plugin, snapshot.player(), at, cue, kind);
     }
 
     public static void playFor(
             TDGamesPlugin plugin, Player player, Location at, Cue cue, String kind) {
+        if (!plugin.scheduler().isOwned(player)) {
+            Location source = at.clone();
+            plugin.scheduler().execute(player, () -> playFor(plugin, player, source, cue, kind));
+            return;
+        }
         float volume = volume(plugin, cue);
         if (volume <= 0) return;
         String custom = null;
@@ -314,7 +318,7 @@ public final class TableSounds {
                 expireResults();
                 var previous = RESULT_CHANNEL.get(player);
                 if (previous != null) player.stopSound("3dgames:" + previous.resource(), SoundCategory.BLOCKS);
-                RESULT_CHANNEL.put(player, new PlayingResult(at.clone(), custom, System.nanoTime() + 1_500_000_000L));
+                RESULT_CHANNEL.put(player, new PlayingResult(plugin, at.clone(), custom, System.nanoTime() + 1_500_000_000L));
             }
             player.playSound(at, "3dgames:" + custom, SoundCategory.BLOCKS, volume, 1f);
         }
@@ -322,13 +326,22 @@ public final class TableSounds {
     }
 
     public static void stopResults(Location source) {
-        for (var iterator = RESULT_CHANNEL.entrySet().iterator(); iterator.hasNext();) {
-            var entry = iterator.next();
-            if (entry.getValue().source().equals(source)) {
-                if (System.nanoTime() < entry.getValue().expires())
-                    entry.getKey().stopSound("3dgames:" + entry.getValue().resource(), SoundCategory.BLOCKS);
-                iterator.remove();
+        var stopped = new ArrayList<Map.Entry<Player, PlayingResult>>();
+        synchronized (RESULT_CHANNEL) {
+            for (var iterator = RESULT_CHANNEL.entrySet().iterator(); iterator.hasNext();) {
+                var entry = iterator.next();
+                if (entry.getValue().source().equals(source)) {
+                    if (System.nanoTime() < entry.getValue().expires())
+                        stopped.add(Map.entry(entry.getKey(), entry.getValue()));
+                    iterator.remove();
+                }
             }
+        }
+        for (var entry : stopped) {
+            TDGamesPlugin plugin = entry.getValue().plugin();
+            if (plugin.scheduler().folia() && !plugin.isEnabled()) continue;
+            plugin.scheduler().execute(entry.getKey(),
+                    () -> entry.getKey().stopSound("3dgames:" + entry.getValue().resource(), SoundCategory.BLOCKS));
         }
     }
 
@@ -343,6 +356,10 @@ public final class TableSounds {
     }
 
     public static void select(TDGamesPlugin plugin, Player player, String kind) {
+        if (!plugin.scheduler().isOwned(player)) {
+            plugin.scheduler().execute(player, () -> select(plugin, player, kind));
+            return;
+        }
         String resource = switch (kind) {
             case "go", "go9", "go13", "gomoku", "reversi" -> "board.pickup.stone";
             case "chess", "xiangqi", "shogi", "mini-shogi", "checkers", "draughts", "backgammon", "nine-mens-morris" -> "board.pickup.wood";
@@ -353,6 +370,11 @@ public final class TableSounds {
     }
 
     public static void detailFor(TDGamesPlugin plugin, Player player, Location at, String resource, float level) {
+        if (!plugin.scheduler().isOwned(player)) {
+            Location source = at.clone();
+            plugin.scheduler().execute(player, () -> detailFor(plugin, player, source, resource, level));
+            return;
+        }
         if (plugin.pack() == null || !plugin.pack().packed(player)) return;
         float volume = volume(plugin, new Cue(SELECT.sound(), level, 1f, resource));
         if (volume > 0) player.playSound(at, "3dgames:" + resource, SoundCategory.BLOCKS, volume, 1f);

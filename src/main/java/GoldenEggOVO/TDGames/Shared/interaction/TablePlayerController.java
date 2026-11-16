@@ -1,6 +1,8 @@
 package GoldenEggOVO.TDGames.Shared.interaction;
 
 import GoldenEggOVO.TDGames.TDGamesPlugin;
+import GoldenEggOVO.TDGames.Core.platform.PlatformEvents;
+import GoldenEggOVO.TDGames.Core.platform.PlatformScheduler;
 import GoldenEggOVO.TDGames.Shared.render.TableGeometry;
 import GoldenEggOVO.TDGames.Shared.session.GameSession;
 
@@ -21,6 +23,10 @@ import java.util.*;
 
 public final class TablePlayerController implements Listener, AutoCloseable {
     private final TDGamesPlugin plugin;
+    private final PlatformScheduler scheduler;
+    private final PlatformScheduler.Task fallbackTick;
+    private final boolean paperCameraEvents;
+    private boolean closed;
     private final Map<UUID, Boolean> previousCollidableState = new HashMap<>();
 
     private record Focus(
@@ -43,14 +49,45 @@ public final class TablePlayerController implements Listener, AutoCloseable {
     private final Set<UUID> sprintHeld = new HashSet<>();
     private final Set<UUID> closingMenus = new HashSet<>();
     private final Set<UUID> internalModeChanges = new HashSet<>();
+    private final Map<UUID, Focus> startingFocus = new HashMap<>();
     private static final NamespacedKey FOCUS_RETURN_KEY =
             new NamespacedKey("3dgames", "focus-return");
 
     public TablePlayerController(TDGamesPlugin plugin) {
+        this(plugin, true);
+    }
+
+    TablePlayerController(TDGamesPlugin plugin, boolean paperEventsAvailable) {
         this.plugin = plugin;
-        Bukkit.getPluginManager().registerEvents(this, plugin);
+        this.scheduler = plugin.scheduler() == null ? new PlatformScheduler(plugin) : plugin.scheduler();
+        PlatformEvents.register(plugin, this);
+        paperCameraEvents = paperEventsAvailable && registerPaperCameraEvents();
         for (Player player : Bukkit.getOnlinePlayers()) {
-            recoverFocusReturnState(player);
+            scheduler.execute(player, () -> recoverFocusReturnState(player));
+        }
+        fallbackTick = paperCameraEvents ? () -> {} : scheduler.repeat(() -> {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                scheduler.execute(player, () -> {
+                    if (closed) return;
+                    clientTick(player);
+                    Focus focus = focusedPlayers.get(player.getUniqueId());
+                    if (focus != null && !startingFocus.containsKey(player.getUniqueId())
+                            && player.getGameMode() == GameMode.SPECTATOR && atAnchor(player, focus)
+                            && player.getSpectatorTarget() != focus.camera()) attachCamera(player, focus);
+                });
+            }
+        }, 1, 1);
+    }
+
+    private boolean registerPaperCameraEvents() {
+        try {
+            Class.forName("io.papermc.paper.event.packet.ClientTickEndEvent");
+            Class.forName("com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent");
+            Class.forName("com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent");
+            PlatformEvents.register(plugin, new PaperCameraEvents(this));
+            return true;
+        } catch (ClassNotFoundException exception) {
+            return false;
         }
     }
 
@@ -64,7 +101,7 @@ public final class TablePlayerController implements Listener, AutoCloseable {
 
     public void syncPlayerState() {
         for (Player player : Bukkit.getOnlinePlayers()) {
-            syncPlayerState(player);
+            scheduler.execute(player, () -> { if (!closed) syncPlayerState(player); });
         }
     }
 
@@ -72,11 +109,11 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         DirectionalControl directional = directionalPlayers.get(player.getUniqueId());
         if (directional != null && !validDirectional(player, directional)) releaseFocus(player);
         Focus current = focusedPlayers.get(player.getUniqueId());
-        if (current != null
+        if (current != null && !startingFocus.containsKey(player.getUniqueId())
                 && ((!current.room().kind.equals("2048") && !sprintHeld.contains(player.getUniqueId()))
                         || (current.room().kind.equals("2048") && !directionalPlayers.containsKey(player.getUniqueId()))
-                        || !isFocusValid(player, current)
-                        || !atAnchor(player, current))) {
+                        || !atAnchor(player, current)
+                        || !isFocusValid(player, current))) {
             finishFocus(player, atAnchor(player, current));
         }
         if (hasTableFocus(player)) {
@@ -100,24 +137,32 @@ public final class TablePlayerController implements Listener, AutoCloseable {
     }
 
     public void releaseFocus(Player player) {
+        if (!scheduler.isOwned(player)) {
+            scheduler.execute(player, () -> releaseFocus(player));
+            return;
+        }
         directionalPlayers.remove(player.getUniqueId());
         finishFocus(player, true);
     }
 
     public boolean startDirectionalControl(Player player) {
+        if (!scheduler.isOwned(player)) {
+            scheduler.execute(player, () -> startDirectionalControl(player));
+            return true;
+        }
         GameSession room = plugin.games().session(player);
         if (room == null || !room.kind.equals("2048") || room.phase() != GameSession.Phase.PLAYING
                 || room.seat(player.getUniqueId()) != 0 || !isNearJoinedTable(player)
                 || player.isDead() || player.isInsideVehicle() || player.getGameMode() == GameMode.SPECTATOR
                 || plugin.menus() != null && plugin.menus().active(player)) return false;
-        beginFocus(player);
-        if (!hasTableFocus(player)) return false;
-        var keys = new DirectionalInput();
-        if (player.getCurrentInput() != null) keys.press(player.getCurrentInput());
-        directionalPlayers.put(player.getUniqueId(), new DirectionalControl(room, keys));
-        player.setVelocity(new Vector());
-        player.sendActionBar(GoldenEggOVO.TDGames.Core.text.Language.component("hint.2048.controls"));
-        return true;
+        return beginFocus(player, () -> {
+            var keys = new DirectionalInput();
+            if (player.getCurrentInput() != null) keys.press(player.getCurrentInput());
+            directionalPlayers.put(player.getUniqueId(), new DirectionalControl(room, keys));
+            player.setVelocity(new Vector());
+            GoldenEggOVO.TDGames.Core.platform.PlatformMessages.actionBar(player,
+                    GoldenEggOVO.TDGames.Core.text.Language.component("hint.2048.controls"));
+        });
     }
 
     private boolean validDirectional(Player player, DirectionalControl state) {
@@ -135,8 +180,9 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         return !player.isDead()
                 && !player.isInsideVehicle()
                 && player.getGameMode() == GameMode.SPECTATOR
+                && scheduler.isOwned(state.camera())
                 && state.camera().isValid()
-                && player.getSpectatorTarget() == state.camera()
+                && (player.getSpectatorTarget() == state.camera() || !paperCameraEvents)
                 && (plugin.menus() == null || !plugin.menus().active(player))
                 && (!state.room().kind.equals("2048") || state.room().phase() == GameSession.Phase.PLAYING)
                 && plugin.games().session(player) == state.room()
@@ -151,6 +197,11 @@ public final class TablePlayerController implements Listener, AutoCloseable {
     }
 
     private void beginFocus(Player player) {
+        beginFocus(player, () -> {});
+    }
+
+    private boolean beginFocus(Player player, Runnable ready) {
+        if (closed || startingFocus.containsKey(player.getUniqueId())) return false;
         GameSession room = plugin.games().session(player);
         if (room == null
                 || !(room.kind.equals("mahjong") || room.kind.equals("2048") && room.phase() == GameSession.Phase.PLAYING)
@@ -159,7 +210,7 @@ public final class TablePlayerController implements Listener, AutoCloseable {
                 || player.isDead()
                 || player.isInsideVehicle()
                 || player.getGameMode() == GameMode.SPECTATOR) {
-            return;
+            return false;
         }
         int seat = room.seat(player.getUniqueId());
         double angle = 2 * Math.PI * seat / room.capacity;
@@ -179,68 +230,87 @@ public final class TablePlayerController implements Listener, AutoCloseable {
             anchor.setYaw(180);
             anchor.setPitch(90);
         }
+        Focus original = new Focus(room, seat, player.getLocation().clone(), anchor,
+                player.hasGravity(), player.isInvisible(), player.getGameMode(),
+                player.getAllowFlight(), player.isFlying(), null);
+        startingFocus.put(player.getUniqueId(), original);
+        scheduler.execute(anchor, () -> createFocusCamera(player, original, ready));
+        return true;
+    }
+
+    private void createFocusCamera(Player player, Focus original, Runnable ready) {
+        if (closed || startingFocus.get(player.getUniqueId()) != original) return;
+        Location anchor = original.anchor();
         if (!clearCamera(anchor)) {
+            startingFocus.remove(player.getUniqueId(), original);
             return;
         }
-        Location cameraAnchor = anchor;
-        ArmorStand camera =
-                anchor.getWorld()
-                        .spawn(
-                                anchor,
-                                ArmorStand.class,
-                                cameraEntity -> {
-                                    cameraEntity.setVisibleByDefault(false);
-                                    cameraEntity.setPersistent(false);
-                                    cameraEntity.setGravity(false);
-                                    cameraEntity.setInvulnerable(true);
-                                    cameraEntity.setMarker(true);
-                                    cameraEntity.setVisible(false);
-                                    cameraEntity.setSilent(true);
-                                    cameraEntity.setRotation(cameraAnchor.getYaw(), cameraAnchor.getPitch());
-                                });
-        Focus state =
-                new Focus(
-                        room,
-                        seat,
-                        player.getLocation().clone(),
-                        anchor,
-                        player.hasGravity(),
-                        player.isInvisible(),
-                        player.getGameMode(),
-                        player.getAllowFlight(),
-                        player.isFlying(),
-                        camera);
-        saveFocusReturnState(player, state);
-        syncPlayerState(player);
-        focusedPlayers.put(player.getUniqueId(), state);
-        player.setGravity(false);
-        player.setInvisible(true);
-        player.setVelocity(new Vector());
-        player.setFallDistance(0);
-        hideFocusedPlayer(player);
-        try {
-            changeMode(player, GameMode.SPECTATOR);
-            if (player.getGameMode() != GameMode.SPECTATOR) {
-                finishFocus(player, false);
+        ArmorStand camera = anchor.getWorld().spawn(anchor, ArmorStand.class, cameraEntity -> {
+            cameraEntity.setVisibleByDefault(false);
+            cameraEntity.setPersistent(false);
+            cameraEntity.setGravity(false);
+            cameraEntity.setInvulnerable(true);
+            cameraEntity.setMarker(true);
+            cameraEntity.setVisible(false);
+            cameraEntity.setSilent(true);
+            cameraEntity.setRotation(anchor.getYaw(), anchor.getPitch());
+        });
+        Focus state = new Focus(original.room(), original.seat(), original.original(), anchor,
+                original.gravity(), original.invisible(), original.mode(), original.allowFlight(),
+                original.flying(), camera);
+        scheduler.later(camera, () -> {
+            if (focusedPlayers.get(player.getUniqueId()) != state) {
+                startingFocus.remove(player.getUniqueId(), original);
+                camera.remove();
+            }
+        }, 40);
+        scheduler.execute(player, () -> {
+            if (closed || startingFocus.get(player.getUniqueId()) != original
+                    || plugin.games().session(player) != state.room() || !isNearJoinedTable(player)) {
+                scheduler.execute(camera, camera::remove);
+                startingFocus.remove(player.getUniqueId(), original);
                 return;
             }
-            if (!teleport(player, anchor) || !atAnchor(player, state)) {
-                finishFocus(player, false);
-                return;
-            }
-            player.showEntity(plugin, camera);
-            internalTeleports.put(player.getUniqueId(), anchor);
+            saveFocusReturnState(player, state);
+            syncPlayerState(player);
+            focusedPlayers.put(player.getUniqueId(), state);
+            player.setGravity(false);
+            player.setInvisible(true);
+            player.setVelocity(new Vector());
+            player.setFallDistance(0);
+            hideFocusedPlayer(player);
             try {
-                player.setSpectatorTarget(camera);
-            } finally {
-                internalTeleports.remove(player.getUniqueId());
-            }
-            if (player.getSpectatorTarget() != camera) {
+                changeMode(player, GameMode.SPECTATOR);
+                if (player.getGameMode() != GameMode.SPECTATOR) {
+                    finishFocus(player, false);
+                    return;
+                }
+                teleport(player, anchor, success -> {
+                    if (focusedPlayers.get(player.getUniqueId()) != state) return;
+                    if (closed || !success || !atAnchor(player, state)
+                            || !scheduler.isOwned(camera) || !camera.isValid()) {
+                        finishFocus(player, false);
+                        return;
+                    }
+                    startingFocus.remove(player.getUniqueId(), original);
+                    player.showEntity(plugin, camera);
+                    attachCamera(player, state);
+                    if (player.getSpectatorTarget() != camera) finishFocus(player, true);
+                    else ready.run();
+                });
+            } catch (RuntimeException exception) {
                 finishFocus(player, true);
+                throw exception;
             }
-        } catch (RuntimeException exception) {
-            finishFocus(player, true);
-            throw exception;
+        });
+    }
+
+    private void attachCamera(Player player, Focus state) {
+        internalTeleports.put(player.getUniqueId(), state.anchor());
+        try {
+            player.setSpectatorTarget(state.camera());
+        } finally {
+            internalTeleports.remove(player.getUniqueId());
         }
     }
 
@@ -271,13 +341,21 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         return true;
     }
 
-    private boolean teleport(Player player, Location target) {
+    private void teleport(Player player, Location target, java.util.function.Consumer<Boolean> completion) {
         internalTeleports.put(player.getUniqueId(), target);
-        try {
-            return player.teleport(target);
-        } finally {
-            internalTeleports.remove(player.getUniqueId());
-        }
+        scheduler.teleport(player, target, success -> {
+            internalTeleports.remove(player.getUniqueId(), target);
+            completion.accept(success);
+        });
+    }
+
+    private void returnToLocation(Player player, Location target) {
+        Location from = player.getLocation().clone();
+        scheduler.execute(target, () -> {
+            if (clear(target)) scheduler.execute(player, () -> {
+                if (!player.isDead() && player.getLocation().equals(from)) teleport(player, target, success -> {});
+            });
+        });
     }
 
     private void finishFocus(Player player, boolean returnToSeat) {
@@ -289,6 +367,7 @@ public final class TablePlayerController implements Listener, AutoCloseable {
     }
 
     private void finishFocus(Player player, boolean returnToSeat, boolean restoreMode, boolean retry) {
+        startingFocus.remove(player.getUniqueId());
         directionalPlayers.remove(player.getUniqueId());
         Focus state = focusedPlayers.remove(player.getUniqueId());
         if (state == null) {
@@ -314,21 +393,25 @@ public final class TablePlayerController implements Listener, AutoCloseable {
                 }
             }
         }
-        state.camera().remove();
+        if (!scheduler.folia() || plugin.isEnabled() || scheduler.isOwned(state.camera())) {
+            scheduler.execute(state.camera(), state.camera()::remove);
+        }
         player.setGravity(state.gravity());
         player.setInvisible(state.invisible());
         player.setVelocity(new Vector());
         player.setFallDistance(0);
         for (Player viewer : Bukkit.getOnlinePlayers()) {
             if (!viewer.getUniqueId().equals(player.getUniqueId())) {
-                viewer.showPlayer(plugin, player);
+                if (!scheduler.folia() || plugin.isEnabled() || scheduler.isOwned(viewer)) {
+                    scheduler.execute(viewer, () -> viewer.showPlayer(plugin, player));
+                }
             }
         }
         if (returnToSeat
                 && !player.isDead()
                 && atAnchor(player, state)
-                && clear(state.original())) {
-            teleport(player, state.original());
+                && (!scheduler.folia() || plugin.isEnabled())) {
+            returnToLocation(player, state.original());
         }
         if (!restoreMode || player.getGameMode() != GameMode.SPECTATOR) {
             player.getPersistentDataContainer().remove(FOCUS_RETURN_KEY);
@@ -395,9 +478,7 @@ public final class TablePlayerController implements Listener, AutoCloseable {
             player.setGravity(data.get("gravity").getAsBoolean());
             player.setInvisible(data.get("invisible").getAsBoolean());
             player.setCollidable(data.get("collidable").getAsBoolean());
-            if (world != null && clear(back)) {
-                teleport(player, back);
-            }
+            if (world != null) returnToLocation(player, back);
             player.getPersistentDataContainer().remove(FOCUS_RETURN_KEY);
         } catch (IllegalArgumentException
                 | IllegalStateException
@@ -426,7 +507,7 @@ public final class TablePlayerController implements Listener, AutoCloseable {
     private void hideFocusedPlayer(Player player) {
         for (Player viewer : Bukkit.getOnlinePlayers()) {
             if (!viewer.getUniqueId().equals(player.getUniqueId())) {
-                viewer.hidePlayer(plugin, player);
+                scheduler.execute(viewer, () -> viewer.hidePlayer(plugin, player));
             }
         }
     }
@@ -446,7 +527,8 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         if (directional != null) {
             if (!validDirectional(player, directional) || sprintPressed) {
                 releaseFocus(player);
-                player.sendActionBar(GoldenEggOVO.TDGames.Core.text.Language.component("hint.2048.released"));
+                GoldenEggOVO.TDGames.Core.platform.PlatformMessages.actionBar(player,
+                        GoldenEggOVO.TDGames.Core.text.Language.component("hint.2048.released"));
             } else {
                 String direction = directional.keys().press(event.getInput());
                 if (direction != null) {
@@ -458,7 +540,8 @@ public final class TablePlayerController implements Listener, AutoCloseable {
                         } catch (IllegalArgumentException exception) {
                             plugin.tell(player, GoldenEggOVO.TDGames.Core.text.Language.component("chat.changed"));
                         }
-                    } else player.sendActionBar(GoldenEggOVO.TDGames.Core.text.Language.component("hint.2048.blocked"));
+                    } else GoldenEggOVO.TDGames.Core.platform.PlatformMessages.actionBar(player,
+                            GoldenEggOVO.TDGames.Core.text.Language.component("hint.2048.blocked"));
                 }
             }
             return;
@@ -466,21 +549,28 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         if (sprintPressed) {
             GameSession room = plugin.games().session(player);
             if (room != null && room.kind.equals("2048")) {
-                if (startDirectionalControl(player)) directionalPlayers.get(id).keys().press(event.getInput());
+                if (startDirectionalControl(player)) {
+                    DirectionalControl started = directionalPlayers.get(id);
+                    if (started != null) started.keys().press(event.getInput());
+                }
             } else beginFocus(player);
         } else {
-            if (!event.getInput().isSprint()) releaseFocus(player);
+            GameSession room = plugin.games().session(player);
+            if (!event.getInput().isSprint() && !(startingFocus.containsKey(id)
+                    && room != null && room.kind.equals("2048"))) releaseFocus(player);
         }
     }
 
-    @EventHandler
-    public void clientTick(io.papermc.paper.event.packet.ClientTickEndEvent event) {
-        Player player = event.getPlayer();
+    public void clientTick(Event event) {
+        clientTick(((PlayerEvent) event).getPlayer());
+    }
+
+    private void clientTick(Player player) {
         UUID id = player.getUniqueId();
         if (!closingMenus.remove(id) || plugin.menus() != null && plugin.menus().active(player)) {
             return;
         }
-        if (!player.getCurrentInput().isSprint()) {
+        if (player.getCurrentInput() != null && !player.getCurrentInput().isSprint()) {
             sprintHeld.remove(id);
         }
     }
@@ -495,7 +585,7 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         if (state == null || event.getTo() == null) {
             return;
         }
-        if (!isFocusValid(player, state)) {
+        if (!startingFocus.containsKey(player.getUniqueId()) && !isFocusValid(player, state)) {
             releaseFocus(player);
             event.setTo(player.getLocation());
             return;
@@ -506,20 +596,38 @@ public final class TablePlayerController implements Listener, AutoCloseable {
         player.setFallDistance(0);
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void stopCamera(
-            com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent event) {
-        if (hasTableFocus(event.getPlayer())) {
-            event.setCancelled(true);
+    public void stopCamera(Event event) {
+        if (hasTableFocus(((PlayerEvent) event).getPlayer())) ((Cancellable) event).setCancelled(true);
+    }
+
+    public void switchCamera(Event event) {
+        Focus state = focusedPlayers.get(((PlayerEvent) event).getPlayer().getUniqueId());
+        try {
+            if (state != null && !event.getClass().getMethod("getNewSpectatorTarget").invoke(event).equals(state.camera())) {
+                ((Cancellable) event).setCancelled(true);
+            }
+        } catch (ReflectiveOperationException exception) {
+            throw new IllegalStateException("Could not read spectator target", exception);
         }
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void switchCamera(
-            com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent event) {
-        Focus state = focusedPlayers.get(event.getPlayer().getUniqueId());
-        if (state != null && !event.getNewSpectatorTarget().equals(state.camera())) {
-            event.setCancelled(true);
+    public static final class PaperCameraEvents implements Listener {
+        private final TablePlayerController controller;
+        PaperCameraEvents(TablePlayerController controller) { this.controller = controller; }
+
+        @EventHandler
+        public void clientTick(io.papermc.paper.event.packet.ClientTickEndEvent event) {
+            controller.clientTick(event);
+        }
+
+        @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+        public void stopCamera(com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent event) {
+            controller.stopCamera(event);
+        }
+
+        @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+        public void switchCamera(com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent event) {
+            controller.switchCamera(event);
         }
     }
 
@@ -596,14 +704,14 @@ public final class TablePlayerController implements Listener, AutoCloseable {
     }
 
     public void close() {
+        closed = true;
+        fallbackTick.cancel();
+        if (scheduler.folia() && !plugin.isEnabled()) return;
         for (Player player : Bukkit.getOnlinePlayers()) {
-            finishFocus(player, true, true, false);
-            restoreCollision(player);
+            scheduler.execute(player, () -> {
+                finishFocus(player, true, true, false);
+                restoreCollision(player);
+            });
         }
-        directionalPlayers.clear();
-        focusedPlayers.clear();
-        sprintHeld.clear();
-        closingMenus.clear();
-        previousCollidableState.clear();
     }
 }

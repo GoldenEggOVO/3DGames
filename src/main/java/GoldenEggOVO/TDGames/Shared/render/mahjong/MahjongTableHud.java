@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render.mahjong;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
 
 import GoldenEggOVO.TDGames.Core.render.model.ModelRepository;
@@ -201,7 +205,7 @@ public final class MahjongTableHud implements AutoCloseable {
                 Location edge =
                         origin.clone().add(.39 * Math.sin(angle), .033, .39 * Math.cos(angle));
                 edge.setYaw(-90 * active);
-                turnEdge.teleport(edge);
+                DisplayMovement.move(turnEdge, edge);
             }
             visible(turnEdge, active >= 0, .34f, .003f, .014f);
         }
@@ -306,16 +310,13 @@ public final class MahjongTableHud implements AutoCloseable {
     }
 
     private void syncOrientation() {
-        Set<Player> viewers =
-                audience.managed() ? audience.all() : new HashSet<>(origin.getWorld().getPlayers());
         Map<Player, Integer> next = new HashMap<>();
-        for (Player player : viewers)
-            if (player.isOnline()
-                    && plugin.allowed(player)
-                    && player.getLocation().distanceSquared(origin) <= 24 * 24) {
+        for (var snapshot : plugin.playerViews().nearby(origin, 24)) {
+            Player player = snapshot.player();
+            if (snapshot.allowed() && (!audience.managed() || audience.all().contains(player))) {
                 int seat = room.seat(player.getUniqueId());
                 if (seat < 0) {
-                    Location at = player.getLocation();
+                    Location at = snapshot.location();
                     seat =
                             Math.floorMod(
                                     (int)
@@ -330,19 +331,20 @@ public final class MahjongTableHud implements AutoCloseable {
                 if (!Objects.equals(orientations.get(player), seat))
                     for (int i = 0; i < 4; i++) {
                         if (i == seat) {
-                            player.showEntity(plugin, counts.get(i));
-                            player.showEntity(plugin, rounds.get(i));
+                            DisplayAudience.show(plugin, player, counts.get(i));
+                            DisplayAudience.show(plugin, player, rounds.get(i));
                         } else {
-                            player.hideEntity(plugin, counts.get(i));
-                            player.hideEntity(plugin, rounds.get(i));
+                            DisplayAudience.hide(plugin, player, counts.get(i));
+                            DisplayAudience.hide(plugin, player, rounds.get(i));
                         }
                     }
             }
+        }
         for (Player player : orientations.keySet())
             if (!next.containsKey(player))
                 for (int i = 0; i < 4; i++) {
-                    player.hideEntity(plugin, counts.get(i));
-                    player.hideEntity(plugin, rounds.get(i));
+                    DisplayAudience.hide(plugin, player, counts.get(i));
+                    DisplayAudience.hide(plugin, player, rounds.get(i));
                 }
         orientations.clear();
         orientations.putAll(next);
@@ -435,7 +437,7 @@ public final class MahjongTableHud implements AutoCloseable {
         if (value.equals(labels.get(display))) return;
         labels.put(display, value);
         var fit = LabelLayout.fit(value, width, height);
-        display.text(fit.text());
+        PlatformMessages.text(display, fit.text());
         display.setTransformation(
                 new Transformation(
                         new Vector3f(0, -.125f * fit.scale(), 0),

@@ -240,6 +240,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
         Player player=(Player)Proxy.newProxyInstance(Player.class.getClassLoader(),new Class<?>[]{Player.class},(proxy,method,args)->switch(method.getName()){
             case "getUniqueId"->id;case "getName"->"FocusProbe";case "getWorld"->location.get().getWorld();
             case "getLocation"->location.get().clone();case "getY"->location.get().getY();case "getGameMode"->mode.get();
+            case "getEyeHeight"->1.62d;
             case "setGameMode"->{mode.set((org.bukkit.GameMode)args[0]);yield null;}
             case "getAllowFlight","isFlying"->false;
             case "getPersistentDataContainer"->world.getPersistentDataContainer();
@@ -323,11 +324,13 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
                     for(Object piece:pieces.values()) if(!((Boolean)field(piece,"packed"))) {
                         var parts=(List<?>)field(piece,"parts");
                         require(parts.size()==24,"Color Eight native face uses twenty-four heads");
-                        for(Object part:parts) {
+                        var textures=GoldenEggOVO.TDGames.Shared.render.cards.ColorEightHeads.tiles((String)field(field(piece,"spec"),"face"));
+                        for(int tile=0;tile<parts.size();tile++) {
+                            Object part=parts.get(tile);
                             var head=(org.bukkit.entity.ItemDisplay)part;
-                            require(head.getItemStack().getType()==org.bukkit.Material.PLAYER_HEAD,"Color Eight signed head material");
+                            require(head.getItemStack().getType()==org.bukkit.Material.PLAYER_HEAD,"Color Eight head material");
                             var meta=(org.bukkit.inventory.meta.SkullMeta)head.getItemStack().getItemMeta();
-                            require(meta.getPlayerProfile().getProperties().stream().anyMatch(p->p.getName().equals("textures")&&p.getSignature()!=null),"Color Eight real signed texture");
+                            headSkin(meta,textures.get(tile));
                         }
                     }
                     for(Object piece:((Map<?,?>)field(hand,"publicPieces")).values())
@@ -469,9 +472,11 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
                 List<org.bukkit.entity.Entity> privateParts = new ArrayList<>();
                 for (Object card : cards.values()) {
                     List<?> parts = (List<?>)field(card, "parts");
+                    var textures=GoldenEggOVO.TDGames.Core.render.PlayingCardHeads.tiles((String)field(field(card,"spec"),"face"));
                     boolean nativeHead = parts.getFirst() instanceof org.bukkit.entity.ItemDisplay item
                             && item.getItemStack().getType() == org.bukkit.Material.PLAYER_HEAD;
                     require(parts.size() == (nativeHead ? 24 : 1), "new-game card display budget");
+                    int tile=0;
                     for (Object entity : parts) {
                         var part = (org.bukkit.entity.Entity)entity;
                         require(part.isValid() && !part.isPersistent() && !part.isVisibleByDefault(), "new-game face private at spawn");
@@ -480,9 +485,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
                             require(head.getItemDisplayTransform() == org.bukkit.entity.ItemDisplay.ItemDisplayTransform.NONE,
                                     "native head uses the verified NONE transform");
                             var meta = (org.bukkit.inventory.meta.SkullMeta)head.getItemStack().getItemMeta();
-                            require(meta.getPlayerProfile().getProperties().stream().anyMatch(property ->
-                                    property.getName().equals("textures") && property.getSignature() != null),
-                                    "native head retains the signed Mojang property");
+                            headSkin(meta,textures.get(tile++));
                         }
                         privateParts.add(part);
                     }
@@ -609,6 +612,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
                 Player player=(Player)Proxy.newProxyInstance(Player.class.getClassLoader(),new Class<?>[]{Player.class},(proxy,method,args)->switch(method.getName()){
                     case "getUniqueId"->id;case "getName"->"ClassicProbe"+number;
                     case "getWorld"->world;case "getLocation","getEyeLocation"->origin.clone().add(0,2,2);
+                    case "getEyeHeight"->1.62d;
                     case "getPersistentDataContainer"->real.getPersistentDataContainer();
                     case "getServer"->getServer();case "getPose"->org.bukkit.entity.Pose.STANDING;
                     case "isOnline","isValid","hasPermission","isPermissionSet"->true;
@@ -775,6 +779,17 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
         UUID requestId=UUID.randomUUID();
         ((Map<UUID,Object>)field(pack,"requests")).put(viewer.getUniqueId(),constructor.newInstance(requestId,Enum.valueOf((Class)stage,"LOADING")));
         plugin.pack().status(viewer,requestId,org.bukkit.event.player.PlayerResourcePackStatusEvent.Status.SUCCESSFULLY_LOADED);
+    }
+
+    private void headSkin(org.bukkit.inventory.meta.SkullMeta meta,GoldenEggOVO.TDGames.Core.render.PlayingCardHeads.Texture texture)throws Exception {
+        String json=new String(Base64.getDecoder().decode(texture.value()),java.nio.charset.StandardCharsets.UTF_8);
+        var expected=java.net.URI.create(JsonParser.parseString(json).getAsJsonObject().getAsJsonObject("textures")
+                .getAsJsonObject("SKIN").get("url").getAsString());
+        var profile=meta.getOwnerProfile();
+        require(profile!=null&&profile.getTextures().getSkin()!=null,"native head retains a public Bukkit skin");
+        var actual=profile.getTextures().getSkin().toURI();
+        require(expected.getHost().equals(actual.getHost())&&expected.getPath().equals(actual.getPath()),
+                "native head retains the exact archived Mojang texture hash for its tile");
     }
 
     private void classicCommit(GameSession room,ClassicGame game,int actor,String action)throws Exception {
@@ -1415,6 +1430,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
                 case "getUniqueId" -> id;
                 case "getName" -> "BoardsProbe";
                 case "getWorld" -> world;
+                case "getEyeHeight" -> 1.62d;
                 case "getLocation", "getEyeLocation" -> location.clone();
                 case "getPersistentDataContainer" -> world.getPersistentDataContainer();
                 case "isInsideVehicle", "isFlying", "isSneaking" -> false;
@@ -1451,11 +1467,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
             mode.set(pack, Enum.valueOf((Class) mode.getType(), "MIXED"));
             available.set(pack, (java.util.function.BooleanSupplier) () -> true);
             viewer.getPersistentDataContainer().set(preference, org.bukkit.persistence.PersistentDataType.BYTE, (byte) 1);
-            ClassLoader loader = pack.getClass().getClassLoader();
-            Class<?> stage = Class.forName(pack.getClass().getName()+"$Stage", true, loader);
-            Class<?> request = Class.forName(pack.getClass().getName()+"$Request", true, loader);
-            var constructor = request.getDeclaredConstructor(UUID.class, stage); constructor.setAccessible(true);
-            requests.put(viewer.getUniqueId(), constructor.newInstance(UUID.randomUUID(), Enum.valueOf((Class)stage,"READY")));
+            fixturePackReady((TDGamesPlugin) plugin, viewer);
             require((boolean)call(pack,"packed",new Class<?>[]{Player.class},viewer),"picture menu fixture is packed");
             Object menus = call(plugin, "menus", new Class<?>[0]);
             call(menus, "main", new Class<?>[]{Player.class}, viewer);
@@ -1480,6 +1492,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
             if(oldPreference==null)viewer.getPersistentDataContainer().remove(preference);
             else viewer.getPersistentDataContainer().set(preference,org.bukkit.persistence.PersistentDataType.BYTE,oldPreference);
             if(oldRequest==null)requests.remove(viewer.getUniqueId());else requests.put(viewer.getUniqueId(),oldRequest);
+            call(pack,"preferred",new Class<?>[]{Player.class},viewer);
         }
     }
 

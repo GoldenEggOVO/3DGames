@@ -1,5 +1,9 @@
 package GoldenEggOVO.TDGames.Shared.render;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
+import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
 import GoldenEggOVO.TDGames.Core.render.model.ModelRepository;
 
@@ -160,7 +164,7 @@ public final class HandTable implements AutoCloseable {
                                                             new Quaternionf()));
                                         });
                 add(item, new Vector());
-                if (viewer != null) viewer.showEntity(plugin, item);
+                if (viewer != null) DisplayAudience.show(plugin, viewer, item);
                 return;
             }
             if (!mahjong) {
@@ -178,7 +182,7 @@ public final class HandTable implements AutoCloseable {
                                     spec.standing(), index, 4, 6));
                         });
                         add(head, new Vector());
-                        if (viewer != null) viewer.showEntity(plugin, head);
+                        if (viewer != null) DisplayAudience.show(plugin, viewer, head);
                     }
                 }
                 bodyParts = parts.size();
@@ -249,7 +253,7 @@ public final class HandTable implements AutoCloseable {
 
         void position() {
             for (int i = 0; i < parts.size(); i++)
-                parts.get(i).teleport(at(spec.pose()).add(offsets.get(i)).add(displacement));
+                DisplayMovement.move(parts.get(i), at(spec.pose()).add(offsets.get(i)).add(displacement));
         }
 
         void shift(Vector next) {
@@ -332,7 +336,7 @@ public final class HandTable implements AutoCloseable {
                     int index = parts.indexOf(glint);
                     parts.remove(index);
                     offsets.remove(index);
-                    glint.remove();
+                    DisplayAudience.retire(glint);
                     glint = null;
                 }
                 return;
@@ -373,7 +377,7 @@ public final class HandTable implements AutoCloseable {
                                         if (disabled) d.setBrightness(new Display.Brightness(7, 7));
                                     });
             add(glint, offset);
-            if (viewer != null) viewer.showEntity(plugin, glint);
+            if (viewer != null) DisplayAudience.show(plugin, viewer, glint);
         }
 
         BoundingBox bounds(boolean sticky) {
@@ -466,12 +470,12 @@ public final class HandTable implements AutoCloseable {
             assistanceButtons.values().forEach(CallView::remove);
             assistanceButtons.clear();
             if (counters != null) {
-                counters.remove();
+                DisplayAudience.retire(counters);
                 counters = null;
             }
             clearCalls();
             if (remaining != null) {
-                remaining.remove();
+                DisplayAudience.retire(remaining);
                 remaining = null;
             }
         }
@@ -525,7 +529,7 @@ public final class HandTable implements AutoCloseable {
         }
 
         void remove() {
-            parts.forEach(Entity::remove);
+            parts.forEach(DisplayAudience::retire);
         }
     }
 
@@ -601,7 +605,7 @@ public final class HandTable implements AutoCloseable {
         }
 
         void remove() {
-            parts.forEach(Entity::remove);
+            parts.forEach(DisplayAudience::retire);
         }
     }
 
@@ -720,7 +724,7 @@ public final class HandTable implements AutoCloseable {
             display.setBlock(material.createBlockData());
             display.setTransformation(pose);
         });
-        if (viewer != null) viewer.showEntity(plugin, entity);
+        if (viewer != null) DisplayAudience.show(plugin, viewer, entity);
         return entity;
     }
 
@@ -759,7 +763,7 @@ public final class HandTable implements AutoCloseable {
                                                             (float) depth),
                                                     new Quaternionf()));
                                 });
-        if (viewer != null) viewer.showEntity(plugin, entity);
+        if (viewer != null) DisplayAudience.show(plugin, viewer, entity);
         return entity;
     }
 
@@ -780,7 +784,7 @@ public final class HandTable implements AutoCloseable {
                                     configure(d, id, viewer);
                                     d.setBillboard(Display.Billboard.FIXED);
                                     d.setRotation(yaw, flat ? -90 : 0);
-                                    d.text(value);
+                                    PlatformMessages.text(d, value);
                                     d.setLineWidth(Integer.MAX_VALUE);
                                     d.setAlignment(TextDisplay.TextAlignment.CENTER);
                                     d.setDefaultBackground(false);
@@ -794,7 +798,7 @@ public final class HandTable implements AutoCloseable {
                                                     new Vector3f(scale),
                                                     new Quaternionf()));
                                 });
-        if (viewer != null) viewer.showEntity(plugin, entity);
+        if (viewer != null) DisplayAudience.show(plugin, viewer, entity);
         return entity;
     }
 
@@ -873,7 +877,7 @@ public final class HandTable implements AutoCloseable {
                         null);
         }
         if (deckLabel != null)
-            deckLabel.text(
+            PlatformMessages.text(deckLabel,
                     Language.component("table.hand.deck", "count", game.deckSize())
                             .append(Component.newline())
                             .append(HandText.tableHint(room.kind, game)));
@@ -956,7 +960,8 @@ public final class HandTable implements AutoCloseable {
                 && plugin.allowed(player)
                 && (plugin.pack() == null || plugin.pack().canPlay(player, room.kind))
                 && room.seat(player.getUniqueId()) >= 0
-                && origin.getWorld().equals(player.getWorld());
+                && plugin.playerViews().snapshot(player)
+                        .filter(snapshot -> origin.getWorld().equals(snapshot.location().getWorld())).isPresent();
     }
 
     public void show(Player player) {
@@ -1039,11 +1044,11 @@ public final class HandTable implements AutoCloseable {
                     view.counters = text(at(new Pose(frame.x(), frame.z(), frame.yaw(), -.265)),
                             Component.empty(), .11f, frame.yaw(), false, "@counters", player);
                 }
-                view.counters.text(Language.component("table.mahjong.counters",
+                PlatformMessages.text(view.counters, Language.component("table.mahjong.counters",
                         "deposits", info.getOrDefault("riichiSticks", "0"),
                         "honba", info.getOrDefault("honba", "0")));
             } else if (view.counters != null) {
-                view.counters.remove();
+                DisplayAudience.retire(view.counters);
                 view.counters = null;
             }
         }
@@ -1062,7 +1067,7 @@ public final class HandTable implements AutoCloseable {
                                 false,
                                 "@remaining",
                                 player);
-            else view.remaining.text(Component.empty());
+            else PlatformMessages.text(view.remaining, Component.empty());
         }
         for (var piece : view.pieces.values()) {
             if (mahjong) piece.highlight(false);
@@ -1146,7 +1151,7 @@ public final class HandTable implements AutoCloseable {
             String option = selected.substring(prefix.length());
             for (MahjongAssist.Option candidate : MahjongAssist.Option.values())
                 if (candidate.id.equals(option))
-                    player.sendActionBar(Language.component("hint.mahjong.assist." + option)
+                    PlatformMessages.actionBar(player, Language.component("hint.mahjong.assist." + option)
                             .colorIfAbsent(NamedTextColor.YELLOW));
         }
     }
@@ -1266,7 +1271,7 @@ public final class HandTable implements AutoCloseable {
         updatePlayable(view);
         buildCalls(view);
         if (group.equals("riichi"))
-            player.sendActionBar(
+            PlatformMessages.actionBar(player,
                     Language.component("hint.mahjong.riichi").colorIfAbsent(NamedTextColor.GOLD));
         return true;
     }
@@ -1328,7 +1333,7 @@ public final class HandTable implements AutoCloseable {
             keepHandPress(player, now);
             return null;
         }
-        Location eye = player.getEyeLocation();
+        Location eye = plugin.playerViews().snapshot(player).map(snapshot -> snapshot.eyeLocation()).orElse(null);
         if (view.pressedEye != null
                 && eye != null
                 && !Objects.equals(id, view.pressedTile)
@@ -1389,9 +1394,9 @@ public final class HandTable implements AutoCloseable {
                                 && MahjongPresentation.sameType(
                                         piece.spec.face(), target.spec.face()));
             clearMatches(view);
-            if (selected == null) view.remaining.text(Component.empty());
+            if (selected == null) PlatformMessages.text(view.remaining, Component.empty());
             else {
-                view.remaining.teleport(at(target.spec.pose()).add(0, .24, 0));
+                DisplayMovement.move(view.remaining, at(target.spec.pose()).add(0, .24, 0));
                 int remaining =
                         MahjongPresentation.remaining(
                                 (HandGame) room.board(), view.seat, target.spec.face());
@@ -1409,7 +1414,7 @@ public final class HandTable implements AutoCloseable {
                                     .append(
                                             Language.component("table.mahjong.no-yaku")
                                                     .color(NamedTextColor.RED));
-                view.remaining.text(hint);
+                PlatformMessages.text(view.remaining, hint);
                 for (var entry : publicFor(player).entrySet()) {
                     PieceView piece = entry.getValue();
                     if (piece.spec.back()
@@ -1417,7 +1422,7 @@ public final class HandTable implements AutoCloseable {
                         continue;
 
                     Entity body = piece.parts.getFirst();
-                    player.hideEntity(plugin, body);
+                    DisplayAudience.hide(plugin, player, body);
                     Display copy;
                     if (piece.packed) {
                         PieceView clone = new PieceView(piece.spec, player);
@@ -1614,13 +1619,13 @@ public final class HandTable implements AutoCloseable {
     private void hideOwnBacks(Player player, int seat) {
         publicFor(player).values().stream()
                 .filter(piece -> piece.spec.id().startsWith("back:") && piece.spec.seat() == seat)
-                .forEach(piece -> piece.parts.forEach(entity -> player.hideEntity(plugin, entity)));
+                .forEach(piece -> piece.parts.forEach(entity -> DisplayAudience.hide(plugin, player, entity)));
     }
 
     private void restoreBacks(Player player, int seat) {
         publicFor(player).values().stream()
                 .filter(piece -> piece.spec.id().startsWith("back:") && piece.spec.seat() == seat)
-                .forEach(piece -> piece.parts.forEach(entity -> player.showEntity(plugin, entity)));
+                .forEach(piece -> piece.parts.forEach(entity -> DisplayAudience.show(plugin, player, entity)));
     }
 
     public void clear(Player player) {
@@ -1635,7 +1640,7 @@ public final class HandTable implements AutoCloseable {
     private void clearMatches(PrivateView view) {
         for (var entry : view.matches.entrySet()) {
             PieceView piece = publicFor(view.player).get(entry.getKey());
-            if (piece != null) view.player.showEntity(plugin, piece.parts.getFirst());
+            if (piece != null) DisplayAudience.show(plugin, view.player, piece.parts.getFirst());
             entry.getValue().remove();
         }
         view.matches.clear();
@@ -1720,7 +1725,7 @@ public final class HandTable implements AutoCloseable {
         assistance.clear();
         publicPieces.values().forEach(PieceView::remove);
         publicPieces.clear();
-        furniture.forEach(Entity::remove);
+        furniture.forEach(DisplayAudience::retire);
         furniture.clear();
         packPieces.values().forEach(PieceView::remove);
         packPieces.clear();

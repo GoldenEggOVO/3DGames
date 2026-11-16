@@ -404,7 +404,7 @@ class PlayingCardTableTest {
     }
 
     @Test
-    void nativeFacesUseSignedHeadSkinsWithoutGlyphPlanes() {
+    void nativeFacesUseMojangHeadSkinsWithoutGlyphPlanes() {
         var f = new TableViewTest.Fixture("liars-bar", 4);
         owner(f, false);
         Object card = ownCards(f).values().iterator().next();
@@ -417,10 +417,8 @@ class PlayingCardTableTest {
             verify(head).setItemStack(item.capture());
             assertEquals(Material.PLAYER_HEAD, item.getValue().getType());
             var meta = assertInstanceOf(org.bukkit.inventory.meta.SkullMeta.class, item.getValue().getItemMeta());
-            var property = meta.getPlayerProfile().getProperties().stream()
-                    .filter(value -> value.getName().equals("textures")).findFirst().orElseThrow();
-            assertNotNull(property.getSignature(), "Generated Mojang signatures must be retained");
-            assertFalse(property.getValue().isBlank());
+            assertNotNull(meta.getOwnerProfile().getUniqueId());
+            assertEquals("TabletopCard", meta.getOwnerProfile().getName());
         }
         f.view.close();
     }

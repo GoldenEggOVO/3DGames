@@ -42,7 +42,7 @@ public final class PokerRaiseWindow {
                 try {
                     submit(plugin, player, room, revision, seat, values.get("street_total"));
                 } catch (IllegalArgumentException error) {
-                    player.sendActionBar(Language.error(error));
+                    GoldenEggOVO.TDGames.Core.platform.PlatformMessages.actionBar(player, Language.error(error));
                 }
             }
         });

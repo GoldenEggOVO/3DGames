@@ -144,7 +144,7 @@ class CardTurnTest {
     }
 
     private static final class Fixture {
-        final TDGamesPlugin plugin = mock(TDGamesPlugin.class);
+        final TDGamesPlugin plugin = GoldenEggOVO.TDGames.SessionTestSupport.plugin();
         final Player player = mock(Player.class);
         final Map<Entity, Location> locations = new IdentityHashMap<>();
         final Map<Display, Transformation> poses = new IdentityHashMap<>(), originals = new IdentityHashMap<>();

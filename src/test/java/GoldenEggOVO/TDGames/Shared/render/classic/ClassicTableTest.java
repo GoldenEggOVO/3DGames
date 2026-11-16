@@ -38,7 +38,7 @@ class ClassicTableTest {
     @AfterEach void cleanup() { MockBukkit.unmock(); }
 
     static final class Fixture {
-        final TDGamesPlugin plugin = mock(TDGamesPlugin.class);
+        final TDGamesPlugin plugin = GoldenEggOVO.TDGames.SessionTestSupport.plugin();
         final World world = mock(World.class);
         final Player owner = mock(Player.class), observer = mock(Player.class);
         final ResourcePackService pack = mock(ResourcePackService.class);

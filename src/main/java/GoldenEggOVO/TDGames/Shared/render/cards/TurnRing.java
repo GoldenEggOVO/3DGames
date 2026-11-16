@@ -1,5 +1,7 @@
 package GoldenEggOVO.TDGames.Shared.render.cards;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
+
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
 
 import GoldenEggOVO.TDGames.Core.render.model.ModelRepository;
@@ -97,7 +99,7 @@ public final class TurnRing implements AutoCloseable {
     private void position() {
         for (Part part : parts) {
             var selected = direction > 0 ? part.forward() : part.reverse();
-            part.entity().teleport(at(selected));
+            DisplayMovement.move(part.entity(), at(selected));
         }
     }
 
@@ -137,7 +139,7 @@ public final class TurnRing implements AutoCloseable {
                     if (audience != null) {
                         audience.remove(part.entity());
                     } else {
-                        part.entity().remove();
+                        DisplayAudience.retire(part.entity());
                     }
                 });
         parts.clear();
