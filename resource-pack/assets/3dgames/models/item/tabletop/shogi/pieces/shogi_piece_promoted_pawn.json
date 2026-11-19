@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/tabletop/shogi/pieces/shogi_piece_promoted_pawn",
     "art": "3dgames:item/tabletop/shogi/pieces/shogi_piece_promoted_pawn"
   },
   "elements": [

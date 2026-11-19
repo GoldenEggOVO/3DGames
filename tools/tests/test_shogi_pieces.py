@@ -73,7 +73,8 @@ class ShogiPiecesTest(unittest.TestCase):
                 self.assertEqual({'model': {'type': 'minecraft:model', 'model': key.replace(':', ':item/', 1)}},
                                  json.loads(item.read_text()))
                 model = json.loads(model_path(piece).read_text())
-                self.assertEqual({'art': '3dgames:item/tabletop/shogi/pieces/' + stem}, model['textures'])
+                art = '3dgames:item/tabletop/shogi/pieces/' + stem
+                self.assertEqual({'art': art, 'particle': art}, model['textures'])
 
     def test_original_sources_keep_the_pinned_upstream_bytes(self):
         for piece, (_, expected) in PIECES.items():

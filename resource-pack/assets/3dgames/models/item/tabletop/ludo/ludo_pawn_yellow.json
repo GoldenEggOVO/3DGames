@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_copper_block",
     "YELLOW_CONCRETE": "3dgames:item/shared/materials/material_yellow_concrete",
     "bronze": "3dgames:item/shared/materials/material_copper_block"
   },

@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_white_concrete",
     "WHITE_CONCRETE": "3dgames:item/shared/materials/material_white_concrete",
     "RED_CONCRETE": "3dgames:item/shared/materials/material_red_concrete",
     "cap_white_concrete_go_stone_white_top_bottom": "3dgames:item/shared/pieces/go_stone_white_top_bottom"

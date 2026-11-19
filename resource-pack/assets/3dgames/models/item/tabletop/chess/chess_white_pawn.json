@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_smooth_quartz",
     "SMOOTH_QUARTZ": "3dgames:item/shared/materials/material_smooth_quartz",
     "cap_smooth_quartz_chess_white_piece_base_top_bottom": "3dgames:item/tabletop/chess/chess_white_piece_base_top_bottom",
     "cap_smooth_quartz_chess_white_piece_body_top_bottom": "3dgames:item/tabletop/chess/chess_white_piece_body_top_bottom"

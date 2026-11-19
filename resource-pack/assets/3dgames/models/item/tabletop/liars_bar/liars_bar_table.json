@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/future_shell",
     "wood": "3dgames:item/shared/materials/future_shell",
     "cap_top_liars_bar_table_top": "3dgames:item/tabletop/liars_bar/liars_bar_table_top",
     "future_chassis": "3dgames:item/shared/materials/future_chassis",
@@ -10,8 +11,7 @@
     "cap_future_49_down": "3dgames:item/shared/table_parts/future_pedestal_chassis",
     "cap_future_82_up": "3dgames:item/shared/table_parts/future_round_table_chassis",
     "cap_future_82_down": "3dgames:item/shared/table_parts/future_round_table_chassis",
-    "cap_future_rim": "3dgames:item/shared/table_parts/future_round_table_rim_shell",
-    "future_accent": "3dgames:item/shared/materials/future_accent"
+    "cap_future_rim": "3dgames:item/shared/table_parts/future_round_table_rim_shell"
   },
   "elements": [
     {
@@ -74,7 +74,7 @@
             16,
             16
           ],
-          "texture": "#future_accent"
+          "texture": "#wood"
         }
       },
       "light_emission": 15
@@ -459,7 +459,7 @@
             16,
             16
           ],
-          "texture": "#future_accent"
+          "texture": "#wood"
         }
       },
       "light_emission": 15
@@ -844,7 +844,7 @@
             16,
             16
           ],
-          "texture": "#future_accent"
+          "texture": "#wood"
         }
       },
       "light_emission": 15
@@ -1229,7 +1229,7 @@
             16,
             16
           ],
-          "texture": "#future_accent"
+          "texture": "#wood"
         }
       },
       "light_emission": 15

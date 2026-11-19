@@ -22,8 +22,12 @@ class ClientTransformProbe {
             items=paths.filter(p->p.toString().endsWith(".json")).collect(Collectors.toMap(
                 p->p.getFileName().toString().replace(".json",""),p->p));
         }
-        for(String name:new String[]{"mahjong_characters_1","mahjong_wind_east","color_eight_card_red_3","color_eight_card_wild"}){
-            if(!items.containsKey(name))throw new AssertionError("Missing item: "+name);
+        var hands = items.keySet().stream().filter(name -> name.startsWith("playing_")
+            || name.startsWith("color_eight_card_")
+            || (name.startsWith("mahjong_") && !name.startsWith("mahjong_table") && !name.startsWith("mahjong_control"))).sorted().toList();
+        for(String required : new String[]{"playing_spades_ace","playing_back","mahjong_characters_1","mahjong_wind_east","color_eight_card_red_3","color_eight_card_wild"})
+            if(!hands.contains(required))throw new AssertionError("Missing item: "+required);
+        for(String name:hands){
             var item=JsonParser.parseString(Files.readString(items.get(name))).getAsJsonObject();
             String modelId=item.getAsJsonObject("model").get("model").getAsString().split(":",2)[1];
             var model=JsonParser.parseString(Files.readString(assets.resolve("models/"+modelId+".json"))).getAsJsonObject();
@@ -44,7 +48,7 @@ class ClientTransformProbe {
                 models++;
             }
         }
-        System.out.println("CLIENT_26_2_TRANSFORM_PASS actual_deserializer=true models=" + models
+        System.out.println("CLIENT_TRANSFORM_PASS actual_deserializer=true models=" + models + " hand_models=" + hands.size()
             + " none_ignored=true fixed_faces_owner_and_up=true client_visual_test=false");
     }
 }

@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_light_blue_concrete",
     "surface": "3dgames:item/tabletop/battleship/battleship_board_top",
     "light_blue_concrete": "3dgames:item/shared/materials/material_light_blue_concrete",
     "future_chassis": "3dgames:item/shared/materials/future_chassis",

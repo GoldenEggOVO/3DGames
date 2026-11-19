@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/future_shell",
     "wood": "3dgames:item/shared/materials/future_shell",
     "cap_board_reversi_board_top": "3dgames:item/tabletop/reversi/reversi_board_top",
     "future_chassis": "3dgames:item/shared/materials/future_chassis",

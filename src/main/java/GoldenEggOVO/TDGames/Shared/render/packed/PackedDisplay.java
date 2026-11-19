@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render.packed;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.TDGamesPlugin;
 import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
 import GoldenEggOVO.TDGames.Shared.session.GameSession;
@@ -21,7 +22,7 @@ public final class PackedDisplay {
             Vector3f scale,
             Quaternionf rotation) {
         ItemDisplay entity =
-                at.getWorld().spawn(
+                DisplayPlacement.spawn(
                         at,
                         ItemDisplay.class,
                         d -> {

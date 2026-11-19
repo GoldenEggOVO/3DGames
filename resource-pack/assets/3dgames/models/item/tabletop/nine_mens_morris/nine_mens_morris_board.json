@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_brown_concrete",
     "surface": "3dgames:item/tabletop/nine_mens_morris/nine_mens_morris_board_top",
     "brown_concrete": "3dgames:item/shared/materials/material_brown_concrete",
     "future_chassis": "3dgames:item/shared/materials/future_chassis",

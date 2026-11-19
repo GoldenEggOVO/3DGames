@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_purple_concrete",
     "WHITE_CONCRETE": "3dgames:item/shared/materials/material_white_concrete",
     "PURPLE_CONCRETE": "3dgames:item/shared/materials/material_purple_concrete"
   },

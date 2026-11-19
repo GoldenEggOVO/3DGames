@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/board_memory_slot",
     "surface": "3dgames:item/tabletop/memory/memory_board_top",
     "future_chassis": "3dgames:item/shared/materials/future_chassis",
     "future_shell": "3dgames:item/shared/materials/future_shell",

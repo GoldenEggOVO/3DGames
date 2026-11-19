@@ -25,9 +25,7 @@ class TableFurnitureThemeTest(unittest.TestCase):
                         for part in model['elements'] for face in part['faces'].values()}
                 for role in ('shell', 'chassis'):
                     self.assertIn('3dgames:item/shared/materials/future_' + role, used, name)
-                has_edge_accents = name in ('yacht/yacht_table', 'color_eight/color_eight_table',
-                                            'doudizhu/doudizhu_table', 'liars_bar/liars_bar_table',
-                                            'texas_holdem/texas_holdem_table')
+                has_edge_accents = name == 'yacht/yacht_table'
                 self.assertEqual(has_edge_accents, '3dgames:item/shared/materials/future_accent' in used)
 
     def test_round_table_rims_cover_the_old_edge_without_adding_slice_geometry(self):
@@ -35,6 +33,13 @@ class TableFurnitureThemeTest(unittest.TestCase):
             with self.subTest(model=kind):
                 model = json.loads((ROOT / kind / (kind + '_table.json')).read_text())
                 self.assertLessEqual(sum(len(part['faces']) for part in model['elements']), 150)
+                top = model['elements'][0]
+                sides = [part for part in model['elements'] if len(part['faces']) == 1
+                         and part['from'][1] == top['from'][1] and part['to'][1] == top['to'][1]]
+                self.assertEqual(48, len(sides))
+                side_materials = {model['textures'][face['texture'][1:]]
+                                  for part in sides for face in part['faces'].values()}
+                self.assertEqual({'3dgames:item/shared/materials/future_shell'}, side_materials)
                 rim = next(part for part in model['elements'] if part.get('name') == 'future_rim')
                 texture = model['textures'][rim['faces']['up']['texture'][1:]]
                 path = ROOT.parents[2] / 'textures' / (texture.split(':')[1] + '.png')

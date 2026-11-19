@@ -8,7 +8,7 @@ One JAR supports Paper, Purpur, Spigot, CraftBukkit and Folia, with native Dialo
 
 [Compatibility](#compatibility) · [Install](#install) · [Controls and menus](#controls-and-menus) · [Games](#games) · [Configuration](#configuration-and-languages) · [Resource pack](#optional-resource-pack) · [Build](#build) · [Source layout](#source-layout) · [License](#license)
 
-> The refreshed [v1.0.0 release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.0) includes the compatibility update below. Download its JAR or build the current source; the release notes link the exact source snapshot matching the refreshed assets.
+> Download the plugin and matching resource pack from the [v1.0.0 release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.0). The tag contains the source for both downloads.
 
 ## Compatibility
 
@@ -19,7 +19,7 @@ One JAR supports Paper, Purpur, Spigot, CraftBukkit and Folia, with native Dialo
 | Spigot / CraftBukkit | 26.1, 26.1.1, 26.1.2, 26.2, 26.3 | Supported |
 | Folia | 26.1.2, 26.2, 26.3 | Supported |
 
-Requires **Java 25**. As of 2026-11-16, the same JAR passed creation, gameplay and restart recovery across 20 platform/version combinations, together with 1,467 Java tests and 147 asset checks.
+Requires **Java 25**. Across the 20 combinations above, card orientation and gameplay traces for all 30 games matched Paper 26.2. The release passed 1,472 Java tests and 147 asset checks.
 
 Spigot / CraftBukkit 26.1 and 26.1.1 were rebuilt from exact official historical commits; the current BuildTools entries with those names resolve to 26.1.2. Paper currently provides no 26.1 build, and Purpur / Folia provide no 26.1 or 26.1.1 builds. This table covers specific builds, not every historical build, snapshot or future version.
 

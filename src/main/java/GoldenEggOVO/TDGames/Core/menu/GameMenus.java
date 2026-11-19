@@ -719,14 +719,18 @@ public final class GameMenus implements AutoCloseable {
     }
 
     public void languageChanged() {
-        for (UUID id : List.copyOf(sessions.keySet())) {
+        Map.copyOf(sessions).forEach((id, session) -> {
             Player player = Bukkit.getPlayer(id);
-            if (player != null) {
+            if (player == null) {
+                sessions.remove(id, session);
+                return;
+            }
+            plugin.scheduler().execute(player, () -> {
+                if (sessions.get(id) != session) return;
                 NativeDialogs.clear(player);
                 forget(player);
-            }
-        }
-        sessions.clear();
+            });
+        });
     }
 
     @Override

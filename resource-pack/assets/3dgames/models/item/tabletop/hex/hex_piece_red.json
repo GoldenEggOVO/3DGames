@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_red_concrete",
     "cap": "3dgames:item/tabletop/hex/hex_piece_red_top_bottom",
     "side": "3dgames:item/shared/materials/material_red_concrete"
   },

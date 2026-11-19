@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_red_concrete",
     "RED_CONCRETE": "3dgames:item/shared/materials/material_red_concrete",
     "cap_red_concrete_connect_four_red_disc_faces": "3dgames:item/tabletop/connect_four/connect_four_red_disc_faces"
   },

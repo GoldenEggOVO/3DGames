@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
 
 import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
@@ -130,39 +131,38 @@ public final class HandTable implements AutoCloseable {
                                 ? "back"
                                 : spec.face().toLowerCase(Locale.ROOT).replace("draw1", "draw");
                 ItemDisplay item =
-                        origin.getWorld()
-                                .spawn(
-                                        at,
-                                        ItemDisplay.class,
-                                        display -> {
-                                            configure(display, id, viewer);
-                                            display.setItemDisplayTransform(
-                                                    ItemDisplay.ItemDisplayTransform.FIXED);
-                                            display.setItemStack(
-                                                    plugin.pack().item(
-                                                            (mahjong ? "mahjong_" : "card_")
-                                                                    + face));
-                                            Quaternionf rotation =
-                                                    spec.standing()
-                                                            ? new Quaternionf()
-                                                            : new Quaternionf()
-                                                                    .rotateX((float) -Math.PI / 2);
-                                            display.setTransformation(
-                                                    new Transformation(
-                                                            new Vector3f(0, (float) (h / 2), 0),
-                                                            rotation,
-                                                            new Vector3f(
-                                                                    (float) w,
-                                                                    (float)
-                                                                            (spec.standing()
-                                                                                    ? h
-                                                                                    : d),
-                                                                    (float)
-                                                                            (spec.standing()
-                                                                                    ? d
-                                                                                    : h)),
-                                                            new Quaternionf()));
-                                        });
+                        DisplayPlacement.spawn(
+                                at,
+                                ItemDisplay.class,
+                                display -> {
+                                    configure(display, id, viewer);
+                                    display.setItemDisplayTransform(
+                                            ItemDisplay.ItemDisplayTransform.FIXED);
+                                    display.setItemStack(
+                                            plugin.pack().item(
+                                                    (mahjong ? "mahjong_" : "card_")
+                                                            + face));
+                                    Quaternionf rotation =
+                                            spec.standing()
+                                                    ? new Quaternionf()
+                                                    : new Quaternionf()
+                                                            .rotateX((float) -Math.PI / 2);
+                                    display.setTransformation(
+                                            new Transformation(
+                                                    new Vector3f(0, (float) (h / 2), 0),
+                                                    rotation,
+                                                    new Vector3f(
+                                                            (float) w,
+                                                            (float)
+                                                                    (spec.standing()
+                                                                            ? h
+                                                                            : d),
+                                                            (float)
+                                                                    (spec.standing()
+                                                                            ? d
+                                                                            : h)),
+                                                    new Quaternionf()));
+                                });
                 add(item, new Vector());
                 if (viewer != null) DisplayAudience.show(plugin, viewer, item);
                 return;
@@ -174,7 +174,7 @@ public final class HandTable implements AutoCloseable {
                     var textures = ColorEightHeads.tiles(spec.face());
                     for (int tile = 0; tile < textures.size(); tile++) {
                         final int index = tile;
-                        ItemDisplay head = origin.getWorld().spawn(at, ItemDisplay.class, display -> {
+                        ItemDisplay head = DisplayPlacement.spawn(at, ItemDisplay.class, display -> {
                             configure(display, id, viewer);
                             display.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.NONE);
                             display.setItemStack(PlayingCardHeads.item(textures.get(index)));
@@ -356,26 +356,25 @@ public final class HandTable implements AutoCloseable {
                             ? new Vector3f((float) (width() * .96), (float) (height() * .96), .001f)
                             : new Vector3f((float) (width() * .96), .001f, (float) (depth() * .96));
             glint =
-                    origin.getWorld()
-                            .spawn(
-                                    at(spec.pose()).add(offset).add(displacement),
-                                    ItemDisplay.class,
-                                    d -> {
-                                        configure(
-                                                d,
-                                                viewer == null ? "@board" : "@hand:" + spec.id(),
-                                                viewer);
-                                        d.setItemDisplayTransform(
-                                                ItemDisplay.ItemDisplayTransform.NONE);
-                                        d.setItemStack(item);
-                                        d.setTransformation(
-                                                new Transformation(
-                                                        new Vector3f(),
-                                                        new Quaternionf(),
-                                                        scale,
-                                                        new Quaternionf()));
-                                        if (disabled) d.setBrightness(new Display.Brightness(7, 7));
-                                    });
+                    DisplayPlacement.spawn(
+                            at(spec.pose()).add(offset).add(displacement),
+                            ItemDisplay.class,
+                            d -> {
+                                configure(
+                                        d,
+                                        viewer == null ? "@board" : "@hand:" + spec.id(),
+                                        viewer);
+                                d.setItemDisplayTransform(
+                                        ItemDisplay.ItemDisplayTransform.NONE);
+                                d.setItemStack(item);
+                                d.setTransformation(
+                                        new Transformation(
+                                                new Vector3f(),
+                                                new Quaternionf(),
+                                                scale,
+                                                new Quaternionf()));
+                                if (disabled) d.setBrightness(new Display.Brightness(7, 7));
+                            });
             add(glint, offset);
             if (viewer != null) DisplayAudience.show(plugin, viewer, glint);
         }
@@ -719,7 +718,7 @@ public final class HandTable implements AutoCloseable {
     }
 
     private BlockDisplay block(Location at, Material material, Transformation pose, String id, Player viewer) {
-        var entity = origin.getWorld().spawn(at, BlockDisplay.class, display -> {
+        var entity = DisplayPlacement.spawn(at, BlockDisplay.class, display -> {
             configure(display, id, viewer);
             display.setBlock(material.createBlockData());
             display.setTransformation(pose);
@@ -739,30 +738,29 @@ public final class HandTable implements AutoCloseable {
             String id,
             Player viewer) {
         BlockDisplay entity =
-                origin.getWorld()
-                        .spawn(
-                                at,
-                                BlockDisplay.class,
-                                d -> {
-                                    configure(d, id, viewer);
-                                    d.setBlock(material.createBlockData());
-                                    Vector3f translation =
-                                            rotation.transform(
-                                                            new Vector3f(
-                                                                    (float) -width / 2,
-                                                                    (float) -height / 2,
-                                                                    (float) -depth / 2))
-                                                    .add(center);
-                                    d.setTransformation(
-                                            new Transformation(
-                                                    translation,
-                                                    rotation,
+                DisplayPlacement.spawn(
+                        at,
+                        BlockDisplay.class,
+                        d -> {
+                            configure(d, id, viewer);
+                            d.setBlock(material.createBlockData());
+                            Vector3f translation =
+                                    rotation.transform(
                                                     new Vector3f(
-                                                            (float) width,
-                                                            (float) height,
-                                                            (float) depth),
-                                                    new Quaternionf()));
-                                });
+                                                            (float) -width / 2,
+                                                            (float) -height / 2,
+                                                            (float) -depth / 2))
+                                            .add(center);
+                            d.setTransformation(
+                                    new Transformation(
+                                            translation,
+                                            rotation,
+                                            new Vector3f(
+                                                    (float) width,
+                                                    (float) height,
+                                                    (float) depth),
+                                            new Quaternionf()));
+                        });
         if (viewer != null) DisplayAudience.show(plugin, viewer, entity);
         return entity;
     }
@@ -957,11 +955,8 @@ public final class HandTable implements AutoCloseable {
         return !closed
                 && (room.phase() == GameSession.Phase.PLAYING || room.phase() == GameSession.Phase.FINISHED)
                 && room.board() instanceof HandGame
-                && plugin.allowed(player)
-                && (plugin.pack() == null || plugin.pack().canPlay(player, room.kind))
                 && room.seat(player.getUniqueId()) >= 0
-                && plugin.playerViews().snapshot(player)
-                        .filter(snapshot -> origin.getWorld().equals(snapshot.location().getWorld())).isPresent();
+                && audience.canSeeTable(player);
     }
 
     public void show(Player player) {
@@ -1625,7 +1620,7 @@ public final class HandTable implements AutoCloseable {
     private void restoreBacks(Player player, int seat) {
         publicFor(player).values().stream()
                 .filter(piece -> piece.spec.id().startsWith("back:") && piece.spec.seat() == seat)
-                .forEach(piece -> piece.parts.forEach(entity -> DisplayAudience.show(plugin, player, entity)));
+                .forEach(piece -> piece.parts.forEach(entity -> audience.restore(player, entity)));
     }
 
     public void clear(Player player) {
@@ -1640,7 +1635,7 @@ public final class HandTable implements AutoCloseable {
     private void clearMatches(PrivateView view) {
         for (var entry : view.matches.entrySet()) {
             PieceView piece = publicFor(view.player).get(entry.getKey());
-            if (piece != null) DisplayAudience.show(plugin, view.player, piece.parts.getFirst());
+            if (piece != null) audience.restore(view.player, piece.parts.getFirst());
             entry.getValue().remove();
         }
         view.matches.clear();

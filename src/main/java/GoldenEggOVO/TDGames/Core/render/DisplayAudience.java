@@ -8,6 +8,7 @@ import org.bukkit.entity.*;
 import java.util.*;
 
 public final class DisplayAudience {
+    public static final int VIEW_DISTANCE = 24;
     private static final Map<Entity, Map<UUID, Long>> VISIBILITY = new WeakHashMap<>();
     private static final Map<UUID, Long> RETIRED = Map.of();
     private record Pending(org.bukkit.plugin.Plugin plugin, long version, boolean show) {}
@@ -55,6 +56,16 @@ public final class DisplayAudience {
         return !managed() ? !packed : !viewers(packed).isEmpty();
     }
 
+    public boolean canSeeTable(Player player) {
+        ResourcePackState pack = plugin.resourcePackState();
+        return plugin.playerViews().snapshot(player).filter(snapshot -> {
+            Location location = snapshot.location();
+            return snapshot.allowed() && location.getWorld() == origin.getWorld()
+                    && location.distanceSquared(origin) <= VIEW_DISTANCE * VIEW_DISTANCE
+                    && (nativeFallback || pack == null || !pack.required() || snapshot.packed());
+        }).isPresent();
+    }
+
     public Set<Player> viewers(boolean packed) {
         return packed ? packViewers : nativeViewers;
     }
@@ -68,7 +79,7 @@ public final class DisplayAudience {
         if (!managed && !nativeFallback) return;
         Set<Player> natives = new HashSet<>(), packs = new HashSet<>();
 
-        for (PlayerViews.Snapshot snapshot : plugin.playerViews().nearby(origin, 24)) {
+        for (PlayerViews.Snapshot snapshot : plugin.playerViews().nearby(origin, VIEW_DISTANCE)) {
             if (!snapshot.allowed()) continue;
             Player player = snapshot.player();
             if (managed && snapshot.packed()) packs.add(player);
@@ -109,6 +120,15 @@ public final class DisplayAudience {
     public void remove(Entity entity) {
         layers.remove(entity);
         retire(entity);
+    }
+
+    public void restore(Player player, Entity entity) {
+        if (managed()) {
+            if (!layers.containsKey(entity)) return;
+            Boolean packed = layers.get(entity);
+            if (!(packed == null ? allViewers : viewers(packed)).contains(player)) return;
+        }
+        show(plugin, player, entity);
     }
 
     public static void retire(Entity entity) {

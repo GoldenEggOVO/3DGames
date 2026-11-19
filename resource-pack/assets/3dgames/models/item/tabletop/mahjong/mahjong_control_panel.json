@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/tabletop/mahjong/mahjong_control_panel_body",
     "body": "3dgames:item/tabletop/mahjong/mahjong_control_panel_body",
     "cap_panel_mahjong_control_panel_top": "3dgames:item/tabletop/mahjong/mahjong_control_panel_top",
     "cap_body_mahjong_control_panel_bottom": "3dgames:item/tabletop/mahjong/mahjong_control_panel_bottom"

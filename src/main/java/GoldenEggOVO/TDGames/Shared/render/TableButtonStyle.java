@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.render.DisplayAudience;
 
 import GoldenEggOVO.TDGames.Core.render.model.ModelDefinition.Block;
@@ -56,12 +57,12 @@ public final class TableButtonStyle {
         var pose = new Transformation(at, new Quaternionf(original.getLeftRotation()), scale,
                 new Quaternionf(original.getRightRotation()));
         Display copy;
-        if (source instanceof ItemDisplay item) copy = source.getWorld().spawn(source.getLocation(), ItemDisplay.class, display -> {
+        if (source instanceof ItemDisplay item) copy = DisplayPlacement.spawn(source.getLocation(), ItemDisplay.class, display -> {
             display.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED);
             display.setItemStack(item.getItemStack());
             outlinePose(display, pose);
         });
-        else copy = source.getWorld().spawn(source.getLocation(), BlockDisplay.class, display -> {
+        else copy = DisplayPlacement.spawn(source.getLocation(), BlockDisplay.class, display -> {
             display.setBlock(((BlockDisplay)source).getBlock());
             outlinePose(display, pose);
         });

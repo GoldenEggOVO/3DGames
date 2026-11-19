@@ -99,11 +99,10 @@ public final class ShogiGame implements ClassicGame {
 
     @Override public List<String> legalActions(int seat) {
         if (finished() || seat != currentPlayer()) return List.of();
-        if (impasseOffered) return List.of("impasse:accept", "impasse:reject");
-        if (pending != null) return List.of("promote:yes", "promote:no");
+        if (impasseOffered || pending != null) return controlActions(seat);
         List<String> out = new ArrayList<>();
         for (Move move : moves(turn, true)) out.add(move.action());
-        if (canImpasse()) out.add("impasse:offer");
+        out.addAll(controlActions(seat));
         return List.copyOf(out);
     }
 
@@ -118,7 +117,10 @@ public final class ShogiGame implements ClassicGame {
     }
 
     @Override public List<String> controlActions(int seat) {
-        return legalActions(seat).stream().filter(a -> a.startsWith("promote:") || a.startsWith("impasse:")).toList();
+        if (finished() || seat != currentPlayer()) return List.of();
+        if (impasseOffered) return List.of("impasse:accept", "impasse:reject");
+        if (pending != null) return List.of("promote:yes", "promote:no");
+        return canImpasse() ? List.of("impasse:offer") : List.of();
     }
 
     @Override public void apply(int seat, String action) {
@@ -337,13 +339,13 @@ public final class ShogiGame implements ClassicGame {
     }
 
     private boolean canImpasse() {
-        if (mini || inCheck(0) || inCheck(1)) return false;
+        if (mini) return false;
         boolean first = false, second = false;
         for (int y = 0; y < size; y++) for (int x = 0; x < size; x++) {
             if (board[y][x] == 8 && inZone(0, y)) first = true;
             if (board[y][x] == -8 && inZone(1, y)) second = true;
         }
-        return first && second;
+        return first && second && !inCheck(0) && !inCheck(1);
     }
 
     private int impassePoints(int seat) {

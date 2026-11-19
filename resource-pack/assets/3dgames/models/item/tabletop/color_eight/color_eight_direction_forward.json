@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/tabletop/color_eight/color_eight_direction_forward",
     "ring": "3dgames:item/tabletop/color_eight/color_eight_direction_forward"
   },
   "elements": [

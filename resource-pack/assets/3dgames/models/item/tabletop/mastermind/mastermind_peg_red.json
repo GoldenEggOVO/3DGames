@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/tabletop/mastermind/mastermind_peg_red",
     "plastic": "3dgames:item/tabletop/mastermind/mastermind_peg_red"
   },
   "elements": [

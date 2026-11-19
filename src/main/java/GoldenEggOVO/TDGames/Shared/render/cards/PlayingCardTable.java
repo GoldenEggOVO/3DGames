@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render.cards;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
 
 import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
@@ -9,6 +10,7 @@ import GoldenEggOVO.TDGames.Shared.game.Cell;
 import GoldenEggOVO.TDGames.Shared.game.HandGame;
 import GoldenEggOVO.TDGames.Shared.game.SelectedHandGame;
 
+import GoldenEggOVO.TDGames.Core.render.model.ModelDefinition;
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
 import GoldenEggOVO.TDGames.Core.render.model.ModelRepository;
 
@@ -68,6 +70,7 @@ public final class PlayingCardTable implements AutoCloseable {
 
     private final class CardVisual {
         final List<Display> parts = new ArrayList<>();
+        List<ModelDefinition.Block> backLayers = List.of();
         CardSpec spec;
 
         CardVisual(CardSpec spec, Player viewer, boolean packed) {
@@ -75,44 +78,42 @@ public final class PlayingCardTable implements AutoCloseable {
             Location at = at(spec.pose);
             if (packed) {
                 var item =
-                        origin.getWorld()
-                                .spawn(
-                                        at,
-                                        ItemDisplay.class,
-                                        d -> {
-                                            configure(d, viewer, true);
-                                            d.setItemDisplayTransform(
-                                                    ItemDisplay.ItemDisplayTransform.FIXED);
-                                            d.setItemStack(
-                                                    plugin.pack().item("playing_" + spec.face));
-                                            d.setTransformation(
-                                                    new Transformation(
-                                                            new Vector3f(
-                                                                    0,
-                                                                    spec.standing
-                                                                            ? (float) PACKED_HEIGHT / 2
-                                                                            : .006f,
-                                                                    0),
+                        DisplayPlacement.spawn(
+                                at,
+                                ItemDisplay.class,
+                                d -> {
+                                    configure(d, viewer, true);
+                                    d.setItemDisplayTransform(
+                                            ItemDisplay.ItemDisplayTransform.FIXED);
+                                    d.setItemStack(
+                                            plugin.pack().item("playing_" + spec.face));
+                                    d.setTransformation(
+                                            new Transformation(
+                                                    new Vector3f(
+                                                            0,
                                                             spec.standing
-                                                                    ? new Quaternionf()
-                                                                    : new Quaternionf()
-                                                                            .rotateX(
-                                                                                    (float) -Math.PI
-                                                                                            / 2),
-                                                            new Vector3f(
-                                                                    (float) WIDTH,
-                                                                    (float) PACKED_HEIGHT,
-                                                                    .008f),
-                                                            new Quaternionf()));
-                                        });
+                                                                    ? (float) PACKED_HEIGHT / 2
+                                                                    : .006f,
+                                                            0),
+                                                    spec.standing
+                                                            ? new Quaternionf()
+                                                            : new Quaternionf()
+                                                                    .rotateX(
+                                                                            (float) -Math.PI
+                                                                                    / 2),
+                                                    new Vector3f(
+                                                            (float) WIDTH,
+                                                            (float) PACKED_HEIGHT,
+                                                            .008f),
+                                                    new Quaternionf()));
+                                });
                 parts.add(item);
                 show(item, viewer);
             } else if (spec.face.equals("back")) {
-                double yaw = Math.toRadians(at.getYaw());
-                for (var part : ModelRepository.require(
-                        "shared/cards/back_" + (spec.standing ? "standing" : "flat")).blocks()) {
-                    Location location = at.clone().add(part.x()*Math.cos(yaw)-part.z()*Math.sin(yaw),
-                            part.bottom(), part.x()*Math.sin(yaw)+part.z()*Math.cos(yaw));
+                backLayers = ModelRepository.require(
+                        "shared/cards/back_" + (spec.standing ? "standing" : "flat")).blocks();
+                for (var part : backLayers) {
+                    Location location = layerPosition(at, part);
                     var display = block(location, part.material(), ModelGeometry.relativePose(part), viewer);
                     if (part.brightness() != null) display.setBrightness(new Display.Brightness(part.brightness(), part.brightness()));
                     parts.add(display);
@@ -121,7 +122,7 @@ public final class PlayingCardTable implements AutoCloseable {
                 var textures = PlayingCardHeads.tiles(spec.face);
                 for (int tile = 0; tile < textures.size(); tile++) {
                     final int index = tile;
-                    var head = origin.getWorld().spawn(at, ItemDisplay.class, d -> {
+                    var head = DisplayPlacement.spawn(at, ItemDisplay.class, d -> {
                         configure(d, viewer, false);
                         d.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.NONE);
                         d.setItemStack(PlayingCardHeads.item(textures.get(index)));
@@ -135,8 +136,11 @@ public final class PlayingCardTable implements AutoCloseable {
 
         void pose(Pose pose) {
             if (spec.pose.equals(pose)) return;
-            Vector change = at(pose).toVector().subtract(at(spec.pose).toVector());
-            for (Display entity : parts) DisplayMovement.move(entity, entity.getLocation().add(change));
+            Location anchor = at(pose);
+            for (int index = 0; index < parts.size(); index++) {
+                Location target = backLayers.isEmpty() ? anchor : layerPosition(anchor, backLayers.get(index));
+                DisplayMovement.move(parts.get(index), target);
+            }
             spec = new CardSpec(spec.face, pose, spec.standing, spec.owner);
         }
 
@@ -225,6 +229,12 @@ public final class PlayingCardTable implements AutoCloseable {
                 height);
     }
 
+    private static Location layerPosition(Location anchor, ModelDefinition.Block part) {
+        double yaw = Math.toRadians(anchor.getYaw()), cos = Math.cos(yaw), sin = Math.sin(yaw);
+        return anchor.clone().add(part.x() * cos - part.z() * sin, part.bottom(),
+                part.x() * sin + part.z() * cos);
+    }
+
     private Location at(Pose pose) {
         Location at = origin.clone().add(pose.x, pose.y, pose.z);
         at.setYaw(pose.yaw);
@@ -260,7 +270,7 @@ public final class PlayingCardTable implements AutoCloseable {
     }
 
     private BlockDisplay block(Location at, Material material, Transformation pose, Player viewer) {
-        var body = origin.getWorld().spawn(at, BlockDisplay.class, display -> {
+        var body = DisplayPlacement.spawn(at, BlockDisplay.class, display -> {
             configure(display, viewer, false);
             display.setBlock(material.createBlockData());
             display.setTransformation(pose);
@@ -273,23 +283,22 @@ public final class PlayingCardTable implements AutoCloseable {
             Location at, Component content, float scale, Player viewer, boolean flat) {
         if (flat) at.setPitch(-90);
         var label =
-                origin.getWorld()
-                        .spawn(
-                                at,
-                                TextDisplay.class,
-                                d -> {
-                                    configure(d, viewer, false);
-                                    d.setBackgroundColor(Color.fromARGB(0));
-                                    d.setShadowed(false);
-                                    PlatformMessages.text(d, content);
-                                    d.setLineWidth(500);
-                                    d.setTransformation(
-                                            new Transformation(
-                                                    new Vector3f(),
-                                                    new Quaternionf(),
-                                                    new Vector3f(scale),
-                                                    new Quaternionf()));
-                                });
+                DisplayPlacement.spawn(
+                        at,
+                        TextDisplay.class,
+                        d -> {
+                            configure(d, viewer, false);
+                            d.setBackgroundColor(Color.fromARGB(0));
+                            d.setShadowed(false);
+                            PlatformMessages.text(d, content);
+                            d.setLineWidth(500);
+                            d.setTransformation(
+                                    new Transformation(
+                                            new Vector3f(),
+                                            new Quaternionf(),
+                                            new Vector3f(scale),
+                                            new Quaternionf()));
+                        });
         show(label, viewer);
         return label;
     }
@@ -404,7 +413,7 @@ public final class PlayingCardTable implements AutoCloseable {
             audienceGeneration = audience.generation;
         }
         turn.sync();
-        for (var snapshot : plugin.playerViews().nearby(origin, 24)) show(snapshot.player());
+        for (var snapshot : plugin.playerViews().nearby(origin, DisplayAudience.VIEW_DISTANCE)) show(snapshot.player());
         for (var entry : List.copyOf(privateViews.entrySet()))
             if (!eligible(entry.getValue().player)) clear(entry.getValue().player);
     }
@@ -491,16 +500,15 @@ public final class PlayingCardTable implements AutoCloseable {
         }
         if (audience.needed(true))
             dealerMarkers.add(
-                    origin.getWorld()
-                            .spawn(
-                                    dealer,
-                                    ItemDisplay.class,
-                                    d -> {
-                                        configure(d, null, true);
-                                        d.setItemDisplayTransform(
-                                                ItemDisplay.ItemDisplayTransform.FIXED);
-                                        d.setItemStack(plugin.pack().item("poker_dealer"));
-                                    }));
+                    DisplayPlacement.spawn(
+                            dealer,
+                            ItemDisplay.class,
+                            d -> {
+                                configure(d, null, true);
+                                d.setItemDisplayTransform(
+                                        ItemDisplay.ItemDisplayTransform.FIXED);
+                                d.setItemStack(plugin.pack().item("poker_dealer"));
+                            }));
         markerLayers = layers;
     }
 
@@ -518,14 +526,14 @@ public final class PlayingCardTable implements AutoCloseable {
     }
 
     private boolean eligible(Player player) {
-        return plugin.playerViews().snapshot(player).filter(snapshot -> snapshot.allowed()
-                && snapshot.location().getWorld().equals(origin.getWorld())
-                && snapshot.location().distanceSquared(origin) < 24 * 24
-                && room.seat(snapshot.id()) >= 0).isPresent();
+        return room.seat(player.getUniqueId()) >= 0 && audience.canSeeTable(player);
     }
 
     private void show(Player player) {
-        if (!eligible(player)) return;
+        if (!eligible(player)) {
+            clear(player);
+            return;
+        }
         int seat = room.seat(player.getUniqueId());
         PrivateView view = privateViews.get(player.getUniqueId());
         if (view != null && view.seat != seat) {
@@ -757,7 +765,7 @@ public final class PlayingCardTable implements AutoCloseable {
         for (var entry : publicCards.entrySet())
             if (entry.getValue().spec.owner == view.seat
                     && entry.getKey().startsWith(packed ? "packed:" : "native:"))
-                entry.getValue().parts.forEach(entity -> DisplayAudience.show(plugin, player, entity));
+                entry.getValue().parts.forEach(entity -> audience.restore(player, entity));
     }
 
     public void close() {

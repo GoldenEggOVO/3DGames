@@ -224,7 +224,8 @@ class ResourcePackTest(unittest.TestCase):
             if name.startswith("assets/3dgames/models/item/"):
                 model = json.loads(self.archive.read(name))
                 used = {face["texture"][1:] for element in model["elements"] for face in element["faces"].values()}
-                self.assertEqual(used, set(model["textures"]), name)
+                self.assertEqual(used | {"particle"}, set(model["textures"]), name)
+                self.assertIn(model["textures"]["particle"], {model["textures"][key] for key in used}, name)
                 paths.update(model["textures"].values())
         referenced = {"assets/" + path.replace(":", "/textures/") + ".png" for path in paths}
         for name in self.names:

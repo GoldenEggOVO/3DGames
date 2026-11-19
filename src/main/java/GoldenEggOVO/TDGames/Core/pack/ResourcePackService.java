@@ -1,6 +1,7 @@
 package GoldenEggOVO.TDGames.Core.pack;
 
 import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
+import GoldenEggOVO.TDGames.Core.platform.PlatformEvents;
 import GoldenEggOVO.TDGames.Core.platform.PlatformScheduler;
 
 import GoldenEggOVO.TDGames.Shared.render.packed.BoardModelKeys;
@@ -24,6 +25,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.InetSocketAddress;
 import java.net.URISyntaxException;
@@ -34,6 +36,15 @@ import java.util.function.*;
 
 public final class ResourcePackService implements Listener, AutoCloseable, ResourcePackState {
     private static final byte[] RESOURCE_PACK_HASH = bundledHash();
+    private static final Method VIRTUAL_HOST = virtualHostMethod();
+
+    private static Method virtualHostMethod() {
+        try {
+            return Player.class.getMethod("getVirtualHost");
+        } catch (NoSuchMethodException ignored) {
+            return null;
+        }
+    }
 
     private static byte[] bundledHash() {
         try (var input = ResourcePackService.class.getResourceAsStream("/resource-pack.sha1")) {
@@ -146,6 +157,19 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
     }
 
     public void start() {
+        if (mode != Mode.VANILLA && source.equals("local") && publicUrl.isBlank() && VIRTUAL_HOST == null) {
+            PlatformEvents.register(plugin, new Listener() {
+                @EventHandler(priority = EventPriority.MONITOR)
+                public void login(PlayerLoginEvent event) {
+                    if (event.getResult() != PlayerLoginEvent.Result.ALLOWED) return;
+                    try {
+                        String host = URI.create("http://" + event.getHostname()).getHost();
+                        if (host != null) virtualHosts.put(event.getPlayer().getUniqueId(), host);
+                    } catch (IllegalArgumentException ignored) {
+                    }
+                }
+            });
+        }
         if (engine == null) return;
         int[] attempts = {0};
         startup = plugin.scheduler().repeat(() -> {
@@ -229,9 +253,8 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
         if (base.isBlank()) {
             String host = virtualHosts.get(player.getUniqueId());
             try {
-                Object address = Player.class.getMethod("getVirtualHost").invoke(player);
+                Object address = VIRTUAL_HOST == null ? null : VIRTUAL_HOST.invoke(player);
                 if (address instanceof InetSocketAddress socket) host = socket.getHostString();
-            } catch (NoSuchMethodException ignored) {
             } catch (ReflectiveOperationException exception) {
                 throw new IllegalArgumentException("Cannot read local resource-pack host", exception);
             }
@@ -462,16 +485,6 @@ public final class ResourcePackService implements Listener, AutoCloseable, Resou
                             if (event.getPlayer().isOnline()) request(event.getPlayer());
                         },
                         20);
-    }
-
-    @EventHandler
-    public void login(PlayerLoginEvent event) {
-        String hostname = event.getHostname();
-        try {
-            String host = URI.create("http://" + hostname).getHost();
-            if (host != null) virtualHosts.put(event.getPlayer().getUniqueId(), host);
-        } catch (IllegalArgumentException ignored) {
-        }
     }
 
     @EventHandler

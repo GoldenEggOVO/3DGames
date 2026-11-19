@@ -26,6 +26,20 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
 
 public class HandTableTest {
+    @Test void walkingAwayRetiresPrivateHandAndReturningRecreatesIt() throws Exception {
+        var f = new Fixture("color-eight");
+        var views = (Map<?, ?>) TableViewTest.field(f.table, "privateViews");
+        f.table.show(f.owner);
+        assertTrue(views.containsKey(f.owner.getUniqueId()));
+        doReturn(f.origin.clone().add(30, 0, 0)).when(f.owner).getLocation();
+        f.table.sync();
+        assertFalse(views.containsKey(f.owner.getUniqueId()));
+        doReturn(f.origin.clone().add(0, 0, 2)).when(f.owner).getLocation();
+        f.table.show(f.owner);
+        assertTrue(views.containsKey(f.owner.getUniqueId()));
+        f.table.close();
+    }
+
     @Test void nativeColorEightBacksUseTwoBlocksAndPrivateFacesUseTwentyFourHeads() throws Exception {
         var f = new Fixture("color-eight");
         var publicPieces = (Map<?, ?>) TableViewTest.field(f.table, "publicPieces");

@@ -3,9 +3,12 @@ package GoldenEggOVO.TDGames.Shared.render.classic;
 import GoldenEggOVO.TDGames.Shared.game.Cell;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 /** Table-local coordinates shared by display construction and pointer tests. */
 public final class ClassicLayout {
+    private static final Pattern TABLEAU_CARD = Pattern.compile("t[0-6]_[0-9]+");
+    private static final Pattern TABLEAU_COLUMN = Pattern.compile("t[0-6]");
     static final double FLEET_CENTER_X = .82;
     public static final int CONTROLS_PER_PAGE = 10;
 
@@ -45,78 +48,10 @@ public final class ClassicLayout {
 
     public static ClassicLayout of(String kind, List<Cell> cells, List<String> controls, int page) {
         List<Slot> slots = new ArrayList<>();
-        int minX = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::x).min().orElse(0);
-        int maxX = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::x).max().orElse(0);
-        int minY = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::y).min().orElse(0);
-        int maxY = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::y).max().orElse(0);
-        double half = kind.equals("monopoly") ? 1.74 : Set.of("shogi", "mini-shogi").contains(kind) ? .72 : .90;
-        double unit = 2 * half / Math.max(maxX - minX + 1, maxY - minY + 1);
-        int longest = cells.stream().filter(c -> c.id().matches("t[0-6]_[0-9]+"))
-                .mapToInt(c -> Integer.parseInt(c.id().substring(3)) + 1).max().orElse(1);
-        double cardStep = Math.min(.055, .94 / Math.max(1, longest - 1));
-        for (Cell cell : cells) {
-            String id = cell.id();
-            if (kind.equals("klondike")) {
-                if (id.matches("t[0-6]_[0-9]+")) {
-                    int col = id.charAt(1) - '0', index = Integer.parseInt(id.substring(3));
-                    boolean covered = cells.stream().anyMatch(c -> c.id().equals("t" + col + "_" + (index + 1)));
-                    double depth = covered ? cardStep : .32;
-                    double top = -.48 + index * cardStep;
-                    slots.add(new Slot(id, (col - 3) * .26, top + depth / 2, .23, depth, .025 + index * .003025, .32));
-                } else if (id.matches("t[0-6]")) {
-                    int col = id.charAt(1) - '0';
-                    if (cells.stream().noneMatch(c -> c.id().startsWith(id + "_")))
-                        slots.add(new Slot(id, (col - 3) * .26, -.32, .23, .32, .018));
-                } else slots.add(new Slot(id, (cell.x() - 3) * .26, -.70, .23, .32, .025));
-            } else if (kind.equals("monopoly") && id.matches("p[0-9]+")) {
-                slots.add(monopoly(Integer.parseInt(id.substring(1))));
-            } else if (kind.equals("mastermind")) {
-                if (id.startsWith("g")) {
-                    String[] parts = id.substring(1).split("_");
-                    slots.add(new Slot(id, -.85 + Integer.parseInt(parts[1]) * .165,
-                            (Integer.parseInt(parts[2]) - 1.5) * .20 + .08, .138, .138, .012));
-                } else if (id.startsWith("feedback")) {
-                    int row = Integer.parseInt(id.substring(id.indexOf('_') + 1));
-                    slots.add(new Slot(id, -.85 + row * .165, -.50, .12, .12, .012));
-                } else {
-                    int attempt = cells.stream().filter(c -> c.id().startsWith("g"))
-                            .mapToInt(c -> Integer.parseInt(c.id().split("_")[1]) + 1).max().orElse(0);
-                    if (id.startsWith("draft") && attempt >= 10) continue;
-                    slots.add(new Slot(id, id.startsWith("secret") ? .94 : -.85 + attempt * .165,
-                            (cell.x() - 1.5) * .20 + .08, .138, .138, .012));
-                }
-            } else if (kind.equals("mancala")) {
-                boolean store = id.equals("6") || id.equals("13");
-                slots.add(new Slot(id, store ? id.equals("6") ? 1.24 : -1.24 : (cell.x() - 2.5) * .345,
-                        store ? 0 : cell.y() == 0 ? -.285 : .285, store ? .23 : .295, store ? .95 : .40, -.036));
-            } else if (kind.equals("backgammon")) {
-                if (id.startsWith("p")) {
-                    double x = (cell.x() - 5.5) * .18 + (cell.x() < 6 ? -.055 : .055);
-                    slots.add(new Slot(id, x, cell.y() == 0 ? -.49 : .49, .16, .66, .012));
-                } else slots.add(new Slot(id, id.startsWith("bar") ? 0 : 1.225, cell.y() == 0 ? -.30 : .30, .12, .30, id.startsWith("bar") ? .0155 : .012));
-            } else if (kind.equals("battleship")) {
-                int board = cell.x() / 11, col = cell.x() % 11;
-                slots.add(new Slot(id, (board == 0 ? -FLEET_CENTER_X : FLEET_CENTER_X) + (col - 4.5) * .14,
-                        (cell.y() - 4.5) * .14, .131, .131, .012));
-            } else if ((kind.equals("shogi") || kind.equals("mini-shogi")) && id.matches("h[01][PLNSGBRK]")) {
-                int index = "PLNSGBRK".indexOf(id.charAt(2));
-                slots.add(new Slot(id, -.76 + index * .215, id.charAt(1) == '0' ? .85 : -.85, .17, .12, .0155));
-            } else if (kind.equals("hex")) {
-                double hexUnit = 2.24 / (maxX - minX + 1 + (maxY - minY) * .5);
-                double x = cell.x() - (minX + maxX) / 2.0, y = cell.y() - (minY + maxY) / 2.0;
-                slots.add(new Slot(id, (x + y) * hexUnit * Math.sqrt(3) / 2,
-                        (y - x) * hexUnit / 2, hexUnit * 2 / Math.sqrt(3), hexUnit, .0105, hexUnit, true, 0));
-            } else {
-                double width = unit * .9, depth = width;
-                if (kind.equals("nine-mens-morris")) width = depth = .14;
-                if (kind.equals("dots-and-boxes")) {
-                    if (id.startsWith("h")) { width = unit * 1.55; depth = unit * .38; }
-                    else if (id.startsWith("v")) { width = unit * .38; depth = unit * 1.55; }
-                    else if (id.startsWith("p")) width = depth = unit * .28;
-                }
-                slots.add(new Slot(id, (cell.x() - (minX + maxX) / 2.0) * unit,
-                        (cell.y() - (minY + maxY) / 2.0) * unit * (Set.of("shogi", "mini-shogi").contains(kind) ? -1 : 1), width, depth, .0105));
-            }
+        switch (kind) {
+            case "klondike" -> addKlondikeSlots(slots, cells);
+            case "mastermind" -> addMastermindSlots(slots, cells);
+            default -> addBoardSlots(slots, kind, cells);
         }
         if (kind.equals("mastermind")) for (int color = 0; color < 6; color++)
             slots.add(new Slot("@palette/" + color, (color - 2.5) * .27, .77, .19, .18, .012));
@@ -133,6 +68,114 @@ public final class ClassicLayout {
             if (current + 1 < pageCount) slots.add(new Slot("@page/next", .96, z, .15, .09, .014));
         }
         return new ClassicLayout(kind, slots);
+    }
+
+    private static void addKlondikeSlots(List<Slot> slots, List<Cell> cells) {
+        Map<String, Integer> cardIndices = new HashMap<>();
+        Set<String> occupiedColumns = new HashSet<>();
+        int longest = 1;
+        for (Cell cell : cells) {
+            String id = cell.id();
+            if (id.indexOf('_') == 2) occupiedColumns.add(id.substring(0, 2));
+            if (!TABLEAU_CARD.matcher(id).matches()) continue;
+            int index = Integer.parseInt(id, 3, id.length(), 10);
+            cardIndices.put(id, index);
+            longest = Math.max(longest, index + 1);
+        }
+        double step = Math.min(.055, .94 / Math.max(1, longest - 1));
+        for (Cell cell : cells) {
+            String id = cell.id();
+            Integer index = cardIndices.get(id);
+            if (index != null) {
+                int column = id.charAt(1) - '0';
+                double depth = cardIndices.containsKey("t" + column + "_" + (index + 1)) ? step : .32;
+                double top = -.48 + index * step;
+                slots.add(new Slot(id, (column - 3) * .26, top + depth / 2, .23, depth, .025 + index * .003025, .32));
+            } else if (TABLEAU_COLUMN.matcher(id).matches()) {
+                if (!occupiedColumns.contains(id)) {
+                    int column = id.charAt(1) - '0';
+                    slots.add(new Slot(id, (column - 3) * .26, -.32, .23, .32, .018));
+                }
+            } else {
+                slots.add(new Slot(id, (cell.x() - 3) * .26, -.70, .23, .32, .025));
+            }
+        }
+    }
+
+    private static void addMastermindSlots(List<Slot> slots, List<Cell> cells) {
+        int attempt = 0;
+        for (Cell cell : cells) {
+            String id = cell.id();
+            if (id.startsWith("g")) {
+                attempt = Math.max(attempt, guessRow(id) + 1);
+            }
+        }
+        for (Cell cell : cells) {
+            String id = cell.id();
+            if (id.startsWith("g")) {
+                int column = Integer.parseInt(id, id.lastIndexOf('_') + 1, id.length(), 10);
+                slots.add(new Slot(id, -.85 + guessRow(id) * .165,
+                        (column - 1.5) * .20 + .08, .138, .138, .012));
+            } else if (id.startsWith("feedback")) {
+                int row = Integer.parseInt(id.substring(id.indexOf('_') + 1));
+                slots.add(new Slot(id, -.85 + row * .165, -.50, .12, .12, .012));
+            } else {
+                if (id.startsWith("draft") && attempt >= 10) continue;
+                slots.add(new Slot(id, id.startsWith("secret") ? .94 : -.85 + attempt * .165,
+                        (cell.x() - 1.5) * .20 + .08, .138, .138, .012));
+            }
+        }
+    }
+
+    private static int guessRow(String id) {
+        return Integer.parseInt(id, id.indexOf('_') + 1, id.lastIndexOf('_'), 10);
+    }
+
+    private static void addBoardSlots(List<Slot> slots, String kind, List<Cell> cells) {
+        boolean shogi = kind.equals("shogi") || kind.equals("mini-shogi");
+        int minX = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::x).min().orElse(0);
+        int maxX = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::x).max().orElse(0);
+        int minY = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::y).min().orElse(0);
+        int maxY = cells.stream().filter(c -> !c.id().startsWith("h")).mapToInt(Cell::y).max().orElse(0);
+        double half = kind.equals("monopoly") ? 1.74 : shogi ? .72 : .90;
+        double unit = 2 * half / Math.max(maxX - minX + 1, maxY - minY + 1);
+        for (Cell cell : cells) {
+            String id = cell.id();
+            if (kind.equals("monopoly") && id.matches("p[0-9]+")) {
+                slots.add(monopoly(Integer.parseInt(id.substring(1))));
+            } else if (kind.equals("mancala")) {
+                boolean store = id.equals("6") || id.equals("13");
+                slots.add(new Slot(id, store ? id.equals("6") ? 1.24 : -1.24 : (cell.x() - 2.5) * .345,
+                        store ? 0 : cell.y() == 0 ? -.285 : .285, store ? .23 : .295, store ? .95 : .40, -.036));
+            } else if (kind.equals("backgammon")) {
+                if (id.startsWith("p")) {
+                    double x = (cell.x() - 5.5) * .18 + (cell.x() < 6 ? -.055 : .055);
+                    slots.add(new Slot(id, x, cell.y() == 0 ? -.49 : .49, .16, .66, .012));
+                } else slots.add(new Slot(id, id.startsWith("bar") ? 0 : 1.225, cell.y() == 0 ? -.30 : .30, .12, .30, id.startsWith("bar") ? .0155 : .012));
+            } else if (kind.equals("battleship")) {
+                int board = cell.x() / 11, col = cell.x() % 11;
+                slots.add(new Slot(id, (board == 0 ? -FLEET_CENTER_X : FLEET_CENTER_X) + (col - 4.5) * .14,
+                        (cell.y() - 4.5) * .14, .131, .131, .012));
+            } else if (shogi && id.matches("h[01][PLNSGBRK]")) {
+                int index = "PLNSGBRK".indexOf(id.charAt(2));
+                slots.add(new Slot(id, -.76 + index * .215, id.charAt(1) == '0' ? .85 : -.85, .17, .12, .0155));
+            } else if (kind.equals("hex")) {
+                double hexUnit = 2.24 / (maxX - minX + 1 + (maxY - minY) * .5);
+                double x = cell.x() - (minX + maxX) / 2.0, y = cell.y() - (minY + maxY) / 2.0;
+                slots.add(new Slot(id, (x + y) * hexUnit * Math.sqrt(3) / 2,
+                        (y - x) * hexUnit / 2, hexUnit * 2 / Math.sqrt(3), hexUnit, .0105, hexUnit, true, 0));
+            } else {
+                double width = unit * .9, depth = width;
+                if (kind.equals("nine-mens-morris")) width = depth = .14;
+                if (kind.equals("dots-and-boxes")) {
+                    if (id.startsWith("h")) { width = unit * 1.55; depth = unit * .38; }
+                    else if (id.startsWith("v")) { width = unit * .38; depth = unit * 1.55; }
+                    else if (id.startsWith("p")) width = depth = unit * .28;
+                }
+                slots.add(new Slot(id, (cell.x() - (minX + maxX) / 2.0) * unit,
+                        (cell.y() - (minY + maxY) / 2.0) * unit * (shogi ? -1 : 1), width, depth, .0105));
+            }
+        }
     }
 
     private static Slot monopoly(int index) {

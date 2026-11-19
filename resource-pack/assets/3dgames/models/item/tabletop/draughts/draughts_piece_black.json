@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_polished_blackstone",
     "POLISHED_BLACKSTONE": "3dgames:item/shared/materials/material_polished_blackstone",
     "cap_polished_blackstone_draughts_black_piece_top_bottom": "3dgames:item/tabletop/draughts/draughts_black_piece_top_bottom"
   },

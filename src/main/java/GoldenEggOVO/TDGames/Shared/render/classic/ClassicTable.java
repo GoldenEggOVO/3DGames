@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render.classic;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
 
 import GoldenEggOVO.TDGames.TDGamesPlugin;
@@ -660,7 +661,7 @@ public final class ClassicTable implements AutoCloseable {
     private void refreshControls(View view) {
         view.controlActions = controls(view);
         view.page = Math.clamp(view.page, 0, Math.max(0, (view.controlActions.size() - 1) / ClassicLayout.CONTROLS_PER_PAGE));
-        view.layout = ClassicLayout.of(room.kind, displayCells(game(), view.seat), view.controlActions, view.page).controlsForSeat(view.seat, room.capacity);
+        view.layout = ClassicLayout.of(room.kind, view.snapshot, view.controlActions, view.page).controlsForSeat(view.seat, room.capacity);
         syncControls(view); updateStatus(view); syncHighlights(view);
     }
 
@@ -903,7 +904,7 @@ public final class ClassicTable implements AutoCloseable {
             double[] a = vertices[index], b = vertices[(index + 1) % vertices.length];
             Matrix4f pose = new Matrix4f().m00((float)a[0]).m02((float)a[1]).m11((float)height)
                     .m20((float)b[0]).m22((float)b[1]);
-            var entity = origin.getWorld().spawn(at, BlockDisplay.class, display -> {
+            var entity = DisplayPlacement.spawn(at, BlockDisplay.class, display -> {
                 configure(display); display.setBlock(material.createBlockData()); display.setTransformationMatrix(pose);
             });
             if (player != null) DisplayAudience.show(plugin, player, entity);
@@ -994,7 +995,7 @@ public final class ClassicTable implements AutoCloseable {
                 int count = stripRight ? 6 : stripTop ? 4 : tiles.size();
                 for (int tile = 0; tile < count; tile++) {
                     int index = stripRight ? tile * 4 + 3 : tile;
-                    var head = origin.getWorld().spawn(at.clone().add(0, .004, 0), ItemDisplay.class, display -> {
+                    var head = DisplayPlacement.spawn(at.clone().add(0, .004, 0), ItemDisplay.class, display -> {
                         configure(display);
                         display.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.NONE);
                         display.setItemStack(PlayingCardHeads.item(tiles.get(index)));
@@ -1024,7 +1025,7 @@ public final class ClassicTable implements AutoCloseable {
         if (hitId.startsWith("@page/")) {
             view.page += hitId.endsWith("next") ? 1 : -1;
             view.hover = null;
-            view.layout = ClassicLayout.of(room.kind, displayCells(game(), view.seat), view.controlActions, view.page).controlsForSeat(view.seat, room.capacity);
+            view.layout = ClassicLayout.of(room.kind, view.snapshot, view.controlActions, view.page).controlsForSeat(view.seat, room.capacity);
             syncControls(view); syncHighlights(view); return null;
         }
         if (hitId.startsWith("@control/")) {
@@ -1330,7 +1331,7 @@ public final class ClassicTable implements AutoCloseable {
     }
 
     private BlockDisplay block(Location at, Material material, Transformation pose, Player player) {
-        var entity = origin.getWorld().spawn(at, BlockDisplay.class, display -> {
+        var entity = DisplayPlacement.spawn(at, BlockDisplay.class, display -> {
             configure(display); display.setBlock(material.createBlockData()); display.setTransformation(pose);
         });
         if (player != null) DisplayAudience.show(plugin, player, entity);
@@ -1342,7 +1343,7 @@ public final class ClassicTable implements AutoCloseable {
     }
 
     private ItemDisplay item(Location at, ItemStack item, Vector3f scale, Quaternionf rotation, Player player) {
-        var entity = origin.getWorld().spawn(at, ItemDisplay.class, display -> {
+        var entity = DisplayPlacement.spawn(at, ItemDisplay.class, display -> {
             configure(display); display.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.FIXED); display.setItemStack(item);
             display.setTransformation(new Transformation(new Vector3f(), rotation, scale, new Quaternionf()));
         });
@@ -1352,7 +1353,7 @@ public final class ClassicTable implements AutoCloseable {
 
     private TextDisplay text(Location at, Component value, float scale, NamedTextColor color, Player player, boolean flat) {
         if (flat) at.setPitch(-90);
-        var entity = origin.getWorld().spawn(at, TextDisplay.class, display -> {
+        var entity = DisplayPlacement.spawn(at, TextDisplay.class, display -> {
             configure(display); PlatformMessages.text(display, value.color(color)); display.setShadowed(false); display.setBackgroundColor(Color.fromARGB(0));
             display.setLineWidth(500); display.setTransformation(new Transformation(new Vector3f(0, flat ? -.125f * scale : 0, 0), new Quaternionf(), new Vector3f(scale), new Quaternionf()));
         });

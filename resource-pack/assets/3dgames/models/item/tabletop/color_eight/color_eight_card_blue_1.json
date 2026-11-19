@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/ivory",
     "body": "3dgames:item/shared/materials/ivory",
     "cap_face_color_eight_blue_1_face": "3dgames:item/tabletop/color_eight/color_eight_blue_1_face",
     "cap_back_color_eight_card_back_rear": "3dgames:item/tabletop/color_eight/color_eight_card_back_rear"

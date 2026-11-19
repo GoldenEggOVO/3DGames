@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/future_chassis",
     "BLUE_CONCRETE": "3dgames:item/shared/materials/material_blue_concrete",
     "POLISHED_DEEPSLATE": "3dgames:item/shared/materials/material_copper_block",
     "body": "3dgames:item/shared/materials/future_chassis",

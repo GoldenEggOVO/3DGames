@@ -44,7 +44,8 @@ class DraughtsAssetColorsTest(unittest.TestCase):
                     self.assertEqual({f"3dgames:item/tabletop/draughts/draughts_{side}_piece_top_bottom"}, caps)
                     expected = "POLISHED_BLACKSTONE" if side == "black" else "SMOOTH_QUARTZ"
                     body_aliases = {key for key in data["textures"] if not key.startswith("cap_") and "GOLD" not in key}
-                    self.assertEqual({expected}, body_aliases)
+                    self.assertEqual({expected, "particle"}, body_aliases)
+                    self.assertEqual(data["textures"][expected], data["textures"]["particle"])
 
     def test_registered_men_and_kings_use_the_actual_semantic_side_color(self):
         for side in ("black", "white"):

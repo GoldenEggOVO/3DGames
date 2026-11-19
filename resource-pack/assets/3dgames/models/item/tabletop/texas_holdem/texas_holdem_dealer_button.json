@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/wood",
     "body": "3dgames:item/shared/materials/wood",
     "cap_top_poker_dealer_button_top": "3dgames:item/tabletop/texas_holdem/texas_holdem_dealer_button_top",
     "cap_body_poker_dealer_button_bottom": "3dgames:item/tabletop/texas_holdem/texas_holdem_dealer_button_bottom"

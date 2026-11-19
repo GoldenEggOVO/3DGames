@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_red_terracotta",
     "surface": "3dgames:item/tabletop/backgammon/backgammon_board_top",
     "red_terracotta": "3dgames:item/shared/materials/material_red_terracotta",
     "brown_concrete": "3dgames:item/shared/materials/material_brown_concrete",

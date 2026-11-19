@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render.mahjong;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
 
 import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
@@ -369,16 +370,15 @@ public final class MahjongTableHud implements AutoCloseable {
     private BlockDisplay block(
             Location at, Material material, float width, float height, float depth) {
         BlockDisplay display =
-                origin.getWorld()
-                        .spawn(
-                                at,
-                                BlockDisplay.class,
-                                d -> {
-                                    if (audience.managed()) d.setVisibleByDefault(false);
-                                    configure(d);
-                                    d.setBlock(material.createBlockData());
-                                    visible(d, true, width, height, depth);
-                                });
+                DisplayPlacement.spawn(
+                        at,
+                        BlockDisplay.class,
+                        d -> {
+                            if (audience.managed()) d.setVisibleByDefault(false);
+                            configure(d);
+                            d.setBlock(material.createBlockData());
+                            visible(d, true, width, height, depth);
+                        });
         entities.add(display);
         if (buildingPanel) audience.add(display, false);
         else audience.common(display);

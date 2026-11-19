@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/future_shell",
     "cap_cloth_mahjong_table_cloth": "3dgames:item/tabletop/mahjong/mahjong_table_cloth",
     "future_chassis": "3dgames:item/shared/materials/future_chassis",
     "future_shell": "3dgames:item/shared/materials/future_shell"

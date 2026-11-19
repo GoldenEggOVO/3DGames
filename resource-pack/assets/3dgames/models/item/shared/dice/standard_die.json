@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/dice/dice_face_1",
     "one": "3dgames:item/shared/dice/dice_face_1",
     "two": "3dgames:item/shared/dice/dice_face_2",
     "three": "3dgames:item/shared/dice/dice_face_3",

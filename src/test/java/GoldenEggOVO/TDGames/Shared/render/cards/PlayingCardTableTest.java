@@ -50,6 +50,44 @@ class PlayingCardTableTest {
     }
 
     @Test
+    void leavingRenderingRangeDoesNotReshowPublicBacksInTheDepartingClient() {
+        var f = new TableViewTest.Fixture("doudizhu", 3);
+        owner(f, true);
+        var table = table(f);
+        var spectator = mock(Player.class);
+        when(spectator.getUniqueId()).thenReturn(UUID.randomUUID());
+        when(spectator.isOnline()).thenReturn(true);
+        when(spectator.getLocation()).thenReturn(f.view.origin);
+        when(f.plugin.allowed(spectator)).thenReturn(true);
+        when(f.plugin.pack().packed(spectator)).thenReturn(true);
+        when(f.world.getPlayers()).thenReturn(List.of(f.player, spectator));
+        table.sync();
+        Object back = ((Map<?, ?>) get(table, "publicCards")).get("packed:back:0:0");
+        var part = (Entity)((List<?>) get(back, "parts")).getFirst();
+        clearInvocations(f.player);
+        doReturn(f.view.origin.clone().add(30, 0, 0)).when(f.player).getLocation();
+        table.sync();
+        verify(f.player, never()).showEntity(f.plugin, part);
+        f.view.close();
+    }
+
+    @Test
+    void pendingRequiredPackRemovesPrivatePokerHandBeforeAcceptingInput() {
+        var f = new TableViewTest.Fixture("doudizhu", 3);
+        owner(f, true);
+        var table = table(f);
+        var views = (Map<?, ?>) get(table, "privateViews");
+        assertTrue(views.containsKey(f.player.getUniqueId()));
+        when(f.plugin.pack().required()).thenReturn(true);
+        when(f.plugin.pack().packed(f.player)).thenReturn(false);
+        table.hover(f.player, null);
+        assertFalse(views.containsKey(f.player.getUniqueId()));
+        f.view.tick();
+        assertFalse(views.containsKey(f.player.getUniqueId()));
+        f.view.close();
+    }
+
+    @Test
     void roundTableControlsKeepTheSameRimClearanceAndRayTargetInBothModes() {
         for (boolean packed : List.of(false, true)) {
             var f = new TableViewTest.Fixture("doudizhu", 3);

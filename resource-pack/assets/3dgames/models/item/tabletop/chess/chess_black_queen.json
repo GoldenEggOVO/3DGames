@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_polished_blackstone",
     "POLISHED_BLACKSTONE": "3dgames:item/shared/materials/material_polished_blackstone",
     "COPPER_BLOCK": "3dgames:item/shared/materials/material_copper_block",
     "cap_polished_blackstone_chess_black_piece_base_top_bottom": "3dgames:item/tabletop/chess/chess_black_piece_base_top_bottom",

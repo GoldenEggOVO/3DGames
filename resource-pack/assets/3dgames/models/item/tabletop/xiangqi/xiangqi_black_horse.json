@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_stripped_birch_wood",
     "STRIPPED_BIRCH_WOOD": "3dgames:item/shared/materials/material_stripped_birch_wood",
     "cap_engraving_xiangqi_black_horse_face": "3dgames:item/tabletop/xiangqi/xiangqi_black_horse_face",
     "cap_stripped_birch_wood_xiangqi_piece_wood_bottom": "3dgames:item/tabletop/xiangqi/xiangqi_piece_wood_bottom"

@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render.cards;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
 
 import GoldenEggOVO.TDGames.Core.platform.PlatformMessages;
@@ -47,37 +48,35 @@ public final class CardTurnIndicator implements AutoCloseable {
         if (bar == null || !bar.isValid() || !caption.isValid()) {
             close();
             bar =
-                    origin.getWorld()
-                            .spawn(
-                                    position(active, .87, .022),
-                                    BlockDisplay.class,
-                                    entity -> {
-                                        configure(entity);
-                                        entity.addScoreboardTag("tabletop-turn-indicator");
-                                        entity.setBlock(Material.LIME_CONCRETE.createBlockData());
-                                        entity.setTransformation(
-                                                new Transformation(
-                                                        new Vector3f(-.22f, 0, -.015f),
-                                                        new Quaternionf(),
-                                                        new Vector3f(.44f, .008f, .03f),
-                                                        new Quaternionf()));
-                                    });
+                    DisplayPlacement.spawn(
+                            position(active, .87, .022),
+                            BlockDisplay.class,
+                            entity -> {
+                                configure(entity);
+                                entity.addScoreboardTag("tabletop-turn-indicator");
+                                entity.setBlock(Material.LIME_CONCRETE.createBlockData());
+                                entity.setTransformation(
+                                        new Transformation(
+                                                new Vector3f(-.22f, 0, -.015f),
+                                                new Quaternionf(),
+                                                new Vector3f(.44f, .008f, .03f),
+                                                new Quaternionf()));
+                            });
             caption =
-                    origin.getWorld()
-                            .spawn(
-                                    position(active, 1.03, .32),
-                                    TextDisplay.class,
-                                    entity -> {
-                                        configure(entity);
-                                        entity.setBackgroundColor(Color.fromARGB(0));
-                                        entity.setShadowed(true);
-                                        entity.setTransformation(
-                                                new Transformation(
-                                                        new Vector3f(),
-                                                        new Quaternionf(),
-                                                        new Vector3f(.16f),
-                                                        new Quaternionf()));
-                                    });
+                    DisplayPlacement.spawn(
+                            position(active, 1.03, .32),
+                            TextDisplay.class,
+                            entity -> {
+                                configure(entity);
+                                entity.setBackgroundColor(Color.fromARGB(0));
+                                entity.setShadowed(true);
+                                entity.setTransformation(
+                                        new Transformation(
+                                                new Vector3f(),
+                                                new Quaternionf(),
+                                                new Vector3f(.16f),
+                                                new Quaternionf()));
+                            });
         }
         if (seat != active || language != Language.generation()) {
             DisplayMovement.move(bar, position(active, .87, .022));

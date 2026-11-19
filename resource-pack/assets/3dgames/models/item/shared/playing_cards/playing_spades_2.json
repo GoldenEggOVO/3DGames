@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/ivory",
     "body": "3dgames:item/shared/materials/ivory",
     "cap_face_poker_spades_2_face": "3dgames:item/shared/playing_cards/poker_spades_2_face",
     "cap_back_poker_card_back_rear": "3dgames:item/shared/playing_cards/poker_card_back_rear"

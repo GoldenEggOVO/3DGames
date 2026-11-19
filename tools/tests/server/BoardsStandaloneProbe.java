@@ -309,6 +309,8 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
             List<org.bukkit.entity.Entity> privateParts=new ArrayList<>();
             try {
                 Object hand=field(view,"handTable");Map<?,?> privateViews=(Map<?,?>)field(hand,"privateViews");
+                checkBackFacing((Map<?,?>)field(hand,"publicPieces"), capacity);
+                checkBackFacing((Map<?,?>)field(hand,"packPieces"), capacity);
                 call(view,"cursor",new Class<?>[]{Player.class,BoardSelection.class,String.class},spectator,null,null);
                 require(privateViews.isEmpty(),"spectator does not spawn private faces");
                 call(view,"cursor",new Class<?>[]{Player.class,BoardSelection.class,String.class},owner,null,null);
@@ -436,6 +438,22 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
         getLogger().info("BOARDS_HAND_MODELS_PASS games=color-eight,taiwan,riichi private_by_default=true spectator_faces=0 client_visual_test=false");
     }
 
+    private static void checkBackFacing(Map<?,?> visuals, int seats) throws Exception {
+        for (var entry : visuals.entrySet()) {
+            String[] key = entry.getKey().toString().split(":");
+            if (key.length < 3 || !key[key.length - 3].equals("back")) continue;
+            int seat = Integer.parseInt(key[key.length - 2]);
+            double expected = -360.0 * seat / seats;
+            List<?> parts = (List<?>)field(entry.getValue(), "parts");
+            require(!parts.isEmpty(), "public card back has a display");
+            for (Object part : parts) {
+                Location at = ((org.bukkit.entity.Entity)part).getLocation();
+                require(Math.abs(Math.IEEEremainder(at.getYaw() - expected, 360)) < .001
+                        && Math.abs(at.getPitch()) < .001, "public card back faces seat " + seat);
+            }
+        }
+    }
+
     /** Exercise new private hands and real ray targets without persisting synthetic rooms. */
     private void playingCardProbe(Plugin plugin, World world) throws Exception {
         ClassLoader loader = plugin.getClass().getClassLoader();
@@ -461,6 +479,7 @@ public final class BoardsStandaloneProbe extends JavaPlugin {
                 new org.bukkit.NamespacedKey("3dgames", "probe-cards"), field(field(plugin, "tableWorld"), "maps"));
             try {
                 Object table = field(view, "playingTable");
+                checkBackFacing((Map<?,?>)field(table, "publicCards"), capacity);
                 call(table, "show", new Class<?>[]{Player.class}, spectator);
                 Map<?, ?> views = (Map<?, ?>)field(table, "privateViews");
                 require(views.isEmpty(), "new-game spectator cannot request faces");

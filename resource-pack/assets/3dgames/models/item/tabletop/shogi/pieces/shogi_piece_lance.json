@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/tabletop/shogi/pieces/shogi_piece_lance",
     "art": "3dgames:item/tabletop/shogi/pieces/shogi_piece_lance"
   },
   "elements": [

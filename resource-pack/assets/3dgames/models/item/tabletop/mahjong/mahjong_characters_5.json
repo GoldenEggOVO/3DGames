@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/ivory",
     "body": "3dgames:item/shared/materials/ivory",
     "face": "3dgames:item/tabletop/mahjong/mahjong_characters_5_face",
     "back": "3dgames:item/tabletop/mahjong/mahjong_tile_back"

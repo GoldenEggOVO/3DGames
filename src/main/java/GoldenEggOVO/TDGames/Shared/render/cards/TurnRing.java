@@ -1,5 +1,6 @@
 package GoldenEggOVO.TDGames.Shared.render.cards;
 
+import GoldenEggOVO.TDGames.Core.render.DisplayPlacement;
 import GoldenEggOVO.TDGames.Core.render.DisplayMovement;
 
 import GoldenEggOVO.TDGames.Core.render.model.ModelGeometry;
@@ -52,30 +53,29 @@ public final class TurnRing implements AutoCloseable {
 
     private void add(ModelDefinition.Block forward, ModelDefinition.Block reverse, NamespacedKey tag) {
         BlockDisplay entity =
-                origin.getWorld()
-                        .spawn(
-                                at(forward),
-                                BlockDisplay.class,
-                                display -> {
-                                    display.setPersistent(false);
-                                    display.setGravity(false);
-                                    display.setInvulnerable(true);
-                                    display.getPersistentDataContainer()
-                                            .set(
-                                                    tag,
-                                                    PersistentDataType.STRING,
-                                                    room.id + "|@board");
-                                    int light = forward.brightness() == null ? 15 : forward.brightness();
-                                    display.setBrightness(new Display.Brightness(light, light));
-                                    display.setViewRange(.35f);
-                                    display.setTeleportDuration(2);
-                                    display.setInterpolationDuration(2);
-                                    display.setBlock(forward.material().createBlockData());
-                                    if (audience != null) {
-                                        audience.add(display, false);
-                                    }
-                                    display.setTransformation(localPose(forward));
-                                });
+                DisplayPlacement.spawn(
+                        at(forward),
+                        BlockDisplay.class,
+                        display -> {
+                            display.setPersistent(false);
+                            display.setGravity(false);
+                            display.setInvulnerable(true);
+                            display.getPersistentDataContainer()
+                                    .set(
+                                            tag,
+                                            PersistentDataType.STRING,
+                                            room.id + "|@board");
+                            int light = forward.brightness() == null ? 15 : forward.brightness();
+                            display.setBrightness(new Display.Brightness(light, light));
+                            display.setViewRange(.35f);
+                            display.setTeleportDuration(2);
+                            display.setInterpolationDuration(2);
+                            display.setBlock(forward.material().createBlockData());
+                            if (audience != null) {
+                                audience.add(display, false);
+                            }
+                            display.setTransformation(localPose(forward));
+                        });
         parts.add(new Part(entity, forward, reverse));
     }
 

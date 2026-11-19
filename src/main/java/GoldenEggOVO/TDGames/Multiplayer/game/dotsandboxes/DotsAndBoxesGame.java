@@ -5,6 +5,7 @@ import GoldenEggOVO.TDGames.Shared.game.ClassicGame;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public final class DotsAndBoxesGame implements ClassicGame {
+    private static final Map<String, Edge> EDGES = createEdges();
     private final int players;
     private final int[] horizontal = new int[30];
     private final int[] vertical = new int[30];
@@ -49,25 +51,22 @@ public final class DotsAndBoxesGame implements ClassicGame {
     @Override public List<String> legalActions(int seat) {
         if (seat != turn || finished()) return List.of();
         List<String> actions = new ArrayList<>();
-        for (int y = 0; y < 6; y++) for (int x = 0; x < 5; x++) if (horizontal[y * 5 + x] < 0) actions.add("draw:h" + x + "," + y);
-        for (int y = 0; y < 5; y++) for (int x = 0; x < 6; x++) if (vertical[y * 6 + x] < 0) actions.add("draw:v" + x + "," + y);
+        EDGES.forEach((action, edge) -> { if (available(edge)) actions.add(action); });
         return List.copyOf(actions);
     }
 
     @Override public List<String> actionsForCell(int seat, String cellId) {
-        return cellId == null ? List.of() : legalActions(seat).stream().filter(action -> action.equals("draw:" + cellId)).toList();
+        if (cellId == null || seat != turn || finished()) return List.of();
+        String action = "draw:" + cellId;
+        return available(EDGES.get(action)) ? List.of(action) : List.of();
     }
 
     @Override public void apply(int seat, String action) {
-        if (action == null || !legalActions(seat).contains(action)) throw new IllegalArgumentException("Illegal dots and boxes action");
-        Edge edge = edge(action);
+        Edge edge = EDGES.get(action);
+        if (seat != turn || finished() || !available(edge)) throw new IllegalArgumentException("Illegal dots and boxes action");
         values(edge)[index(edge)] = seat;
-        int captured = 0;
-        for (int y = 0; y < 5; y++) for (int x = 0; x < 5; x++) if (boxes[y * 5 + x] < 0 && sides(x, y) == 4) {
-            boxes[y * 5 + x] = seat;
-            scores[seat]++;
-            captured++;
-        }
+        int captured = claimBox(edge.x(), edge.y(), seat) + claimBox(edge.otherBoxX(), edge.otherBoxY(), seat);
+        scores[seat] += captured;
         if (Arrays.stream(scores).sum() == 25) {
             int maximum = Arrays.stream(scores).max().orElse(0);
             List<Integer> winners = new ArrayList<>();
@@ -76,35 +75,49 @@ public final class DotsAndBoxesGame implements ClassicGame {
         } else if (captured == 0) turn = (turn + 1) % players;
     }
 
-    private int sides(int x, int y) {
+    private int claimBox(int x, int y, int seat) {
+        if (drawnSidesOfOpenBox(x, y) != 4) return 0;
+        boxes[y * 5 + x] = seat;
+        return 1;
+    }
+
+    private int drawnSidesOfOpenBox(int x, int y) {
+        if (x < 0 || x >= 5 || y < 0 || y >= 5 || boxes[y * 5 + x] >= 0) return -1;
         return (horizontal[y * 5 + x] >= 0 ? 1 : 0) + (horizontal[(y + 1) * 5 + x] >= 0 ? 1 : 0)
                 + (vertical[y * 6 + x] >= 0 ? 1 : 0) + (vertical[y * 6 + x + 1] >= 0 ? 1 : 0);
     }
 
-    private Edge edge(String action) {
-        String[] coordinates = action.substring(6).split(",");
-        return new Edge(action.charAt(5) == 'h', Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]));
+    private static Map<String, Edge> createEdges() {
+        Map<String, Edge> edges = new LinkedHashMap<>();
+        for (int y = 0; y < 6; y++) for (int x = 0; x < 5; x++) edges.put("draw:h" + x + "," + y, new Edge(true, x, y));
+        for (int y = 0; y < 5; y++) for (int x = 0; x < 6; x++) edges.put("draw:v" + x + "," + y, new Edge(false, x, y));
+        return Collections.unmodifiableMap(edges);
     }
 
     private int[] values(Edge edge) { return edge.horizontal() ? horizontal : vertical; }
     private int index(Edge edge) { return edge.y() * (edge.horizontal() ? 5 : 6) + edge.x(); }
+    private boolean available(Edge edge) { return edge != null && values(edge)[index(edge)] < 0; }
 
     @Override public String botAction(int seat, Random random) {
+        if (seat != turn || finished()) return null;
         String best = null;
         int bestValue = Integer.MIN_VALUE;
-        for (String action : legalActions(seat)) {
-            Edge edge = edge(action);
-            values(edge)[index(edge)] = seat;
-            int value = 0;
-            for (int y = 0; y < 5; y++) for (int x = 0; x < 5; x++) if (boxes[y * 5 + x] < 0) {
-                int sides = sides(x, y);
-                if (sides == 4) value += 100;
-                else if (sides == 3) value -= 10;
-            }
-            values(edge)[index(edge)] = -1;
-            if (value > bestValue) { bestValue = value; best = action; }
+        for (var candidate : EDGES.entrySet()) {
+            Edge edge = candidate.getValue();
+            if (!available(edge)) continue;
+            int value = drawValue(edge.x(), edge.y()) + drawValue(edge.otherBoxX(), edge.otherBoxY());
+            if (value > bestValue) { bestValue = value; best = candidate.getKey(); }
         }
         return best;
+    }
+
+    private int drawValue(int x, int y) {
+        // Compare the change in score: closing a box also removes its three-side penalty.
+        return switch (drawnSidesOfOpenBox(x, y)) {
+            case 3 -> 100 + 10;
+            case 2 -> -10;
+            default -> 0;
+        };
     }
 
     @Override public Map<String, String> publicInfo() {
@@ -114,5 +127,8 @@ public final class DotsAndBoxesGame implements ClassicGame {
         return Map.copyOf(info);
     }
 
-    private record Edge(boolean horizontal, int x, int y) { }
+    private record Edge(boolean horizontal, int x, int y) {
+        int otherBoxX() { return horizontal ? x : x - 1; }
+        int otherBoxY() { return horizontal ? y - 1 : y; }
+    }
 }

@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/shared/materials/material_white_concrete",
     "BLACK_CONCRETE": "3dgames:item/shared/materials/material_black_concrete",
     "WHITE_CONCRETE": "3dgames:item/shared/materials/material_white_concrete",
     "cap_white_concrete_reversi_disc_white_top_bottom": "3dgames:item/tabletop/reversi/reversi_disc_white_top_bottom",

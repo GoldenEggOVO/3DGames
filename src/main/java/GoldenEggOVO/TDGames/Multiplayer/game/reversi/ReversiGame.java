@@ -65,33 +65,35 @@ public final class ReversiGame implements BoardGame {
         return i % 8 + "," + i / 8;
     }
 
-    private List<Integer> flips(int pos, int seat) {
-        List<Integer> all = new ArrayList<>();
-        if (board[pos] >= 0) return all;
+    private long flippedDiscs(int pos, int seat) {
+        if (board[pos] >= 0) return 0L;
+        long flipped = 0L;
         for (int dx = -1; dx <= 1; dx++)
             for (int dy = -1; dy <= 1; dy++) {
                 if (dx == 0 && dy == 0) continue;
-                List<Integer> line = new ArrayList<>();
+                long line = 0L;
                 int x = pos % 8 + dx, y = pos / 8 + dy;
                 while (x >= 0 && x < 8 && y >= 0 && y < 8 && board[x + 8 * y] == 1 - seat) {
-                    line.add(x + 8 * y);
+                    line |= 1L << (x + 8 * y);
                     x += dx;
                     y += dy;
                 }
                 if (x >= 0 && x < 8 && y >= 0 && y < 8 && board[x + 8 * y] == seat)
-                    all.addAll(line);
+                    flipped |= line;
             }
-        return all;
+        return flipped;
     }
 
-    private List<String> moves(int seat) {
-        List<String> moves = new ArrayList<>();
-        for (int i = 0; i < 64; i++) if (!flips(i, seat).isEmpty()) moves.add("place:" + key(i));
-        return moves;
+    private boolean hasMove(int seat) {
+        for (int i = 0; i < board.length; i++) if (flippedDiscs(i, seat) != 0L) return true;
+        return false;
     }
 
     public List<String> legalActions(int seat) {
-        return !finished() && seat == turn ? List.copyOf(moves(seat)) : List.of();
+        if (finished() || seat != turn) return List.of();
+        List<String> moves = new ArrayList<>();
+        for (int i = 0; i < board.length; i++) if (flippedDiscs(i, seat) != 0L) moves.add("place:" + key(i));
+        return List.copyOf(moves);
     }
 
     public void apply(int seat, String action) {
@@ -101,15 +103,16 @@ public final class ReversiGame implements BoardGame {
                     "You must bracket and flip at least one opponent disc");
         String[] xy = action.substring(6).split(",");
         int pos = Integer.parseInt(xy[0]) + 8 * Integer.parseInt(xy[1]);
-        List<Integer> taken = flips(pos, seat);
+        long flipped = flippedDiscs(pos, seat);
         board[pos] = seat;
-        taken.forEach(i -> board[i] = seat);
-        last = (seat == 0 ? "Black" : "White") + " flipped " + taken.size() + " discs";
+        for (int i = 0; i < board.length; i++) if ((flipped & (1L << i)) != 0L) board[i] = seat;
+        int count = Long.bitCount(flipped);
+        last = (seat == 0 ? "Black" : "White") + " flipped " + count + " discs";
         lastMessage =
-                RuleMessage.of("board.reversi.flipped", "player", seat + 1, "count", taken.size());
+                RuleMessage.of("board.reversi.flipped", "player", seat + 1, "count", count);
         turn = 1 - seat;
-        if (moves(turn).isEmpty()) {
-            if (moves(seat).isEmpty()) {
+        if (!hasMove(turn)) {
+            if (!hasMove(seat)) {
                 int a = count(0), b = count(1);
                 result = a == b ? "draw:equal-discs" : "winner:" + (a > b ? 0 : 1);
             } else {

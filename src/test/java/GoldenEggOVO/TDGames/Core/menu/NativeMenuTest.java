@@ -14,6 +14,38 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 class NativeMenuTest {
+    @Test void languageReloadClosesOnlyTheOriginalMenuOnThePlayerScheduler() {
+        var plugin = SessionTestSupport.plugin();
+        var player = mock(Player.class);
+        var id = UUID.randomUUID();
+        when(player.getUniqueId()).thenReturn(id);
+        var world = mock(World.class);
+        when(world.getUID()).thenReturn(UUID.randomUUID());
+        when(player.getWorld()).thenReturn(world);
+        when(plugin.getConfig()).thenReturn(new org.bukkit.configuration.file.YamlConfiguration());
+        when(plugin.allowed(player)).thenReturn(true);
+        var menus = new GameMenus(plugin);
+        var queue = new ArrayList<Runnable>();
+        var scheduler = plugin.scheduler();
+        doAnswer(call -> { queue.add(call.getArgument(1)); return null; })
+                .when(scheduler).execute(eq(player), any(Runnable.class));
+        try (var bukkit = mockStatic(org.bukkit.Bukkit.class);
+             var dialogs = mockStatic(GoldenEggOVO.TDGames.Core.platform.NativeDialogs.class)) {
+            bukkit.when(() -> org.bukkit.Bukkit.getPlayer(id)).thenReturn(player);
+            menus.show(player, "Old", "", List.of(), null);
+            menus.languageChanged();
+            dialogs.verifyNoInteractions();
+            menus.show(player, "New", "", List.of(), null);
+            queue.removeFirst().run();
+            dialogs.verifyNoInteractions();
+            assertTrue(menus.active(player));
+            menus.languageChanged();
+            queue.removeFirst().run();
+            dialogs.verify(() -> GoldenEggOVO.TDGames.Core.platform.NativeDialogs.clear(player));
+            assertFalse(menus.active(player));
+        }
+    }
+
     @Test void standaloneCatalogDoesNotOfferMissingServerMenu() throws Exception {
         var plugin=SessionTestSupport.plugin();when(plugin.getConfig()).thenReturn(new org.bukkit.configuration.file.YamlConfiguration());when(plugin.allowed(any())).thenReturn(true);
         var player=mock(Player.class);when(player.getUniqueId()).thenReturn(UUID.randomUUID());

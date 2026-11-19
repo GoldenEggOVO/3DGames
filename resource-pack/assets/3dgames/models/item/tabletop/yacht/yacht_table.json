@@ -2,6 +2,7 @@
   "gui_light": "front",
   "ambientocclusion": false,
   "textures": {
+    "particle": "3dgames:item/tabletop/yacht/yacht_score_sheet_grid",
     "felt": "3dgames:item/tabletop/yacht/yacht_dice_tray_felt",
     "slot": "3dgames:item/tabletop/yacht/yacht_keep_slot",
     "paper": "3dgames:item/tabletop/yacht/yacht_score_sheet_paper",
