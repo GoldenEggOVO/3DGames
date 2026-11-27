@@ -90,20 +90,20 @@ class WarmDialogTest {
         }
     }
     @Test
-    void amountPagesKeepReturnOnlyInTheFooter() {
+    void amountPagesKeepReturnSeparateFromEscape() {
         try (var f = new Fixture(false)) {
             var view = new MenuView(Component.text("Amount"),
                     List.of(new MenuView.Body(Component.text("Introduction"), 300)),
                     List.of(new MenuView.Input("amount", Component.text("Amount"), "1", 16)),
-                    List.of(choice("save")), choice("back"), 1);
+                    List.of(choice("save"), choice("back")), choice("close"), 1);
             DialogMenus.open(f.plugin, f.player, view, (action, values) -> f.dispatched.add(action));
-            assertEquals(List.of("Introduction"), f.body.stream().map(MessageText::plain).toList());
-            assertEquals(List.of("body", "input"), f.contentOrder);
-            assertTrue(f.textCallbacks.isEmpty());
-            assertEquals(List.of("[save]", "[Back]"), f.nativeButtons.stream().map(b -> MessageText.plain(b.label())).toList());
+            assertEquals(List.of("Introduction", "[Back]"), f.body.stream().map(MessageText::plain).toList());
+            assertEquals(List.of("body", "body", "input"), f.contentOrder);
+            assertNotNull(f.body.getLast().clickEvent());
+            assertEquals(List.of("[save]", "[close]"), f.nativeButtons.stream().map(b -> MessageText.plain(b.label())).toList());
             f.callbacks.getLast().accept(mock(io.papermc.paper.dialog.DialogResponseView.class), f.player);
             MockBukkit.getMock().getScheduler().performOneTick();
-            assertEquals(List.of("back"), f.dispatched);
+            assertEquals(List.of("close"), f.dispatched);
         }
     }
 

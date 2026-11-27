@@ -89,19 +89,20 @@ class WindowMenuTest {
     }
 
     @Test
-    void submenusUseReturnAsTheirOnlyFooter() {
+    void submenusKeepBackInTheListAndCloseInTheFooter() {
         for (String page : List.of("dialog", "category", "room", "setup", "settings", "tabletop")) {
             UUID token = UUID.randomUUID();
             var menu =
                     layout(
                             page,
-                            List.of(new GameMenus.Button("back", "Return", () -> {})),
+                            List.of(new GameMenus.Button("back", "Return", () -> {}), button("close")),
                             token);
             assertNotNull(menu.exit(), page);
-            assertEquals("Return", MessageText.plain(menu.exit().caption()), page);
+            assertEquals("close", menu.buttons().getLast().id(), page);
             assertEquals(330, menu.exit().width(), page);
-            assertEquals("3dgames:" + token + " 0", menu.exit().action(), page);
-            assertTrue(menu.controls().isEmpty(), page);
+            assertEquals("3dgames:" + token + " 1", menu.exit().action(), page);
+            assertEquals(List.of("Return"), menu.controls().stream().map(c -> MessageText.plain(c.caption())).toList(), page);
+            assertEquals("3dgames:" + token + " 0", menu.controls().getFirst().action(), page);
             assertTrue(menu.headers().isEmpty(), page);
         }
     }
@@ -110,7 +111,7 @@ class WindowMenuTest {
         var f = new MenuFlowTest.Fixture();
         f.menus.settings(f.player);
         assertEquals(1, f.buttons.stream().filter(b -> b.id().equals("back")).count());
-        assertTrue(f.buttons.stream().noneMatch(b -> b.id().equals("close")));
+        assertEquals(1, f.buttons.stream().filter(b -> b.id().equals("close")).count());
         f.buttons.stream().filter(b -> b.id().equals("back")).findFirst().orElseThrow().action().run();
         assertEquals(1, f.buttons.stream().filter(b -> b.id().equals("close")).count());
         assertTrue(f.buttons.stream().noneMatch(b -> b.id().equals("back")));

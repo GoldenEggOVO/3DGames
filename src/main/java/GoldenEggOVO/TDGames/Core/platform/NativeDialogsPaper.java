@@ -25,21 +25,19 @@ final class NativeDialogsPaper {
 
     static void open(Player player, MenuView view, BiConsumer<String, Map<String, String>> dispatch) {
         var body = new java.util.ArrayList<DialogBody>();
-        for (var header : view.buttons().stream().filter(b -> NativeDialogs.header(view, b)).toList()) {
-            var label = MenuLabels.caption(header)
-                    .hoverEvent(header.tooltip() == null ? header.text() : header.tooltip())
+        NativeDialogs.renderBody(view, line -> body.add(DialogBody.plainMessage(line.text(), Math.min(300, line.width()))),
+                (link, index) -> {
+            var label = MenuLabels.caption(link)
+                    .hoverEvent(link.tooltip() == null ? link.text() : link.tooltip())
                     .clickEvent(net.kyori.adventure.text.event.ClickEvent.callback(audience -> {
                 if (audience instanceof Player actor && actor.getUniqueId().equals(player.getUniqueId()))
-                    dispatch.accept(header.action(), Map.of());
+                    dispatch.accept(link.action(), Map.of());
             }, ClickCallback.Options.builder().uses(1).lifetime(CALLBACK_LIFETIME).build()));
             body.add(DialogBody.plainMessage(label, 300));
-        }
-        body.addAll(view.body().stream()
-                .filter(b -> !GoldenEggOVO.TDGames.Core.text.MessageText.plain(b.text()).isBlank())
-                .map(b -> DialogBody.plainMessage(b.text(), Math.min(300, b.width()))).toList());
+        });
         var inputs = view.inputs().stream().map(i -> DialogInput.text(i.id(), 300,
                 i.label(), true, i.value(), i.maxLength(), null)).toList();
-        var choices = view.buttons().stream().filter(b -> !NativeDialogs.header(view, b)).toList();
+        var choices = view.buttons().stream().filter(b -> !NativeDialogs.textLink(view, b)).toList();
         var buttons = choices.stream().map(b -> button(player, b, view, dispatch,
                 Math.min(view.columns() > 1 ? 144 : 300, b.width()))).toList();
         var base = DialogBase.create(view.title(), null, true, false,

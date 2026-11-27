@@ -75,9 +75,11 @@ class AmountDialogThemeTest {
             open.run();
             assertNotNull(captured[0], "Amount pages must share the same themed Dialog renderer");
             assertEquals(field, captured[0].inputs().getFirst().id());
-            assertEquals("back", captured[0].exit().key());
-            assertTrue(captured[0].buttons().stream().noneMatch(button -> button.key().equals("back") || button.key().equals("close")));
-            callbacks[0].accept("back", Map.of());
+            assertEquals("close", captured[0].exit().key());
+            assertEquals(java.util.List.of("save", "back"), captured[0].buttons().stream().map(MenuView.Button::key).toList());
+            callbacks[0].accept(captured[0].exit().action(), Map.of(field, "35"));
+            verify(plugin.menus(), never()).room(any(), any());
+            callbacks[0].accept(captured[0].buttons().getLast().action(), Map.of(field, "35"));
             verify(plugin.menus()).room(player, room);
         }
     }

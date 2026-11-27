@@ -2,7 +2,6 @@ package GoldenEggOVO.TDGames.Core.platform;
 
 import GoldenEggOVO.TDGames.Core.menu.MenuLabels;
 import GoldenEggOVO.TDGames.Core.menu.MenuView;
-import GoldenEggOVO.TDGames.Core.text.MessageText;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -89,24 +88,25 @@ final class NativeDialogsBukkit implements Listener {
         root.addProperty("pause", false);
         root.addProperty("after_action", "close");
         JsonArray body = new JsonArray();
+        NativeDialogs.renderBody(view, line -> body.add(body(component(line.text()), Math.min(300, line.width()))),
+                (link, index) -> {
+            JsonObject label = component(MenuLabels.caption(link)
+                    .hoverEvent(link.tooltip() == null ? link.text() : link.tooltip()));
+            if (link.action() != null) {
+                JsonObject click = new JsonObject();
+                click.addProperty("action", "custom");
+                click.addProperty("id", id(token, index));
+                label.add("click_event", click);
+            }
+            body.add(body(label, 300));
+        });
+        root.add("body", body);
         JsonArray actions = new JsonArray();
         for (int i = 0; i < view.buttons().size(); i++) {
             MenuView.Button button = view.buttons().get(i);
-            if (NativeDialogs.header(view, button)) {
-                JsonObject label = component(MenuLabels.caption(button)
-                        .hoverEvent(button.tooltip() == null ? button.text() : button.tooltip()));
-                if (button.action() != null) {
-                    JsonObject click = new JsonObject();
-                    click.addProperty("action", "custom");
-                    click.addProperty("id", id(token, i));
-                    label.add("click_event", click);
-                }
-                body.add(body(label, 300));
-            } else actions.add(button(button, token, i, Math.min(view.columns() > 1 ? 144 : 300, button.width())));
+            if (!NativeDialogs.textLink(view, button))
+                actions.add(button(button, token, i, Math.min(view.columns() > 1 ? 144 : 300, button.width())));
         }
-        for (var line : view.body())
-            if (!MessageText.plain(line.text()).isBlank()) body.add(body(component(line.text()), Math.min(300, line.width())));
-        root.add("body", body);
         JsonArray inputs = new JsonArray();
         for (var input : view.inputs()) {
             JsonObject value = new JsonObject();
@@ -189,7 +189,7 @@ final class NativeDialogsBukkit implements Listener {
             MenuView.Button button = index == view.buttons().size() ? view.exit() : view.buttons().get(index);
             if (button.action() == null) return;
             Map<String, String> values = new HashMap<>();
-            if (!NativeDialogs.header(view, button)) {
+            if (!NativeDialogs.textLink(view, button)) {
                 Object raw = event.getClass().getMethod("getData").invoke(event);
                 if (raw != null) {
                     var payload = JsonParser.parseString(raw.toString());

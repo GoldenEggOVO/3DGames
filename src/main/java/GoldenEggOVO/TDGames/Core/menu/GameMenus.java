@@ -135,7 +135,7 @@ public final class GameMenus implements AutoCloseable {
                                 forget(p);
                                 Bukkit.dispatchCommand(p, "servermenu:servermenu main");
                             }));
-        if (back == null) entries.add(new Button("close", Language.component("menu.close"), () -> forget(p)));
+        entries.add(new Button("close", Language.component("menu.close"), () -> forget(p)));
         UUID token = UUID.randomUUID();
         Runnable refresh = page.equals("settings") ? () -> settings(p)
                 : () -> show(p, title, description, buttons, back, page);

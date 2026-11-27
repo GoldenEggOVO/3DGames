@@ -8,7 +8,7 @@ Minecraft 3D 桌游插件。棋子、卡牌、骰子与棋盘直接显示在世�
 
 [兼容性](#兼容性) · [安装](#安装) · [操作与菜单](#操作与菜单) · [游戏](#游戏) · [配置](#配置与语言) · [资源包](#可选资源包) · [构建](#构建) · [源码目录](#源码目录) · [许可](#许可)
 
-> 可从 [v1.0.0 Release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.0) 下载插件和配套资源包。该标签包含两个附件对应的源码。
+> 可从 [v1.0.1 Release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.1) 下载插件和配套资源包。该标签包含两个附件对应的源码。
 
 ## 兼容性
 
@@ -40,7 +40,7 @@ Folia 的部分原生异步传送不触发 `PlayerTeleportEvent`，这是已复�
 
 ## 操作与菜单
 
-主页提供“单人游戏”和“多人游戏”，资源包开关位于“菜单设置”。两种模型模式共用原生 Dialog 文字按钮：游戏人数和说明放在悬停提示中，列表使用原生滚动；主页底部是“关闭”，子页同一位置是“返回”。金额输入使用原生输入框并校验。
+主页提供“单人游戏”和“多人游戏”，资源包开关位于“菜单设置”。两种模型模式共用原生 Dialog 文字按钮，游戏人数和说明放在悬停提示中，列表使用原生滚动。在任意页面按 Esc 或点击底部的“关闭菜单”即可回到游戏。点击页面说明下方的黄色 **[返回]** 可回到上一级。金额输入使用原生输入框并校验。
 
 所有桌子都可以潜行＋右键桌面打开房间菜单。棋子、卡牌、骰子和计分格直接在桌面操作。多人房主创建房间后，可以等待好友加入并准备，或使用“补齐陪练并开始”；选择规则后创建的房间不再更换规则。
 
@@ -215,7 +215,7 @@ CraftEngine 已有的资源内容与托管配置保留。如果它的托管被�
 停服并完整备份插件数据后替换 JAR，保留现有配置、自定义翻译、房间和其他插件。当前 schema 1 房间文件继续支持，已退役玩法的旧格式不自动转换。升级前可用候选 JAR 验证备份：
 
 ```sh
-java -cp target/3DGames-1.0.0.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomReplayVerifier /backup/3DGames/rooms.json
+java -cp target/3DGames-1.0.1.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomReplayVerifier /backup/3DGames/rooms.json
 ```
 
 使用外部资源分发时同时更新匹配的 ZIP 和 URL；统一包与本地模式从 JAR 中补充缺少的文件。启动后检查房间恢复、菜单与桌面操作，再决定是否清理备份。
@@ -242,7 +242,7 @@ mvn -B -ntp package
 
 | 输出 | 用途 |
 | --- | --- |
-| `target/3DGames-1.0.0.jar` | 安装的插件，已内置默认资源包 |
+| `target/3DGames-1.0.1.jar` | 安装的插件，已内置默认资源包 |
 | `target/3DGames-resource-pack.zip` | 独立客户端资源包，供检查或外部托管 |
 | `target/resource-pack-manifest.json` | 资源清单、尺寸与摘要 |
 | `target/surefire-reports/` | Java 测试结果 |

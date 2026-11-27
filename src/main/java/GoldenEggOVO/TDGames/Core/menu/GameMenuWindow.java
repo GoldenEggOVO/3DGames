@@ -72,7 +72,7 @@ public final class GameMenuWindow {
             GameMenus.Button button = buttons.get(index);
             Component caption = caption(page, button);
             String action = "3dgames:" + token + " " + index;
-            if (button.id().equals("close") || button.id().equals("back")) {
+            if (button.id().equals("close")) {
                 exit = new Control(caption, page.equals("catalog") ? 350 : 330, action, button.tooltip());
             } else if (page.equals("catalog")
                     && List.of("resource-pack", "resume", "rooms", "settings").contains(button.id())

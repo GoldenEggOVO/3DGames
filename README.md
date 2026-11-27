@@ -8,7 +8,7 @@ One JAR supports Paper, Purpur, Spigot, CraftBukkit and Folia, with native Dialo
 
 [Compatibility](#compatibility) · [Install](#install) · [Controls and menus](#controls-and-menus) · [Games](#games) · [Configuration](#configuration-and-languages) · [Resource pack](#optional-resource-pack) · [Build](#build) · [Source layout](#source-layout) · [License](#license)
 
-> Download the plugin and matching resource pack from the [v1.0.0 release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.0). The tag contains the source for both downloads.
+> Download the plugin and matching resource pack from the [v1.0.1 release](https://github.com/GoldenEggOVO/3DGames/releases/tag/v1.0.1). The tag contains the source for both downloads.
 
 ## Compatibility
 
@@ -40,7 +40,7 @@ The plugin alone provides vanilla models. For resource-pack models, optionally i
 
 ## Controls and menus
 
-The home page offers Single Player and Multiplayer. Menu settings contain the pack toggle. Both model modes share native Dialog text buttons: player counts and descriptions appear in tooltips, lists use native scrolling, the home footer closes, and subpage footers go back. Amounts use validated native inputs.
+The home page offers Single Player and Multiplayer. Menu settings contain the pack toggle. Both model modes share native Dialog text buttons, with player counts and descriptions in tooltips and native scrolling for lists. Press Esc or click Close Menu to return to the game from any page. Click the yellow **[Back]** link below the description to return to the previous page. Amounts use validated native inputs.
 
 Sneak and right-click a table to open its room menu. Operate pieces, cards, dice and scoring cells directly on the table. Multiplayer hosts can wait for friends to join and ready up, or fill empty seats with bots and start. Room rules lock after creation.
 
@@ -215,7 +215,7 @@ The default `auto` detects CraftEngine at startup: enabled selects `mixed`, whil
 Stop the server and back up the complete plugin data directory before replacing the JAR. Preserve current configuration, custom translations, rooms and other plugins. Current schema 1 room files remain supported; retired game formats are not automatically converted. Validate a backup against the candidate JAR before updating:
 
 ```sh
-java -cp target/3DGames-1.0.0.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomReplayVerifier /backup/3DGames/rooms.json
+java -cp target/3DGames-1.0.1.jar GoldenEggOVO.TDGames.Multiplayer.room.RoomReplayVerifier /backup/3DGames/rooms.json
 ```
 
 For external delivery, update the matching ZIP and its URL as well. Unified and local delivery fill missing files from the JAR. After startup, check restored rooms, menus and table actions before removing the backup.
@@ -242,7 +242,7 @@ Generate the pack before compiling. Maven embeds `target/3DGames-resource-pack.z
 
 | Output | Purpose |
 | --- | --- |
-| `target/3DGames-1.0.0.jar` | Installable plugin with its default pack |
+| `target/3DGames-1.0.1.jar` | Installable plugin with its default pack |
 | `target/3DGames-resource-pack.zip` | Client pack for inspection or external hosting |
 | `target/resource-pack-manifest.json` | Resource inventory, dimensions and digests |
 | `target/surefire-reports/` | Java test results |

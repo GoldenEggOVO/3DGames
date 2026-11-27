@@ -31,8 +31,9 @@ public final class PokerRaiseWindow {
                         "chips", info.get("chips." + seat)), 300)),
                 List.of(new MenuView.Input("street_total", Language.component("cards.poker.raise-total"),
                         info.get("minimumRaise"), 6)),
-                List.of(new MenuView.Button(Language.component("cards.control.raise"), null, 300, "save")),
-                new MenuView.Button(Language.component("menu.back"), null, 300, "back"),
+                List.of(new MenuView.Button(Language.component("cards.control.raise"), null, 300, "save"),
+                        new MenuView.Button(Language.component("menu.back"), null, 300, "back")),
+                new MenuView.Button(Language.component("menu.close"), null, 300, "close"),
                 1, "raise", System.currentTimeMillis() + Duration.ofMinutes(2).toMillis());
         plugin.menus().forget(player);
         DialogMenus.open(plugin, player, view, (choice, values) -> {

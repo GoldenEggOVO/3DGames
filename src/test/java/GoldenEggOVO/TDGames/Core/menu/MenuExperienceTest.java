@@ -24,7 +24,7 @@ class MenuExperienceTest {
         f.menus.setup(f.player, "2048");
         assertEquals(MessageText.plain(GoldenEggOVO.TDGames.Core.text.Language.component("setup.solo")),
                 MessageText.plain(f.description));
-        assertEquals(List.of("start", "back"), ids(f));
+        assertEquals(List.of("start", "back", "close"), ids(f));
     }
 
     @Test
@@ -92,7 +92,7 @@ class MenuExperienceTest {
         var f = new MenuFlowTest.Fixture();
         GameSession r = handRoom(f);
         f.menus.room(f.player, r);
-        assertEquals(List.of("play", "leave", "back"), ids(f));
+        assertEquals(List.of("play", "leave", "back", "close"), ids(f));
         assertFalse(
                 MessageText.plain(f.description)
                         .contains(MessageText.plain(RoomText.options(r.kind, r.options))));
@@ -125,7 +125,7 @@ class MenuExperienceTest {
         GameSession r = f.addRoom(0);
         r.join(f.player.getUniqueId(), "Owner");
         f.menus.room(f.player, r);
-        assertEquals(List.of("ready", "bots", "leave", "back"), ids(f));
+        assertEquals(List.of("ready", "bots", "leave", "back", "close"), ids(f));
         assertFalse(
                 MessageText.plain(f.description)
                         .contains(MessageText.plain(RoomText.options(r.kind, r.options))));
@@ -173,8 +173,8 @@ class MenuExperienceTest {
             f.menus.room(f.player, r);
             assertEquals(
                     Set.of("go", "go9", "go13").contains(kind)
-                            ? List.of("play", "pass", "leave", "back")
-                            : List.of("play", "leave", "back"),
+                            ? List.of("play", "pass", "leave", "back", "close")
+                            : List.of("play", "leave", "back", "close"),
                     ids(f),
                     kind);
             click(f, "play");
@@ -192,7 +192,7 @@ class MenuExperienceTest {
         verify(f.plugin.games())
                 .action(f.player, r, r.revision(), new com.google.gson.JsonPrimitive("move:a7:a8:q"));
         click(f, "back");
-        assertEquals(List.of("play", "leave", "back"), ids(f));
+        assertEquals(List.of("play", "leave", "back", "close"), ids(f));
     }
 
     @Test
@@ -202,35 +202,35 @@ class MenuExperienceTest {
             GameSession r = playingRoom(f, kind);
             SessionTestSupport.set(r, "revision", 12);
             f.menus.room(f.player, r);
-            assertEquals(List.of("play", "pass", "leave", "back"), ids(f), kind);
+            assertEquals(List.of("play", "pass", "leave", "back", "close"), ids(f), kind);
             click(f, "pass");
             verify(f.plugin.games()).action(f.player, r, 12, new com.google.gson.JsonPrimitive("pass"));
             r.board().apply(0, "pass");
             SessionTestSupport.bump(r);
             f.menus.room(f.player, r);
             assertEquals(
-                    List.of("play", "leave", "back"),
+                    List.of("play", "leave", "back", "close"),
                     ids(f),
                     "Only the current player can pass");
             r.board().apply(1, "pass");
             SessionTestSupport.bump(r);
             f.menus.room(f.player, r);
             assertEquals(
-                    List.of("play", "accept", "resume", "leave", "back"), ids(f), kind);
+                    List.of("play", "accept", "resume", "leave", "back", "close"), ids(f), kind);
             click(f, "accept");
             verify(f.plugin.games()).action(f.player, r, 14, new com.google.gson.JsonPrimitive("accept"));
             r.board().apply(0, "accept");
             SessionTestSupport.bump(r);
             f.menus.room(f.player, r);
             assertEquals(
-                    List.of("play", "resume", "leave", "back"),
+                    List.of("play", "resume", "leave", "back", "close"),
                     ids(f),
                     "A confirmed player can still dispute scoring");
             click(f, "resume");
             verify(f.plugin.games()).action(f.player, r, 15, new com.google.gson.JsonPrimitive("resume"));
             SessionTestSupport.set(r, "busy", true);
             f.menus.room(f.player, r);
-            assertEquals(List.of("play", "leave", "back"), ids(f));
+            assertEquals(List.of("play", "leave", "back", "close"), ids(f));
             SessionTestSupport.set(r, "busy", false);
         }
     }
@@ -240,7 +240,7 @@ class MenuExperienceTest {
         var f = new MenuFlowTest.Fixture();
         GameSession r = playingRoom(f, "color-eight");
         f.menus.room(f.player, r);
-        assertEquals(List.of("play", "leave", "back"), ids(f));
+        assertEquals(List.of("play", "leave", "back", "close"), ids(f));
         assertFalse(r.board().legalActions(0).contains("declare"));
     }
 

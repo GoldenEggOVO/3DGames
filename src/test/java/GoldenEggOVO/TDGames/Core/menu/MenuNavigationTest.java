@@ -34,7 +34,7 @@ class MenuNavigationTest {
             GoldenEggOVO.TDGames.SessionTestSupport.mutableSessions(f.plugin).put(room.id, room);
             f.menus.room(f.player, room);
             assertTrue(ids(f).contains("play"), kind);
-            assertTrue(java.util.Set.of("play", "leave", "save-leave", "back").containsAll(ids(f)),
+            assertTrue(java.util.Set.of("play", "leave", "save-leave", "back", "close").containsAll(ids(f)),
                     kind + " exposes game moves in the management menu: " + ids(f));
         }
     }
@@ -44,7 +44,7 @@ class MenuNavigationTest {
         var f = new MenuFlowTest.Fixture();
         f.menus.main(f.player);
         click(f, "single-player");
-        assertEquals(List.of("mastermind", "2048", "klondike", "memory", "back"), ids(f));
+        assertEquals(List.of("mastermind", "2048", "klondike", "memory", "back", "close"), ids(f));
         click(f, "memory");
         assertFalse(ids(f).contains("capacity"));
         assertFalse(ids(f).contains("mode"));
@@ -84,9 +84,9 @@ class MenuNavigationTest {
         assertEquals(List.of("xiangqi", "gomoku", "chess", "checkers", "draughts", "reversi", "go", "connectfour",
                 "mancala", "nine-mens-morris", "dots-and-boxes", "hex", "battleship", "shogi", "mastermind",
                 "color-eight", "mahjong", "doudizhu", "liars-bar", "texas-holdem", "memory", "ludo", "yacht", "backgammon", "monopoly"),
-                ids(f).stream().filter(id -> !List.of("back").contains(id)).toList());
+                ids(f).stream().filter(id -> !List.of("back", "close").contains(id)).toList());
         for (var button : f.buttons) {
-            if (List.of("back").contains(button.id())) continue;
+            if (List.of("back", "close").contains(button.id())) continue;
             assertFalse(button.label().contains(" players"), button.id());
             assertNotNull(button.tooltip());
             assertTrue(MessageText.plain(button.tooltip()).matches("Players: [1-6](, [1-6])*"), button.id());
@@ -145,8 +145,9 @@ class MenuNavigationTest {
         var f = new MenuFlowTest.Fixture(); f.menus.games(f.player);
         var rendered = GameMenuWindow.layout("tabletop", Component.empty(), Component.empty(), f.buttons, UUID.randomUUID());
         assertEquals(2, rendered.columns());
-        assertEquals(25, rendered.controls().size());
-        assertEquals("Back", MessageText.plain(rendered.exit().caption()));
+        assertEquals(26, rendered.controls().size());
+        assertEquals("Back", MessageText.plain(rendered.controls().getLast().caption()));
+        assertEquals("close", rendered.buttons().getLast().id());
         assertNotEquals(rendered.controls().getLast().action(), rendered.exit().action());
     }
 
@@ -162,10 +163,11 @@ class MenuNavigationTest {
     @Test
     void returnAndDestructiveActionsUseDistinctColorsAndConsistentWidths() {
         var rendered = GameMenuWindow.layout("room", Component.empty(), Component.empty(),
-                List.of(button("leave"), button("back")), UUID.randomUUID());
-        assertEquals(330, rendered.exit().width());
-        assertTrue(LegacyComponentSerializer.legacySection().serialize(rendered.exit().caption()).contains("§e"));
-        assertFalse(LegacyComponentSerializer.legacySection().serialize(rendered.exit().caption()).contains("§c"));
+                List.of(button("leave"), button("back"), button("close")), UUID.randomUUID());
+        var back = rendered.controls().getLast();
+        assertEquals(330, back.width());
+        assertTrue(LegacyComponentSerializer.legacySection().serialize(back.caption()).contains("§e"));
+        assertFalse(LegacyComponentSerializer.legacySection().serialize(back.caption()).contains("§c"));
         assertTrue(LegacyComponentSerializer.legacySection().serialize(rendered.controls().getFirst().caption()).contains("§c"));
     }
 

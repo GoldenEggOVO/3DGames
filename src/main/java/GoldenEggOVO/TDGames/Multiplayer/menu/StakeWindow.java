@@ -29,8 +29,9 @@ public final class StakeWindow {
                 List.of(new MenuView.Input("stake_amount",
                         Language.component("stake.edit.amount"), room.stake() == null ? "0"
                         : BigDecimal.valueOf(room.stake()).stripTrailingZeros().toPlainString(), 24)),
-                List.of(new MenuView.Button(Language.component("stake.edit.save"), null, 300, "save")),
-                new MenuView.Button(Language.component("menu.back"), null, 300, "back"),
+                List.of(new MenuView.Button(Language.component("stake.edit.save"), null, 300, "save"),
+                        new MenuView.Button(Language.component("menu.back"), null, 300, "back")),
+                new MenuView.Button(Language.component("menu.close"), null, 300, "close"),
                 1, "stake", System.currentTimeMillis() + Duration.ofMinutes(2).toMillis());
         plugin.menus().forget(player);
         DialogMenus.open(plugin, player, view, (choice, values) -> {

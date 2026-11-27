@@ -108,10 +108,10 @@ class MenuFlowTest {
         assertFalse(f.buttons.stream().anyMatch(b -> b.id().equals("rooms")));
     }
     @Test
-    void closeCallbackEndsTheSessionAndSynchronizesFocusInput() throws Exception {
+    void closeFromASubmenuEndsTheSessionAndSynchronizesFocusInput() throws Exception {
         Fixture f = new Fixture();
         SessionTestSupport.module(f.plugin, "tablePlayers", mock(TablePlayerController.class));
-        f.menus.main(f.player);
+        f.menus.settings(f.player);
         assertTrue(f.menus.active(f.player));
         f.buttons.stream()
                 .filter(b -> b.id().equals("close"))
@@ -357,7 +357,7 @@ class MenuFlowTest {
         for (String kind : GameCatalog.CLASSIC_IDS) {
             f.menus.rules(f.player, kind);
             assertTrue(MessageText.plain(f.description).startsWith("Choose a game to view its rules."), kind);
-            assertEquals(List.of("back"), f.buttons.stream().map(GameMenus.Button::id).toList(), kind);
+            assertEquals(List.of("back", "close"), f.buttons.stream().map(GameMenus.Button::id).toList(), kind);
         }
     }
 

@@ -17,7 +17,7 @@ class DialogSettingsTest {
     void settingsWithoutResourceToggleExplainWhyNoOptionsAreAvailable() throws Exception {
         var f = new MenuFlowTest.Fixture();
         f.menus.settings(f.player);
-        assertEquals(List.of("back"), f.buttons.stream().map(GameMenus.Button::id).toList());
+        assertEquals(List.of("back", "close"), f.buttons.stream().map(GameMenus.Button::id).toList());
         assertFalse(MessageText.plain(f.description).isBlank());
     }
 
@@ -31,7 +31,7 @@ class DialogSettingsTest {
         for (boolean packed : List.of(false, true)) {
             when(pack.packed(f.player)).thenReturn(packed);
             f.menus.settings(f.player);
-            assertEquals(List.of("resource-pack", "back"), f.buttons.stream().map(GameMenus.Button::id).toList());
+            assertEquals(List.of("resource-pack", "back", "close"), f.buttons.stream().map(GameMenus.Button::id).toList());
             assertTrue(MessageText.plain(f.description).isBlank());
         }
         f.buttons.getFirst().action().run();

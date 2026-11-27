@@ -20,8 +20,9 @@ final class CraftEngineResourcePack implements AutoCloseable {
 
     private final Object engine;
     private final Object manager;
-    private final Field hosting;
-    private final Method fullyLoaded, isReloading, generate, packPath, host, upload, links, onlineUser, url, sha1;
+    private final PackBuilder builder;
+    private final Path output;
+    private final Method fullyLoaded, isReloading, host, upload, links, onlineUser, url, sha1;
     private final Listener listener = new Listener() {};
     private volatile String hash = "";
     private final Path hashFile;
@@ -37,13 +38,24 @@ final class CraftEngineResourcePack implements AutoCloseable {
         fullyLoaded = api.getMethod("isFullyLoaded");
         isReloading = api.getMethod("isReloading");
         manager = api.getMethod("packManager").invoke(engine);
-        hosting = Class.forName("net.momirealms.craftengine.core.pack.AbstractPackManager", true, loader)
-                .getDeclaredField("resourcePackHost");
-        hosting.setAccessible(true);
+        Class<?> managerType = Class.forName("net.momirealms.craftengine.core.pack.AbstractPackManager", true, loader);
         Class<?> packs = Class.forName("net.momirealms.craftengine.core.pack.PackManager", true, loader);
-        generate = packs.getMethod("generateResourcePack");
-        packPath = packs.getMethod("resourcePackPath");
-        Path output = (Path) packPath.invoke(manager);
+        Method legacyGenerate = null;
+        try {
+            legacyGenerate = packs.getMethod("generateResourcePack");
+        } catch (NoSuchMethodException workflowApi) {
+            packs.getMethod("runWorkflow", String.class);
+        }
+        if (legacyGenerate == null) {
+            output = dependency.getDataFolder().toPath().resolve("generated/resource_pack.zip");
+            builder = workflowBuilder(api, managerType);
+        } else {
+            output = (Path) packs.getMethod("resourcePackPath").invoke(manager);
+            Field hosting = managerType.getDeclaredField("resourcePackHost");
+            hosting.setAccessible(true);
+            Method generatePack = legacyGenerate;
+            builder = source -> generate(manager, generatePack, hosting, output, source);
+        }
         hashFile = output.resolveSibling(output.getFileName() + ".plugins.sha1");
         host = packs.getMethod("resourcePackHost");
         Class<?> hosting = Class.forName("net.momirealms.craftengine.core.pack.host.ResourcePackHost", true, loader);
@@ -87,8 +99,7 @@ final class CraftEngineResourcePack implements AutoCloseable {
     synchronized String rebuild(LocalResourcePack.Archive source) throws IOException, ReflectiveOperationException {
         synchronized (manager) {
             if (!ready()) throw new IOException("CraftEngine is not ready to rebuild its resource pack");
-            Path output = (Path) packPath.invoke(manager);
-            generate(manager, generate, hosting, output, source);
+            builder.build(source);
             if (!ready()) throw new IOException("CraftEngine stopped or started reloading during pack generation");
             byte[] bytes = Files.readAllBytes(output);
             String next;
@@ -144,6 +155,49 @@ final class CraftEngineResourcePack implements AutoCloseable {
         } catch (ReflectiveOperationException | RuntimeException exception) {
             return CompletableFuture.failedFuture(exception);
         }
+    }
+
+    @FunctionalInterface
+    private interface PackBuilder {
+        void build(LocalResourcePack.Archive source) throws IOException, ReflectiveOperationException;
+    }
+
+    private PackBuilder workflowBuilder(Class<?> api, Class<?> managerType) throws ReflectiveOperationException {
+        String pack = "net.momirealms.craftengine.core.pack.";
+        ClassLoader loader = api.getClassLoader();
+        Class<?> options = loader.loadClass(pack + "PackGenerationOptions");
+        Class<?> sequence = loader.loadClass(pack + "workflow.PackWorkflowSequence");
+        String steps = pack + "workflow.impl.";
+        String candidateName = "plugins-verified-candidate.zip";
+        Object workflow = sequence.getConstructor(String.class, Set.class, List.class, boolean.class)
+                .newInstance("verified-plugin-pack", Set.of(), List.of(
+                        loader.loadClass(steps + "GeneratePackWorkflow").getConstructor(options)
+                                .newInstance(options.getMethod("defaults").invoke(null)),
+                        loader.loadClass(steps + "ValidatePackWorkflow").getConstructor().newInstance(),
+                        loader.loadClass(steps + "ZipPackWorkflow").getConstructor(String.class, boolean.class)
+                                .newInstance("./generated/" + candidateName, false)), false);
+        Method execute = managerType.getDeclaredMethod("executeWorkflow", sequence);
+        execute.setAccessible(true);
+        Object coordinator = api.getMethod("resourceOperations").invoke(engine);
+        Method acquire = coordinator.getClass().getMethod("acquire");
+        Method release = acquire.getReturnType().getMethod("close");
+        Path candidate = output.resolveSibling(candidateName);
+        return source -> {
+            Object lease = acquire.invoke(coordinator);
+            try {
+                Files.createDirectories(output.getParent());
+                Files.deleteIfExists(candidate);
+                execute.invoke(manager, workflow);
+                verifyMerged(source, candidate);
+                Files.move(candidate, output, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+            } finally {
+                try {
+                    Files.deleteIfExists(candidate);
+                } finally {
+                    release.invoke(lease);
+                }
+            }
+        };
     }
 
     static void generate(Object manager, Method generate, Field hosting, Path output,
